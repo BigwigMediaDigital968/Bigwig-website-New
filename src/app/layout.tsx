@@ -7,6 +7,8 @@ import { Instrument_Serif, Schibsted_Grotesk } from "next/font/google";
 import FloatingButton from "../../components/FloatingButton";
 import { LeadPopupProvider } from "../../components/LeadPopup";
 import MotionRoot from "../../components/layout/MotionRoot";
+import Nav from "../../components/layout/Nav";
+import Footer from "../../components/layout/Footer";
 
 const sans = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -200,7 +202,11 @@ export default function RootLayout({
       </head>
       <body>
         <MotionRoot>
-          <LeadPopupProvider>{children}</LeadPopupProvider>
+          <LeadPopupProvider>
+            <Nav />
+            {children}
+            <Footer />
+          </LeadPopupProvider>
         </MotionRoot>
 
         {/* Google reCAPTCHA */}

@@ -67,8 +67,6 @@ export default function Home() {
       />
 
       {/* nav floats over the hero video on the homepage only */}
-      <Nav overlay />
-      <main>
         <Hero />
         <Partners />
         <About />
@@ -79,8 +77,6 @@ export default function Home() {
         <CaseStudies />
         <Blogs />
         <FAQ />
-      </main>
-      <Footer />
     </>
   );
 }

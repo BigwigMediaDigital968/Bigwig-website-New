@@ -32,11 +32,12 @@ const ring =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--cyan)]";
 
 /**
- * overlay: floats transparent over a full-bleed hero (homepage) and turns solid on scroll.
- * Default: a solid sticky bar that takes up space, for every other page.
+ * On the homepage the nav floats transparent over the hero video and turns solid on scroll.
+ * Everywhere else it is a solid sticky bar that takes up space.
  */
-export default function Nav({ overlay = false }: { overlay?: boolean }) {
+export default function Nav() {
   const pathname = usePathname() ?? "/";
+  const overlay = pathname === "/";
   const isActive = (slug: string) => pathname === slug || pathname.startsWith(`${slug}/`);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
