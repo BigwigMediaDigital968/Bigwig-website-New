@@ -1,0 +1,101 @@
+/* ============================================================
+   Site theme: tokens, type and layout helpers.
+   Loaded globally from layout.tsx after globals.css.
+   Fonts come from next/font in layout.tsx (--font-body, --font-numeral).
+   ============================================================ */
+
+:root {
+  --paper: #eef1f2;
+  --surface: #ffffff;
+  --ink: #011c40;
+  --ink-2: #023859;
+  --muted: #4f6275;
+  --line: rgba(1, 28, 64, 0.12);
+  --line-strong: rgba(1, 28, 64, 0.24);
+  --cyan: #a7ebf2;
+  --teal: #54acbf;
+  --link: #26658c;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-feature-settings: "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2rem;
+  }
+}
+
+.serif {
+  font-family: var(--font-numeral), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.h-display {
+  font-size: clamp(2.1rem, 4.4vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.h-section {
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--cyan);
+  color: var(--ink);
+}
+
+/* ---------- marquee (partners strip) ---------- */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-mask:hover .marquee,
+.marquee-mask:focus-within .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
+}

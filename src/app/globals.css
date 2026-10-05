@@ -1,0 +1,654 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #4e6cba;
+  --secondary-color: #d10b0b;
+  --color1: #011c40;
+  --color2: #023859;
+  --color3: #26658c;
+  --color4: #54acbf;
+  --color5: #a7ebf2;
+}
+
+/* Pop-in animation (used by the blog editor) */
+@keyframes bwPop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bw-pop {
+  animation: bwPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-pop {
+    animation: none;
+  }
+}
+
+/* Clients.css */
+.flip-card {
+  perspective: 1200px; /* Adds 3D depth */
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* important for the 3D illusion */
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.flip-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color4) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color4);
+  border-radius: 9999px;
+}
+
+/* ============================================================
+   Blog content — shared by the public blog page and the admin
+   editor (so what you write is what gets published).
+   Designed for the dark navy site background (--color1).
+   ============================================================ */
+
+.blog-content {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  line-height: 1.75;
+  font-size: 1.0625rem;
+  color: #fff;
+  overflow-wrap: break-word;
+}
+
+.blog-content::after {
+  /* contain floated images */
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.blog-content > :first-child {
+  margin-top: 0;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  color: #fff;
+  line-height: 1.25;
+  scroll-margin-top: 120px;
+}
+
+.blog-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 2.25rem 0 1rem;
+}
+
+.blog-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 2rem 0 0.875rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.blog-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.625rem;
+}
+
+.blog-content h5 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.blog-content h6 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color5);
+  margin: 1.25rem 0 0.5rem;
+}
+
+.blog-content p {
+  margin: 1rem 0;
+}
+
+.blog-content strong,
+.blog-content b {
+  font-weight: 700;
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+}
+
+.blog-content ul ul {
+  list-style-type: circle;
+}
+
+.blog-content ul ul ul {
+  list-style-type: square;
+}
+
+.blog-content ol ol {
+  list-style-type: lower-alpha;
+}
+
+.blog-content li {
+  margin-bottom: 0.4rem;
+}
+
+.blog-content li > p {
+  margin: 0;
+}
+
+.blog-content li::marker {
+  color: var(--color4);
+}
+
+/* legacy Quill lists that were never migrated */
+.blog-content li[data-list="bullet"] {
+  list-style-type: disc;
+}
+
+.blog-content a {
+  color: var(--color5);
+  text-decoration: underline;
+  text-decoration-color: rgba(167, 235, 242, 0.45);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+
+.blog-content a:hover {
+  text-decoration-color: currentColor;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid var(--color4);
+  background: rgba(84, 172, 191, 0.08);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+.blog-content blockquote p {
+  margin: 0.5rem 0;
+}
+
+.blog-content hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  margin: 2.5rem 0;
+}
+
+.blog-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+
+.blog-content pre {
+  background: #07101c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+.blog-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: #d6f5f8;
+}
+
+/* Highlights always use dark text so they stay readable on light colours */
+.blog-content mark {
+  color: #0f172a !important;
+  border-radius: 3px;
+  padding: 0 0.15em;
+}
+
+.blog-content mark:not([style*="background"]) {
+  background: #fef08a;
+}
+
+.blog-content sub,
+.blog-content sup {
+  font-size: 0.75em;
+}
+
+/* Images */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.blog-content img:not([style*="width"]) {
+  display: block;
+}
+
+.blog-content a > img {
+  display: block;
+}
+
+.blog-content figure {
+  margin: 1.75rem 0;
+  max-width: 100%;
+}
+
+.blog-content figure img {
+  width: 100%;
+  margin: 0;
+}
+
+.blog-content figcaption {
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.875rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.blog-content [data-align="left"],
+.blog-content [data-align="right"] {
+  margin-top: 0.35rem;
+}
+
+/* Tables */
+.blog-content .bw-table-wrap,
+.blog-content .tableWrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  table-layout: auto;
+}
+
+.blog-content .bw-table-wrap > table,
+.blog-content .tableWrapper > table {
+  margin: 0;
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.65rem 0.85rem;
+  vertical-align: top;
+  text-align: left;
+  min-width: 80px;
+}
+
+.blog-content th {
+  background: rgba(84, 172, 191, 0.18);
+  font-weight: 600;
+}
+
+.blog-content td > p,
+.blog-content th > p {
+  margin: 0;
+}
+
+/* YouTube / embeds */
+.blog-content div[data-youtube-video] {
+  margin: 1.75rem 0;
+}
+
+.blog-content div[data-youtube-video] iframe,
+.blog-content iframe[src*="youtube"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* Legacy Quill indentation */
+.blog-content .ql-indent-1 { padding-left: 3em; }
+.blog-content .ql-indent-2 { padding-left: 6em; }
+.blog-content .ql-indent-3 { padding-left: 9em; }
+
+@media (max-width: 640px) {
+  .blog-content {
+    font-size: 1rem;
+  }
+
+  .blog-content h1 { font-size: 1.75rem; }
+  .blog-content h2 { font-size: 1.5rem; }
+  .blog-content h3 { font-size: 1.3rem; }
+  .blog-content h4 { font-size: 1.15rem; }
+
+  /* floated images take the full width on phones */
+  .blog-content [data-align="left"],
+  .blog-content [data-align="right"] {
+    float: none !important;
+    width: 100% !important;
+    margin: 1.25rem 0 !important;
+  }
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.writing-vertical {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+.writing-vertical2 {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  line-height: 2.5;
+  text-align: center;
+}
+
+@keyframes spinBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.before\:bg-gradient-conic::before {
+  background: conic-gradient(from 0deg, #4e6cba);
+}
+
+.before\:animate-spin-border::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  animation: spinBorder 3s linear infinite;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Curtain open */
+@keyframes curtainDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Curtain close */
+@keyframes curtainUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.popup-open {
+  animation: curtainDown 0.6s ease forwards;
+}
+
+.popup-close {
+  animation: curtainUp 0.6s ease forwards;
+}
+
+/* html,
+body {
+  overflow-x: hidden !important;
+} */
+
+/* Christmas Snow Animation */
+/* ----------------- SNOW ----------------- */
+.snow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 10px 10px, white, transparent),
+    radial-gradient(3px 3px at 40px 40px, white, transparent),
+    radial-gradient(2px 2px at 70px 70px, white, transparent);
+  background-size: 200px 200px;
+  animation: snowfall 7s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes snowfall {
+  from {
+    background-position: 0 -200px;
+  }
+  to {
+    background-position: 0 200px;
+  }
+}
+
+/* ----------------- GOLD SPARKLES ----------------- */
+.sparkles {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 215, 0, 0.8) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255, 215, 0, 0.6) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    80px 80px;
+  animation: sparkleMove 6s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes sparkleMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* ----------------- CHRISTMAS LIGHTS ----------------- */
+
+@keyframes glow {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.christmas-lights {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 50;
+  padding: 20px;
+}
+.bulb {
+  width: 12px;
+  height: 12px;
+  background-color: #ff4f4f;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff4f4f;
+  animation: glow 1.4s infinite alternate;
+}
+
+.santa {
+  position: fixed;
+  bottom: 40px;
+  left: -100px;
+  width: 180px;
+  animation: santaRide 12s linear infinite;
+  z-index: 60;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+@keyframes santaRide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(94vw));
+  }
+}
+
+.tree {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+  z-index: 60;
+  pointer-events: none;
+  animation: treeGlow 2s infinite alternate;
+}
+
+@keyframes treeGlow {
+  from {
+    filter: drop-shadow(0 0 5px #0f0);
+  }
+  to {
+    filter: drop-shadow(0 0 20px #0f0);
+  }
+}
+
+.slick-slider {
+  margin-bottom: 50px !important;
+}
+.slick-list {
+  margin-bottom: 30px !important;
+}
+.slick-slider ul button {
+  background-color: #4e6cba !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 12px !important;
+  height: 12px !important;
+  cursor: pointer;
+}
+.slick-slider ul button:before {
+  display: none !important;
+}
+.slick-dots {
+  bottom: -30px !important;
+}
+.slick-dots .slick-active button {
+  background-color: #ffffff !important;
+}
