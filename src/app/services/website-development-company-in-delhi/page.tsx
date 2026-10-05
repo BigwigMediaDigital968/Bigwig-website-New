@@ -12,7 +12,7 @@ import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
 import { SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import Client from "../../../app/clients/Client";
+import Client from "../../../../components/home/Clients";
 import Partners from "../../../../components/home/Partners";
 
 const sections = [
