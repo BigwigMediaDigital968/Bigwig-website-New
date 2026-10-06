@@ -22,7 +22,10 @@ const dot: Variants = {
   show: (i: number) => ({ scale: 1, transition: { type: "spring", stiffness: 420, damping: 18, delay: 0.15 + i * STEP } }),
 };
 
-/** Numbered steps on a line: horizontal from md up, vertical on phones. Built for five steps. */
+// static class names so Tailwind generates them
+const COLS: Record<number, string> = { 3: "md:grid-cols-3", 4: "md:grid-cols-4", 5: "md:grid-cols-5", 6: "md:grid-cols-6" };
+
+/** Numbered steps on a line: horizontal from md up, vertical on phones. Takes 3 to 6 steps. */
 export default function Timeline({
   steps,
   className = "",
@@ -32,7 +35,7 @@ export default function Timeline({
 }) {
   return (
     <motion.ol
-      className={`relative grid gap-10 md:grid-cols-5 md:gap-6 ${className}`}
+      className={`relative grid gap-10 md:gap-6 ${COLS[steps.length] ?? "md:grid-cols-5"} ${className}`}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}

@@ -31,13 +31,16 @@ const links = [
 const ring =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--cyan)]";
 
+// Pages whose hero is a full-screen photo/video the nav floats over
+const OVERLAY_PATHS = ["/", "/digital-marketing-agency-dubai-uae"];
+
 /**
- * On the homepage the nav floats transparent over the hero video and turns solid on scroll.
+ * On full-screen hero pages the nav floats transparent over the hero and turns solid on scroll.
  * Everywhere else it is a solid sticky bar that takes up space.
  */
 export default function Nav() {
   const pathname = usePathname() ?? "/";
-  const overlay = pathname === "/";
+  const overlay = OVERLAY_PATHS.includes(pathname);
   const isActive = (slug: string) => pathname === slug || pathname.startsWith(`${slug}/`);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);

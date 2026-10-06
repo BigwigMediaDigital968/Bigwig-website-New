@@ -6,6 +6,7 @@ import useSubmitLead from "../../hooks/useSubmitLead";
 import { trackLeadEvent } from "../../utils/leadTracking";
 import { focusRing } from "../ui";
 import CountrySelect, { countryByIso } from "./CountrySelect";
+import ServicesSelect from "./ServicesSelect";
 
 const SERVICES = [
   "SEO",
@@ -28,8 +29,21 @@ type Errors = { fullName?: string; email?: string; phone?: string };
 const field =
   "rounded-2xl bg-[var(--paper)] px-4 text-[0.95rem] text-[var(--ink)] ring-1 ring-inset ring-[var(--line)] placeholder:text-[var(--muted)]/70 transition-shadow focus:outline-none focus:ring-2 focus:ring-[var(--link)] aria-[invalid=true]:ring-red-400";
 
-export default function EnquiryForm({ source = "contact-page" }: { source?: string }) {
-  const [form, setForm] = useState(EMPTY);
+/**
+ * `defaultCountry` is the dial-code country the form starts on (ISO code, e.g. "ae").
+ * `compact` swaps the service buttons for a dropdown and shortens the message box, for hero cards.
+ */
+export default function EnquiryForm({
+  source = "contact-page",
+  defaultCountry = "in",
+  compact = false,
+}: {
+  source?: string;
+  defaultCountry?: string;
+  compact?: boolean;
+}) {
+  const start = { ...EMPTY, country: defaultCountry };
+  const [form, setForm] = useState(start);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -68,7 +82,7 @@ export default function EnquiryForm({ source = "contact-page" }: { source?: stri
       return;
     }
     trackLeadEvent("lead_submitted", source);
-    setForm(EMPTY);
+    setForm(start);
     setSubmitted(true);
   };
 
@@ -94,8 +108,8 @@ export default function EnquiryForm({ source = "contact-page" }: { source?: stri
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 [&>*]:min-w-0">
+    <form onSubmit={handleSubmit} noValidate className={compact ? "space-y-4" : "space-y-6"}>
+      <div className={`grid grid-cols-1 sm:grid-cols-2 [&>*]:min-w-0 ${compact ? "gap-4" : "gap-5"}`}>
         <Field id="contact-name" label="Name" error={errors.fullName}>
           <input
             id="contact-name"
@@ -148,36 +162,50 @@ export default function EnquiryForm({ source = "contact-page" }: { source?: stri
         </div>
       </div>
 
-      <fieldset>
-        <legend className="mb-3 text-sm font-medium">
-          What can we help with? <span className="font-normal text-[var(--muted)]">(pick any)</span>
-        </legend>
-        <div className="flex flex-wrap gap-2">
-          {SERVICES.map((s) => {
-            const on = form.services.includes(s);
-            return (
-              <label key={s} className="cursor-pointer">
-                <input type="checkbox" checked={on} onChange={() => toggleService(s)} className="peer sr-only" />
-                <span
-                  className={`inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-sm font-medium transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--link)] ${
-                    on
-                      ? "bg-[var(--ink)] text-white"
-                      : "bg-[var(--paper)] ring-1 ring-inset ring-[var(--line)] hover:ring-[var(--line-strong)]"
-                  }`}
-                >
-                  {on && <Check className="h-3.5 w-3.5 text-[var(--cyan)]" aria-hidden />}
-                  {s}
-                </span>
-              </label>
-            );
-          })}
+      {compact ? (
+        <div>
+          <label htmlFor="contact-services" className="mb-1.5 block text-sm font-medium">
+            Services <span className="font-normal text-[var(--muted)]">(optional)</span>
+          </label>
+          <ServicesSelect
+            id="contact-services"
+            options={SERVICES}
+            value={form.services}
+            onChange={(next) => set("services", next)}
+          />
         </div>
-      </fieldset>
+      ) : (
+        <fieldset>
+          <legend className="mb-3 text-sm font-medium">
+            What can we help with? <span className="font-normal text-[var(--muted)]">(pick any)</span>
+          </legend>
+          <div className="flex flex-wrap gap-2">
+            {SERVICES.map((s) => {
+              const on = form.services.includes(s);
+              return (
+                <label key={s} className="cursor-pointer">
+                  <input type="checkbox" checked={on} onChange={() => toggleService(s)} className="peer sr-only" />
+                  <span
+                    className={`inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-sm font-medium transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--link)] ${
+                      on
+                        ? "bg-[var(--ink)] text-white"
+                        : "bg-[var(--paper)] ring-1 ring-inset ring-[var(--line)] hover:ring-[var(--line-strong)]"
+                    }`}
+                  >
+                    {on && <Check className="h-3.5 w-3.5 text-[var(--cyan)]" aria-hidden />}
+                    {s}
+                  </span>
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+      )}
 
       <Field id="contact-message" label="Message" optional>
         <textarea
           id="contact-message"
-          rows={4}
+          rows={compact ? 2 : 4}
           placeholder="Tell us about your business and goals…"
           value={form.message}
           onChange={(e) => set("message", e.target.value)}
