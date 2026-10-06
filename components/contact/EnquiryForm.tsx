@@ -32,17 +32,20 @@ const field =
 /**
  * `defaultCountry` is the dial-code country the form starts on (ISO code, e.g. "ae").
  * `compact` swaps the service buttons for a dropdown and shortens the message box, for hero cards.
+ * `defaultServices` are pre-ticked (names from SERVICES), e.g. ["SEO"] on the SEO page.
  */
 export default function EnquiryForm({
   source = "contact-page",
   defaultCountry = "in",
   compact = false,
+  defaultServices = [],
 }: {
   source?: string;
   defaultCountry?: string;
   compact?: boolean;
+  defaultServices?: string[];
 }) {
-  const start = { ...EMPTY, country: defaultCountry };
+  const start = { ...EMPTY, country: defaultCountry, services: defaultServices };
   const [form, setForm] = useState(start);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState("");
