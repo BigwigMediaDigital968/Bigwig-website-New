@@ -1,7 +1,9 @@
 "use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import axios from "axios";
-import ButtonFill from "./Button";
+import { ArrowUpRight, Check, FileText, Upload, X } from "lucide-react";
+import { focusRing } from "./ui";
 
 type FormDataType = {
   fullName: string;
@@ -14,161 +16,219 @@ type FormDataType = {
   coverLetter: string;
 };
 
-const ApplicationForm = () => {
-  const [formData, setFormData] = useState<FormDataType>({
-    fullName: "",
-    email: "",
-    mobileNumber: "",
-    experience: "",
-    cctc: "",
-    ectc: "",
-    noticePeriod: "",
-    coverLetter: "",
-  });
+const EMPTY: FormDataType = {
+  fullName: "",
+  email: "",
+  mobileNumber: "",
+  experience: "",
+  cctc: "",
+  ectc: "",
+  noticePeriod: "",
+  coverLetter: "",
+};
 
+const FIELDS: {
+  name: Exclude<keyof FormDataType, "coverLetter">;
+  label: string;
+  type: string;
+  autoComplete?: string;
+  placeholder?: string;
+  required?: boolean;
+}[] = [
+  { name: "fullName", label: "Full name", type: "text", autoComplete: "name", required: true },
+  { name: "email", label: "Email", type: "email", autoComplete: "email", required: true },
+  { name: "mobileNumber", label: "Mobile number", type: "tel", autoComplete: "tel", required: true },
+  { name: "experience", label: "Total experience", type: "text", placeholder: "e.g. 2 years" },
+  { name: "cctc", label: "Current CTC", type: "text" },
+  { name: "ectc", label: "Expected CTC", type: "text" },
+  { name: "noticePeriod", label: "Notice period", type: "text", placeholder: "e.g. 30 days" },
+];
+
+const input =
+  "w-full rounded-2xl bg-[var(--paper)] px-4 text-[0.95rem] text-[var(--ink)] ring-1 ring-inset ring-[var(--line)] placeholder:text-[var(--muted)]/70 transition-shadow focus:outline-none focus:ring-2 focus:ring-[var(--link)]";
+
+const isPdf = (file: File) => file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+
+export default function ApplicationForm() {
+  const [formData, setFormData] = useState<FormDataType>(EMPTY);
   const [resume, setResume] = useState<File | null>(null);
+  const [dragging, setDragging] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setResume(e.target.files[0]);
+  const pickResume = (file?: File) => {
+    if (!file) return;
+    if (!isPdf(file)) {
+      setError("Please upload your resume as a PDF.");
+      return;
     }
+    setError("");
+    setResume(file);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!resume) {
-      setMessage("Please upload a resume.");
+      setError("Please upload your resume (PDF).");
       return;
     }
 
     const data = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      data.append(key, value);
-    });
+    Object.entries(formData).forEach(([key, value]) => data.append(key, value));
     data.append("resume", resume);
 
     try {
       setLoading(true);
-      setMessage("");
-
-      await axios.post(
-        "https://bigwigdigitalbackend.onrender.com/api/submit-job",
-        data,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-
-      setMessage("Application submitted successfully! 🎉");
-
-      // Reset form
-      setFormData({
-        fullName: "",
-        email: "",
-        mobileNumber: "",
-        experience: "",
-        cctc: "",
-        ectc: "",
-        noticePeriod: "",
-        coverLetter: "",
+      setError("");
+      await axios.post("https://bigwigdigitalbackend.onrender.com/api/submit-job", data, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
+      setFormData(EMPTY);
       setResume(null);
+      setSubmitted(true);
     } catch (err) {
       console.error(err);
-      setMessage("❌ Failed to submit application.");
+      setError("We couldn’t submit your application. Please try again in a moment.");
     } finally {
       setLoading(false);
     }
   };
 
+  if (submitted) {
+    return (
+      <div role="status" className="flex flex-col items-start gap-4 py-6">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--cyan)] text-[var(--ink)]">
+          <Check className="h-6 w-6" aria-hidden />
+        </span>
+        <p className="text-2xl font-semibold tracking-tight">Application received.</p>
+        <p className="leading-relaxed text-[var(--muted)]">
+          Thanks for applying. Our team will review your profile and get in touch if it’s a match.
+        </p>
+        <button
+          type="button"
+          onClick={() => setSubmitted(false)}
+          className={`mt-2 rounded-sm text-[0.95rem] font-semibold text-[var(--link)] hover:underline cursor-pointer ${focusRing}`}
+        >
+          Submit another application
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-6 text-white bg-gradient-to-bl from-[var(--color1)] via-[var(--color2)] to-[var(--color1)] backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-200">
-      {/* Grid layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {[
-          { name: "fullName", placeholder: "Full Name", type: "text" },
-          { name: "email", placeholder: "Email", type: "email" },
-          { name: "mobileNumber", placeholder: "Mobile Number", type: "tel" },
-          { name: "experience", placeholder: "Total Experience", type: "text" },
-          { name: "cctc", placeholder: "Current CTC", type: "text" },
-          { name: "ectc", placeholder: "Expected CTC", type: "text" },
-          { name: "noticePeriod", placeholder: "Notice Period", type: "text" },
-        ].map((field) => (
-          <input
-            key={field.name}
-            type={field.type}
-            name={field.name}
-            placeholder={field.placeholder}
-            value={formData[field.name as keyof FormDataType]}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-200 focus:ring-1 focus:ring-[var(--color3)] focus:border-[var(--color3)] transition"
-            required={
-              field.name === "fullName" ||
-              field.name === "email" ||
-              field.name === "mobileNumber"
-            }
-          />
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid gap-4 sm:grid-cols-2">
+        {FIELDS.map((f) => (
+          <div key={f.name} className={f.name === "fullName" ? "sm:col-span-2" : ""}>
+            <label htmlFor={`apply-${f.name}`} className="mb-1.5 block text-sm font-medium">
+              {f.label}
+              {f.required && <span className="text-[var(--link)]"> *</span>}
+            </label>
+            <input
+              id={`apply-${f.name}`}
+              type={f.type}
+              name={f.name}
+              autoComplete={f.autoComplete}
+              placeholder={f.placeholder}
+              value={formData[f.name]}
+              onChange={handleChange}
+              required={f.required}
+              className={`h-12 ${input}`}
+            />
+          </div>
         ))}
 
-        {/* Cover letter + Resume */}
-        <div className="md:col-span-2 space-y-4">
+        <div className="sm:col-span-2">
+          <label htmlFor="apply-coverLetter" className="mb-1.5 block text-sm font-medium">
+            A short note <span className="font-normal text-[var(--muted)]">(optional)</span>
+          </label>
           <textarea
+            id="apply-coverLetter"
             name="coverLetter"
-            placeholder="Write a short note (optional)…"
+            rows={3}
             value={formData.coverLetter}
             onChange={handleChange}
-            rows={3}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-200 focus:ring-1 focus:ring-[var(--color3)] focus:border-[var(--color3)] transition"
+            placeholder="Tell us why you’d be a great fit…"
+            className={`resize-y py-3 ${input}`}
           />
+        </div>
 
-          <label className="block w-full border-2 border-dashed border-gray-400 rounded-xl p-5 cursor-pointer  transition">
-            <div className="text-center">
-              <p className="font-semibold text-gray-200">
-                {resume ? resume.name : "Upload Resume (PDF)"}
-              </p>
-              <p className="text-sm text-gray-400 mt-1">
-                Click to browse or drag & drop
-              </p>
+        <div className="sm:col-span-2">
+          <p className="mb-1.5 text-sm font-medium" id="apply-resume-label">
+            Resume <span className="text-[var(--link)]">*</span>
+          </p>
+          {resume ? (
+            <div className="flex items-center gap-3 rounded-2xl bg-[var(--paper)] p-3 pl-4 ring-1 ring-inset ring-[var(--line)]">
+              <FileText className="h-5 w-5 shrink-0 text-[var(--link)]" aria-hidden />
+              <span className="min-w-0 flex-1 truncate text-[0.95rem] font-medium">{resume.name}</span>
+              <button
+                type="button"
+                onClick={() => setResume(null)}
+                aria-label="Remove resume"
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full hover:bg-white cursor-pointer ${focusRing}`}
+              >
+                <X className="h-4 w-4" aria-hidden />
+              </button>
             </div>
-            <input
-              type="file"
-              accept=".pdf"
-              className="hidden"
-              onChange={handleResumeChange}
-              required
-            />
-          </label>
+          ) : (
+            <label
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragging(true);
+              }}
+              onDragLeave={() => setDragging(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragging(false);
+                pickResume(e.dataTransfer.files?.[0]);
+              }}
+              className={`flex cursor-pointer flex-col items-center gap-2 rounded-2xl border-2 border-dashed px-4 py-7 text-center transition-colors focus-within:border-[var(--link)] ${
+                dragging ? "border-[var(--link)] bg-[var(--cyan)]/30" : "border-[var(--line-strong)] hover:bg-[var(--paper)]"
+              }`}
+            >
+              <Upload className="h-5 w-5 text-[var(--link)]" aria-hidden />
+              <span className="text-[0.95rem] font-semibold">Upload your resume (PDF)</span>
+              <span className="text-sm text-[var(--muted)]">Click to browse or drag and drop</span>
+              <input
+                type="file"
+                accept="application/pdf,.pdf"
+                aria-labelledby="apply-resume-label"
+                className="sr-only"
+                onChange={(e) => {
+                  pickResume(e.target.files?.[0]);
+                  e.target.value = "";
+                }}
+              />
+            </label>
+          )}
         </div>
       </div>
 
-      {/* Submit Button */}
-      <ButtonFill
-        onClick={() => handleSubmit}
-        text={loading ? "Submitting..." : "Submit Application"}
-        className="w-full"
-      />
-
-      {/* Message */}
-      {message && (
-        <p
-          className={`text-center text-sm font-medium ${
-            message.includes("successfully") ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          {message}
+      {error && (
+        <p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+          {error}
         </p>
       )}
-    </div>
-  );
-};
 
-export default ApplicationForm;
+      <button
+        type="submit"
+        disabled={loading}
+        className={`group inline-flex h-12 w-full items-center justify-between gap-3 rounded-full bg-[var(--ink)] pl-6 pr-1.5 text-[0.95rem] font-semibold text-white transition-colors duration-300 hover:bg-[var(--ink-2)] cursor-pointer disabled:cursor-wait disabled:opacity-70 ${focusRing}`}
+      >
+        {loading ? "Submitting…" : "Submit application"}
+        <span
+          aria-hidden
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--cyan)] text-[var(--ink)] transition-transform duration-300 group-hover:rotate-45"
+        >
+          <ArrowUpRight className="h-4 w-4" />
+        </span>
+      </button>
+    </form>
+  );
+}

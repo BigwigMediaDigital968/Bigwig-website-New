@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { PillLead, PillLink, WHATSAPP_HREF } from "../ui";
+import { PillLead, WhatsAppPill } from "../ui";
 
 // Same content and the same video + navy overlay as the live homepage hero
 const heroContent = {
@@ -99,9 +99,7 @@ export default function Hero() {
               <PillLead source="hero" tone="cyan">
                 {heroContent.ctaText}
               </PillLead>
-              <PillLink href={WHATSAPP_HREF} external tone="ghostDark">
-                Chat on WhatsApp
-              </PillLink>
+              <WhatsAppPill dark />
             </motion.div>
           </div>
         </motion.div>

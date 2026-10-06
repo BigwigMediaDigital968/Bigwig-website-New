@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF, PillLead, PillLink, WHATSAPP_HREF, fadeUp, inView, maskUp, stagger } from "../ui";
+import { EMAIL, PHONE_DISPLAY, PHONE_HREF, PillLead, WhatsAppPill, fadeUp, inView, maskUp, stagger } from "../ui";
 
 const HEADLINE = "Ready to grow your brand online?";
 
@@ -96,9 +96,7 @@ export default function Footer() {
               <PillLead source="footer" tone="cyan">
                 Get a free strategy session
               </PillLead>
-              <PillLink href={WHATSAPP_HREF} external tone="ghostDark">
-                Chat on WhatsApp
-              </PillLink>
+              <WhatsAppPill dark />
             </motion.div>
           </motion.div>
 

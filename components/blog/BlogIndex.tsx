@@ -116,7 +116,7 @@ export default function BlogIndex({ category }: { category?: string }) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by title or author"
-                className="h-12 w-full rounded-full bg-[var(--surface)] pl-12 pr-12 text-[0.95rem] text-[var(--ink)] ring-1 ring-inset ring-[var(--line)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--link)]"
+                className="h-12 w-full rounded-full bg-[var(--surface)] pl-12 pr-12 text-[0.95rem] text-[var(--ink)] ring-1 ring-inset ring-[var(--line)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--link)] [&::-webkit-search-cancel-button]:appearance-none"
               />
               {query && (
                 <button

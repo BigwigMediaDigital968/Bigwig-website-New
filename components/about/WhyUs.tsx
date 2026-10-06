@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PillLead, PillLink, WHATSAPP_HREF, fadeUp, inView, maskUp, stagger } from "../ui";
+import { PillLead, WhatsAppPill, fadeUp, inView, maskUp, stagger } from "../ui";
 
 const reasons = [
   {
@@ -43,9 +43,7 @@ export default function WhyUs() {
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
             <PillLead source="about-why-us">Book a free consultation</PillLead>
-            <PillLink href={WHATSAPP_HREF} external>
-              Chat on WhatsApp
-            </PillLink>
+            <WhatsAppPill />
           </motion.div>
         </motion.div>
 

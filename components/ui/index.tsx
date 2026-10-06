@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useLeadPopup } from "../LeadPopup";
 
 /* ---------- motion primitives ---------- */
@@ -217,9 +219,54 @@ export function SectionHead({
   );
 }
 
-export const WHATSAPP_HREF = `https://wa.me/+919685892813?text=${encodeURIComponent(
+/** wa.me link to our number with a pre-filled message. */
+export const whatsappHref = (message: string) => `https://wa.me/+919685892813?text=${encodeURIComponent(message)}`;
+
+export const WHATSAPP_HREF = whatsappHref(
   "Hi BigWig Media Digital! I'm interested in your services and would like to discuss more.",
-)}`;
+);
+
+const WHATSAPP_GREEN = "#25D366";
+
+/**
+ * Secondary pill for WhatsApp chats: outlined like `ghost`, with a WhatsApp-green chip carrying
+ * the logo. The green stays on the chip (an ink glyph on it reads clearly) so the pill never
+ * outweighs the primary CTA. `dark` for navy sections.
+ */
+export function WhatsAppPill({
+  href = WHATSAPP_HREF,
+  dark = false,
+  className = "",
+  children = "Chat on WhatsApp",
+}: {
+  href?: string;
+  dark?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group inline-flex h-12 items-center justify-center gap-3 rounded-full pl-6 pr-1.5 text-[0.95rem] font-semibold cursor-pointer ring-1 ring-inset transition-colors duration-300 ${
+        dark
+          ? "bg-white/5 text-white ring-white/30 backdrop-blur-md hover:bg-[#25D366]/15 hover:ring-[#25D366]/70"
+          : "text-[var(--ink)] ring-[var(--line-strong)] hover:bg-[#25D366]/10 hover:ring-[#25D366]"
+      } ${focusRing} ${className}`}
+    >
+      {children}
+      <span className="sr-only">(opens WhatsApp in a new tab)</span>
+      <span
+        aria-hidden
+        style={{ backgroundColor: WHATSAPP_GREEN }}
+        className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--ink)] transition-transform duration-300 group-hover:scale-110"
+      >
+        <FontAwesomeIcon icon={faWhatsapp} className="text-[1.15rem]" />
+      </span>
+    </a>
+  );
+}
 export const PHONE_DISPLAY = "+91 96858 92813";
 export const PHONE_HREF = "tel:+919685892813";
 export const EMAIL = "support@bigwigmediadigital.com";
