@@ -28,7 +28,8 @@ export default function ServiceHero({
   lead: string;
   title: string;
   intro: React.ReactNode;
-  cta: { label: string; href: string };
+  /** label of the button that links to /contact */
+  cta: string;
   /** pre-filled WhatsApp text; the site-wide default when omitted */
   whatsappMessage?: string;
   facts?: HeroFact[];
@@ -82,8 +83,8 @@ export default function ServiceHero({
             {intro}
           </motion.div>
           <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-3">
-            <PillLink href={cta.href} tone="cyan">
-              {cta.label}
+            <PillLink href="/contact" tone="cyan">
+              {cta}
             </PillLink>
             <WhatsAppPill href={whatsappMessage ? whatsappHref(whatsappMessage) : undefined} dark />
           </motion.div>

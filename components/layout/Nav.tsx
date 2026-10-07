@@ -32,7 +32,15 @@ const ring =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--cyan)]";
 
 // Pages whose hero is a full-screen photo/video the nav floats over
-const OVERLAY_PATHS = ["/", "/digital-marketing-agency-dubai-uae", "/services/search-engine-optimization"];
+const OVERLAY_PATHS = [
+  "/",
+  "/digital-marketing-agency-dubai-uae",
+  "/services/search-engine-optimization",
+  "/services/social-media-marketing",
+  "/services/performance-marketing",
+  "/services/content-marketing",
+  "/services/website-development-company-in-delhi",
+];
 
 /**
  * On full-screen hero pages the nav floats transparent over the hero and turns solid on scroll.

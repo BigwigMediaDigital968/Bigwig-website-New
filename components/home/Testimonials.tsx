@@ -7,7 +7,6 @@ import { testimonials, type Testimonial } from "@/data/homeData";
 import { EASE, PillLead, Reveal, fadeUp, focusRing, inView, maskUp, stagger } from "../ui";
 
 const ROTATE_MS = 7000;
-const average = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
 
 function Stars({ count, size = 16 }: { count: number; size?: number }) {
   return (
@@ -29,11 +28,21 @@ function Avatar({ item }: { item: Testimonial }) {
   );
 }
 
-export default function Testimonials() {
+/** Rotating review carousel. Defaults to the homepage reviews; service pages pass their own. */
+export default function Testimonials({
+  items = testimonials,
+  title = "What Our Clients Say About the Best Digital Marketing Agency in Delhi",
+  source = "testimonials",
+}: {
+  items?: Testimonial[];
+  title?: string;
+  source?: string;
+}) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduce = useReducedMotion();
-  const count = testimonials.length;
+  const count = items.length;
+  const average = items.reduce((sum, t) => sum + t.rating, 0) / count;
 
   const go = useCallback((i: number) => setActive(((i % count) + count) % count), [count]);
 
@@ -43,7 +52,7 @@ export default function Testimonials() {
     return () => window.clearTimeout(id);
   }, [active, paused, reduce, go]);
 
-  const current = testimonials[active];
+  const current = items[active];
 
   return (
     <section className="py-24 md:py-32" aria-roledescription="carousel" aria-label="Client testimonials">
@@ -61,7 +70,7 @@ export default function Testimonials() {
           <h2 className="mt-3 text-[1.9rem] font-semibold leading-[1.08] tracking-[-0.03em] md:text-[2.4rem]">
             <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
               <motion.span variants={maskUp} className="block">
-                What Our Clients Say About the Best Digital Marketing Agency in Delhi
+                {title}
               </motion.span>
             </span>
           </h2>
@@ -77,7 +86,7 @@ export default function Testimonials() {
           <motion.div variants={fadeUp} className="mt-10 border-t border-[var(--line)] pt-8 lg:mt-auto">
             <p className="font-semibold">Want results like these?</p>
             <p className="mt-1 text-sm text-[var(--muted)]">Tell us about your business and we’ll plan your next step.</p>
-            <PillLead source="testimonials" className="mt-5">
+            <PillLead source={source} className="mt-5">
               Get a free strategy session
             </PillLead>
           </motion.div>
@@ -142,7 +151,7 @@ export default function Testimonials() {
 
           <div className="mt-10 flex items-center gap-4 border-t border-[var(--line)] pt-6">
             <div className="flex flex-1 gap-1.5" role="group" aria-label="Choose a review">
-              {testimonials.map((t, i) => (
+              {items.map((t, i) => (
                 <button
                   key={t.name}
                   type="button"

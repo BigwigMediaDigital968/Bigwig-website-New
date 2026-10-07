@@ -7,6 +7,7 @@ import {
   OtherServices,
   ServiceArticle,
   ServiceCards,
+  ServiceCarousel,
   ServiceFaq,
   ServiceIntro,
   type ServiceFaqItem,
@@ -213,7 +214,7 @@ export default function SeoPage() {
             do your clicks, your leads, and ultimately, your sales.
           </p>
         }
-        cta={{ label: "Explore SEO services", href: "#seo-services" }}
+        cta="Get a free SEO audit"
         whatsappMessage="Hi BigWig Media Digital! I'm interested in your SEO services and would like to discuss more."
         formSource="seo-hero"
         formServices={["SEO"]}
@@ -250,9 +251,8 @@ export default function SeoPage() {
         }
       />
 
-      <ServiceCards
+      <ServiceCarousel
         id="seo-services"
-        dark
         lead="What we offer"
         title="Expert SEO Services in Delhi to Maximise Your Online Success"
         intro="Bigwig Media Digital has built a strong reputation for delivering transformational growth across industries. Our SEO services evolve with changing trends and best practices, ensuring long-term growth and competitive advantage for our clients."
@@ -270,8 +270,7 @@ export default function SeoPage() {
         source="seo-benefits"
       />
 
-      <ServiceCards
-        dark
+      <ServiceCarousel
         lead="Why Bigwig"
         title="The Best SEO Services in Delhi, and Beyond!"
         intro="Choosing the right digital growth partner isn’t just about getting higher rankings. It’s about finding a team that values trust, transparency, and real business impact. At Bigwig Media Digital, we elevate SEO services in Delhi with strategies designed for meaningful, long-term growth."
