@@ -10,7 +10,9 @@ import Testimonials from "../../../../components/home/Testimonials";
 import ServiceHero from "../../../../components/service/ServiceHero";
 import {
   OtherServices,
-  ServiceArticle,
+  ServiceStatement,
+  ServiceSteps,
+  type ServiceStep,
   ServiceCards,
   ServiceCarousel,
   ServiceFaq,
@@ -121,6 +123,52 @@ const whyFeatures: ServiceFeature[] = [
   },
 ];
 */
+
+// Photos from Unsplash (images.unsplash.com is allowed in next.config)
+const photo = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+// Steps follow what the page already promises: consultation, competitor research, a clear plan and
+// timeline, custom design, QA across devices, CMS training, and post-launch support.
+const processSteps: ServiceStep[] = [
+  {
+    title: "Understand your goals",
+    desc: "We start with a free consultation to learn your business, audience, and goals, so the website is built around what you need it to do.",
+    image: photo("1517245386807-bb43f82c33c4"),
+    imageAlt: "Client and team discussing a website project",
+  },
+  {
+    title: "Research your competition",
+    desc: "We study your Delhi-area competitors and search landscape to find what works and where your site can stand out.",
+    image: photo("1615914143778-1a1a6e50c5dd"),
+    imageAlt: "Taking research notes beside a laptop",
+  },
+  {
+    title: "Plan the structure",
+    desc: "We map pages, user journeys, and SEO architecture, and share a clear timeline and transparent proposal before work starts.",
+    image: photo("1503551723145-6c040742065b-v2"),
+    imageAlt: "Sticky notes mapping out a site plan",
+  },
+  {
+    title: "Design",
+    desc: "Custom, mobile-first designs built around your brand, with clear calls to action and no templates.",
+    image: photo("1609921212029-bb5a28e60960"),
+    imageAlt: "Website and app designs on a desktop screen",
+  },
+  {
+    title: "Develop & test",
+    desc: "We build for speed and SEO, then test thoroughly across devices, browsers, and screen sizes before launch.",
+    image: photo("1738255654134-1877cb984a8f"),
+    imageAlt: "Website code in an editor",
+  },
+  {
+    title: "Launch & support",
+    desc: "We launch, train your team on the CMS, and stay on for updates, backups, security monitoring, and performance tuning.",
+    image: photo("1714079761488-e0c9b9ac4138"),
+    imageAlt: "Support specialist on a video call",
+  },
+];
+
+const whyImage = { src: photo("1547658719-da2b51169166", 1100), alt: "Desk with a website design on screen and tablet" };
 
 const deliverables = [
   "A creative, personalised design strategy built around your Delhi audience",
@@ -509,6 +557,14 @@ export default function WebsiteDevelopmentPage() {
         source="website-custom"
       />
 
+      <ServiceSteps
+        id="website-process"
+        heading="Our Website Development Process in Delhi"
+        lead="A standard business website goes from brief to launch in 4 to 8 weeks."
+        rest="Here’s what happens at each step, and what you can expect from us."
+        steps={processSteps}
+      />
+
       <ServiceSplitCarousel
         lead="Website development company near me"
         title="Benefits of Hiring Bigwig Media Digital for Your Business Website"
@@ -526,39 +582,32 @@ export default function WebsiteDevelopmentPage() {
         source="website-tech"
       />
 
-      <ServiceArticle
-        lead="Why Bigwig"
-        title="Why Choose Bigwig Media Digital as Your Website Development Partner in Delhi?"
-        cta="Start your website project"
-        source="website-why-us"
+      <ServiceStatement
+        heading="Why Choose Bigwig Media Digital as Your Website Development Partner in Delhi?"
+        lead="Your website is the first handshake between your brand and your audience."
+        rest="We blend 8+ years of design expertise with a deep understanding of Delhi’s digital landscape to deliver websites that don’t just impress, they perform."
         body={
           <>
             <p>
-              Your website is the first handshake between your brand and your audience. It’s where credibility is
-              established, trust is built, and conversions begin. We blend 8+ years of design expertise with a deep
-              understanding of Delhi’s competitive digital landscape to deliver websites that don’t just impress, they
-              perform.
-            </p>
-            <p>
               We’ve worked with real estate developers in Greater Noida, healthcare providers in Rohini, e-commerce
               brands in Lajpat Nagar, educational institutions in Dwarka, and financial services firms in Connaught
-              Place. We understand the challenges Delhi businesses face, and we know how to solve them.
-            </p>
-            <p>
-              We remove the pain points (slow websites, cluttered layouts, poor mobile experience, weak SEO) and
+              Place. We remove the pain points (slow websites, cluttered layouts, poor mobile experience, weak SEO) and
               replace them with websites your customers love and Google rewards.
             </p>
-            <h3 className="pt-3 text-xl font-semibold tracking-tight text-[var(--ink)]">What we deliver</h3>
-            <ul className="space-y-3">
+            <h3 className="pt-2 font-semibold text-[var(--ink)]">What we deliver</h3>
+            <ul className="grid gap-x-6 gap-y-2.5 text-[0.95rem] sm:grid-cols-2">
               {deliverables.map((d) => (
-                <li key={d} className="flex gap-3">
-                  <span aria-hidden className="mt-[0.6em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]" />
+                <li key={d} className="flex gap-2.5">
+                  <span aria-hidden className="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]" />
                   {d}
                 </li>
               ))}
             </ul>
           </>
         }
+        cta="Start your website project"
+        source="website-why-us"
+        image={whyImage}
       />
 
       {/* Image-led alternative to the section above, commented out for now.

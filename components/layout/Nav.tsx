@@ -40,6 +40,7 @@ const OVERLAY_PATHS = [
   "/services/performance-marketing",
   "/services/content-marketing",
   "/services/website-development-company-in-delhi",
+  "/services/email-marketing",
 ];
 
 /**

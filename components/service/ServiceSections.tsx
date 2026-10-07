@@ -4,14 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { serviceCards } from "@/data/servicesData";
 import { PillLead, SectionHead, fadeUp, focusRing, inView, maskUp, scaleIn, stagger, wipeUp } from "../ui";
 import { AccordionItem, AskCard } from "../ui/Accordion";
 
 /* Building blocks for /services/* pages. Content lives in src/data/services/*. */
 
-export type ServiceItem = { title: string; desc: React.ReactNode };
+/** `image` is optional; `ServiceCarousel` shows it at the top of the card. */
+export type ServiceItem = { title: string; desc: React.ReactNode; image?: StaticImageData | string; imageAlt?: string };
 export type ServiceFaqItem = { q: string; a: string };
 
 type CollageImage = { src: StaticImageData | string; alt: string };
@@ -160,7 +161,14 @@ function ParallaxImage({ image, imageAlt }: { image: StaticImageData; imageAlt: 
   );
 }
 
-/** Numbered card grid. */
+// literal class names so Tailwind generates them
+const smSpan = ["", "sm:col-span-1", "sm:col-span-2"];
+const lgSpan = ["", "lg:col-span-1", "lg:col-span-2", "lg:col-span-3"];
+
+/**
+ * Numbered card grid. With a `promo`, the empty cells after the last card become a photo card with the
+ * CTA over it (on every screen size); without one they're filled with blank cells on desktop.
+ */
 export function ServiceCards({
   lead,
   title,
@@ -170,6 +178,7 @@ export function ServiceCards({
   cta,
   source,
   id,
+  promo,
 }: {
   id?: string;
   lead: string;
@@ -179,7 +188,11 @@ export function ServiceCards({
   items: ServiceItem[];
   cta: string;
   source: string;
+  promo?: { image: StaticImageData | string; alt: string; text: string };
 }) {
+  // cells left on the last row: 2-column (sm) and 3-column (lg) grids; a full row when none are left
+  const emptySm = (2 - (items.length % 2)) % 2 || 2;
+  const emptyLg = (3 - (items.length % 3)) % 3 || 3;
   return (
     <section id={id} className="scroll-mt-24 py-14 md:py-20">
       <div className="wrap">
@@ -213,10 +226,27 @@ export function ServiceCards({
               </div>
             </motion.li>
           ))}
-          {/* fill the last row of the 3-column grid so no grey gap shows */}
-          {Array.from({ length: (3 - (items.length % 3)) % 3 }).map((_, i) => (
-            <li key={`filler-${i}`} aria-hidden className="hidden bg-[var(--surface)] lg:block" />
-          ))}
+          {promo ? (
+            <motion.li
+              variants={fadeUp}
+              className={`relative isolate flex min-h-[300px] flex-col justify-end overflow-hidden bg-[var(--ink)] p-7 text-white md:p-8 ${smSpan[emptySm]} ${lgSpan[emptyLg]}`}
+            >
+              <Image src={promo.image} alt={promo.alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="-z-20 object-cover" />
+              <div
+                aria-hidden
+                className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(1,28,64,0.88)_0%,rgba(1,28,64,0.45)_50%,rgba(1,28,64,0.1)_100%)]"
+              />
+              <p className="max-w-xs text-xl font-semibold leading-snug tracking-tight">{promo.text}</p>
+              <PillLead source={`${source}-promo`} tone="cyan" className="mt-5 self-start">
+                {cta}
+              </PillLead>
+            </motion.li>
+          ) : (
+            /* fill the last row of the 3-column grid so no grey gap shows */
+            Array.from({ length: (3 - (items.length % 3)) % 3 }).map((_, i) => (
+              <li key={`filler-${i}`} aria-hidden className="hidden bg-[var(--surface)] lg:block" />
+            ))
+          )}
         </motion.ul>
       </div>
     </section>
@@ -343,7 +373,36 @@ export function ServiceCarousel({
           variants={stagger(0.06, 0.1)}
           className={`${trackList} ${subtitle ? "mt-6" : "mt-12 md:mt-14"}`}
         >
-          {items.map((item, i) => (
+          {items.map((item, i) =>
+            item.image ? (
+              // photo card: inset photo with the number on it, copy below
+              <motion.li
+                key={item.title}
+                variants={fadeUp}
+                className="group flex w-[80%] flex-none snap-start flex-col overflow-hidden rounded-[24px] bg-[var(--surface)] p-3 ring-1 ring-inset ring-[var(--line)] transition-shadow duration-500 hover:shadow-[0_24px_48px_-28px_rgba(1,28,64,0.35)] sm:w-[340px]"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-[var(--ink)]">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt ?? ""}
+                    fill
+                    sizes="(min-width: 640px) 320px, 75vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-[linear-gradient(to_top,rgba(1,28,64,0.6),transparent_45%)]"
+                  />
+                  <span aria-hidden className="serif absolute bottom-3 left-4 text-4xl leading-none text-white">
+                    {pad(i + 1)}
+                  </span>
+                </div>
+                <div className="px-3 pb-4 pt-5 md:px-4">
+                  <h3 className="text-xl font-semibold leading-snug tracking-tight">{item.title}</h3>
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</p>
+                </div>
+              </motion.li>
+            ) : (
             <motion.li
               key={item.title}
               variants={fadeUp}
@@ -371,7 +430,8 @@ export function ServiceCarousel({
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</p>
               </div>
             </motion.li>
-          ))}
+            ),
+          )}
         </motion.ul>
 
         <TrackControls track={track} count={items.length} className="mt-8" />
@@ -626,6 +686,332 @@ export function ServiceShowcase({
   );
 }
 
+/* ---------- image-led sections ---------- */
+
+type Photo = { src: StaticImageData | string; alt: string };
+
+/**
+ * Large section heading on the left, a two-tone paragraph on the right (first sentence dark, the rest
+ * muted). `children` go under the paragraph. Used at the top of several sections.
+ */
+function StatementHead({
+  heading,
+  lead,
+  rest,
+  aside,
+  children,
+}: {
+  heading: string;
+  lead: string;
+  rest?: string;
+  /** shown under the heading, filling the left column when the right one runs long */
+  aside?: React.ReactNode;
+  children?: React.ReactNode;
+}) {
+  return (
+    <motion.div {...inView} variants={stagger(0.1)} className="grid gap-6 lg:grid-cols-12 lg:gap-12">
+      <div className="flex flex-col gap-8 lg:col-span-6 lg:gap-10">
+        <h2 className="h-section">
+          <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
+            <motion.span variants={maskUp} className="block">
+              {heading}
+            </motion.span>
+          </span>
+        </h2>
+        {aside}
+      </div>
+      <motion.div variants={fadeUp} className="max-w-2xl lg:col-span-6 lg:pt-2">
+        <p className="text-lg leading-relaxed md:text-xl">
+          {lead}
+          {rest && <span className="text-[var(--muted)]"> {rest}</span>}
+        </p>
+        {children}
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// heights rise towards the centre photo; the outer two drop out on phones
+const fanShapes = ["aspect-square", "aspect-[3/4]", "aspect-[3/5]", "aspect-[3/4]", "aspect-square"];
+
+/**
+ * Heading on the left, a two-tone paragraph, supporting copy and a CTA on the right. Add either an
+ * `image` under the heading (when the right column runs long) or a fanned strip of five `photos` below.
+ */
+export function ServiceStatement({
+  heading,
+  lead,
+  rest,
+  body,
+  cta,
+  source,
+  image,
+  photos,
+}: {
+  heading: string;
+  lead: string;
+  rest?: string;
+  body?: React.ReactNode;
+  cta: string;
+  source: string;
+  /** one photo under the heading, filling the left column */
+  image?: Photo;
+  /** exactly five, shown as a strip below; the third is the tall centre photo */
+  photos?: Photo[];
+}) {
+  return (
+    <section className="py-14 md:py-20">
+      <div className="wrap">
+        <StatementHead
+          heading={heading}
+          lead={lead}
+          rest={rest}
+          aside={
+            image && (
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[var(--ink)] lg:aspect-auto lg:min-h-[320px] lg:flex-1">
+                <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+              </div>
+            )
+          }
+        >
+          {body && <div className="mt-4 space-y-4 leading-relaxed text-[var(--muted)]">{body}</div>}
+          <div className="mt-8">
+            <PillLead source={source}>{cta}</PillLead>
+          </div>
+        </StatementHead>
+
+        {photos && (
+          <motion.ul
+            {...inView}
+            variants={stagger(0.08)}
+            className="mt-14 grid grid-cols-[1fr_1.3fr_1fr] items-center gap-2 md:mt-20 md:grid-cols-[1fr_1.15fr_1.35fr_1.15fr_1fr] md:gap-4"
+          >
+            {photos.slice(0, 5).map((p, i) => (
+              <motion.li
+                key={i}
+                variants={scaleIn}
+                className={`relative overflow-hidden rounded-[20px] bg-[var(--ink)] md:rounded-[24px] ${fanShapes[i]} ${
+                  i === 0 || i === 4 ? "hidden md:block" : ""
+                }`}
+              >
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  sizes={i === 2 ? "(min-width: 768px) 24vw, 40vw" : "(min-width: 768px) 18vw, 30vw"}
+                  className="object-cover"
+                />
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+      </div>
+    </section>
+  );
+}
+
+export type ServiceStep = { title: string; desc: React.ReactNode; image: string | StaticImageData; imageAlt: string };
+
+/**
+ * A real sequence (a process) as a horizontal track of wide cards: photo on one side, step number,
+ * title and copy on the other. Sits on a white band so it breaks up a run of light sections.
+ */
+export function ServiceSteps({
+  id,
+  heading,
+  lead,
+  rest,
+  steps,
+}: {
+  id?: string;
+  heading: string;
+  lead: string;
+  rest?: string;
+  steps: ServiceStep[];
+}) {
+  const track = useTrack();
+  return (
+    <section id={id} className="scroll-mt-24 px-2 md:px-3">
+      <div className="mx-auto max-w-[1600px] rounded-[32px] bg-[var(--surface)] py-16 md:py-24">
+        <div className="wrap">
+          <StatementHead heading={heading} lead={lead} rest={rest} />
+
+          <motion.ul ref={track.ref} {...inView} variants={stagger(0.08, 0.1)} className={`${trackList} mt-12 md:mt-16`}>
+            {steps.map((s, i) => (
+              <motion.li
+                key={s.title}
+                variants={fadeUp}
+                className="grid w-[86%] flex-none snap-start gap-4 rounded-[24px] bg-[var(--paper)] p-3 sm:w-[560px] md:w-[760px] md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-6"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-[var(--ink)] md:aspect-auto md:min-h-[300px]">
+                  <Image src={s.image} alt={s.imageAlt} fill sizes="(min-width: 768px) 420px, 86vw" className="object-cover" />
+                </div>
+                <div className="flex min-w-0 flex-col px-2 pb-3 md:px-0 md:py-3 md:pr-4">
+                  <span className="serif text-5xl leading-none text-[var(--teal)]">{pad(i + 1)}</span>
+                  <h3 className="mt-4 text-xl font-semibold leading-snug tracking-tight">{s.title}</h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)] md:mt-auto md:pt-8">{s.desc}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ul>
+
+          <TrackControls track={track} count={steps.length} className="mt-8" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export type BentoItem = { title: string; desc: React.ReactNode; image: string | StaticImageData; imageAlt: string };
+
+/**
+ * Three points as a bento row: two quiet cards with an inset photo either side of a wide card where the
+ * photo fills the card and the copy sits on it. The middle item is the one to feature.
+ */
+export function ServiceBento({
+  heading,
+  lead,
+  rest,
+  items,
+  icon,
+}: {
+  heading: string;
+  lead: string;
+  rest?: string;
+  /** exactly three: [side, featured, side] */
+  items: [BentoItem, BentoItem, BentoItem];
+  /** small icon on the featured card */
+  icon?: React.ReactNode;
+}) {
+  const [left, mid, right] = items;
+  const side = (it: BentoItem) => (
+    <motion.li
+      variants={fadeUp}
+      className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-end gap-4 rounded-[24px] bg-[var(--surface)] p-3 ring-1 ring-inset ring-[var(--line)] lg:flex lg:min-h-[480px] lg:flex-col lg:items-stretch"
+    >
+      <div className="relative aspect-[3/4] overflow-hidden rounded-[16px] bg-[var(--ink)] lg:w-[56%]">
+        <Image src={it.image} alt={it.imageAlt} fill sizes="(min-width: 1024px) 160px, 35vw" className="object-cover" />
+      </div>
+      <div className="pb-1 pr-1 lg:mt-auto lg:px-2 lg:pb-3">
+        <h3 className="text-lg font-semibold leading-snug tracking-tight">{it.title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{it.desc}</p>
+      </div>
+    </motion.li>
+  );
+
+  return (
+    <section className="py-14 md:py-20">
+      <div className="wrap">
+        <StatementHead heading={heading} lead={lead} rest={rest} />
+        <motion.ul
+          {...inView}
+          variants={stagger(0.08, 0.1)}
+          className="mt-12 grid gap-3 md:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.9fr)_minmax(0,1fr)]"
+        >
+          {side(left)}
+          <motion.li
+            variants={fadeUp}
+            className="relative isolate flex min-h-[420px] flex-col overflow-hidden rounded-[24px] bg-[var(--ink)] p-6 text-white md:p-8 lg:min-h-[480px]"
+          >
+            <Image src={mid.image} alt={mid.imageAlt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-20 object-cover" />
+            <div
+              aria-hidden
+              className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(1,28,64,0.82)_0%,rgba(1,28,64,0.35)_45%,rgba(1,28,64,0)_70%)]"
+            />
+            {icon && (
+              <span
+                aria-hidden
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--ink)]"
+              >
+                {icon}
+              </span>
+            )}
+            <h3 className="mt-6 max-w-md text-2xl font-semibold leading-tight tracking-tight md:text-[1.9rem]">{mid.title}</h3>
+            <p className="mt-3 max-w-md leading-relaxed text-white/80">{mid.desc}</p>
+          </motion.li>
+          {side(right)}
+        </motion.ul>
+      </div>
+    </section>
+  );
+}
+
+export type PairPanel = {
+  title: string;
+  intro?: React.ReactNode;
+  /** plain points, or titled points */
+  items: (string | { title: string; desc: string })[];
+  /** number the points (only when they're a sequence) instead of ticking them */
+  numbered?: boolean;
+  outro?: React.ReactNode;
+  image?: string | StaticImageData;
+  imageAlt?: string;
+};
+
+/** Two related lists side by side, each in its own panel with an optional photo on top. */
+export function ServicePair({ panels, cta, source }: { panels: [PairPanel, PairPanel]; cta?: string; source?: string }) {
+  return (
+    <section className="py-14 md:py-20">
+      <div className="wrap">
+        <motion.div {...inView} variants={stagger(0.1)} className="grid gap-3 lg:grid-cols-2">
+          {panels.map((p) => (
+            <motion.article
+              key={p.title}
+              variants={fadeUp}
+              className="flex flex-col overflow-hidden rounded-[28px] bg-[var(--surface)] ring-1 ring-inset ring-[var(--line)]"
+            >
+              {p.image && (
+                <div className="relative m-3 mb-0 aspect-[16/8] overflow-hidden rounded-[20px] bg-[var(--ink)]">
+                  <Image src={p.image} alt={p.imageAlt ?? ""} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+                </div>
+              )}
+              <div className="flex flex-1 flex-col p-7 md:p-10">
+                <h2 className="text-[1.6rem] font-semibold leading-[1.12] tracking-[-0.02em] md:text-[2rem]">{p.title}</h2>
+                {p.intro && <p className="mt-4 leading-relaxed text-[var(--muted)]">{p.intro}</p>}
+                <ol className="mt-6 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+                  {p.items.map((it, i) => {
+                    const titled = typeof it !== "string";
+                    return (
+                      <li key={titled ? it.title : it} className="flex gap-4 py-4">
+                        {p.numbered ? (
+                          <span aria-hidden className="serif w-7 flex-none text-xl leading-7 text-[var(--teal)]">
+                            {pad(i + 1)}
+                          </span>
+                        ) : (
+                          <span
+                            aria-hidden
+                            className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--teal)]/12 text-[var(--teal)]"
+                          >
+                            <Check size={14} strokeWidth={2.5} />
+                          </span>
+                        )}
+                        {titled ? (
+                          <div>
+                            <h3 className="font-semibold leading-snug">{it.title}</h3>
+                            <p className="mt-1 text-[0.95rem] leading-relaxed text-[var(--muted)]">{it.desc}</p>
+                          </div>
+                        ) : (
+                          <p className="leading-relaxed">{it}</p>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+                {p.outro && <p className="mt-5 text-[0.95rem] leading-relaxed text-[var(--muted)]">{p.outro}</p>}
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+        {cta && source && (
+          <motion.div {...inView} variants={fadeUp} className="mt-8 flex justify-center">
+            <PillLead source={source}>{cta}</PillLead>
+          </motion.div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 /** A technology tile: a logo URL, or an emoji when there's no logo. */
 export type Tech = { name: string; logo?: string; emoji?: string };
 export type TechDomain = { name: string; desc: string; icon: React.ReactNode; items: Tech[] };
@@ -841,18 +1227,21 @@ export function ServiceArticle({
   body,
   cta,
   source,
+  image,
 }: {
   lead: string;
   title: string;
   body: React.ReactNode;
   cta: string;
   source: string;
+  /** photo under the CTA, filling the left column down to the end of the body copy */
+  image?: { src: StaticImageData | string; alt: string };
 }) {
   return (
     <section className="py-14 md:py-20">
       <div className="wrap">
         <div className="grid gap-10 rounded-[32px] bg-[var(--surface)] p-8 md:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
-          <motion.div {...inView} variants={stagger(0.1)} className="lg:col-span-5">
+          <motion.div {...inView} variants={stagger(0.1)} className="flex flex-col lg:col-span-5">
             <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--link)]">
               {lead}
             </motion.p>
@@ -866,6 +1255,14 @@ export function ServiceArticle({
             <motion.div variants={fadeUp} className="mt-8">
               <PillLead source={source}>{cta}</PillLead>
             </motion.div>
+            {image && (
+              <motion.div
+                variants={fadeUp}
+                className="relative mt-10 aspect-[16/10] overflow-hidden rounded-[24px] bg-[var(--ink)] lg:aspect-auto lg:min-h-[260px] lg:flex-1"
+              >
+                <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 38vw, 100vw" className="object-cover" />
+              </motion.div>
+            )}
           </motion.div>
           <motion.div
             {...inView}

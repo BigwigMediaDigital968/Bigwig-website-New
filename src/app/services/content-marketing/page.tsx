@@ -168,34 +168,51 @@ const benefits: ServiceItem[] = [
   },
 ];
 
+// Photos from Unsplash (images.unsplash.com is allowed in next.config)
+const photo = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=80`;
+
 const industries: ServiceItem[] = [
   {
     title: "Healthcare",
     desc: "Accurate, trustworthy healthcare content that makes you a credible authority.",
+    image: photo("1532938911079-1b06ac7ceec7"),
+    imageAlt: "Doctor holding a stethoscope",
   },
   {
     title: "E-Commerce",
     desc: "Product descriptions, SEO pages, buying guides, and sales-driven content.",
+    image: photo("1664455340023-214c33a9d0bd"),
+    imageAlt: "Shopping cart full of parcels",
   },
   {
     title: "EdTech",
     desc: "Educational blogs, course content, curriculum storytelling, and SEO-led funnels.",
+    image: photo("1513258496099-48168024aec0"),
+    imageAlt: "Student learning on a laptop",
   },
   {
     title: "Real Estate",
     desc: "Hyperlocal SEO content, brochures, property descriptions, and project storytelling.",
+    image: photo("1515263487990-61b07816b324"),
+    imageAlt: "Modern residential building",
   },
   {
     title: "Finance & Banking",
     desc: "Compliance-friendly, research-backed content for financial institutions.",
+    image: photo("1633158829585-23ba8f7c8caf"),
+    imageAlt: "Hands stacking coins",
   },
   {
     title: "Technology & SaaS",
     desc: "Technical blogs, product pages, feature explanations, and automation guides.",
+    image: photo("1572021335469-31706a17aaef"),
+    imageAlt: "Software team gathered around a laptop",
   },
   {
     title: "Automotive",
     desc: "Content that educates buyers about vehicles, technology, and brand differentiation.",
+    image: photo("1692406069831-0bb7ea297645"),
+    imageAlt: "Car showroom",
   },
 ];
 
@@ -289,6 +306,11 @@ export default function ContentMarketingPage() {
         items={whyChooseUs}
         cta="Get started today"
         source="content-why-us"
+        promo={{
+          image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=900&q=80",
+          alt: "Writing desk with an open notebook and laptop",
+          text: "Content that ranks, engages, and converts.",
+        }}
       />
 
       <ServiceCarousel
