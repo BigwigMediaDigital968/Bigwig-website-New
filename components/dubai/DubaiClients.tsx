@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { clients, type Client } from "@/data/clients";
+import { dubaiClients, type Client } from "@/data/clients";
 import { EASE, focusRing } from "../ui";
 
 /**
@@ -16,21 +16,21 @@ export default function DubaiClients() {
         Our clients
       </h2>
       <motion.div
-        className="marquee-mask group/strip overflow-hidden py-8 md:py-10"
+        className="marquee-mask group/strip overflow-hidden py-6 md:py-8"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: EASE }}
       >
-        <ul className="marquee items-center" style={{ animationDuration: "60s" }}>
+        <ul className="marquee items-center" style={{ animationDuration: "20s" }}>
           {/* the set is doubled so the loop is seamless; the copy is hidden from screen readers and tab order */}
-          {[...clients, ...clients].map((c, i) => (
+          {[...dubaiClients, ...dubaiClients].map((c, i) => (
             <li
               key={`${c.name}-${i}`}
-              aria-hidden={i >= clients.length || undefined}
+              aria-hidden={i >= dubaiClients.length || undefined}
               className="flex-none px-3 transition-opacity duration-300 group-hover/strip:opacity-40 hover:!opacity-100 motion-reduce:transition-none md:px-5"
             >
-              <Logo client={c} copy={i >= clients.length} />
+              <Logo client={c} copy={i >= dubaiClients.length} />
             </li>
           ))}
         </ul>

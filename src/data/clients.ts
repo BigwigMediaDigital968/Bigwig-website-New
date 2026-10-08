@@ -69,3 +69,27 @@ export const clients: Client[] = [
   { name: "Homes and Land Goa", square: "white", img: "/homes-land-goa-logo.png", link: "https://www.homesandlandgoa.com" },
   { name: "AVF Care Workshop", square: "white", img: "/avfcare-logo.png", link: "https://avfcareworkshop.com/" },
 ];
+
+export const dubaiClients: Client[] = [
+  { name: "Fortune Asia", square: "navy", img: "/fortuneasia.png", link: "https://www.fortuneasia.ae/" },
+  {
+    name: "Riverfront", square: "navy",
+    img: "https://riverfront.vercel.app/assets/Logo%20for%20riverfront%20-CAIVvev0.png",
+    link: "https://riverfront.vercel.app/",
+  },
+  {
+    name: "Mondus Properties", square: "white",
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826620/logo_mondus_new_4_-TMoOETTP_drjizb.gif",
+    link: "https://www.mondusproperties.ae/",
+  },
+  {
+    name: "Stellar Binge", square: "white",
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1765346115/logo_2_qiiitb.webp",
+    link: "https://www.stellarbinge.com",
+  },
+   {
+    name: "Billion Dollar FX", square: "navy",
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826680/bdfx_zvjbi6.gif",
+    link: "https://www.billiondollarfx.com",
+  },
+];

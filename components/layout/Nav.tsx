@@ -45,6 +45,7 @@ const OVERLAY_PATHS = [
   "/services/social-media-optimization",
   "/services/graphic-designing",
   "/services/affiliate-marketing",
+  "/services/influencer-marketing",
 ];
 
 /**
