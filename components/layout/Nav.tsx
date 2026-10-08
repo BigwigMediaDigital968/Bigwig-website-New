@@ -35,12 +35,16 @@ const ring =
 const OVERLAY_PATHS = [
   "/",
   "/digital-marketing-agency-dubai-uae",
+  "/digital-marketing-agency-dubai-uae/seo-services-in-dubai-uae",
   "/services/search-engine-optimization",
   "/services/social-media-marketing",
   "/services/performance-marketing",
   "/services/content-marketing",
   "/services/website-development-company-in-delhi",
   "/services/email-marketing",
+  "/services/social-media-optimization",
+  "/services/graphic-designing",
+  "/services/affiliate-marketing",
 ];
 
 /**

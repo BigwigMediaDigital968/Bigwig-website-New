@@ -1,377 +1,156 @@
-'use client';
-import React, { SetStateAction, useRef, useState } from "react";
+"use client";
+
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { FaBehance, FaDribbble } from "react-icons/fa";
+import { SectionHead, fadeUp, focusRing, inView, stagger } from "../ui";
+import { TrackControls, trackList, useTrack } from "../service/ServiceSections";
 
+// YouTube Shorts we've produced for clients
+const shorts = [
+  "nz-sGjIfJSk",
+  "9RbnGh2c1lY",
+  "vZpS3YOo4sU",
+  "ProixyGfpWg",
+  "oDfl6su2N6w",
+  "QOliP83rb_M",
+  "TZBevC0YBPY",
+  "fDmgCuiWxJY",
+  "YdWbM5aPGD4",
+  "Lb0HkhJHSgc",
+];
 
-interface ShortVideo {
-  id: string;
-  youtubeUrl: string;
-  category: "real-estate" | "e-com" | "hospitality" | "surfactant" | "general";
-  tag: string;
-  engagementRate: string;
-}
+const control = `flex h-9 w-9 items-center justify-center rounded-full bg-[var(--ink)]/70 text-white ring-1 ring-inset ring-white/20 backdrop-blur-md transition-transform duration-300 hover:scale-105 cursor-pointer ${focusRing}`;
 
-// 1. ISOLATED COMPONENT: Preventing parent component re-renders from clearing the Iframe cache
-const VideoCard = ({ video, uniqueKey }: { video: ShortVideo; uniqueKey: string }) => {
+/** Muted, looping Short. Play/pause and mute go to the player over postMessage, so the iframe never reloads. */
+function ShortCard({ id, index }: { id: string; index: number }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(true);
 
-  const getEmbedId = (url: string) => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return match && match[2].length === 11 ? match[2] : "";
+  const command = (func: string) =>
+    iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
+
+  const togglePlay = () => {
+    command(playing ? "pauseVideo" : "playVideo");
+    setPlaying(!playing);
   };
 
-  const embedId = getEmbedId(video.youtubeUrl);
-
-  // Safely pass commands to the YouTube Player instance without modifying src attribute strings
-  const postPlayerCommand = (command: string, args: any[] = []) => {
-    if (iframeRef.current?.contentWindow) {
-      iframeRef.current.contentWindow.postMessage(
-        JSON.stringify({ event: "command", func: command, args }),
-        "*"
-      );
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Avoid triggering play/pause logic from global parent node clicks
-    if (isMuted) {
-      postPlayerCommand("unMute");
-      setIsMuted(false);
-    } else {
-      postPlayerCommand("mute");
-      setIsMuted(true);
-    }
-  };
-
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      postPlayerCommand("pauseVideo");
-      setIsPlaying(false);
-    } else {
-      postPlayerCommand("playVideo");
-      setIsPlaying(true);
-    }
+  const toggleMute = () => {
+    command(muted ? "unMute" : "mute");
+    setMuted(!muted);
   };
 
   return (
-    <div
-      onClick={togglePlayPause}
-      className="flex-shrink-0 w-[250px] h-[450px] sm:w-[280px] sm:h-[480px] relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#121318] shadow-2xl group transition-all duration-300 hover:border-white/20 snap-start cursor-pointer select-none"
+    <motion.li
+      variants={fadeUp}
+      className="relative aspect-[9/16] w-[64%] flex-none snap-start overflow-hidden rounded-[24px] bg-[var(--ink)] sm:w-[280px]"
     >
-      {/* Top Actions */}
-      {/* <div className="absolute top-4 inset-x-4 flex justify-between items-center z-20 pointer-events-none">
-        <span className="px-3 py-1 rounded-full text-[9px] font-bold tracking-wider text-[#A7EBF2] bg-[#A7EBF2]/10 backdrop-blur-md uppercase border border-[#FF6624]/20">
-          {video.tag}
-        </span>
-      </div> */}
+      <iframe
+        ref={iframeRef}
+        src={`https://www.youtube.com/embed/${id}?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&modestbranding=1&rel=0&fs=0&disablekb=1&iv_load_policy=3`}
+        title={`Client short ${index + 1}`}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        // scaled up so YouTube's own chrome is cropped off
+        className="pointer-events-none absolute inset-0 h-full w-full scale-[1.35]"
+      />
 
-      {/* Video Player Frame */}
-      <div className="absolute inset-0 w-full h-full bg-black pointer-events-none">
-        {embedId && (
-          <iframe
-            ref={iframeRef}
-            className="w-full h-full object-cover scale-[1.35]"
-            /* enablejsapi=1 unlocks clean background control updates via messaging protocols */
-            src={`https://www.youtube.com/embed/${embedId}?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=${embedId}&controls=0&modestbranding=1&rel=0&fs=0&disablekb=1&iv_load_policy=3`}
-            title={`Showcase Video Short ${uniqueKey}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          />
-        )}
-      </div>
-
-      {/* Dynamic Overlay Play/Pause Visual Feedback State indicator */}
-      {!isPlaying && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 backdrop-blur-[2px] transition-all">
-          <div className="w-14 h-14 flex items-center justify-center rounded-full bg-black/60 border border-white/20 text-white shadow-2xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 ml-0.5">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
+      {!playing && (
+        <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[var(--ink)]/40">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--cyan)] text-[var(--ink)]">
+            <Play size={22} className="ml-0.5" />
+          </span>
         </div>
       )}
 
-      {/* Gradient Mask Overlay Layer */}
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black via-black/40 to-transparent z-10 pointer-events-none" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgba(1,28,64,0.8),transparent)]"
+      />
 
-      {/* Bottom Metadata Controls */}
-      <div className="absolute bottom-4 inset-x-4 flex justify-end items-center z-20">
-
-
-        <button
-          onClick={toggleMute}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white hover:scale-105 transition-all"
-        >
-          {isMuted ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-            </svg>
-          )}
+      <div className="absolute inset-x-3 bottom-3 flex justify-end gap-2">
+        <button type="button" onClick={togglePlay} aria-label={playing ? "Pause video" : "Play video"} className={control}>
+          {playing ? <Pause size={15} aria-hidden /> : <Play size={15} aria-hidden className="ml-0.5" />}
+        </button>
+        <button type="button" onClick={toggleMute} aria-label={muted ? "Unmute video" : "Mute video"} className={control}>
+          {muted ? <VolumeX size={15} aria-hidden /> : <Volume2 size={15} aria-hidden />}
         </button>
       </div>
-    </div>
+    </motion.li>
   );
-};
+}
 
-// 2. MAIN CORE LAYOUT SYSTEM CONTAINER
-export function WorkShowcase() {
-  const videoData: ShortVideo[] = [
-  {
-    id: "v1",
-    youtubeUrl: "https://youtube.com/shorts/nz-sGjIfJSk",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "8.1% ER",
-  },
-  {
-    id: "v2",
-    youtubeUrl: "https://youtube.com/shorts/9RbnGh2c1lY",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "9.4% ER",
-  },
-  {
-    id: "v3",
-    youtubeUrl: "https://youtube.com/shorts/vZpS3YOo4sU",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "7.8% ER",
-  },
-  {
-    id: "v4",
-    youtubeUrl: "https://youtube.com/shorts/ProixyGfpWg",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "8.9% ER",
-  },
-  {
-    id: "v5",
-    youtubeUrl: "https://youtube.com/shorts/oDfl6su2N6w",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "11.2% ER",
-  },
-  {
-    id: "v6",
-    youtubeUrl: "https://youtube.com/shorts/QOliP83rb_M",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "8.5% ER",
-  },
-  {
-    id: "v7",
-    youtubeUrl: "https://youtube.com/shorts/TZBevC0YBPY",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "8.1% ER",
-  },
-  {
-    id: "v8",
-    youtubeUrl: "https://youtube.com/shorts/fDmgCuiWxJY",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "9.4% ER",
-  },
-  {
-    id: "v9",
-    youtubeUrl: "https://youtube.com/shorts/YdWbM5aPGD4",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "7.8% ER",
-  },
-  {
-    id: "v10",
-    youtubeUrl: "https://youtube.com/shorts/Lb0HkhJHSgc",
-    category: "general",
-    tag: "SHORT FORM",
-    engagementRate: "8.9% ER",
-  },
+const profiles = [
+  { name: "Behance", href: "https://www.behance.net/bigwigdigital1", icon: <FaBehance />, color: "#1769FF" },
+  { name: "Dribbble", href: "https://dribbble.com/bigwig-digital", icon: <FaDribbble />, color: "#EA4C89" },
 ];
 
-  const [activeFilter, setActiveFilter] = useState<string>("all");
-
-  const row1Ref = useRef<HTMLDivElement>(null);
-  const row2Ref = useRef<HTMLDivElement>(null);
-
-  const filteredVideos = videoData.filter(
-    (video) => activeFilter === "all" || video.category === activeFilter
-  );
-
-  const useSecondRow = filteredVideos.length > 5;
-
-  const carouselRow1 = useSecondRow
-    ? filteredVideos.slice(0, Math.ceil(filteredVideos.length / 2))
-    : filteredVideos;
-
-  // const carouselRow2 = useSecondRow
-  //   ? filteredVideos.slice(Math.ceil(filteredVideos.length / 2))
-  //   : [];
-  const scroll = (ref: React.RefObject<HTMLDivElement | null>, direction: "left" | "right") => {
-    if (ref.current) {
-      const scrollAmount = 310; // Match up perfectly: item layout width boundary configurations
-      ref.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
-
+/** Portfolio link: brand-coloured logo chip, two-line label, and an arrow that turns on hover. */
+function ProfilePill({ name, href, icon, color }: (typeof profiles)[number]) {
   return (
-    <section className="py-10 w-full text-white overflow-hidden relative">
-      <div className="absolute inset-0 opacity-[0.015] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group inline-flex h-14 items-center gap-3 rounded-full bg-[var(--surface)] pl-1.5 pr-2 ring-1 ring-inset ring-[var(--line)] transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_-18px_rgba(1,28,64,0.45)] ${focusRing}`}
+    >
+      <span
+        aria-hidden
+        style={{ backgroundColor: color }}
+        className="flex h-11 w-11 items-center justify-center rounded-full text-xl text-white transition-transform duration-300 group-hover:scale-105"
+      >
+        {icon}
+      </span>
+      <span className="flex flex-col leading-tight">
+        <span className="text-xs text-[var(--muted)]">More work on</span>
+        <span className="text-[0.95rem] font-semibold">{name}</span>
+      </span>
+      <span
+        aria-hidden
+        className="ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--paper)] transition-[transform,background-color] duration-300 group-hover:rotate-45 group-hover:bg-[var(--cyan)]"
+      >
+        <ArrowUpRight size={16} />
+      </span>
+      <span className="sr-only">(opens in a new tab)</span>
+    </a>
+  );
+}
 
-      <div className="w-full mx-auto flex flex-col items-center">
-        {/* Navigation Filter Component */}
-        <div className="w-full flex justify-between mb-10">
-          <div>
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#A7EBF2]/20 bg-[#A7EBF2]/5 text-[#A7EBF2] text-xs font-semibold tracking-[0.2em] uppercase mb-5">
-              Proven Results
-            </span>
+/** Track of client Shorts with links to our Behance and Dribbble. Defaults are the SMO page's copy. */
+export function WorkShowcase({
+  lead = "Proven results",
+  title = "Real Campaigns. Real Growth.",
+  intro = "Explore how we’ve helped brands across industries increase reach, engagement, leads, and revenue through data-driven social media.",
+}: {
+  lead?: string;
+  title?: string;
+  intro?: React.ReactNode;
+}) {
+  const track = useTrack();
+  return (
+    <section className="py-14 md:py-20">
+      <div className="wrap">
+        <SectionHead
+          lead={lead}
+          title={title}
+          actions={profiles.map((p) => (
+            <ProfilePill key={p.name} {...p} />
+          ))}
+        />
+        <motion.p {...inView} variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-relaxed text-[var(--muted)]">
+          {intro}
+        </motion.p>
 
-            <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight mb-5">
-              Real Campaigns. 
+        <motion.ul ref={track.ref} {...inView} variants={stagger(0.06, 0.1)} className={`${trackList} mt-12 md:mt-14`}>
+          {shorts.map((id, i) => (
+            <ShortCard key={id} id={id} index={i} />
+          ))}
+        </motion.ul>
 
-              <span className="text-[#A7EBF2]"> Real Growth.</span>
-            </h2>
-
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-xl">
-              Explore how we've helped brands across industries increase reach,
-              engagement, leads, and revenue through data-driven social media
-            </p>
-          </div>
-          {/* <div className="flex items-end">
-            <div className="inline-flex p-1.5 rounded-full bg-[#131419] border border-white/[0.05] shadow-2xl overflow-x-auto scrollbar-none">
-              {[
-                { id: "all", label: "ALL CAMPAIGNS" },
-                { id: "real-estate", label: "REAL ESTATE" },
-                { id: "e-com", label: "E-COM" },
-                { id: "hospitality", label: "HOSPITALITY" },
-                { id: "surfactant", label: "SURFACTANT" },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveFilter(tab.id)}
-                  className={`px-5 py-2.5 rounded-full text-[11px] cursor-pointer font-bold tracking-wider whitespace-nowrap transition-all duration-300 ${activeFilter === tab.id
-                    ? "bg-[#A7EBF2] text-black shadow-[#A7EBF2]/20"
-                    : "text-gray-400 hover:text-white"
-                    }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div> */}
-        </div>
-
-        {/* Global Dual Row Container Layout Slider System */}
-        <div className="flex flex-col gap-10 w-full max-w-[1400px]">
-
-          {/* Row 1 Slider */}
-          {carouselRow1.length > 0 && (
-            <div className="w-full relative group px-6">
-              <button onClick={() => scroll(row1Ref, "left")} className="absolute left-10 top-1/2 -translate-y-1/2 z-30 w-11 h-11 hidden md:flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-all shadow-xl backdrop-blur-sm hover:scale-105">
-                ←
-              </button>
-              <button onClick={() => scroll(row1Ref, "right")} className="absolute right-10 top-1/2 -translate-y-1/2 z-30 w-11 h-11 hidden md:flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-all shadow-xl backdrop-blur-sm hover:scale-105">
-                →
-              </button>
-
-              <div
-                ref={row1Ref}
-                className="flex gap-6 w-full overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 scroll-smooth"
-              >
-                {carouselRow1.map((video, idx) => (
-                  <VideoCard key={`row1-${video.id}-${idx}`} uniqueKey={`row1-${idx}`} video={video} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Row 2 Slider */}
-          {/* {carouselRow2.length > 0 && (
-            <div className="w-full relative group px-6">
-              <button onClick={() => scroll(row2Ref, "left")} className="absolute left-10 top-1/2 -translate-y-1/2 z-30 w-11 h-11 hidden md:flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-all shadow-xl backdrop-blur-sm hover:scale-105">
-                ←
-              </button>
-              <button onClick={() => scroll(row2Ref, "right")} className="absolute right-10 top-1/2 -translate-y-1/2 z-30 w-11 h-11 hidden md:flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-all shadow-xl backdrop-blur-sm hover:scale-105">
-                →
-              </button>
-
-              <div
-                ref={row2Ref}
-                className="flex gap-6 w-full overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 scroll-smooth"
-              >
-                {carouselRow2.map((video, idx) => (
-                  <VideoCard key={`row2-${video.id}-${idx}`} uniqueKey={`row2-${idx}`} video={video} />
-                ))}
-              </div>
-            </div>
-          )} */}
-
-        </div>
-        <div className="mt-16 w-full max-w-[1100px] px-6 text-center">
-          <p className="text-white text-base font-bold tracking-widest uppercase mb-6">
-            See More of Our Work
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-            
-            {/* Behance Link Button */}
-            <a 
-              href="https://www.behance.net/your-profile" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto min-w-[240px] bg-[#111217] hover:bg-[#16171e] border border-white/[0.05] hover:border-white/20 px-6 py-4 rounded-2xl transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-            >
-              <div className="flex items-center gap-4">
-                {/* Behance Brand SVG Icon */}
-                <FaBehance className="w-8 h-8 text-white fill-current"/>
-                
-                <div className="text-left">
-                  <div className="text-sm font-bold text-white tracking-wide">More on Behance</div>
-                </div>
-              </div>
-              <span className="text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all ml-auto sm:ml-4">→</span>
-            </a>
-
-            {/* Dribbble Link Button */}
-            <a 
-              href="https://dribbble.com/your-profile" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto min-w-[240px] bg-[#111217] hover:bg-[#16171e] border border-white/[0.05] hover:border-white/20 px-6 py-4 rounded-2xl transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-            >
-              <div className="flex items-center gap-4">
-                {/* Dribbble Brand SVG Icon */}
-                <FaDribbble className="w-8 h-8 text-[#EA4C89] fill-current" />
-               
-                <div className="text-left">
-                  <div className="text-sm font-bold text-white tracking-wide">More on Dribbble</div>
-                </div>
-              </div>
-              <span className="text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all ml-auto sm:ml-4">→</span>
-            </a>
-
-          </div>
-        </div>
-        {/* --- END CALL TO ACTION SECTION --- */}
+        <TrackControls track={track} count={shorts.length} className="mt-8" />
       </div>
-
-      <style jsx global>{`
-        .scrollbar-none::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-none {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </section>
   );
 }

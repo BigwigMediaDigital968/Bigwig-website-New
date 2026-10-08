@@ -30,7 +30,7 @@ export default function Timeline({
   steps,
   className = "",
 }: {
-  steps: { title: string; desc: string }[];
+  steps: { title: string; desc: React.ReactNode }[];
   className?: string;
 }) {
   return (

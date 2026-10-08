@@ -8,6 +8,7 @@ import { ArrowUpRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { serviceCards } from "@/data/servicesData";
 import { PillLead, SectionHead, fadeUp, focusRing, inView, maskUp, scaleIn, stagger, wipeUp } from "../ui";
 import { AccordionItem, AskCard } from "../ui/Accordion";
+import Timeline from "../ui/Timeline";
 
 /* Building blocks for /services/* pages. Content lives in src/data/services/*. */
 
@@ -258,7 +259,7 @@ export function ServiceCards({
 const pad = (n: number) => String(n).padStart(2, "0");
 
 /** Scroll state for a horizontal snap track: progress (0–1, starting at the visible share) and card stepping. */
-function useTrack() {
+export function useTrack() {
   const ref = useRef<HTMLUListElement>(null);
   const { scrollXProgress } = useScroll({ container: ref });
   // share of the track that's visible; the progress line starts at this width
@@ -291,7 +292,7 @@ function useTrack() {
 }
 
 /** 01 ——— 0N progress line with prev/next arrows. Renders nothing when the track fits. */
-function TrackControls({
+export function TrackControls({
   track,
   count,
   dark = false,
@@ -330,7 +331,7 @@ function TrackControls({
   );
 }
 
-const trackList = "scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 md:gap-4";
+export const trackList = "scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 md:gap-4";
 
 /**
  * Numbered cards in a horizontal track. A swipeable alternative to the `ServiceCards` grid, so long
@@ -495,7 +496,8 @@ export function ServiceSplitCarousel({
               ref={track.ref}
               {...inView}
               variants={stagger(0.06, 0.1)}
-              className={`${trackList} lg:mx-0 lg:scroll-px-0 lg:px-0`}
+              // pt-2: room for the cards' hover lift, which the scrolling track would otherwise clip
+              className={`${trackList} pt-2 lg:mx-0 lg:scroll-px-0 lg:px-0`}
             >
               {items.map((item, i) => (
                 <motion.li
@@ -527,12 +529,24 @@ export function ServiceSplitCarousel({
 export type ServiceStat = { value: string; label: string; desc: string; image: string; imageAlt: string };
 
 /** Horizontally scrolling stat cards, each with a photo, plus a scroll progress line and arrows. */
-export function ServiceStats({ items, label }: { items: ServiceStat[]; label: string }) {
+export function ServiceStats({
+  items,
+  label,
+  lead,
+  title,
+}: {
+  items: ServiceStat[];
+  label: string;
+  /** optional heading above the track */
+  lead?: string;
+  title?: string;
+}) {
   const track = useTrack();
 
   return (
-    <section className="py-16 md:py-20" aria-label={label}>
+    <section className="py-16 md:py-20" aria-label={title ? undefined : label}>
       <div className="wrap">
+        {lead && title && <SectionHead lead={lead} title={title} className="mb-12 md:mb-14" />}
         <motion.ul
           ref={track.ref}
           {...inView}
@@ -564,6 +578,93 @@ export function ServiceStats({ items, label }: { items: ServiceStat[]; label: st
         </motion.ul>
 
         <TrackControls track={track} count={items.length} className="mt-6" />
+      </div>
+    </section>
+  );
+}
+
+export type ServiceResult = { value: string; label: string };
+
+/**
+ * White panel of result ranges (e.g. "2X to 6X"): heading, intro and CTA on the left, the figures in a
+ * ruled grid on the right, and an optional note under both. For ranges that have no photo to pair with.
+ */
+export function ServiceResults({
+  lead,
+  title,
+  intro,
+  items,
+  note,
+  cta,
+  source,
+}: {
+  lead: string;
+  title: string;
+  intro?: React.ReactNode;
+  items: ServiceResult[];
+  note?: React.ReactNode;
+  cta: string;
+  source: string;
+}) {
+  return (
+    <section className="px-2 md:px-3">
+      <div className="mx-auto max-w-[1600px] overflow-hidden rounded-[32px] bg-[var(--surface)] py-16 md:py-20">
+        <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-x-16 lg:gap-y-8">
+          <motion.div {...inView} variants={stagger(0.1)} className="lg:col-span-5">
+            <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--link)]">
+              {lead}
+            </motion.p>
+            <h2 className="h-section mt-3">
+              <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
+                <motion.span variants={maskUp} className="block">
+                  {title}
+                </motion.span>
+              </span>
+            </h2>
+            {intro && (
+              <motion.p variants={fadeUp} className="mt-6 text-lg leading-relaxed text-[var(--muted)]">
+                {intro}
+              </motion.p>
+            )}
+            <motion.div variants={fadeUp} className="mt-8">
+              <PillLead source={source}>{cta}</PillLead>
+            </motion.div>
+          </motion.div>
+
+          <motion.dl
+            {...inView}
+            variants={stagger(0.08, 0.1)}
+            className="grid gap-x-10 sm:grid-cols-2 lg:col-span-7"
+          >
+            {items.map((r, i) => (
+              <motion.div
+                key={r.label}
+                variants={fadeUp}
+                className={`group relative flex flex-col border-t border-[var(--line)] py-6 md:py-8 ${
+                  items.length % 2 === 1 && i === items.length - 1 ? "sm:col-span-2" : ""
+                }`}
+              >
+                {/* teal rule that grows along the top border on hover */}
+                <span
+                  aria-hidden
+                  className="absolute -top-px left-0 h-px w-10 bg-[var(--teal)] transition-[width] duration-500 group-hover:w-full"
+                />
+                <dt className="mt-3 text-[0.95rem] leading-snug text-[var(--muted)]">{r.label}</dt>
+                <dd className="serif order-first text-[2.6rem] leading-none text-[var(--link)] md:text-5xl">{r.value}</dd>
+              </motion.div>
+            ))}
+          </motion.dl>
+
+          {note && (
+            <motion.p
+              {...inView}
+              variants={fadeUp}
+              className="border-t border-[var(--line)] pt-8 text-[0.95rem] leading-relaxed text-[var(--muted)] lg:col-span-12"
+            >
+              {note}
+            </motion.p>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -862,7 +963,44 @@ export function ServiceSteps({
   );
 }
 
-export type BentoItem = { title: string; desc: React.ReactNode; image: string | StaticImageData; imageAlt: string };
+/**
+ * A short sequence (3–6 steps) as numbered points on a line that draws across: horizontal from md
+ * up, vertical on phones. A lighter, image-free alternative to `ServiceSteps`.
+ */
+export function ServiceTimeline({
+  id,
+  heading,
+  lead,
+  rest,
+  steps,
+  cta,
+  source,
+}: {
+  id?: string;
+  heading: string;
+  lead: string;
+  rest?: string;
+  steps: { title: string; desc: React.ReactNode }[];
+  cta?: string;
+  source?: string;
+}) {
+  return (
+    <section id={id} className="scroll-mt-24 py-14 md:py-20">
+      <div className="wrap">
+        <StatementHead heading={heading} lead={lead} rest={rest}>
+          {cta && source && (
+            <div className="mt-8">
+              <PillLead source={source}>{cta}</PillLead>
+            </div>
+          )}
+        </StatementHead>
+        <Timeline steps={steps} className="mt-14 md:mt-20" />
+      </div>
+    </section>
+  );
+}
+
+export type BentoItem ={ title: string; desc: React.ReactNode; image: string | StaticImageData; imageAlt: string };
 
 /**
  * Three points as a bento row: two quiet cards with an inset photo either side of a wide card where the
@@ -1320,13 +1458,21 @@ export function ServiceFaq({ title, faqs, source }: { title: string; faqs: Servi
   );
 }
 
-/** Links to every other service page. */
-export function OtherServices({ current }: { current: string }) {
-  const others = serviceCards.filter((s) => s.href !== current);
+/** Links to every other service page; pass `services` for another set, e.g. the Dubai pages. */
+export function OtherServices({
+  current,
+  services = serviceCards,
+  title = "Our other services",
+}: {
+  current: string;
+  services?: { title: string; href: string }[];
+  title?: string;
+}) {
+  const others = services.filter((s) => s.href !== current);
   return (
     <section className="py-14 md:py-20">
       <div className="wrap">
-        <SectionHead lead="Explore more" title="Our other services" />
+        <SectionHead lead="Explore more" title={title} />
         <motion.ul {...inView} variants={stagger(0.04)} className="mt-12 flex flex-wrap gap-2 md:mt-14">
           {others.map((s) => (
             <motion.li key={s.href} variants={fadeUp}>

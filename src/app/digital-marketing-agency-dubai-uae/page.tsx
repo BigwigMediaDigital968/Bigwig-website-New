@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import DubaiClients from "../../../components/dubai/DubaiClients";
 import DubaiHero from "../../../components/dubai/DubaiHero";
 import DubaiIntro from "../../../components/dubai/DubaiIntro";
 import DubaiServices from "../../../components/dubai/DubaiServices";
@@ -32,6 +33,7 @@ export default function DubaiPage() {
   return (
     <main>
       <DubaiHero />
+      <DubaiClients />
       <DubaiIntro />
       <DubaiServices />
       <DubaiWhyUs />
