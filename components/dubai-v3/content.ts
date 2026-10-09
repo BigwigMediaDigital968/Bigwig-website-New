@@ -234,11 +234,6 @@ export const buyerMarkets = [
   { country: "Pakistan", share: 6.9 },
 ];
 
-export const BUYER_SOURCE = {
-  label: "Khaleej Times, 2026",
-  href: "https://www.khaleejtimes.com/business/indian-uk-egyptian-investors-top-dubai-property-buyers-in-2026",
-};
-
 /* ---------- property playbooks ---------- */
 
 export type Playbook = {

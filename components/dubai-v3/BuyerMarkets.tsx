@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { EASE_OUT, SectionHead, focusRing } from "../ui";
+import { EASE_OUT, SectionHead } from "../ui";
 import PlanButton from "./PlanButton";
-import { BUYER_SOURCE, buyerMarkets } from "./content";
+import { buyerMarkets } from "./content";
 
 /** longest bar spans the track; the rest scale against it */
 const MAX = Math.max(...buyerMarkets.map((m) => m.share));
@@ -71,18 +71,6 @@ export default function BuyerMarkets() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-xs text-[var(--muted)]">
-            Source:{" "}
-            <a
-              href={BUYER_SOURCE.href}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className={`rounded-sm underline underline-offset-2 hover:text-[var(--ink)] ${focusRing}`}
-            >
-              {BUYER_SOURCE.label}
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </p>
         </figure>
       </div>
     </section>
