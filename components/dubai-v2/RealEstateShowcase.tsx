@@ -26,7 +26,7 @@ export default function RealEstateShowcase() {
 
           <motion.ul
             {...inView}
-            variants={stagger(0.09, 0.1)}
+            variants={stagger(0.06, 0.1)}
             className="mt-14 grid auto-rows-[300px] gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[repeat(3,230px)]"
           >
             {showcase.map((s) => (
@@ -40,7 +40,7 @@ export default function RealEstateShowcase() {
                   alt={s.alt}
                   fill
                   sizes={s.sizes}
-                  className="-z-20 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06] motion-reduce:transition-none"
+                  className="-z-20 object-cover transition-transform duration-[600ms] ease-[var(--ease-out)] group-hover:scale-[1.04] motion-reduce:transition-none"
                 />
                 <div
                   aria-hidden

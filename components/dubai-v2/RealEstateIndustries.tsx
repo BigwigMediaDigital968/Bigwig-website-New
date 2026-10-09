@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
@@ -13,6 +13,16 @@ import { industries } from "./content";
  */
 export default function RealEstateIndustries() {
   const [active, setActive] = useState(0);
+  // hover intent: only switch if the pointer rests on a card, so sweeping across the row doesn't jolt the layout
+  const intent = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hoverTo = (i: number) => {
+    if (intent.current) clearTimeout(intent.current);
+    intent.current = setTimeout(() => setActive(i), 90);
+  };
+  const cancelHover = () => {
+    if (intent.current) clearTimeout(intent.current);
+  };
+  useEffect(() => cancelHover, []);
 
   return (
     <section className="py-24 md:py-32">
@@ -23,7 +33,7 @@ export default function RealEstateIndustries() {
           actions={<PillLead source="dubai-v2-industries">Talk to a sector specialist</PillLead>}
         />
 
-        <motion.ul {...inView} variants={stagger(0.1, 0.1)} className="mt-14 grid gap-3 md:mt-16 lg:flex lg:h-[560px]">
+        <motion.ul {...inView} variants={stagger(0.07, 0.1)} className="mt-14 grid gap-3 md:mt-16 lg:flex lg:h-[560px]">
           {industries.map((ind, i) => {
             const open = active === i;
             return (
@@ -31,15 +41,16 @@ export default function RealEstateIndustries() {
                 key={ind.name}
                 variants={fadeUp}
                 data-open={open}
-                onMouseEnter={() => setActive(i)}
-                className="group relative isolate min-h-[420px] overflow-hidden rounded-[28px] bg-[var(--ink)] transition-[flex-grow] duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] motion-reduce:transition-none lg:min-h-0 lg:flex-1 lg:data-[open=true]:flex-[2.6]"
+                onMouseEnter={() => hoverTo(i)}
+                onMouseLeave={cancelHover}
+                className="group relative isolate min-h-[420px] overflow-hidden rounded-[28px] bg-[var(--ink)] transition-[flex-grow] duration-500 ease-[var(--ease-in-out)] motion-reduce:transition-none lg:min-h-0 lg:flex-1 lg:data-[open=true]:flex-[2.6]"
               >
                 <Image
                   src={ind.img}
                   alt={ind.alt}
                   fill
                   sizes="(min-width: 1024px) 55vw, 100vw"
-                  className="-z-20 object-cover transition-transform duration-[1200ms] ease-out group-data-[open=true]:scale-105 motion-reduce:transition-none"
+                  className="-z-20 object-cover transition-transform duration-[900ms] ease-[var(--ease-out)] group-data-[open=true]:scale-105 motion-reduce:transition-none"
                 />
                 <div
                   aria-hidden
@@ -68,7 +79,7 @@ export default function RealEstateIndustries() {
                     <span className="hidden lg:inline lg:group-data-[open=true]:hidden">{ind.short}</span>
                   </h3>
                   {/* details: always shown when stacked; on desktop only on the open card */}
-                  <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-out lg:grid-rows-[0fr] lg:opacity-0 lg:group-data-[open=true]:grid-rows-[1fr] lg:group-data-[open=true]:opacity-100">
+                  <div className="grid transition-[grid-template-rows,opacity] duration-400 ease-[var(--ease-out)] lg:grid-rows-[0fr] lg:opacity-0 lg:group-data-[open=true]:grid-rows-[1fr] lg:group-data-[open=true]:opacity-100">
                     <div className="min-h-0 overflow-hidden">
                       <p className="mt-3 max-w-md leading-relaxed text-white/80">{ind.desc}</p>
                       <ul className="mt-5 grid gap-2 sm:grid-cols-2">

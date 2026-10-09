@@ -27,7 +27,7 @@ export default function RealEstateAbout() {
     <section className="py-24 md:py-[120px]">
       <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
-          <motion.div {...inView} variants={stagger(0.1)} className="lg:sticky lg:top-32">
+          <motion.div {...inView} variants={stagger(0.07)} className="lg:sticky lg:top-32">
             <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--link)]">
               About us
             </motion.p>

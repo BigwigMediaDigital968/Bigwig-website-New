@@ -23,7 +23,7 @@ export default function RealEstateCta() {
           className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_50%_45%,rgba(0,11,33,0.55),rgba(0,11,33,0.9)_100%)]"
         />
 
-        <motion.div {...inView} variants={stagger(0.1)} className="mx-auto max-w-3xl text-center">
+        <motion.div {...inView} variants={stagger(0.07)} className="mx-auto max-w-3xl text-center">
           <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--cyan)]">
             Free consultation
           </motion.p>

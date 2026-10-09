@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { EASE, PillLead, PillLink, SectionHead, fadeUp, focusRing, inView, stagger } from "../ui";
+import { EASE_OUT, PillLead, PillLink, SectionHead, fadeUp, focusRing, inView, stagger } from "../ui";
 import { coreServices } from "./content";
 
 /**
@@ -36,10 +36,10 @@ export default function RealEstateServices() {
                   <motion.div
                     key={current.title}
                     className="absolute inset-0"
-                    initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 1.08 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.7, ease: EASE }}
+                    initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 1.03, filter: "blur(6px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, transition: { duration: 0.2, ease: EASE_OUT } }}
+                    transition={{ duration: 0.4, ease: EASE_OUT }}
                   >
                     <Image
                       src={current.img}
@@ -64,7 +64,7 @@ export default function RealEstateServices() {
             </div>
 
             <div className="lg:order-1 lg:col-span-6">
-              <motion.ol {...inView} variants={stagger(0.1)} className="border-t border-[var(--line)]">
+              <motion.ol {...inView} variants={stagger(0.06)} className="border-t border-[var(--line)]">
                 {coreServices.map((s, i) => {
                   const on = active === i;
                   return (
@@ -72,12 +72,12 @@ export default function RealEstateServices() {
                       key={s.title}
                       variants={fadeUp}
                       onMouseEnter={() => setActive(i)}
-                      className={`relative border-b border-[var(--line)] transition-colors duration-500 ${on ? "bg-[var(--paper)]" : ""}`}
+                      className={`relative border-b border-[var(--line)] transition-colors duration-200 ease ${on ? "bg-[var(--paper)]" : ""}`}
                     >
                       {/* active marker */}
                       <span
                         aria-hidden
-                        className={`absolute left-0 top-0 h-full w-0.5 origin-top bg-[var(--teal)] transition-transform duration-500 ${on ? "scale-y-100" : "scale-y-0"}`}
+                        className={`absolute left-0 top-0 h-full w-0.5 origin-top bg-[var(--teal)] transition-transform duration-300 ease-[var(--ease-out)] ${on ? "scale-y-100" : "scale-y-0"}`}
                       />
                       <button
                         type="button"
@@ -88,20 +88,20 @@ export default function RealEstateServices() {
                       >
                         <span
                           aria-hidden
-                          className={`serif text-4xl leading-none transition-colors duration-500 ${on ? "text-[var(--teal)]" : "text-[var(--ink)]/25"}`}
+                          className={`serif text-4xl leading-none transition-colors duration-200 ease ${on ? "text-[var(--teal)]" : "text-[var(--ink)]/25"}`}
                         >
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <span>
                           <span
-                            className={`block text-2xl font-semibold leading-tight tracking-tight transition-colors duration-500 md:text-[1.75rem] ${
+                            className={`block text-2xl font-semibold leading-tight tracking-tight transition-colors duration-200 ease md:text-[1.75rem] ${
                               on ? "text-[var(--link)]" : "text-[var(--ink)]"
                             }`}
                           >
                             {s.title}
                           </span>
                           <span
-                            className={`mt-3 block max-w-[52ch] leading-relaxed transition-colors duration-500 ${on ? "text-[var(--ink)]/80" : "text-[var(--muted)]"}`}
+                            className={`mt-3 block max-w-[52ch] leading-relaxed transition-colors duration-200 ease ${on ? "text-[var(--ink)]/80" : "text-[var(--muted)]"}`}
                           >
                             {s.desc}
                           </span>

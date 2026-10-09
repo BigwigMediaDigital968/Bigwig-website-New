@@ -11,6 +11,8 @@ import { useLeadPopup } from "../LeadPopup";
 
 export const EASE = [0.2, 0.7, 0.2, 1] as const;
 export const EASE_IN_OUT = [0.65, 0, 0.35, 1] as const;
+/** Strong ease-out for quick UI responses (matches --ease-out in brand.css). */
+export const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 /** Spread onto a motion parent: plays its variants once when scrolled into view. */
 export const inView = {
@@ -92,15 +94,17 @@ export function MaskHeading({
   );
 }
 
-export const focusRing =
-  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--link)]";
+export const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--link)]";
 
 // ink: on light sections. cyan: on dark sections. ghost / ghostDark: secondary actions.
 const TONES = {
   ink: { btn: "bg-[var(--ink)] text-white hover:bg-[var(--ink-2)]", chip: "bg-[var(--cyan)] text-[var(--ink)]" },
   cyan: { btn: "bg-[var(--cyan)] text-[var(--ink)] hover:bg-white", chip: "bg-[var(--ink)] text-[var(--cyan)]" },
   ghost: { btn: "text-[var(--ink)] ring-1 ring-inset ring-[var(--line-strong)] hover:bg-white", chip: "" },
-  ghostDark: { btn: "text-white ring-1 ring-inset ring-white/30 bg-white/5 backdrop-blur-md hover:bg-white/15", chip: "" },
+  ghostDark: {
+    btn: "text-white ring-1 ring-inset ring-white/30 bg-white/5 backdrop-blur-md hover:bg-white/15",
+    chip: "",
+  },
 } as const;
 
 type Tone = keyof typeof TONES;
@@ -108,7 +112,8 @@ type Tone = keyof typeof TONES;
 function classes(tone: Tone, className: string) {
   const hasChip = Boolean(TONES[tone].chip);
   return `group inline-flex h-12 items-center justify-center gap-3 rounded-full text-[0.95rem] font-semibold cursor-pointer
-    transition-colors duration-300 ${hasChip ? "pl-6 pr-1.5" : "px-6"} ${TONES[tone].btn} ${focusRing} ${className}`;
+    transition-[color,background-color,box-shadow,transform] duration-200 ease-[var(--ease-out)] active:scale-[0.97]
+    ${hasChip ? "pl-6 pr-1.5" : "px-6"} ${TONES[tone].btn} ${focusRing} ${className}`;
 }
 
 function Chip({ tone }: { tone: Tone }) {
@@ -249,7 +254,7 @@ export function WhatsAppPill({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex h-12 items-center justify-center gap-3 rounded-full pl-6 pr-1.5 text-[0.95rem] font-semibold cursor-pointer ring-1 ring-inset transition-colors duration-300 ${
+      className={`group inline-flex h-12 items-center justify-center gap-3 rounded-full pl-6 pr-1.5 text-[0.95rem] font-semibold cursor-pointer ring-1 ring-inset transition-[color,background-color,box-shadow,transform] duration-200 ease-[var(--ease-out)] active:scale-[0.97] ${
         dark
           ? "bg-white/5 text-white ring-white/30 backdrop-blur-md hover:bg-[#25D366]/15 hover:ring-[#25D366]/70"
           : "text-[var(--ink)] ring-[var(--line-strong)] hover:bg-[#25D366]/10 hover:ring-[#25D366]"

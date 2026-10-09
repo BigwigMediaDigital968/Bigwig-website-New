@@ -42,7 +42,7 @@ export default function RealEstateHero() {
       />
 
       <div className="wrap grid w-full gap-12 pb-16 pt-32 md:pb-20 lg:grid-cols-12 lg:items-center lg:gap-12 lg:pt-28">
-        <motion.div className="min-w-0 lg:col-span-7" initial="hidden" animate="show" variants={stagger(0.12, 0.35)}>
+        <motion.div className="min-w-0 lg:col-span-7" initial="hidden" animate="show" variants={stagger(0.08, 0.35)}>
           <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.22em] text-[var(--cyan)]">
             <span aria-hidden>✦ </span>DUBAI REAL ESTATE PERFORMANCE MARKETING
           </motion.p>

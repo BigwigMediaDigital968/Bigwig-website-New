@@ -17,6 +17,9 @@
   --link: #26658c;
   /* deepest navy, for full-bleed "night" sections (Dubai real-estate page) */
   --night: #000b21;
+  /* motion: strong ease-out for UI responses, ease-in-out for things morphing on screen */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 html {
@@ -103,6 +106,29 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee {
+    animation: none;
+  }
+}
+
+/* ---------- site preview (a tall website screenshot gliding inside a browser frame) ----------
+   --scroll-to is how far the shot travels, as a share of its own height. */
+.site-scroll {
+  animation: site-scroll 24s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes site-scroll {
+  0%,
+  10% {
+    transform: translateY(0);
+  }
+  90%,
+  100% {
+    transform: translateY(var(--scroll-to, -60%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-scroll {
     animation: none;
   }
 }
