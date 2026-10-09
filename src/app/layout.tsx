@@ -1,5 +1,4 @@
 // import type { Metadata } from "next";
-import ScrollToTopButton from "../../components/ScrollToTopButton";
 import "./globals.css";
 import "./brand.css";
 import Script from "next/script";
@@ -206,6 +205,8 @@ export default function RootLayout({
             <Nav />
             {children}
             <Footer />
+            {/* inside the provider: the mobile dock's "free quote" opens the lead popup */}
+            <FloatingButton />
           </LeadPopupProvider>
         </MotionRoot>
 
@@ -284,9 +285,6 @@ export default function RootLayout({
           src="https://www.facebook.com/tr?id=1365940352138121&ev=PageView&noscript=1"
         /></noscript>
         {/* <!-- End Meta Pixel Code --> */}
-
-        <FloatingButton />
-        <ScrollToTopButton />
       </body>
     </html>
   );

@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import ButtonFill from "./Button";
 import useSubmitLead from "../hooks/useSubmitLead";
+import RecaptchaNotice from "./contact/RecaptchaNotice";
 
 const SERVICES_LIST = [
   "Search Engine Optimization",
@@ -307,6 +308,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
             text={loading || submitting ? "Sending..." : "Submit"}
             className="w-full !py-3 !text-white"
           />
+          <RecaptchaNotice className="text-white/60" />
         </form>
       )}
 

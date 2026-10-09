@@ -1,211 +1,268 @@
-// "use client";
-// import { useState } from "react";
-// import { PhoneCall, X, MessageCircle } from "lucide-react";
-
-// export default function WhatsAppButton() {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [showTooltip, setShowTooltip] = useState(false);
-
-//   return (
-//     <div className="fixed bottom-0 right-10 flex flex-col items-end z-50">
-//       {isOpen && (
-//         <div className="flex items-center space-x-2 mb-2">
-//           {/* Call Button */}
-//           <div
-//             className="relative flex items-center justify-center w-12 h-12 bg-green-500 rounded-full shadow-lg cursor-pointer "
-//             onClick={() => setShowTooltip(!showTooltip)}
-//           >
-//             <PhoneCall className="text-white" size={24} />
-//             {showTooltip && (
-//               <div className="w-60 absolute bottom-full mb-2 bg-white text-black text-sm px-2 py-1 rounded shadow-md ">
-//                 Contact Number: +91 83685 73451
-//               </div>
-//             )}
-//           </div>
-
-//           {/* WhatsApp Button */}
-//           <a
-//             href="https://wa.me/+918368573451"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg "
-//           >
-//             <MessageCircle className="text-white" size={24} />
-//           </a>
-//         </div>
-//       )}
-
-//       {/* Floating WhatsApp Button */}
-//       <div
-//         className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg cursor-pointer mb-11 "
-//         onClick={() => setIsOpen(!isOpen)}
-//       >
-//         {isOpen ? (
-//           <X className="text-white" size={24} />
-//         ) : (
-//           <MessageCircle className="text-white" size={24} />
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
 "use client";
 
-import { useState } from "react";
-import { PhoneCall, X, MessageCircle } from "lucide-react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaShareAlt,
-} from "react-icons/fa";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { ArrowUp, ArrowUpRight, Phone, Share2 } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF, faInstagram, faLinkedinIn, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { useLeadPopup } from "./LeadPopup";
+import { EASE, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_HREF, focusRing } from "./ui";
 
+const WHATSAPP_GREEN = "#25D366";
+/** show "back to top" once the visitor is this far down the page */
+const SHOW_TOP_AFTER = 600;
+
+/**
+ * Site-wide floating actions.
+ * Desktop: social fan bottom-left; back-to-top above a "Chat with us" WhatsApp pill, bottom-right.
+ * Mobile: one dock at the bottom (call, WhatsApp, share, free quote) with back-to-top floating above it.
+ * The reCAPTCHA badge is hidden (see brand.css), so nothing here has to dodge it.
+ */
 export default function FloatingCTA() {
-  const [shareOpen, setShareOpen] = useState(false);
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
+  const { scrollY, scrollYProgress } = useScroll();
+  const [showTop, setShowTop] = useState(false);
+  useMotionValueEvent(scrollY, "change", (y) => setShowTop(y > SHOW_TOP_AFTER));
 
-  const phone = "+919685892813";
+  if (pathname.startsWith("/admin")) return null;
 
-  const facebookUrl = "https://www.facebook.com/profile.php?id=61575340735142";
-  const instagramUrl =
-    "https://www.instagram.com/bigwig.media.digital?igsh=ODhpeTJzcDRpa25q";
-  const linkedinUrl = "https://www.linkedin.com/company/bigwig-media-digital/";
-
-  if (pathname.startsWith("/admin")) {
-    return null;
-  }
+  const toTop = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  };
 
   return (
     <>
-      {/* ================= DESKTOP FLOATING ================= */}
-      <div className="hidden md:block">
-        {/* ---------- LEFT SOCIAL SHARE ---------- */}
-        <div className="fixed bottom-6 left-10 z-50">
-          <div className="relative flex items-center justify-center">
-            {/* MAIN BUTTON */}
-            <button
-              onClick={() => setShareOpen(!shareOpen)}
-              className="w-14 h-14 flex items-center justify-center rounded-full shadow-xl transition-all duration-300 cursor-pointer"
-              style={{
-                background: "linear-gradient(135deg,#173e62,#ccc)",
-                color: "white",
-              }}
-            >
-              <FaShareAlt
-                size={18}
-                className={`transition-transform duration-300 cursor-pointer ${
-                  shareOpen ? "rotate-45" : ""
-                }`}
-              />
-            </button>
-
-            {/* FACEBOOK */}
-            <a
-              href={facebookUrl}
-              target="_blank"
-              className={`absolute cursor-pointer flex items-center justify-center w-11 h-11 rounded-full text-white shadow-lg transition-all duration-300
-              ${
-                shareOpen
-                  ? "translate-x-[75px] opacity-100"
-                  : "opacity-0 pointer-events-none"
-              }`}
-              style={{ background: "#173e62" }}
-            >
-              <FaFacebookF size={14} />
-            </a>
-
-            {/* INSTAGRAM */}
-            <a
-              href={instagramUrl}
-              target="_blank"
-              className={`absolute cursor-pointer flex items-center justify-center w-11 h-11 rounded-full text-[#173e62] shadow-lg transition-all duration-300
-              ${
-                shareOpen
-                  ? "translate-x-[55px] -translate-y-[55px] opacity-100"
-                  : "opacity-0 pointer-events-none"
-              }`}
-              style={{ background: "#fff" }}
-            >
-              <FaInstagram size={14} />
-            </a>
-
-            {/* LINKEDIN */}
-            <a
-              href={linkedinUrl}
-              target="_blank"
-              className={`absolute cursor-pointer flex items-center justify-center w-11 h-11 rounded-full text-white shadow-lg transition-all duration-300
-              ${
-                shareOpen
-                  ? "-translate-y-[75px] opacity-100"
-                  : "opacity-0 pointer-events-none"
-              }`}
-              style={{ background: "#173e62" }}
-            >
-              <FaLinkedinIn size={14} />
-            </a>
-          </div>
-        </div>
-
-        {/* ---------- FLOATING WHATSAPP BUTTON ---------- */}
-        <div className="fixed bottom-20 right-6 z-50 cursor-pointer">
-          <a
-            href={`https://wa.me/${phone}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
-          >
-            {/* TOOLTIP */}
-            <span className="absolute bottom-full right-0 mb-3 whitespace-nowrap rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-[#173e62] shadow-lg">
-              Chat with us
-              {/* Arrow, centred on the button */}
-              <span className="absolute -bottom-1 right-[19px] h-2.5 w-2.5 rotate-45 bg-white" />
-            </span>
-
-            <Image
-              src="/whatsapp-icon.png"
-              alt="WhatsApp"
-              width={25}
-              height={25}
-              priority
-            />
-          </a>
-        </div>
+      {/* ================= DESKTOP ================= */}
+      <div className="fixed bottom-6 left-10 z-50 hidden md:block">
+        <SocialFan />
       </div>
 
-      {/* ================= MOBILE STICKY CTA ================= */}
-
-      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t shadow-lg z-50">
-        <div className="flex">
-          {/* CALL */}
-          <a
-            href={`tel:${phone}`}
-            className="flex-1 flex items-center justify-center py-4 text-[#173e62] border-r-2 bg-white font-medium"
-          >
-            <PhoneCall size={18} className="mr-2" />
-            Call Now
-          </a>
-
-          {/* WHATSAPP */}
-          <a
-            href={`https://wa.me/${phone}`}
-            target="_blank"
-            className="flex-1 flex items-center gap-2 justify-center py-4 bg-white text-[#173e62] font-medium"
-          >
-            {/* <MessageCircle size={18} className="mr-2" /> */}
-            <Image
-              src="/whatsapp-icon.png" // place logo inside public folder
-              alt="WhatsApp"
-              width={22}
-              height={22}
-              priority
-            />
-            WhatsApp
-          </a>
+      {/* anchored to the bottom, so the WhatsApp pill stays put when back-to-top appears above it */}
+      <div className="fixed bottom-6 right-6 z-50 hidden flex-col items-end gap-3 md:flex">
+        {/* centred over the pill's WhatsApp icon */}
+        <div className="flex w-14 justify-center">
+          <BackToTop show={showTop} progress={scrollYProgress} onClick={toTop} />
         </div>
+        <a
+          href={WHATSAPP_HREF}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ backgroundColor: WHATSAPP_GREEN }}
+          className={`group flex h-14 items-center rounded-full pl-6 text-[var(--ink)] shadow-[0_18px_40px_-14px_rgba(1,28,64,0.55)] transition-[filter] duration-300 hover:brightness-105 ${focusRing}`}
+        >
+          <span className="whitespace-nowrap text-[0.95rem] font-semibold">Chat with us</span>
+          <span className="sr-only">on WhatsApp (opens in a new tab)</span>
+          <span aria-hidden className="flex h-14 w-14 flex-none items-center justify-center">
+            <FontAwesomeIcon
+              icon={faWhatsapp}
+              className="text-[1.6rem] transition-transform duration-300 group-hover:scale-110"
+            />
+          </span>
+        </a>
       </div>
+
+      {/* ================= MOBILE ================= */}
+      <div className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] right-3 z-50 md:hidden">
+        <BackToTop show={showTop} progress={scrollYProgress} onClick={toTop} small />
+      </div>
+      <MobileDock />
     </>
+  );
+}
+
+/* ---------- back to top: white disc with a teal ring that fills as you scroll ---------- */
+
+function BackToTop({
+  show,
+  progress,
+  onClick,
+  small = false,
+}: {
+  show: boolean;
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+  onClick: () => void;
+  small?: boolean;
+}) {
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.button
+          type="button"
+          onClick={onClick}
+          aria-label="Back to top"
+          initial={{ opacity: 0, y: 12, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 12, scale: 0.9 }}
+          transition={{ duration: 0.25, ease: EASE }}
+          className={`group relative flex items-center justify-center rounded-full bg-white text-[var(--ink)] shadow-[0_14px_32px_-12px_rgba(1,28,64,0.45)] ring-1 ring-[var(--line)] transition-colors hover:bg-[var(--ink)] hover:text-white cursor-pointer ${
+            small ? "h-11 w-11" : "h-12 w-12"
+          } ${focusRing}`}
+        >
+          <svg viewBox="0 0 48 48" className="absolute inset-0 h-full w-full -rotate-90" aria-hidden>
+            <circle cx="24" cy="24" r="22" fill="none" stroke="var(--line)" strokeWidth="2" />
+            <motion.circle
+              cx="24"
+              cy="24"
+              r="22"
+              fill="none"
+              stroke="var(--teal)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              style={{ pathLength: progress }}
+            />
+          </svg>
+          <ArrowUp
+            className="relative h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5"
+            aria-hidden
+          />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+}
+
+/* ---------- page title + URL, for the mobile dock's native share ---------- */
+
+function usePageInfo() {
+  const [page, setPage] = useState({ url: "", title: "" });
+  const pathname = usePathname();
+  useEffect(() => setPage({ url: window.location.href, title: document.title }), [pathname]);
+  return page;
+}
+
+/* ---------- social fan (desktop, bottom-left): the main button fans out our social profiles ---------- */
+
+const SOCIALS = [
+  {
+    name: "Facebook",
+    icon: faFacebookF,
+    href: "https://www.facebook.com/profile.php?id=61575340735142",
+    open: "translate-x-[75px]",
+    tone: "text-white",
+    bg: "#173e62",
+  },
+  {
+    name: "Instagram",
+    icon: faInstagram,
+    href: "https://www.instagram.com/bigwig.media.digital?igsh=ODhpeTJzcDRpa25q",
+    open: "translate-x-[55px] -translate-y-[55px]",
+    tone: "text-[#173e62]",
+    bg: "#fff",
+  },
+  {
+    name: "LinkedIn",
+    icon: faLinkedinIn,
+    href: "https://www.linkedin.com/company/bigwig-media-digital/",
+    open: "-translate-y-[75px]",
+    tone: "text-white",
+    bg: "#173e62",
+  },
+];
+
+function SocialFan() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative flex items-center justify-center">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-label={open ? "Hide our social profiles" : "Show our social profiles"}
+        className={`flex h-14 w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 cursor-pointer ${focusRing}`}
+        style={{ background: "linear-gradient(135deg,#173e62,#ccc)", color: "white" }}
+      >
+        <FontAwesomeIcon
+          icon={faShareNodes}
+          className={`text-[18px] transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+          aria-hidden
+        />
+      </button>
+
+      {SOCIALS.map((s) => (
+        <a
+          key={s.name}
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${s.name} (opens in a new tab)`}
+          tabIndex={open ? undefined : -1}
+          aria-hidden={!open}
+          className={`absolute flex h-11 w-11 items-center justify-center rounded-full shadow-lg transition-all duration-300 cursor-pointer ${s.tone} ${
+            open ? `${s.open} opacity-100` : "pointer-events-none opacity-0"
+          } ${focusRing}`}
+          style={{ background: s.bg }}
+        >
+          <FontAwesomeIcon icon={s.icon} className="text-[14px]" aria-hidden />
+        </a>
+      ))}
+    </div>
+  );
+}
+
+/* ---------- mobile dock: call, WhatsApp, share, and the primary "free quote" ---------- */
+
+function MobileDock() {
+  const { open } = useLeadPopup();
+  const page = usePageInfo();
+  const [canShare, setCanShare] = useState(false);
+  useEffect(() => setCanShare(typeof navigator !== "undefined" && "share" in navigator), []);
+
+  const share = async () => {
+    try {
+      await navigator.share({ title: page.title, url: page.url });
+    } catch {
+      /* dismissed */
+    }
+  };
+
+  const icon = `flex h-12 w-12 flex-none items-center justify-center rounded-full ${focusRing}`;
+
+  return (
+    <nav
+      aria-label="Quick contact"
+      className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden"
+    >
+      <div className="flex items-center gap-1.5 rounded-full bg-[var(--ink)] p-1.5 shadow-[0_20px_44px_-16px_rgba(1,28,64,0.7)] ring-1 ring-white/10">
+        <a href={PHONE_HREF} aria-label={`Call ${PHONE_DISPLAY}`} className={`${icon} bg-white/10 text-white`}>
+          <Phone className="h-5 w-5" aria-hidden />
+        </a>
+        <a
+          href={WHATSAPP_HREF}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp (opens in a new tab)"
+          style={{ backgroundColor: WHATSAPP_GREEN }}
+          className={`${icon} text-[var(--ink)]`}
+        >
+          <FontAwesomeIcon icon={faWhatsapp} className="text-[1.35rem]" aria-hidden />
+        </a>
+        {canShare && (
+          <button
+            type="button"
+            onClick={share}
+            aria-label="Share this page"
+            className={`${icon} bg-white/10 text-white cursor-pointer`}
+          >
+            <Share2 className="h-5 w-5" aria-hidden />
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => open("mobile-dock")}
+          className={`flex h-12 min-w-0 flex-1 items-center justify-between gap-2 rounded-full bg-[var(--cyan)] pl-5 pr-1.5 text-[0.95rem] font-semibold text-[var(--ink)] cursor-pointer ${focusRing}`}
+        >
+          <span className="truncate">Get a free quote</span>
+          <span
+            aria-hidden
+            className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[var(--ink)] text-[var(--cyan)]"
+          >
+            <ArrowUpRight className="h-4 w-4" />
+          </span>
+        </button>
+      </div>
+    </nav>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import useSubmitLead from "../../hooks/useSubmitLead";
+import RecaptchaNotice from "./RecaptchaNotice";
 import { trackLeadEvent } from "../../utils/leadTracking";
 import { focusRing } from "../ui";
 import CountrySelect, { countryByIso } from "./CountrySelect";
@@ -222,7 +223,7 @@ export default function EnquiryForm({
         </p>
       )}
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-start gap-3">
         <button
           type="submit"
           disabled={loading}
@@ -236,7 +237,7 @@ export default function EnquiryForm({
             <ArrowUpRight className="h-4 w-4" />
           </span>
         </button>
-        <p className="text-xs text-[var(--muted)]">Protected by reCAPTCHA.</p>
+        <RecaptchaNotice className="text-[var(--muted)]" />
       </div>
     </form>
   );

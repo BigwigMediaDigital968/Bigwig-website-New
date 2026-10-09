@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import ButtonFill from "./Button"; // using your existing design
 import useSubmitLead from "../hooks/useSubmitLead";
+import RecaptchaNotice from "./contact/RecaptchaNotice";
 import { trackLeadEvent } from "../utils/leadTracking";
 import logo from "../Assets/Bigwig_logo__final.png";
 
@@ -525,6 +526,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose, source = "popup"
                   {loading || submitting ? "Sending..." : "Submit Proposal"}
                 </button>
               )}
+              <RecaptchaNotice className="text-white/60" />
             </form>
           )}
 

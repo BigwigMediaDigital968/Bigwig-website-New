@@ -99,3 +99,11 @@ body {
     animation: none;
   }
 }
+
+/* ---------- reCAPTCHA badge ----------
+   Hidden so it doesn't collide with the floating buttons. Google allows this only because every lead form
+   shows the required attribution (components/contact/RecaptchaNotice.tsx). Use visibility, not display:none,
+   so reCAPTCHA keeps working. */
+.grecaptcha-badge {
+  visibility: hidden;
+}
