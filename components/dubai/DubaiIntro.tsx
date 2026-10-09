@@ -3,8 +3,8 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import teamImg from "../../Assets/Dubai/transformBuisness.jpg";
 import { fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
+import { dubaiPhotos } from "./photos";
 
 const strengths = [
   {
@@ -39,11 +39,10 @@ export default function DubaiIntro() {
         >
           <motion.div className="absolute inset-[-10%_0]" style={{ y: imageY }}>
             <Image
-              src={teamImg}
-              alt="A team planning a digital marketing campaign around a shared table"
+              src={dubaiPhotos.clientMeeting}
+              alt="Our team reviewing campaign results with clients in a high-rise office overlooking the city"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              placeholder="blur"
               className="object-cover"
             />
           </motion.div>
@@ -64,8 +63,8 @@ export default function DubaiIntro() {
             <p>
               At BigWig Media Digital, we believe every brand has the potential to shine in the digital world, and our
               mission is to make that happen. Recognized as one of the{" "}
-              <strong className="font-semibold text-[var(--ink)]">best digital marketing agencies in Dubai, UAE</strong>,
-              we deliver campaigns that truly make a difference.
+              <strong className="font-semibold text-[var(--ink)]">best digital marketing agencies in Dubai, UAE</strong>
+              , we deliver campaigns that truly make a difference.
             </p>
             <p>
               From startups to established companies, we design strategies that align with your unique goals. Our blend
@@ -112,14 +111,26 @@ export default function DubaiIntro() {
             <motion.li
               key={s.title}
               variants={fadeUp}
-              className="grid gap-4 rounded-[24px] bg-[var(--surface)] p-7 sm:grid-cols-[auto_1fr] sm:gap-6 md:p-8"
+              className="group relative isolate grid gap-4 overflow-hidden rounded-[24px] bg-[var(--surface)] p-7 sm:grid-cols-[auto_1fr] sm:gap-6 md:p-8"
             >
-              <span aria-hidden className="serif text-5xl leading-none text-[var(--teal)]">
+              {/* navy fill that sweeps in from the left on hover */}
+              <span
+                aria-hidden
+                className="absolute inset-0 -z-10 origin-left scale-x-0 bg-[var(--ink)] transition-transform duration-500 ease-out group-hover:scale-x-100 motion-reduce:transition-none"
+              />
+              <span
+                aria-hidden
+                className="serif text-5xl leading-none text-[var(--teal)] transition-[color,translate] duration-500 ease-out group-hover:translate-x-1 group-hover:text-[var(--cyan)] motion-reduce:transition-none"
+              >
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="text-xl font-semibold leading-snug tracking-tight">{s.title}</h3>
-                <p className="mt-2 leading-relaxed text-[var(--muted)]">{s.desc}</p>
+                <h3 className="text-xl font-semibold leading-snug tracking-tight transition-colors duration-500 group-hover:text-white">
+                  {s.title}
+                </h3>
+                <p className="mt-2 leading-relaxed text-[var(--muted)] transition-colors duration-500 group-hover:text-white/80">
+                  {s.desc}
+                </p>
               </div>
             </motion.li>
           ))}

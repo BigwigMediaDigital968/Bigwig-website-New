@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import DubaiClients from "../../../components/dubai/DubaiClients";
+import DubaiApproach from "../../../components/dubai/DubaiApproach";
 import DubaiHero from "../../../components/dubai/DubaiHero";
+import DubaiIndustries from "../../../components/dubai/DubaiIndustries";
 import DubaiIntro from "../../../components/dubai/DubaiIntro";
+import DubaiLocation from "../../../components/dubai/DubaiLocation";
 import DubaiServices from "../../../components/dubai/DubaiServices";
-import DubaiWhyUs from "../../../components/dubai/DubaiWhyUs";
+import ClientStrip from "../../../components/ui/ClientStrip";
+import { dubaiClients } from "@/data/clients";
 
 const title = "Digital Marketing Agency in Dubai UAE | Bigwig Media Digital";
 const description =
@@ -33,10 +36,14 @@ export default function DubaiPage() {
   return (
     <main>
       <DubaiHero />
-      <DubaiClients />
+      <ClientStrip clients={dubaiClients} />
       <DubaiIntro />
+      {/* again right under "why we're trusted" so the logos read as proof; the margin matches the panels' side gutter */}
+      <ClientStrip clients={dubaiClients} className="mb-2 md:mb-3" />
       <DubaiServices />
-      <DubaiWhyUs />
+      <DubaiApproach />
+      <DubaiIndustries />
+      <DubaiLocation />
     </main>
   );
 }
