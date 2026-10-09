@@ -93,7 +93,7 @@ export default function DubaiServices() {
                   )}
 
                   {/* header row: the button's hit area stretches across the whole header */}
-                  <div className="relative grid gap-3 py-7 transition-[padding] duration-500 ease-out motion-reduce:transition-none md:grid-cols-12 md:items-center md:gap-8 md:px-6 md:py-8 md:group-data-[open=true]:pt-12">
+                  <div className="relative grid gap-3 py-7 transition-[padding] duration-500 ease-out motion-reduce:transition-none max-md:group-data-[open=true]:px-5 md:grid-cols-12 md:items-center md:gap-8 md:px-6 md:py-8 md:group-data-[open=true]:pt-12">
                     <h3 className="md:col-span-5">
                       <button
                         type="button"
@@ -108,7 +108,8 @@ export default function DubaiServices() {
                     <p className="max-w-[62ch] pr-14 leading-relaxed text-[var(--muted)] transition-colors duration-500 group-data-[open=true]:text-white/85 md:col-span-6 md:pr-0">
                       {s.desc}
                     </p>
-                    <div className="absolute right-0 top-7 md:static md:col-span-1 md:flex md:justify-end">
+                    {/* click-through: taps on the icon land on the button's stretched hit area underneath */}
+                    <div className="pointer-events-none absolute right-0 top-7 transition-[right] duration-500 ease-out motion-reduce:transition-none max-md:group-data-[open=true]:right-5 md:static md:col-span-1 md:flex md:justify-end">
                       <span
                         aria-hidden
                         className="flex h-12 w-12 items-center justify-center rounded-full ring-1 ring-inset ring-[var(--line-strong)] transition-colors duration-300 group-data-[open=true]:bg-[var(--cyan)] group-data-[open=true]:text-[var(--ink)] group-data-[open=true]:ring-[var(--cyan)]"
@@ -127,7 +128,7 @@ export default function DubaiServices() {
                     className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-data-[open=true]:grid-rows-[1fr] motion-reduce:transition-none"
                   >
                     <div className="min-h-0 overflow-hidden">
-                      <div className="grid gap-8 pb-10 md:grid-cols-12 md:gap-8 md:px-6 md:pb-12">
+                      <div className="grid gap-8 px-5 pb-10 md:grid-cols-12 md:gap-8 md:px-6 md:pb-12">
                         {details && (
                           <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2 md:col-span-6 md:col-start-6">
                             {details.bullets.map((b) => (
