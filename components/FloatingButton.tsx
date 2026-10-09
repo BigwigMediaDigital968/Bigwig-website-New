@@ -13,6 +13,8 @@ import { EASE, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_HREF, focusRing } from "./ui"
 const WHATSAPP_GREEN = "#25D366";
 /** show "back to top" once the visitor is this far down the page */
 const SHOW_TOP_AFTER = 600;
+/** pages with their own desktop WhatsApp bar (lg+), where the global pill would be a duplicate */
+const OWN_WHATSAPP_BAR = ["/v2/digital-marketing-agency-dubai-uae"];
 
 /**
  * Site-wide floating actions.
@@ -51,7 +53,9 @@ export default function FloatingCTA() {
           target="_blank"
           rel="noopener noreferrer"
           style={{ backgroundColor: WHATSAPP_GREEN }}
-          className={`group flex h-14 items-center rounded-full pl-6 text-[var(--ink)] shadow-[0_18px_40px_-14px_rgba(1,28,64,0.55)] transition-[filter] duration-300 hover:brightness-105 ${focusRing}`}
+          className={`group flex h-14 items-center rounded-full pl-6 text-[var(--ink)] shadow-[0_18px_40px_-14px_rgba(1,28,64,0.55)] transition-[filter] duration-300 hover:brightness-105 ${
+            OWN_WHATSAPP_BAR.includes(pathname) ? "lg:hidden" : ""
+          } ${focusRing}`}
         >
           <span className="whitespace-nowrap text-[0.95rem] font-semibold">Chat with us</span>
           <span className="sr-only">on WhatsApp (opens in a new tab)</span>

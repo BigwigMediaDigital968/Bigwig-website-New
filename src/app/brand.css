@@ -15,6 +15,8 @@
   --cyan: #a7ebf2;
   --teal: #54acbf;
   --link: #26658c;
+  /* deepest navy, for full-bleed "night" sections (Dubai real-estate page) */
+  --night: #000b21;
 }
 
 html {
