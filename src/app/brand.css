@@ -80,6 +80,11 @@ body {
   animation: marquee 32s linear infinite;
 }
 
+/* scrolls the other way, for a second row under a first */
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
 .marquee-mask:hover .marquee,
 .marquee-mask:focus-within .marquee {
   animation-play-state: paused;
