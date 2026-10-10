@@ -49,7 +49,7 @@ export default function Sectors() {
                     sizes={i === 0 ? "(min-width: 1024px) 55vw, 100vw" : "(min-width: 1024px) 34vw, (min-width: 640px) 50vw, 100vw"}
                     className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-out)] group-hover:scale-[1.06] motion-reduce:transition-none"
                   />
-                  <span aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,28,64,0)_35%,rgba(1,28,64,0.8)_100%)]" />
+                  <span aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,28,64,0)_30%,rgba(1,28,64,0.55)_65%,rgba(1,28,64,0.92)_100%)]" />
                   <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-white md:p-6">
                     <span>
                       <span className="block text-lg font-semibold tracking-tight md:text-xl">{s.name}</span>
