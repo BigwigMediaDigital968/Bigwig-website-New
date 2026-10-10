@@ -3,10 +3,15 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { SectionHead, fadeUp, inView, stagger } from "../ui";
-import { reviews } from "./content";
+import type { Testimonial } from "@/data/homeData";
+import { reviews as dubaiReviews } from "./content";
 
 /** Real Google reviews: the first is featured large, the other two sit beside it. */
-export default function Reviews() {
+export default function Reviews({
+  reviews = dubaiReviews,
+}: {
+  reviews?: Testimonial[];
+}) {
   const [first, ...rest] = reviews;
   if (!first) return null;
 

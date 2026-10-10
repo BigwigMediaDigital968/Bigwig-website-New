@@ -2,21 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import {
-  MaskHeading,
-  DUBAI_PHONE_DISPLAY as PHONE_DISPLAY,
-  DUBAI_PHONE_HREF as PHONE_HREF,
-  fadeUp,
-  inView,
-  stagger,
-} from "../ui";
-import Planner from "./Planner";
-
-const youGet = [
-  "The channels worth your budget, and how to split it",
-  "Campaign and creative ideas for your projects",
-  "A 30-day launch plan with clear next steps",
-];
+import { MaskHeading, fadeUp, inView, stagger } from "../ui";
+import Planner, { usePlanner } from "./Planner";
 
 /**
  * A home for the planner: once straight after the hero and once to close the page. `id` names the copy for
@@ -33,6 +20,7 @@ export default function PlanSection({
   title: string;
   className?: string;
 }) {
+  const { city, youGet, phoneDisplay, phoneHref } = usePlanner().config;
   return (
     <section
       id={sectionId}
@@ -56,7 +44,7 @@ export default function PlanSection({
               variants={fadeUp}
               className="mt-5 max-w-md text-lg leading-relaxed text-[var(--muted)]"
             >
-              Four quick questions, about two minutes. Our Dubai team sends
+              Four quick questions, about two minutes. Our {city} team sends
               back:
             </motion.p>
             <motion.ul variants={fadeUp} className="mt-6 space-y-3.5">
@@ -78,10 +66,10 @@ export default function PlanSection({
             >
               Rather talk?{" "}
               <a
-                href={PHONE_HREF}
+                href={phoneHref}
                 className="font-semibold text-[var(--link)] hover:underline"
               >
-                Call {PHONE_DISPLAY}
+                Call {phoneDisplay}
               </a>
             </motion.p>
           </motion.div>

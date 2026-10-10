@@ -4,10 +4,14 @@ import { useState } from "react";
 import { AccordionItem } from "../ui/Accordion";
 import { SectionHead } from "../ui";
 import PlanButton from "./PlanButton";
-import { faqs } from "./content";
+import { faqs as dubaiFaqs } from "./content";
 
 /** The objections people raise before they enquire. The side card sends them to the planner, not away. */
-export default function Faq() {
+export default function Faq({
+  faqs = dubaiFaqs,
+}: {
+  faqs?: { q: string; a: string }[];
+}) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
