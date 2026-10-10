@@ -127,6 +127,17 @@ body {
   }
 }
 
+/* hover-to-play variant: rests at the top of the page and glides only while its .group is hovered or focused.
+   Declared after .site-scroll so it wins over the shorthand's play state. */
+.site-scroll-hover {
+  animation-play-state: paused;
+}
+
+.group:hover .site-scroll-hover,
+.group:focus-visible .site-scroll-hover {
+  animation-play-state: running;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .site-scroll {
     animation: none;
@@ -153,6 +164,39 @@ body {
   .feed-scroll {
     animation: none;
   }
+}
+
+/* ---------- range slider (Goa page's OTA calculator) ----------
+   The filled part of the track is drawn inline; this styles the thumb, with a large target and a focus ring. */
+.goa-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #fff;
+  border: 6px solid var(--ochre, #d9a441);
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.goa-range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #fff;
+  border: 6px solid var(--ochre, #d9a441);
+  cursor: pointer;
+}
+
+.goa-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.goa-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 /* ---------- reCAPTCHA badge ----------
