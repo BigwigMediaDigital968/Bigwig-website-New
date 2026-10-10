@@ -5,14 +5,13 @@ import { motion } from "framer-motion";
 import { SectionHead, fadeUp, inView, stagger } from "../ui";
 import PlanButton from "./PlanButton";
 import { BrowserFrame } from "./mocks";
-import { creatives, sites as dubaiSites, type Site } from "./content";
+import { creatives, sites } from "./content";
 
 /**
- * Proof in pictures: real websites (property ones on Dubai; hover one to scroll through the full page) and a
- * slow strip of CGI and social creatives. The strip pauses on hover (see .marquee in brand.css) and stops for
- * reduced motion.
+ * Proof in pictures: real property websites (hover one to scroll through the full page) and a slow strip of
+ * CGI and social creatives. The strip pauses on hover (see .marquee in brand.css) and stops for reduced motion.
  */
-export default function Work({ sites = dubaiSites }: { sites?: Site[] }) {
+export default function Work() {
   // doubled so the -50% marquee loop is seamless
   const strip = [...creatives, ...creatives];
 

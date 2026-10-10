@@ -30,11 +30,11 @@ export default function PlanButton({
   className?: string;
   children?: React.ReactNode;
 }) {
-  const { config, goTo } = usePlanner();
+  const { goTo } = usePlanner();
   return (
     <button
       type="button"
-      onClick={() => goTo({ industry, source: `${config.source}-${source}` })}
+      onClick={() => goTo({ industry, source: `dubai-v3-${source}` })}
       className={`group inline-flex h-12 items-center justify-center gap-3 rounded-full pl-6 pr-1.5 text-[0.95rem] font-semibold cursor-pointer transition-[color,background-color,transform] duration-200 ease-[var(--ease-out)] active:scale-[0.97] ${TONES[tone].btn} ${focusRing} ${className}`}
     >
       {children}

@@ -4,35 +4,19 @@ import { motion } from "framer-motion";
 import { Check, Minus } from "lucide-react";
 import { SectionHead, fadeUp, inView, stagger } from "../ui";
 import PlanButton from "./PlanButton";
-import { comparison as dubaiComparison } from "./content";
-
-type Row = { topic: string; portal: string; own: string };
+import { comparison } from "./content";
 
 /**
- * The problem, framed as a choice: the usual way (portal enquiries, on Dubai) vs a lead engine you own. A real
- * table, so it reads row by row for screen readers; on phones each row stacks into a block. `portal` is the
- * left column whatever it's called.
+ * The problem, framed as a choice: portal enquiries vs a lead engine you own. A real table, so it reads
+ * row by row for screen readers; on phones each row stacks into a block.
  */
-export default function OwnLeads({
-  lead = "Why portals aren’t enough",
-  title = "Portal leads are shared. Yours shouldn’t be.",
-  before = "Portal-only",
-  caption = "Portal-only enquiries compared with your own lead engine",
-  rows = dubaiComparison,
-}: {
-  lead?: string;
-  title?: string;
-  /** heading of the left column */
-  before?: string;
-  caption?: string;
-  rows?: Row[];
-}) {
+export default function OwnLeads() {
   return (
     <section className="py-20 md:py-28">
       <div className="wrap">
         <SectionHead
-          lead={lead}
-          title={title}
+          lead="Why portals aren’t enough"
+          title="Portal leads are shared. Yours shouldn’t be."
           actions={
             <PlanButton source="own-leads">Build my lead engine</PlanButton>
           }
@@ -43,14 +27,16 @@ export default function OwnLeads({
           variants={stagger(0.06)}
           className="mt-14 w-full border-collapse text-left md:mt-16"
         >
-          <caption className="sr-only">{caption}</caption>
+          <caption className="sr-only">
+            Portal-only enquiries compared with your own lead engine
+          </caption>
           <thead className="hidden md:table-header-group">
             <tr className="text-sm text-[var(--muted)]">
               <th scope="col" className="w-[22%] pb-4 font-medium">
                 <span className="sr-only">Topic</span>
               </th>
               <th scope="col" className="pb-4 pr-6 font-medium">
-                {before}
+                Portal-only
               </th>
               <th scope="col" className="pb-4 font-semibold text-[var(--ink)]">
                 Your own lead engine, built by us
@@ -58,7 +44,7 @@ export default function OwnLeads({
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
+            {comparison.map((row) => (
               <motion.tr
                 key={row.topic}
                 variants={fadeUp}
@@ -78,7 +64,7 @@ export default function OwnLeads({
                     <Minus className="h-3.5 w-3.5" />
                   </span>
                   <span>
-                    <span className="sr-only md:hidden">{before}: </span>
+                    <span className="sr-only md:hidden">Portal-only: </span>
                     {row.portal}
                   </span>
                 </td>

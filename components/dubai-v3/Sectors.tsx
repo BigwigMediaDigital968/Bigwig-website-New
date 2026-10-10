@@ -4,30 +4,22 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHead, fadeUp, focusRing, inView, stagger } from "../ui";
 import { usePlanner } from "./Planner";
-import { sectors as dubaiSectors } from "./content";
-
-type Sector = { id: string; name: string; desc: string };
+import { sectors } from "./content";
 
 /**
- * Everyone who isn't in property (on Dubai; on other city pages, every sector). Each sector is a button that
- * answers the planner's first question and takes the visitor straight to the second, so ids must match the
- * planner's industries.
+ * Everyone who isn't in property. Each sector is a button that answers the planner's first question and
+ * takes the visitor straight to the second.
  */
-export default function Sectors({
-  lead = "Beyond real estate",
-  title = "Not in property? The same lead engine works for you.",
-  sectors = dubaiSectors,
-}: {
-  lead?: string;
-  title?: string;
-  sectors?: Sector[];
-}) {
-  const { config, goTo } = usePlanner();
+export default function Sectors() {
+  const { goTo } = usePlanner();
 
   return (
     <section className="py-20 md:py-28">
       <div className="wrap">
-        <SectionHead lead={lead} title={title} />
+        <SectionHead
+          lead="Beyond real estate"
+          title="Not in property? The same lead engine works for you."
+        />
 
         <motion.ul
           {...inView}
@@ -43,10 +35,7 @@ export default function Sectors({
               <button
                 type="button"
                 onClick={() =>
-                  goTo({
-                    industry: s.id,
-                    source: `${config.source}-sector-${s.id}`,
-                  })
+                  goTo({ industry: s.id, source: `dubai-v3-sector-${s.id}` })
                 }
                 className={`group flex h-full w-full items-start justify-between gap-6 px-1 py-7 text-left cursor-pointer transition-colors duration-200 ease hover:bg-[var(--surface)] sm:px-6 ${focusRing}`}
               >

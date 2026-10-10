@@ -216,8 +216,7 @@ export default function Services() {
   );
 }
 
-/** One service: a picture of what it produces, then its name and a line on what it does. */
-export function Tile({
+function Tile({
   title,
   desc,
   className = "",

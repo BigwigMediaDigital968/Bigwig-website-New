@@ -2,16 +2,10 @@
 
 import { motion } from "framer-motion";
 import { SectionHead, fadeUp, inView, stagger } from "../ui";
-import { firstMonth as dubaiFirstMonth } from "./content";
-
-type Milestone = { when: string; title: string; desc: string };
+import { firstMonth } from "./content";
 
 /** What happens after someone sends the planner: a short, dated timeline that makes the next step concrete. */
-export default function FirstMonth({
-  firstMonth = dubaiFirstMonth,
-}: {
-  firstMonth?: Milestone[];
-}) {
+export default function FirstMonth() {
   return (
     <section className="px-2 py-2 md:px-3">
       <div className="mx-auto max-w-[1600px] rounded-[32px] bg-[var(--surface)] py-20 md:py-28">
