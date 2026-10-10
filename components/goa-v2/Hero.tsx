@@ -9,13 +9,17 @@ import { EASE, WhatsAppPill, fadeUp, focusRing, stagger } from "../ui";
 import { GOA_WHATSAPP_HREF, photos } from "./content";
 import { usePlan } from "./media";
 
+/** what we do, at a glance (the full list is in the services section below) */
+const heroServices = ["Google & Meta ads", "SEO & Google Maps", "Websites", "Social media", "Video & CGI", "Reputation"];
+
 const trusted = ["Homes and Land Goa", "Mondus Properties", "Granth Dream Homes", "Rehnoor Jewels", "Ethical Infrastructures"]
   .map((n) => clients.find((c) => c.name === n))
   .filter((c): c is (typeof clients)[number] => Boolean(c));
 
 /**
- * Full-bleed photographic hero in the site's rounded frame. The photo settles from a slight zoom on load,
- * then drifts and the copy fades as the page scrolls away. Copy sits bottom-left on a soft dark gradient.
+ * Full-bleed photographic hero in the site's rounded frame. The headline says what we do, and the service
+ * chips list it. The photo settles from a slight zoom on load, then drifts and the copy fades as the page
+ * scrolls away. Copy sits bottom-left on a soft dark gradient.
  */
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -60,16 +64,28 @@ export default function Hero() {
               </motion.p>
               <motion.h1
                 variants={fadeUp}
-                className="serif mt-4 max-w-[17ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.02] tracking-[-0.02em] [text-wrap:balance]"
+                className="serif mt-4 max-w-[19ch] text-[clamp(2.4rem,4.6vw,4.2rem)] leading-[1.03] tracking-[-0.02em] [text-wrap:balance]"
               >
-                Marketing for Goa, in season and out.
+                Ads, SEO, websites and social media for Goa businesses.
               </motion.h1>
               <motion.div variants={fadeUp} className="mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-                <p className="max-w-[46ch] text-lg leading-relaxed text-white/80">
-                  Direct bookings, enquiries and full tables for hotels, villas, cafés, real estate and
-                  every Goa business.
-                </p>
-                <div className="flex flex-wrap gap-3">
+                <div>
+                  <p className="max-w-[48ch] text-lg leading-relaxed text-white/85">
+                    The full-service digital team in Mapusa behind Goa’s stays, cafés, real estate and
+                    brands, from the first post to the booked table.
+                  </p>
+                  <ul aria-label="Our services" className="mt-5 flex max-w-[44rem] flex-wrap gap-2">
+                    {heroServices.map((s) => (
+                      <li
+                        key={s}
+                        className="rounded-full bg-white/12 px-3.5 py-1.5 text-sm font-medium text-white ring-1 ring-inset ring-white/25 backdrop-blur-md"
+                      >
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex flex-none flex-wrap gap-3">
                   <button
                     type="button"
                     onClick={() => toForm()}

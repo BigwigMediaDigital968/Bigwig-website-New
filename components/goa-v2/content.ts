@@ -20,6 +20,78 @@ export const photos = {
   church: { src: unsplash("1641230538352-c82768fa7db9", 1200), alt: "The white bell tower of Our Lady of the Immaculate Conception, Panjim" },
 } satisfies Record<string, Photo>;
 
+/* ---------- services ---------- */
+
+/** What the overlay on a service photo shows: the thing that service produces. */
+export type Proof =
+  | { kind: "ad"; brand: string; text: string; cta: string }
+  | { kind: "maps"; query: string; name: string; rating: string }
+  | { kind: "site"; url: string; cta: string }
+  | { kind: "reel"; views: string; caption: string }
+  | { kind: "shoot"; label: string }
+  | { kind: "review"; text: string };
+
+export type Service = { name: string; line: string; href: string; photo: Photo; proof: Proof };
+
+/** The six core services, each pictured in Goa with what it produces laid over the photo. */
+export const services: Service[] = [
+  {
+    name: "Google & Meta ads",
+    line: "Campaigns by market and language, paid for by the booking, not the click.",
+    href: "/services/performance-marketing",
+    photo: { src: unsplash("1580741186862-c5d0bf2aff33", 900), alt: "A beach resort with a jetty and palm trees in Goa" },
+    proof: { kind: "ad", brand: "Your stay", text: "Sea-view rooms for December. Book direct and save.", cta: "Book now" },
+  },
+  {
+    name: "SEO & Google Maps",
+    line: "First in the map pack when someone nearby searches for what you offer.",
+    href: "/services/search-engine-optimization",
+    photo: { src: unsplash("1560179406-1c6c60e0dc76", 900), alt: "Yellow umbrellas and loungers outside a beach shack" },
+    proof: { kind: "maps", query: "beach shack near Morjim", name: "Your shack", rating: "4.8" },
+  },
+  {
+    name: "Websites & booking pages",
+    line: "Fast sites with a booking engine, WhatsApp and every enquiry tracked.",
+    href: "/services/website-development-company-in-delhi",
+    photo: { src: unsplash("1653928359063-13eb336a4196", 900), alt: "A white Goan building with a red roof by the sea" },
+    proof: { kind: "site", url: "yourplace.com", cta: "Check availability" },
+  },
+  {
+    name: "Social media",
+    line: "Reels, posts and stories that make people plan their trip around you.",
+    href: "/services/social-media-marketing",
+    photo: { src: unsplash("1541738679621-172e4575a81d", 900), alt: "Palm trees leaning over a turquoise Goan bay" },
+    proof: { kind: "reel", views: "48.2K", caption: "Sunset at the shack" },
+  },
+  {
+    name: "Video shoots, CGI & AI ads",
+    line: "Shoots at your property and CGI that stop the scroll.",
+    href: "/services/video-shoot",
+    photo: { src: unsplash("1642516864959-0b3a40416c13", 900), alt: "A green Goan headland above a sandy bay" },
+    proof: { kind: "shoot", label: "Drone shoot, South Goa" },
+  },
+  {
+    name: "Reviews & reputation",
+    line: "More five-star Google reviews, and calm replies to the rest.",
+    href: "/services/online-reputation-management",
+    photo: { src: unsplash("1512343879784-a960bf40e7f2", 900), alt: "A turquoise bay below a palm-lined beach in Goa" },
+    proof: { kind: "review", text: "New 5-star review on Google" },
+  },
+];
+
+/** Everything else the same team does, so every service is on the page. */
+export const moreServices = [
+  { name: "Content marketing", href: "/services/content-marketing" },
+  { name: "Email marketing", href: "/services/email-marketing" },
+  { name: "Influencer marketing", href: "/services/influencer-marketing" },
+  { name: "Social media optimisation", href: "/services/social-media-optimization" },
+  { name: "Graphic design & video editing", href: "/services/graphic-designing" },
+  { name: "AI & CGI marketing", href: "/services/ai-cgi-marketing" },
+  { name: "Landing page optimisation", href: "/services/landing-page-optimization" },
+  { name: "Affiliate marketing", href: "/services/affiliate-marketing" },
+  { name: "Public relations", href: "/services/public-relations" },
+];
+
 /* ---------- sectors ---------- */
 
 export type Sector = { id: string; name: string; line: string; photo: Photo };
