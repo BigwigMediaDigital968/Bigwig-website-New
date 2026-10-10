@@ -45,6 +45,7 @@ export default function Sectors() {
                     alt={s.photo.alt}
                     fill
                     unoptimized
+                    loading="eager"
                     sizes={i === 0 ? "(min-width: 1024px) 55vw, 100vw" : "(min-width: 1024px) 34vw, (min-width: 640px) 50vw, 100vw"}
                     className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-out)] group-hover:scale-[1.06] motion-reduce:transition-none"
                   />
