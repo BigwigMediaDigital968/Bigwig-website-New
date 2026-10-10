@@ -133,6 +133,28 @@ body {
   }
 }
 
+/* ---------- vertical feed (a phone scrolling through posts, Bhopal page) ----------
+   The list is doubled, so moving it up by half loops seamlessly. */
+.feed-scroll {
+  animation: feed-scroll 45s linear infinite;
+}
+
+.feed-mask:hover .feed-scroll {
+  animation-play-state: paused;
+}
+
+@keyframes feed-scroll {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feed-scroll {
+    animation: none;
+  }
+}
+
 /* ---------- reCAPTCHA badge ----------
    Hidden so it doesn't collide with the floating buttons. Google allows this only because every lead form
    shows the required attribution (components/contact/RecaptchaNotice.tsx). Use visibility, not display:none,

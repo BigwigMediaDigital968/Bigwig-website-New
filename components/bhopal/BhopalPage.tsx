@@ -1,68 +1,29 @@
 "use client";
 
-import Faq from "../dubai-v3/Faq";
-import FirstMonth from "../dubai-v3/FirstMonth";
-import OwnLeads from "../dubai-v3/OwnLeads";
-import PlanBar from "../dubai-v3/PlanBar";
-import PlanSection from "../dubai-v3/PlanSection";
-import { PlannerProvider } from "../dubai-v3/Planner";
-import Reviews from "../dubai-v3/Reviews";
-import Sectors from "../dubai-v3/Sectors";
-import Work from "../dubai-v3/Work";
+import { BriefProvider } from "./Brief";
 import Hero from "./Hero";
-import Office from "./Office";
-import Services from "./Services";
-import {
-  comparison,
-  faqs,
-  firstMonth,
-  plannerConfig,
-  reviews,
-  sectors,
-  sites,
-} from "./content";
+import Local from "./Local";
+import { Faq, Process } from "./Sections";
+import Showcase from "./Showcase";
+import Studio from "./Studio";
 
 /**
- * The Bhopal lead page: the v3 Dubai layout (every section leads to the growth-plan planner) with Bhopal
- * content, INR budgets and the India number. There's no lead sector, so the Dubai property playbooks are left
- * out and every industry sits in one grid. A client component because the planner config carries icons.
+ * The Bhopal page, in the site's theme but with its own layout (not the Dubai one). The hero is a
+ * fill-in-the-blanks sentence that is also the lead form; the map and the FAQ's plan note read and write that
+ * sentence. Two showcases: a project viewer for websites and a phone feed for creatives. No closing band: the
+ * site footer right after already ends with a call to action. Every section is kept to about a screen's height.
  */
 export default function BhopalPage() {
   return (
-    <PlannerProvider config={plannerConfig}>
+    <BriefProvider>
       <main>
         <Hero />
-        <PlanSection
-          id="plan"
-          sectionId="plan"
-          title="Get a growth plan built for your business."
-        />
-        <Services />
-        <Work sites={sites} />
-        <OwnLeads
-          lead="Why boosting posts isn’t enough"
-          title="Likes don’t pay the rent. Customers do."
-          before="Boosted posts and a freelancer"
-          caption="Boosted posts and a freelancer compared with your own lead engine"
-          rows={comparison}
-        />
-        <Sectors
-          lead="Who we work with"
-          title="Whatever you sell, the plan starts with your customers."
-          sectors={sectors}
-        />
-        <Office />
-        <FirstMonth firstMonth={firstMonth} />
-        <Reviews reviews={reviews} />
-        <Faq faqs={faqs} />
-        <PlanSection
-          id="final"
-          sectionId="contact"
-          title="Ready when you are."
-          className="pb-3 md:pb-4"
-        />
+        <Showcase />
+        <Studio />
+        <Local />
+        <Process />
+        <Faq />
       </main>
-      <PlanBar />
-    </PlannerProvider>
+    </BriefProvider>
   );
 }

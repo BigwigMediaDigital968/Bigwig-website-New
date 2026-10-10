@@ -1,99 +1,88 @@
-// Copy and data for the Bhopal page. It reuses the v3 Dubai lead page's sections (components/dubai-v3) with
-// its own content. Unlike Dubai there's no lead sector: every kind of local business gets equal weight.
-import {
-  Briefcase,
-  Building2,
-  Factory,
-  GraduationCap,
-  Hotel,
-  ShoppingBag,
-  Sparkles,
-  Stethoscope,
-  Store,
-  UtensilsCrossed,
-} from "lucide-react";
+// Copy and data for the Bhopal page. Its own design (see BhopalPage): the visitor describes their business in
+// one sentence, and the rest of the page reacts to it. No lead sector: every kind of local business is equal.
+import type { StaticImageData } from "next/image";
 import { clients } from "@/data/clients";
 import { testimonials } from "@/data/homeData";
-import { PHONE_DISPLAY, PHONE_HREF, whatsappHref } from "../ui";
-import { creatives, type Industry, type Site } from "../dubai-v3/content";
-import type { PlannerConfig } from "../dubai-v3/Planner";
+import { whatsappHref } from "../ui";
+import cgiCoffee from "../../Assets/gallery/cgi1.png";
+import cgiInstagram from "../../Assets/gallery/cgi2.png";
+import cgiDonut from "../../Assets/gallery/cgi3.png";
+import cgiMeta from "../../Assets/gallery/cgi4.png";
+import cgiBerries from "../../Assets/gallery/ChatGPT Image Jun 3, 2025, 04_36_48 PM.png";
+import cgiShake from "../../Assets/gallery/ChatGPT Image Jun 3, 2025, 06_27_27 PM.png";
+import cgiChefs from "../../Assets/gallery/ChatGPT Image May 31, 2025, 02_57_46 PM.png";
+import postServices from "../../Assets/gallery/BigWig Static Post (4).png";
+import postViral from "../../Assets/gallery/BigWig Static Post (5).png";
 
 export const BHOPAL_WHATSAPP_HREF = whatsappHref(
   "Hi BigWig Media Digital! I'm interested in your digital marketing services in Bhopal.",
 );
 
-/* ---------- planner ---------- */
+/* ---------- the sentence ---------- */
 
-/** Every sector on equal footing; the planner lays more than three out two to a row. */
-export const industries: Industry[] = [
-  { id: "retail", label: "Shop or showroom", icon: Store },
-  { id: "healthcare", label: "Clinic or hospital", icon: Stethoscope },
-  { id: "education", label: "School or coaching", icon: GraduationCap },
-  { id: "food", label: "Restaurant or café", icon: UtensilsCrossed },
-  { id: "real-estate", label: "Real estate", icon: Building2 },
-  { id: "hospitality", label: "Hotel or events", icon: Hotel },
-  { id: "ecommerce", label: "Online store", icon: ShoppingBag },
-  { id: "manufacturing", label: "Manufacturing or B2B", icon: Factory },
-  { id: "services", label: "Professional services", icon: Briefcase },
-  { id: "other", label: "Something else", icon: Sparkles },
+/** `label` reads inside "I run …"; `search` is what a customer types into Google Maps. */
+export type Business = { id: string; label: string; search: string; noun: string };
+
+export const businesses: Business[] = [
+  { id: "shop", label: "a shop", search: "shop", noun: "shop" },
+  { id: "showroom", label: "a showroom", search: "showroom", noun: "showroom" },
+  { id: "clinic", label: "a clinic", search: "clinic", noun: "clinic" },
+  { id: "hospital", label: "a hospital", search: "hospital", noun: "hospital" },
+  { id: "school", label: "a school", search: "school", noun: "school" },
+  { id: "coaching", label: "a coaching institute", search: "coaching classes", noun: "institute" },
+  { id: "restaurant", label: "a restaurant", search: "restaurant", noun: "restaurant" },
+  { id: "cafe", label: "a café", search: "cafe", noun: "café" },
+  { id: "salon", label: "a salon", search: "salon", noun: "salon" },
+  { id: "gym", label: "a gym", search: "gym", noun: "gym" },
+  { id: "hotel", label: "a hotel", search: "hotel", noun: "hotel" },
+  { id: "real-estate", label: "a real estate firm", search: "property dealer", noun: "firm" },
+  { id: "ecommerce", label: "an online store", search: "online store", noun: "store" },
+  { id: "manufacturing", label: "a factory", search: "manufacturer", noun: "factory" },
+  { id: "services", label: "a professional firm", search: "consultant", noun: "firm" },
+  { id: "other", label: "a business", search: "business", noun: "business" },
 ];
 
-export const plannerConfig: PlannerConfig = {
-  city: "Bhopal",
-  source: "bhopal",
-  featured: industries,
-  others: [],
-  budgets: [
-    "Under ₹25,000",
-    "₹25,000 – ₹75,000",
-    "₹75,000 – ₹2 lakh",
-    "Over ₹2 lakh",
-    "Not sure yet",
-  ],
-  country: "in",
-  phonePlaceholder: "98765 43210",
-  whatsappHref: BHOPAL_WHATSAPP_HREF,
-  phoneDisplay: PHONE_DISPLAY,
-  phoneHref: PHONE_HREF,
-  youGet: [
-    "The channels worth your budget, and how to split it",
-    "Campaign and creative ideas for your business",
-    "A 30-day launch plan with clear next steps",
-  ],
-};
+/** Neighbourhoods, placed on the page's map. x/y are percentages of the map box (roughly, not to scale). */
+export type Area = { id: string; label: string; x: number; y: number };
 
-/* ---------- real work ---------- */
-
-/** Full-page screenshots in /public, one per sector, so no single industry leads. */
-export const sites: Site[] = [
-  {
-    name: "Rehnoor Jewels",
-    url: "rehnoorjewels.com",
-    src: "/rehnoor-jewels-showcase.png",
-    width: 1920,
-    height: 10892,
-    tag: "Jewellery e-commerce",
-  },
-  {
-    name: "Dr. Himanshu Verma",
-    url: "drhimanshuverma.com",
-    src: "/himanshu-verma.png",
-    width: 1920,
-    height: 10811,
-    tag: "Orthopaedic clinic",
-  },
-  {
-    name: "Global Technologies India",
-    url: "globaltechnologiesindia.com",
-    src: "/global-tech.png",
-    width: 1375,
-    height: 6621,
-    tag: "Industrial manufacturer",
-  },
+export const areas: Area[] = [
+  { id: "mp-nagar", label: "MP Nagar", x: 69, y: 50 },
+  { id: "arera", label: "Arera Colony", x: 62, y: 67 },
+  { id: "new-market", label: "New Market", x: 53, y: 57 },
+  { id: "old-bhopal", label: "Old Bhopal", x: 52, y: 29 },
+  { id: "kolar", label: "Kolar Road", x: 38, y: 86 },
+  { id: "hoshangabad", label: "Hoshangabad Road", x: 80, y: 80 },
+  { id: "bairagarh", label: "Bairagarh", x: 13, y: 21 },
+  { id: "indrapuri", label: "Indrapuri", x: 87, y: 36 },
+  { id: "shahpura", label: "Shahpura", x: 51, y: 79 },
+  { id: "ayodhya", label: "Ayodhya Bypass", x: 80, y: 15 },
 ];
 
-/** The hero's Instagram ad: a café shake, so with the jewellery site and clinic search the stage spans sectors. */
-export const heroAd = creatives[6].src;
+/** Wider reach, after the neighbourhoods in the sentence's "from people …" slot. */
+export const wider = [
+  { id: "bhopal", label: "all over Bhopal" },
+  { id: "mp", label: "across Madhya Pradesh" },
+  { id: "india", label: "all over India" },
+];
+
+/** `services` are names from the lead backend's service list (see contact/EnquiryForm). */
+export const wants = [
+  { id: "calls", label: "phone calls", services: ["Performance Marketing", "SEO"] },
+  { id: "walk-ins", label: "walk-ins", services: ["SEO", "Performance Marketing"] },
+  { id: "whatsapp", label: "WhatsApp enquiries", services: ["Performance Marketing"] },
+  { id: "orders", label: "online orders", services: ["Performance Marketing", "Website Development"] },
+  { id: "bookings", label: "bookings", services: ["Performance Marketing", "Website Development"] },
+  { id: "reviews", label: "Google reviews", services: ["ORM"] },
+  { id: "followers", label: "followers who buy", services: ["SMM", "SMO"] },
+];
+
+export const budgets = [
+  "under ₹25,000",
+  "₹25,000 to ₹75,000",
+  "₹75,000 to ₹2 lakh",
+  "over ₹2 lakh",
+  "not decided yet",
+];
 
 /** A mix of sectors for the hero's trust row. */
 const PICK_CLIENTS = [
@@ -104,128 +93,129 @@ const PICK_CLIENTS = [
   "Destiny by Numbers",
   "Integrated Lognet",
 ];
-export const heroClients = PICK_CLIENTS.map((n) =>
-  clients.find((c) => c.name === n),
-).filter((c): c is (typeof clients)[number] => Boolean(c));
+export const heroClients = PICK_CLIENTS.map((n) => clients.find((c) => c.name === n)).filter(
+  (c): c is (typeof clients)[number] => Boolean(c),
+);
 
-/* ---------- the usual way vs us ---------- */
+/* ---------- project viewer ---------- */
 
-export const comparison = [
+export type Project = {
+  id: string;
+  name: string;
+  kind: string;
+  did: string;
+  stat: string;
+  statLabel: string;
+  /** full-page screenshot in /public and its size, for the scrolling preview */
+  img: string;
+  width: number;
+  height: number;
+  url: string;
+  href: string;
+};
+
+/** Real sites and real numbers from the portfolio (src/app/portfolio/component/PortfolioGrid.tsx). */
+export const projects: Project[] = [
   {
-    topic: "Who runs it",
-    portal: "A freelancer juggling a dozen clients",
-    own: "One team: strategist, designer, ads and SEO",
+    id: "himanshu",
+    name: "Dr. Himanshu Verma",
+    kind: "Orthopaedic clinic",
+    did: "Website, appointment booking and SEO",
+    stat: "3×",
+    statLabel: "more appointments booked",
+    img: "/himanshu-verma.png",
+    width: 1920,
+    height: 10811,
+    url: "drhimanshuverma.com",
+    href: "https://www.drhimanshuverma.com/",
   },
   {
-    topic: "What you pay for",
-    portal: "Boosted posts, likes and followers",
-    own: "Enquiries, calls and walk-ins",
+    id: "rehnoor",
+    name: "Rehnoor Jewels",
+    kind: "Jewellery brand",
+    did: "E-commerce website and SEO",
+    stat: "380%",
+    statLabel: "more keyword visibility",
+    img: "/rehnoor-jewels-showcase.png",
+    width: 1920,
+    height: 10892,
+    url: "rehnoorjewels.com",
+    href: "https://www.rehnoorjewels.com/",
   },
   {
-    topic: "How you’re found",
-    portal: "Only by people who already know you",
-    own: "On Google Maps and search when Bhopal is looking",
+    id: "global-tech",
+    name: "Global Technologies India",
+    kind: "Industrial manufacturer",
+    did: "Corporate website and B2B lead generation",
+    stat: "320%",
+    statLabel: "more qualified B2B leads",
+    img: "/global-tech.png",
+    width: 1375,
+    height: 6621,
+    url: "globaltechnologiesindia.com",
+    href: "https://www.globaltechnologiesindia.com/",
   },
   {
-    topic: "What you see",
-    portal: "A screenshot, now and then",
-    own: "A monthly report in plain numbers",
+    id: "pearls",
+    name: "Pearls India",
+    kind: "Online store",
+    did: "SEO and content",
+    stat: "500+",
+    statLabel: "keywords on Google’s first page",
+    img: "/pearls-india-showcase.png",
+    width: 1588,
+    height: 8499,
+    url: "pearlsindia.co.in",
+    href: "https://pearlsindia.co.in/",
+  },
+  {
+    id: "destiny",
+    name: "Destiny By Numberrs",
+    kind: "Consultation practice",
+    did: "Brand website and lead generation",
+    stat: "4×",
+    statLabel: "more consultations booked",
+    img: "/destiny-by-number.png",
+    width: 1588,
+    height: 7211,
+    url: "destinybynumberrs.com",
+    href: "https://www.destinybynumberrs.com/",
   },
 ];
 
-/* ---------- sectors ---------- */
+/* ---------- studio: what we make ---------- */
 
-/** ids match the planner's industries, so each one answers its first question. */
-export const sectors = [
-  {
-    id: "retail",
-    name: "Shops & showrooms",
-    desc: "Footfall from Google Maps and local ads.",
-  },
-  {
-    id: "healthcare",
-    name: "Clinics & hospitals",
-    desc: "Booked appointments, not just profile views.",
-  },
-  {
-    id: "education",
-    name: "Schools & coaching",
-    desc: "Admissions and demo-class enquiries every session.",
-  },
-  {
-    id: "food",
-    name: "Restaurants & cafés",
-    desc: "Reservations, orders and reviews that bring people back.",
-  },
-  {
-    id: "real-estate",
-    name: "Real estate",
-    desc: "Site-visit leads for projects and plots.",
-  },
-  {
-    id: "hospitality",
-    name: "Hotels & events",
-    desc: "Direct bookings and wedding and event enquiries.",
-  },
-  {
-    id: "ecommerce",
-    name: "Online stores",
-    desc: "Sales across India, tracked from click to checkout.",
-  },
-  {
-    id: "manufacturing",
-    name: "Manufacturing & B2B",
-    desc: "Dealer, distributor and bulk-order enquiries.",
-  },
-  {
-    id: "other",
-    name: "Something else?",
-    desc: "Tell us what you sell and we’ll plan it.",
-  },
+export type Post = { src: StaticImageData; alt: string; caption: string };
+
+/** CGI, AI and social creatives from the studio, shown as a phone feed. */
+export const posts: Post[] = [
+  { src: cgiDonut, alt: "CGI ad: a giant glazed doughnut kiosk on a city street", caption: "CGI launch ad" },
+  { src: postViral, alt: "Social post: we can make your brand go viral", caption: "Brand post" },
+  { src: cgiShake, alt: "AI product shot: a strawberry milkshake splash", caption: "AI product shot" },
+  { src: cgiInstagram, alt: "CGI ad: a building shaped like the Instagram logo", caption: "CGI concept" },
+  { src: cgiChefs, alt: "CGI ad: miniature chefs making latte art in a giant cup", caption: "CGI café ad" },
+  { src: postServices, alt: "Social post listing services in bold type", caption: "Offer post" },
+  { src: cgiBerries, alt: "AI product shot: berries bursting over a meringue", caption: "AI product shot" },
+  { src: cgiCoffee, alt: "CGI ad: a coffee cup the size of a café on a cobbled square", caption: "CGI street ad" },
+  { src: cgiMeta, alt: "CGI ad: a 3D character flying with a drone", caption: "3D character ad" },
 ];
 
-/* ---------- local ---------- */
-
-/** Bhopal neighbourhoods we plan local campaigns around. */
-export const areas = [
-  "MP Nagar",
-  "Arera Colony",
-  "New Market",
-  "Kolar Road",
-  "Hoshangabad Road",
-  "Bairagarh",
-  "Indrapuri",
-  "Shahpura",
-  "Ayodhya Bypass",
-  "Old Bhopal",
+export const services = [
+  { name: "Google Maps & local SEO", does: "Show up first when people nearby search." },
+  { name: "Google & Meta ads", does: "Campaigns paid for by the lead, not the like." },
+  { name: "Websites & landing pages", does: "Fast pages with call, WhatsApp and a form." },
+  { name: "Social media", does: "Reels, posts and festive campaigns, DMs answered." },
+  { name: "CGI, AI ads & video", does: "Product shots and films that stop the scroll." },
+  { name: "Reviews & reputation", does: "More five-star reviews, calm replies to the rest." },
 ];
 
-/** Other cities we reach from Bhopal. */
-export const nearby = ["Indore", "Jabalpur", "Gwalior", "Sagar", "Vidisha"];
+/* ---------- after you send it ---------- */
 
-/* ---------- first 30 days ---------- */
-
-export const firstMonth = [
-  {
-    when: "Day 1",
-    title: "Strategy call",
-    desc: "We learn your business, customers, budget and what has and hasn’t worked. In person at our Bhopal office if you like.",
-  },
-  {
-    when: "Week 1",
-    title: "Audit and plan",
-    desc: "Competitor, keyword and audience research turned into a written plan.",
-  },
-  {
-    when: "Week 2",
-    title: "Launch",
-    desc: "Pages, tracking and campaigns go live, with WhatsApp lead alerts set up.",
-  },
-  {
-    when: "Day 30",
-    title: "First report",
-    desc: "Leads, cost per lead and what we’ll change next month, in plain numbers.",
-  },
+export const steps = [
+  { title: "We call you", desc: "About your business, customers and what you’ve tried. Or visit the office." },
+  { title: "You get a written plan", desc: "Channels, costs and what we expect them to bring." },
+  { title: "We go live", desc: "Listings, pages and ads launched, enquiries sent to your WhatsApp." },
+  { title: "You see the numbers", desc: "A monthly report: calls, enquiries and cost per lead." },
 ];
 
 /* ---------- FAQ ---------- */
@@ -233,28 +223,27 @@ export const firstMonth = [
 export const faqs = [
   {
     q: "How much does digital marketing cost in Bhopal?",
-    a: "It depends on how many channels you need and how much you want to spend on ads. Most plans combine a monthly management fee with an ad budget paid directly to Google or Meta. Tell us your budget in the planner and we’ll build the plan around it.",
+    a: "It depends on the channels and how much you spend on ads. Most plans are a monthly fee plus an ad budget you pay to Google or Meta directly. Pick your budget in the sentence at the top and we’ll plan around it.",
   },
   {
     q: "Do you work with my kind of business?",
-    a: "Very likely. We work with shops, clinics, schools and coaching institutes, restaurants, real estate, hotels, online stores, manufacturers and professional services. The plan starts from your customers, not a fixed package.",
+    a: "Very likely. We work with shops, clinics, schools and coaching institutes, restaurants, salons, gyms, hotels, real estate, online stores, manufacturers and professional firms.",
   },
   {
-    q: "Can we meet you in person?",
-    a: "Yes. Our Bhopal office is at Idgah Hills, and we’re happy to meet there or at your business. Most day-to-day work happens on WhatsApp and calls.",
+    q: "Can we meet in person?",
+    a: "Yes. Our office is at Idgah Hills, and we’re happy to meet there or at your business. Day to day, most work happens over WhatsApp and calls.",
   },
   {
-    q: "How soon will we start getting leads?",
-    a: "Paid campaigns usually start bringing in enquiries within the first weeks after launch. SEO and Google Maps rankings take longer, typically three to six months, but those leads keep coming without paying per click.",
+    q: "How soon will the phone ring?",
+    a: "Ads usually bring enquiries within the first weeks. Google Maps and SEO rankings take three to six months to build, but then keep bringing customers without paying per click.",
   },
   {
     q: "Can you reach customers outside Bhopal?",
-    a: "Yes. We target by area, so a campaign can stay within a few kilometres of your store or reach Indore, the rest of Madhya Pradesh or all of India.",
+    a: "Yes. Campaigns can stay within a few kilometres of your door, cover Indore and the rest of Madhya Pradesh, or reach all of India.",
   },
 ];
 
-/** Real Google reviews from the site's testimonial data, picked to cover leads, local SEO and social. */
-const PICK = ["Manjot Singh", "Aparajita Pandey", "Chanchal Sikha"];
-export const reviews = PICK.map((n) =>
-  testimonials.find((t) => t.name === n),
-).filter((t): t is (typeof testimonials)[number] => Boolean(t));
+/** Every real Google review from the site's testimonial data, the lead-generation one first. */
+export const reviews = [...testimonials].sort(
+  (a, b) => Number(b.name === "Manjot Singh") - Number(a.name === "Manjot Singh"),
+);

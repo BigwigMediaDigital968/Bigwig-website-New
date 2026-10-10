@@ -1,220 +1,292 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import {
-  EASE,
-  EASE_IN_OUT,
-  EASE_OUT,
-  WhatsAppPill,
-  fadeUp,
-  focusRing,
-  stagger,
-} from "../ui";
-import PlanButton from "../dubai-v3/PlanButton";
-import {
-  BrowserFrame,
-  LeadToast,
-  PhoneAd,
-  SearchCard,
-} from "../dubai-v3/mocks";
-import { BHOPAL_WHATSAPP_HREF, heroAd, heroClients, sites } from "./content";
-
-const lines = [
-  "Ads, SEO, websites",
-  "and social media",
-  "that grow Bhopal",
-  "businesses.",
-];
-
-const services = [
-  "Google & Meta ads",
-  "SEO & Google Maps",
-  "Websites",
-  "Social media",
-  "CGI & video",
-  "Reputation",
-];
+import { useEffect, useId, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, Check, ChevronDown, MapPin, Search, Star } from "lucide-react";
+import useSubmitLead from "../../hooks/useSubmitLead";
+import { trackLeadEvent } from "../../utils/leadTracking";
+import RecaptchaNotice from "../contact/RecaptchaNotice";
+import { EASE_OUT, PHONE_DISPLAY, PHONE_HREF, WhatsAppPill, focusRing } from "../ui";
+import { reachOptions, useBrief, useBriefLabels } from "./Brief";
+import { Lakes } from "./Local";
+import { BHOPAL_WHATSAPP_HREF, areas, budgets, businesses, heroClients, wants, wider } from "./content";
 
 /**
- * Light hero, same composition as the Dubai v3 hero. The stage deliberately mixes sectors (a jewellery store's
- * site, a café's Instagram ad, a clinic's Google listing) so the page reads as "any local business", then the
- * WhatsApp lead they all produce. Mocks are em-sized off the stage's container width, so it scales as one.
+ * The hero is the form. The visitor finishes a sentence about their business (each blank is a native select),
+ * and a Google Maps preview beside it shows their listing climbing to the top of the search they described.
+ * "Make my free plan" reveals a second sentence for contact details.
  */
 export default function Hero() {
+  const { brief, set, formRef } = useBrief();
+  const { business } = useBriefLabels();
+  const { submitLead, loading } = useSubmitLead();
+  const [stage, setStage] = useState<"brief" | "contact" | "done">("brief");
+  const [contact, setContact] = useState({ name: "", phone: "", email: "" });
+  const [errors, setErrors] = useState<Partial<Record<keyof typeof contact, string>>>({});
+  const [status, setStatus] = useState("");
+  const [doneName, setDoneName] = useState("");
+  const nameRef = useRef<HTMLInputElement>(null);
+  const doneRef = useRef<HTMLHeadingElement>(null);
+  const uid = useId();
   const reduce = useReducedMotion();
-  const site = sites[0];
 
-  const land = (delay: number) => ({
-    initial: reduce
-      ? { opacity: 0 }
-      : { opacity: 0, transform: "translateY(24px)" },
-    animate: { opacity: 1, transform: "translateY(0px)" },
-    transition: { duration: 0.8, delay, ease: EASE },
-  });
+  useEffect(() => {
+    if (stage === "contact") nameRef.current?.focus({ preventScroll: true });
+    if (stage === "done") doneRef.current?.focus({ preventScroll: true });
+  }, [stage]);
+
+  const validate = () => {
+    const next: typeof errors = {};
+    if (!contact.name.trim()) next.name = "Add your name.";
+    if (contact.phone.replace(/\D/g, "").length !== 10) next.phone = "Add a 10-digit mobile number.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email)) next.email = "Add a valid email address.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (stage === "brief") {
+      trackLeadEvent("lead_cta_click", "bhopal-make-plan");
+      setStage("contact");
+      return;
+    }
+    setStatus("");
+    if (!validate()) return;
+    const want = wants.find((w) => w.id === brief.want) ?? wants[0];
+    const reach = reachOptions.find((r) => r.id === brief.area)?.label ?? brief.area;
+    const result = await submitLead({
+      name: contact.name.trim(),
+      email: contact.email.trim(),
+      phone: `+91${contact.phone.replace(/\D/g, "")}`,
+      services: want.services,
+      message: [
+        "Bhopal growth plan request",
+        `I run ${business.label} and want more ${want.label} from people ${reach}.`,
+        `Monthly budget: ${brief.budget}`,
+      ].join("\n"),
+    });
+    if (!result.ok) {
+      setStatus(result.message);
+      return;
+    }
+    trackLeadEvent("lead_submitted", "bhopal-sentence");
+    setDoneName(contact.name.trim().split(/\s+/)[0]);
+    setStage("done");
+  };
+
+  const errorList = Object.values(errors).filter(Boolean);
 
   return (
-    <section
-      id="hero"
-      className="relative isolate overflow-hidden pb-14 pt-8 md:pb-20 md:pt-14"
-    >
+    <section className="relative isolate overflow-hidden pb-12 pt-8 md:pb-16 md:pt-12">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_55%_at_78%_38%,rgba(167,235,242,0.75),transparent_70%),radial-gradient(ellipse_30%_40%_at_10%_90%,rgba(84,172,191,0.14),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_40%_50%_at_85%_30%,rgba(167,235,242,0.6),transparent_70%)]"
       />
-
-      <div className="wrap grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-        <motion.div
-          className="min-w-0 lg:col-span-5"
-          initial="hidden"
-          animate="show"
-          variants={stagger(0.08, 0.1)}
-        >
-          <motion.p
-            variants={fadeUp}
-            className="text-[0.95rem] font-medium text-[var(--link)]"
-          >
-            Digital marketing agency in Bhopal
-          </motion.p>
-          <h1 className="mt-4 text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-[3.25rem] lg:text-[clamp(2.6rem,3.7vw,3.6rem)]">
-            {lines.map((l) => (
-              <span
-                key={l}
-                className="-mb-[0.14em] block overflow-hidden pb-[0.14em]"
-              >
-                <motion.span
-                  className="block"
-                  variants={{
-                    hidden: { transform: "translateY(105%)" },
-                    show: {
-                      transform: "translateY(0%)",
-                      transition: { duration: 0.9, ease: EASE_IN_OUT },
-                    },
-                  }}
-                >
-                  {l}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 max-w-[46ch] text-lg leading-relaxed text-[var(--muted)]"
-          >
-            A full-service marketing team with an office in Bhopal, for shops,
-            clinics, schools, restaurants and every business that wants more
-            customers calling.
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
-            <PlanButton source="hero">Get my free growth plan</PlanButton>
-            <WhatsAppPill href={BHOPAL_WHATSAPP_HREF} />
-          </motion.div>
-          <motion.ul
-            variants={fadeUp}
-            aria-label="Our services"
-            className="mt-10 flex max-w-lg flex-wrap gap-2"
-          >
-            {services.map((s) => (
-              <li
-                key={s}
-                className="rounded-full bg-[var(--surface)] px-3.5 py-1.5 text-sm font-medium ring-1 ring-inset ring-[var(--line)]"
-              >
-                {s}
-              </li>
-            ))}
-          </motion.ul>
-        </motion.div>
-
-        {/* creative stage */}
-        <div className="@container min-w-0 lg:col-span-7">
-          <p className="sr-only">
-            Examples of our work: the {site.name} website we built, an
-            Instagram ad for a café, a Google search result for a clinic and
-            the WhatsApp lead alert they lead to.
+      <div className="wrap grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
+        <div className="min-w-0 lg:col-span-7">
+          <h1 className="h-display max-w-[16ch]">Digital marketing agency in Bhopal</h1>
+          <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-[var(--muted)]">
+            Ads, Google Maps, websites and social media for every kind of local business, run by
+            a team with an office in the city.
           </p>
-          <div className="relative aspect-[6/5] text-[2.5cqw] lg:text-[1.95cqw]">
-            <motion.div
-              className="absolute left-0 top-[5%] w-[72%]"
-              {...land(0.35)}
-            >
-              <Tag>Website design</Tag>
-              <BrowserFrame
-                url={site.url}
-                src={site.src}
-                width={site.width}
-                height={site.height}
-                scrollTo="-55%"
-                sizes="(min-width: 1024px) 40vw, 72vw"
-              />
-            </motion.div>
 
-            <motion.div
-              className="absolute right-0 top-[11%] z-10 w-[31%]"
-              {...land(0.55)}
-            >
-              <Tag>Instagram ads</Tag>
-              <PhoneAd
-                img={heroAd}
-                brand="Lakeside Café"
-                caption="New summer shakes are here. Show this post for 20% off."
-                cta="Get directions"
-              />
-            </motion.div>
+          <form
+            ref={(el) => {
+              formRef.current = el;
+            }}
+            id="plan"
+            tabIndex={-1}
+            onSubmit={submit}
+            noValidate
+            aria-labelledby={`${uid}-title`}
+            className="mt-7 scroll-mt-28 rounded-[24px] bg-[var(--surface)] p-5 shadow-[0_30px_60px_-36px_rgba(1,28,64,0.4)] ring-1 ring-[var(--line)] focus:outline-none sm:p-7"
+          >
+            <h2 id={`${uid}-title`} className="text-sm font-semibold text-[var(--link)]">
+              Your free growth plan
+            </h2>
+            <AnimatePresence mode="wait" initial={false}>
+              {stage === "done" ? (
+                <motion.div
+                  key="done"
+                  role="status"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.25, ease: EASE_OUT }}
+                  className="mt-3"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[var(--cyan)]">
+                      <Check className="h-5 w-5" aria-hidden />
+                    </span>
+                    <h3
+                      ref={doneRef}
+                      tabIndex={-1}
+                      className="text-xl font-semibold leading-snug tracking-tight focus:outline-none sm:text-2xl"
+                    >
+                      Thanks, {doneName}. Your plan for {business.label} is on its way.
+                    </h3>
+                  </div>
+                  <p className="mt-3 leading-relaxed text-[var(--muted)]">
+                    Our Bhopal team will reach out on WhatsApp or email shortly.
+                  </p>
+                  <WhatsAppPill href={BHOPAL_WHATSAPP_HREF} className="mt-5">
+                    Talk to us now
+                  </WhatsAppPill>
+                </motion.div>
+              ) : (
+                <motion.div key="form" exit={{ opacity: 0, transition: { duration: 0.12 } }}>
+                  <fieldset>
+                    <legend className="sr-only">About your business</legend>
+                    <p className="mt-3 text-[clamp(1.3rem,2vw,1.65rem)] font-medium leading-[1.6] tracking-[-0.015em]">
+                      I run{" "}
+                      <Slot
+                        label="Your business"
+                        value={brief.business}
+                        onChange={(v) => set({ business: v })}
+                        groups={[{ options: businesses.map((b) => ({ id: b.id, label: b.label })) }]}
+                      />{" "}
+                      and want more{" "}
+                      <Slot
+                        label="What you want more of"
+                        value={brief.want}
+                        onChange={(v) => set({ want: v })}
+                        groups={[{ options: wants }]}
+                      />{" "}
+                      from people{" "}
+                      <Slot
+                        label="Where your customers are"
+                        value={brief.area}
+                        onChange={(v) => set({ area: v })}
+                        groups={[
+                          { label: "In Bhopal", options: reachOptions.slice(0, areas.length) },
+                          { label: "Wider", options: reachOptions.slice(areas.length, areas.length + wider.length) },
+                        ]}
+                      />
+                      . My monthly budget is{" "}
+                      <Slot
+                        label="Monthly budget"
+                        value={brief.budget}
+                        onChange={(v) => set({ budget: v })}
+                        groups={[{ options: budgets.map((b) => ({ id: b, label: b })) }]}
+                      />
+                      .
+                    </p>
+                  </fieldset>
 
-            <motion.div
-              className="absolute bottom-[3%] left-[5%] z-10 w-[50%]"
-              {...land(0.7)}
-            >
-              <Tag>Google Ads &amp; SEO</Tag>
-              <SearchCard
-                query="dental clinic near me bhopal"
-                url="smilecare.in › arera-colony"
-                title="Dental Clinic in Arera Colony | Book an Appointment"
-                desc="Painless treatment, evening slots and free first check-up. Call or book online today."
-              />
-            </motion.div>
+                  <AnimatePresence initial={false}>
+                    {stage === "contact" && (
+                      <motion.fieldset
+                        key="contact"
+                        initial={reduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                        animate={reduce ? { opacity: 1 } : { opacity: 1, height: "auto" }}
+                        transition={{ duration: 0.3, ease: EASE_OUT }}
+                        className="overflow-hidden"
+                      >
+                        <legend className="sr-only">Where to send your plan</legend>
+                        <p className="mt-4 border-t border-[var(--line)] pt-4 text-[clamp(1.3rem,2vw,1.65rem)] font-medium leading-[1.6] tracking-[-0.015em]">
+                          Send it to{" "}
+                          <Blank
+                            ref={nameRef}
+                            label="Your name"
+                            placeholder="your name"
+                            autoComplete="name"
+                            width="7.5em"
+                            value={contact.name}
+                            error={errors.name}
+                            onChange={(v) => setContact((c) => ({ ...c, name: v }))}
+                          />{" "}
+                          on WhatsApp at +91{" "}
+                          <Blank
+                            label="Mobile number"
+                            placeholder="98765 43210"
+                            autoComplete="tel-national"
+                            type="tel"
+                            inputMode="tel"
+                            width="6.6em"
+                            value={contact.phone}
+                            error={errors.phone}
+                            onChange={(v) => setContact((c) => ({ ...c, phone: v }))}
+                          />{" "}
+                          and email{" "}
+                          <Blank
+                            label="Email"
+                            placeholder="you@business.com"
+                            autoComplete="email"
+                            type="email"
+                            width="10em"
+                            value={contact.email}
+                            error={errors.email}
+                            onChange={(v) => setContact((c) => ({ ...c, email: v }))}
+                          />
+                          .
+                        </p>
+                      </motion.fieldset>
+                    )}
+                  </AnimatePresence>
 
-            {/* the payoff: the lead arrives last */}
-            <motion.div
-              className="absolute bottom-[12%] right-[2%] z-20 w-[44%]"
-              initial={
-                reduce
-                  ? { opacity: 0 }
-                  : { opacity: 0, transform: "translateY(16px) scale(0.96)" }
-              }
-              animate={{ opacity: 1, transform: "translateY(0px) scale(1)" }}
-              transition={{ duration: 0.5, delay: 1.5, ease: EASE_OUT }}
-            >
-              <LeadToast
-                title="New enquiry from Google"
-                body="Wants an appointment this Saturday. Tap to reply."
-              />
-            </motion.div>
-          </div>
+                  {(errorList.length > 0 || status) && (
+                    <ul role="alert" className="mt-3 space-y-0.5 text-sm font-medium text-red-700">
+                      {errorList.map((e) => (
+                        <li key={e}>{e}</li>
+                      ))}
+                      {status && <li>{status}</li>}
+                    </ul>
+                  )}
+
+                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className={`group inline-flex h-12 items-center gap-3 rounded-full bg-[var(--ink)] pl-6 pr-1.5 text-[0.95rem] font-semibold text-white transition-[background-color,transform] duration-200 ease-[var(--ease-out)] hover:bg-[var(--ink-2)] active:scale-[0.97] disabled:cursor-wait disabled:opacity-70 cursor-pointer ${focusRing}`}
+                    >
+                      {stage === "brief" ? "Make my free plan" : loading ? "Sending…" : "Send me my plan"}
+                      <span
+                        aria-hidden
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--cyan)] text-[var(--ink)] transition-transform duration-300 group-hover:rotate-45"
+                      >
+                        <ArrowUpRight className="h-4 w-4" />
+                      </span>
+                    </button>
+                    <p className="text-sm text-[var(--muted)]">
+                      {stage === "brief" ? (
+                        "Change any underlined words."
+                      ) : (
+                        <>
+                          Or call{" "}
+                          <a href={PHONE_HREF} className="font-semibold text-[var(--link)] hover:underline">
+                            {PHONE_DISPLAY}
+                          </a>
+                        </>
+                      )}
+                    </p>
+                  </div>
+                  {stage === "contact" && <RecaptchaNotice className="mt-3 text-[var(--muted)]" />}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </form>
+        </div>
+
+        <div className="min-w-0 lg:col-span-5">
+          <MapsPreview />
         </div>
       </div>
 
       {/* clients */}
-      <div className="wrap mt-14 md:mt-20">
-        <div className="flex flex-col gap-6 border-t border-[var(--line)] pt-8 md:flex-row md:items-center md:gap-10">
-          <p className="flex-none text-sm text-[var(--muted)]">
-            Trusted by growing businesses across India
-          </p>
-          <ul className="flex flex-wrap items-center gap-x-10 gap-y-6">
+      <div className="wrap mt-12">
+        <div className="flex flex-col gap-5 border-t border-[var(--line)] pt-7 md:flex-row md:items-center md:gap-10">
+          <p className="flex-none text-sm text-[var(--muted)]">Trusted by businesses across India</p>
+          <ul className="flex flex-wrap items-center gap-x-9 gap-y-5">
             {heroClients.map((c) => (
               <li key={c.name}>
-                {/* muted at rest; full ink with a small lift on hover (kept monochrome: some logos are white artwork) */}
-                <a
-                  href={c.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group block rounded-md ${focusRing}`}
-                >
+                <a href={c.link} target="_blank" rel="noopener noreferrer" className={`group block rounded-md ${focusRing}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={c.img}
                     alt={c.name}
                     loading="lazy"
-                    className="h-8 w-auto max-w-[140px] object-contain opacity-50 brightness-0 transition-[opacity,transform] duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100 md:h-9"
+                    className="h-7 w-auto max-w-[130px] object-contain opacity-50 brightness-0 transition-opacity duration-300 group-hover:opacity-100 md:h-8"
                   />
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>
@@ -227,14 +299,181 @@ export default function Hero() {
   );
 }
 
-/** Names the service a mock stands for. */
-function Tag({ children }: { children: React.ReactNode }) {
+/* ---------- a blank in the sentence: a native select, sized to its chosen words ---------- */
+
+type Option = { id: string; label: string };
+
+function Slot({
+  label,
+  value,
+  onChange,
+  groups,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  groups: { label?: string; options: Option[] }[];
+}) {
+  const current = groups.flatMap((g) => g.options).find((o) => o.id === value)?.label ?? "";
+  const options = (opts: Option[]) =>
+    opts.map((o) => (
+      <option key={o.id} value={o.id}>
+        {o.label}
+      </option>
+    ));
   return (
-    <span
-      aria-hidden
-      className="absolute -top-[1.1em] left-[1em] z-10 whitespace-nowrap rounded-full bg-[var(--ink)] px-[0.9em] py-[0.35em] text-[0.68em] font-semibold text-white shadow-[0_0.6em_1.2em_-0.6em_rgba(1,28,64,0.6)]"
-    >
-      {children}
+    // the chosen words are plain text (so they sit on the sentence's baseline and set the width); a transparent
+    // native select covers them and does the choosing
+    <span className="relative inline-block max-w-full rounded-md align-baseline hover:bg-[var(--cyan)]/30 has-[:focus-visible]:bg-[var(--cyan)]/50 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--link)]">
+      {/* no overflow clipping here: it would move the blank's baseline to its bottom edge */}
+      <span aria-hidden className="block whitespace-nowrap pr-[0.95em] font-semibold text-[var(--link)]">
+        {current}
+      </span>
+      <select
+        aria-label={label}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="absolute inset-0 h-full w-full cursor-pointer appearance-none opacity-0 [font-size:1rem]"
+      >
+        {groups.map((g, i) =>
+          g.label ? (
+            <optgroup key={i} label={g.label}>
+              {options(g.options)}
+            </optgroup>
+          ) : (
+            options(g.options)
+          ),
+        )}
+      </select>
+      <ChevronDown aria-hidden className="pointer-events-none absolute bottom-[0.45em] right-[0.1em] h-[0.6em] w-[0.6em] text-[var(--link)]" />
+      <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-[0.12em] h-[2px] rounded-full bg-[var(--teal)]" />
     </span>
+  );
+}
+
+/* ---------- a blank for typing ---------- */
+
+function Blank({
+  ref,
+  label,
+  width,
+  error,
+  value,
+  onChange,
+  ...rest
+}: {
+  ref?: React.Ref<HTMLInputElement>;
+  label: string;
+  width: string;
+  error?: string;
+  value: string;
+  onChange: (v: string) => void;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value" | "width">) {
+  return (
+    <input
+      ref={ref}
+      aria-label={label}
+      aria-invalid={!!error}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      style={{ width }}
+      className="inline-block max-w-full rounded-md border-0 border-b-2 border-[var(--teal)] bg-transparent p-0 align-baseline font-semibold text-[var(--ink)] [font-size:inherit] [letter-spacing:inherit] placeholder:font-medium placeholder:text-[var(--muted)]/50 focus:bg-[var(--cyan)]/30 focus:outline-none aria-[invalid=true]:border-red-500"
+      {...rest}
+    />
+  );
+}
+
+/* ---------- the Google Maps preview ---------- */
+
+/**
+ * The search the visitor described, with their listing as the result we aim for. It starts third and climbs
+ * to first, replaying whenever the sentence changes: the page's one choreographed moment.
+ */
+function MapsPreview() {
+  const { brief } = useBrief();
+  const { business, query, area } = useBriefLabels();
+  const reduce = useReducedMotion();
+  const [top, setTop] = useState(!!reduce);
+
+  useEffect(() => {
+    if (reduce) return setTop(true);
+    setTop(false);
+    const t = window.setTimeout(() => setTop(true), 700);
+    return () => window.clearTimeout(t);
+  }, [brief.business, brief.area, reduce]);
+
+  const rows = top ? ["you", "a", "b"] : ["a", "b", "you"];
+  const pin = area ? { x: area.x, y: area.y } : { x: 62, y: 52 };
+
+  return (
+    <figure className="mx-auto max-w-md overflow-hidden rounded-[24px] bg-[var(--surface)] shadow-[0_40px_80px_-40px_rgba(1,28,64,0.45)] ring-1 ring-[var(--line)] lg:max-w-none">
+      <figcaption className="sr-only">
+        A Google Maps search for “{query}”, with your {business.noun} as the first result.
+      </figcaption>
+      <div aria-hidden>
+        <div className="m-3 flex items-center gap-3 rounded-full bg-[var(--paper)] px-4 py-2.5 text-[0.95rem]">
+          <Search className="h-4 w-4 flex-none text-[var(--muted)]" />
+          <span className="truncate">{query}</span>
+        </div>
+        <div className="relative mx-3 hidden aspect-[5/2] overflow-hidden rounded-2xl bg-[#e5eef1] sm:block">
+          <Lakes className="absolute inset-0 h-full w-full" lake="#bfdde6" road="rgba(1,28,64,0.08)" />
+          <motion.span
+            className="absolute -translate-x-1/2 -translate-y-full"
+            animate={{ left: `${pin.x}%`, top: `${pin.y}%` }}
+            transition={{ duration: reduce ? 0 : 0.5, ease: EASE_OUT }}
+          >
+            <MapPin className="h-7 w-7 fill-[var(--cyan)] text-[var(--ink)]" />
+          </motion.span>
+          <span className="absolute left-[30%] top-[70%] h-2.5 w-2.5 rounded-full bg-[var(--muted)]/40" />
+          <span className="absolute left-[80%] top-[28%] h-2.5 w-2.5 rounded-full bg-[var(--muted)]/40" />
+        </div>
+        <ol className="px-3 pb-2">
+          {rows.map((r) => (
+            <motion.li
+              key={r}
+              layout={!reduce}
+              transition={{ type: "spring", duration: 0.6, bounce: 0.15 }}
+              className="border-b border-[var(--line)] px-2 py-3 last:border-0"
+            >
+              {r === "you" ? (
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--ink)] text-xs font-bold text-[var(--cyan)]">
+                    {top ? 1 : 3}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-[#1a0dab]">Your {business.noun}</p>
+                    <p className="mt-0.5 flex items-center gap-1.5 text-sm">
+                      4.9
+                      <span className="flex text-[#FBBC04]">
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <Star key={i} className="h-3.5 w-3.5 fill-current" />
+                        ))}
+                      </span>
+                      <span className="text-[var(--muted)]">(214)</span>
+                      <span className="text-[var(--muted)]">· Open now</span>
+                    </p>
+                    <div className="mt-2 flex gap-2 text-xs font-semibold text-[#1a73e8]">
+                      {["Call", "WhatsApp", "Directions"].map((b) => (
+                        <span key={b} className="rounded-full px-3 py-1 ring-1 ring-[var(--line)]">
+                          {b}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-start gap-3 opacity-60">
+                  <span className="mt-0.5 h-6 w-6 flex-none rounded-full bg-[var(--paper)]" />
+                  <div className="flex-1 space-y-2 pt-1">
+                    <span className={`block h-3 rounded-full bg-[var(--line-strong)] ${r === "a" ? "w-2/5" : "w-1/2"}`} />
+                    <span className="block h-2.5 w-1/3 rounded-full bg-[var(--line)]" />
+                  </div>
+                </div>
+              )}
+            </motion.li>
+          ))}
+        </ol>
+      </div>
+    </figure>
   );
 }
