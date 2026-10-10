@@ -224,8 +224,9 @@ export function SectionHead({
   );
 }
 
-/** wa.me link to our number with a pre-filled message. */
-export const whatsappHref = (message: string) => `https://wa.me/+919685892813?text=${encodeURIComponent(message)}`;
+/** wa.me link to our number (India by default) with a pre-filled message. */
+export const whatsappHref = (message: string, number = "919685892813") =>
+  `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
 export const WHATSAPP_HREF = whatsappHref(
   "Hi BigWig Media Digital! I'm interested in your services and would like to discuss more.",
@@ -274,4 +275,20 @@ export function WhatsAppPill({
 }
 export const PHONE_DISPLAY = "+91 96858 92813";
 export const PHONE_HREF = "tel:+919685892813";
+/** UAE number, used on the Dubai pages for calls and WhatsApp. */
+export const DUBAI_PHONE_NUMBER = "971588486324";
+export const DUBAI_PHONE_DISPLAY = "+971 58 848 6324";
+export const DUBAI_PHONE_HREF = `tel:+${DUBAI_PHONE_NUMBER}`;
+/** Call and WhatsApp links for site-wide UI: the UAE number on Dubai routes, India elsewhere. */
+export const contactFor = (pathname: string | null) =>
+  pathname?.includes("dubai")
+    ? {
+        phoneDisplay: DUBAI_PHONE_DISPLAY,
+        phoneHref: DUBAI_PHONE_HREF,
+        whatsapp: whatsappHref(
+          "Hi BigWig Media Digital! I'm interested in your digital marketing services in Dubai, UAE.",
+          DUBAI_PHONE_NUMBER,
+        ),
+      }
+    : { phoneDisplay: PHONE_DISPLAY, phoneHref: PHONE_HREF, whatsapp: WHATSAPP_HREF };
 export const EMAIL = "support@bigwigmediadigital.com";

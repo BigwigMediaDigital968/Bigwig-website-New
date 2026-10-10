@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { Mail, Phone } from "lucide-react";
 import {
   EMAIL,
-  PHONE_DISPLAY,
-  PHONE_HREF,
+  DUBAI_PHONE_DISPLAY as PHONE_DISPLAY,
+  DUBAI_PHONE_HREF as PHONE_HREF,
   PillLead,
   WhatsAppPill,
   fadeUp,

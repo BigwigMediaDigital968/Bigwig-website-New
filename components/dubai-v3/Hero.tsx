@@ -9,6 +9,7 @@ import {
   EASE_OUT,
   WhatsAppPill,
   fadeUp,
+  focusRing,
   stagger,
 } from "../ui";
 import PlanButton from "./PlanButton";
@@ -200,13 +201,22 @@ export default function Hero() {
           <ul className="flex flex-wrap items-center gap-x-10 gap-y-6">
             {dubaiClients.map((c) => (
               <li key={c.name}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={c.img}
-                  alt={c.name}
-                  loading="lazy"
-                  className="h-8 w-auto max-w-[140px] object-contain opacity-60 brightness-0 md:h-9"
-                />
+                {/* muted at rest; full ink with a small lift on hover (kept monochrome: some logos are white artwork) */}
+                <a
+                  href={c.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group block rounded-md ${focusRing}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={c.img}
+                    alt={c.name}
+                    loading="lazy"
+                    className="h-8 w-auto max-w-[140px] object-contain opacity-50 brightness-0 transition-[opacity,transform] duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100 md:h-9"
+                  />
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
               </li>
             ))}
           </ul>

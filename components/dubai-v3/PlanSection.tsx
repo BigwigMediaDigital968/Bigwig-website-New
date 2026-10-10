@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import {
   MaskHeading,
-  PHONE_DISPLAY,
-  PHONE_HREF,
+  DUBAI_PHONE_DISPLAY as PHONE_DISPLAY,
+  DUBAI_PHONE_HREF as PHONE_HREF,
   fadeUp,
   inView,
   stagger,

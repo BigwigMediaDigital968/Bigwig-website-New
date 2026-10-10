@@ -12,7 +12,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF, PillLead, WhatsAppPill, fadeUp, inView, maskUp, stagger } from "../ui";
+import { usePathname } from "next/navigation";
+import { EMAIL, PHONE_DISPLAY, PHONE_HREF, PillLead, WhatsAppPill, contactFor, fadeUp, inView, maskUp, stagger } from "../ui";
 
 const HEADLINE = "Ready to grow your brand online?";
 
@@ -66,6 +67,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { whatsapp } = contactFor(usePathname());
 
   return (
     <footer className="mt-24 px-2 md:mt-32 md:px-3">
@@ -96,7 +98,7 @@ export default function Footer() {
               <PillLead source="footer" tone="cyan">
                 Get a free strategy session
               </PillLead>
-              <WhatsAppPill dark />
+              <WhatsAppPill href={whatsapp} dark />
             </motion.div>
           </motion.div>
 

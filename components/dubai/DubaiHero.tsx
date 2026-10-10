@@ -3,13 +3,13 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { EASE, PillLink, WhatsAppPill, fadeUp, maskUp, stagger, whatsappHref } from "../ui";
+import { DUBAI_PHONE_NUMBER, EASE, PillLink, WhatsAppPill, fadeUp, maskUp, stagger, whatsappHref } from "../ui";
 import EnquiryForm from "../contact/EnquiryForm";
 import { dubaiPhotos } from "./photos";
 
 const WHATSAPP_MESSAGE = "Hi BigWig Media Digital! I'm interested in your digital marketing services in Dubai, UAE.";
 /** WhatsApp chat link used across the Dubai pages. */
-export const DUBAI_WHATSAPP_HREF = whatsappHref(WHATSAPP_MESSAGE);
+export const DUBAI_WHATSAPP_HREF = whatsappHref(WHATSAPP_MESSAGE, DUBAI_PHONE_NUMBER);
 
 const facts = [
   { value: "8+", label: "Years in digital marketing" },

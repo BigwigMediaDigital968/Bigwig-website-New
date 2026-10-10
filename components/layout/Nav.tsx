@@ -8,7 +8,7 @@ import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { services } from "@/data/homeData";
 import { useLeadPopup } from "../LeadPopup";
-import { EASE, EMAIL, PHONE_DISPLAY, PHONE_HREF, stagger } from "../ui";
+import { EASE, EMAIL, contactFor, stagger } from "../ui";
 
 const itemIn: Variants = {
   hidden: { opacity: 0, y: 10 },
@@ -57,6 +57,7 @@ const OVERLAY_PATHS = [
 export default function Nav() {
   const pathname = usePathname() ?? "/";
   const overlay = OVERLAY_PATHS.includes(pathname);
+  const { phoneDisplay: PHONE_DISPLAY, phoneHref: PHONE_HREF } = contactFor(pathname);
   const isActive = (slug: string) => pathname === slug || pathname.startsWith(`${slug}/`);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);

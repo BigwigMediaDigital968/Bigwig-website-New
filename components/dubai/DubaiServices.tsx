@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, Plus } from "lucide-react";
 import { dubaiServices } from "@/data/dubaiData";
-import { PillLead, SectionHead, WhatsAppPill, fadeUp, inView, stagger, whatsappHref } from "../ui";
+import { DUBAI_PHONE_NUMBER, PillLead, SectionHead, WhatsAppPill, fadeUp, inView, stagger, whatsappHref } from "../ui";
 import { MuseumOfTheFutureLine, PalmJumeirahLine } from "./Landmarks";
 import { serviceDetails } from "./content";
 import { servicePreviews } from "./photos";
@@ -145,7 +145,7 @@ export default function DubaiServices() {
                           </PillLead>
                           <WhatsAppPill
                             dark
-                            href={whatsappHref(`Hi BigWig Media Digital! I'm interested in ${s.title} in Dubai, UAE.`)}
+                            href={whatsappHref(`Hi BigWig Media Digital! I'm interested in ${s.title} in Dubai, UAE.`, DUBAI_PHONE_NUMBER)}
                           />
                         </div>
                       </div>

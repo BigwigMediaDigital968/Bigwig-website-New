@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faInstagram, faLinkedinIn, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { useLeadPopup } from "./LeadPopup";
-import { EASE, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_HREF, focusRing } from "./ui";
+import { EASE, contactFor, focusRing } from "./ui";
 
 const WHATSAPP_GREEN = "#25D366";
 /** show "back to top" once the visitor is this far down the page */
@@ -25,6 +25,7 @@ const OWN_WHATSAPP_BAR = ["/v2/digital-marketing-agency-dubai-uae"];
 export default function FloatingCTA() {
   const pathname = usePathname() ?? "/";
   const { scrollY, scrollYProgress } = useScroll();
+  const { whatsapp } = contactFor(pathname);
   const [showTop, setShowTop] = useState(false);
   useMotionValueEvent(scrollY, "change", (y) => setShowTop(y > SHOW_TOP_AFTER));
 
@@ -49,7 +50,7 @@ export default function FloatingCTA() {
           <BackToTop show={showTop} progress={scrollYProgress} onClick={toTop} />
         </div>
         <a
-          href={WHATSAPP_HREF}
+          href={whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           style={{ backgroundColor: WHATSAPP_GREEN }}
@@ -211,6 +212,7 @@ function SocialFan() {
 function MobileDock() {
   const { open } = useLeadPopup();
   const page = usePageInfo();
+  const { phoneDisplay, phoneHref, whatsapp } = contactFor(usePathname());
   const [canShare, setCanShare] = useState(false);
   useEffect(() => setCanShare(typeof navigator !== "undefined" && "share" in navigator), []);
 
@@ -230,11 +232,11 @@ function MobileDock() {
       className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden"
     >
       <div className="flex items-center gap-1.5 rounded-full bg-[var(--ink)] p-1.5 shadow-[0_20px_44px_-16px_rgba(1,28,64,0.7)] ring-1 ring-white/10">
-        <a href={PHONE_HREF} aria-label={`Call ${PHONE_DISPLAY}`} className={`${icon} bg-white/10 text-white`}>
+        <a href={phoneHref} aria-label={`Call ${phoneDisplay}`} className={`${icon} bg-white/10 text-white`}>
           <Phone className="h-5 w-5" aria-hidden />
         </a>
         <a
-          href={WHATSAPP_HREF}
+          href={whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp (opens in a new tab)"
