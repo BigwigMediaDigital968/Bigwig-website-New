@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { ArrowUp, ArrowUpRight, Phone, Share2 } from "lucide-react";
@@ -43,30 +43,39 @@ export default function FloatingCTA() {
         <SocialFan />
       </div>
 
-      {/* anchored to the bottom, so the WhatsApp pill stays put when back-to-top appears above it */}
-      <div className="fixed bottom-6 right-6 z-50 hidden flex-col items-end gap-3 md:flex">
-        {/* centred over the pill's WhatsApp icon */}
-        <div className="flex w-14 justify-center">
-          <BackToTop show={showTop} progress={scrollYProgress} onClick={toTop} />
-        </div>
+      {/* WhatsApp above back-to-top; the back-to-top slot is always reserved so WhatsApp never jumps */}
+      <div className="fixed bottom-6 right-6 z-50 hidden w-14 flex-col items-center gap-3 md:flex">
         <a
           href={whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           style={{ backgroundColor: WHATSAPP_GREEN }}
-          className={`group flex h-14 items-center rounded-full pl-6 text-[var(--ink)] shadow-[0_18px_40px_-14px_rgba(1,28,64,0.55)] transition-[filter] duration-300 hover:brightness-105 ${
+          className={`group relative flex h-14 w-14 items-center justify-center rounded-full text-[var(--ink)] shadow-[0_18px_40px_-14px_rgba(1,28,64,0.55)] transition-[filter] duration-300 hover:brightness-105 ${
             OWN_WHATSAPP_BAR.includes(pathname) ? "lg:hidden" : ""
           } ${focusRing}`}
         >
-          <span className="whitespace-nowrap text-[0.95rem] font-semibold">Chat with us</span>
-          <span className="sr-only">on WhatsApp (opens in a new tab)</span>
-          <span aria-hidden className="flex h-14 w-14 flex-none items-center justify-center">
-            <FontAwesomeIcon
-              icon={faWhatsapp}
-              className="text-[1.6rem] transition-transform duration-300 group-hover:scale-110"
-            />
-          </span>
+          <span className="sr-only">Chat with us on WhatsApp (opens in a new tab)</span>
+          <FontAwesomeIcon
+            icon={faWhatsapp}
+            aria-hidden
+            className="text-[1.6rem] transition-transform duration-300 group-hover:scale-110"
+          />
+          {/* always-on chat bubble above the button; its tail points down at it. Part of the link, so it's clickable too */}
+          <motion.span
+            aria-hidden
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.35, delay: 1, ease: EASE }}
+            style={{ transformOrigin: "bottom right" }}
+            className="absolute bottom-full right-0 mb-3 whitespace-nowrap rounded-2xl rounded-br-md bg-white px-4 py-2.5 text-sm font-semibold text-[var(--ink)] shadow-[0_14px_32px_-12px_rgba(1,28,64,0.45)] ring-1 ring-[var(--line)]"
+          >
+            Chat with us 👋
+            <span className="absolute -bottom-1.5 right-5 h-3 w-3 rotate-45 bg-white ring-1 ring-[var(--line)] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
+          </motion.span>
         </a>
+        <div className="flex h-12 w-14 justify-center">
+          <BackToTop show={showTop} progress={scrollYProgress} onClick={toTop} />
+        </div>
       </div>
 
       {/* ================= MOBILE ================= */}
@@ -169,24 +178,50 @@ const SOCIALS = [
 
 function SocialFan() {
   const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // collapse on a click/tap outside or Escape while open
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <div className="relative flex items-center justify-center">
+    <div
+      ref={ref}
+      // collapse once focus leaves the fan (tabbing away, or clicking elsewhere)
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
+      }}
+      className="relative flex items-center justify-center"
+    >
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-label={open ? "Hide our social profiles" : "Show our social profiles"}
-        className={`flex h-14 w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 cursor-pointer ${focusRing}`}
+        className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-full shadow-xl transition-transform duration-200 ease-[var(--ease-out)] active:scale-[0.94] cursor-pointer ${focusRing}`}
         style={{ background: "linear-gradient(135deg,#173e62,#ccc)", color: "white" }}
       >
         <FontAwesomeIcon
           icon={faShareNodes}
-          className={`text-[18px] transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+          className={`text-[18px] transition-transform duration-300 ease-[var(--ease-out)] ${open ? "rotate-[135deg]" : ""}`}
           aria-hidden
         />
       </button>
 
-      {SOCIALS.map((s) => (
+      {SOCIALS.map((s, i) => (
         <a
           key={s.name}
           href={s.href}
@@ -195,10 +230,16 @@ function SocialFan() {
           aria-label={`${s.name} (opens in a new tab)`}
           tabIndex={open ? undefined : -1}
           aria-hidden={!open}
-          className={`absolute flex h-11 w-11 items-center justify-center rounded-full shadow-lg transition-all duration-300 cursor-pointer ${s.tone} ${
-            open ? `${s.open} opacity-100` : "pointer-events-none opacity-0"
+          className={`absolute flex h-11 w-11 items-center justify-center rounded-full shadow-lg transition-[transform,opacity] cursor-pointer ${s.tone} ${
+            open
+              ? `${s.open} scale-100 opacity-100 duration-[350ms] ease-[var(--ease-out)]`
+              : "pointer-events-none scale-50 opacity-0 duration-200 ease-in"
           } ${focusRing}`}
-          style={{ background: s.bg }}
+          // open: fan out one after another; close: fold back in reverse, a little faster
+          style={{
+            background: s.bg,
+            transitionDelay: `${(open ? i : SOCIALS.length - 1 - i) * (open ? 45 : 30)}ms`,
+          }}
         >
           <FontAwesomeIcon icon={s.icon} className="text-[14px]" aria-hidden />
         </a>
