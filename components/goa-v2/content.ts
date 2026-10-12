@@ -181,8 +181,8 @@ export type Work = {
 
 /** Real sites and numbers from the portfolio (src/app/portfolio/component/PortfolioGrid.tsx). */
 export const work: Work[] = [
-  { id: "mondus", name: "Mondus Properties", kind: "Luxury real estate", stat: "3×", statLabel: "qualified property leads", img: "/mondus-webpage.png", width: 1920, height: 14611, href: "https://www.mondusproperties.ae/" },
-  { id: "crownpoint", name: "Crownpoint Estates", kind: "Luxury real estate", stat: "420%", statLabel: "growth in local search visibility", img: "/crownpoint-estates-leads.png", width: 1920, height: 12291, href: "https://www.crownpointestates.com/" },
+  { id: "rphrealty", name: "RPH Realty", kind: "Luxury real estate", stat: "3×", statLabel: "qualified property leads", img: "/portfolio/rphrealty.webp", width: 1920, height: 14611, href: "https://www.rphrealty.com/" },
+  { id: "homesandlandgoa", name: "Homes And Land Goa", kind: "Luxury real estate", stat: "3×", statLabel: "qualified property leads", img: "/portfolio/homesandlandgoa.webp", width: 1920, height: 14611, href: "https://homesandlandgoa.com/" },
   { id: "himanshu", name: "Dr. Himanshu Verma", kind: "Orthopaedic clinic", stat: "3×", statLabel: "more appointments booked", img: "/himanshu-verma.png", width: 1920, height: 10811, href: "https://www.drhimanshuverma.com/" },
   { id: "rehnoor", name: "Rehnoor Jewels", kind: "Jewellery brand", stat: "380%", statLabel: "more keyword visibility", img: "/rehnoor-jewels-showcase.png", width: 1920, height: 10892, href: "https://www.rehnoorjewels.com/" },
   { id: "ethical", name: "Ethical Infrastructures", kind: "Real estate developer", stat: "300%+", statLabel: "qualified property enquiries", img: "/ethical-infrastructures-showcase.png", width: 1588, height: 7903, href: "https://www.ethicalinfrastructures.com/" },

@@ -43,10 +43,18 @@ export const sites: Site[] = [
     height: 14611,
     tag: "Dubai real estate",
   },
+  // {
+  //   name: "Crownpoint Estates",
+  //   url: "crownpointestates.com",
+  //   src: "/crownpoint-estates-leads.png",
+  //   width: 1920,
+  //   height: 12291,
+  //   tag: "Real estate lead site",
+  // },public/portfolio/fortuneasia.webp
   {
-    name: "Crownpoint Estates",
-    url: "crownpointestates.com",
-    src: "/crownpoint-estates-leads.png",
+    name: "Fortune Asia",
+    url: "fortuneasia.ae",
+    src: "/portfolio/fortuneasia.webp",
     width: 1920,
     height: 12291,
     tag: "Real estate lead site",
