@@ -82,18 +82,23 @@ export default function ClientWall() {
 }
 
 function Tile({ client }: { client: Client }) {
+  // square logos from public/clients-logo carry their own even padding, so they fill the tile's height;
+  // the rest are bare logos, capped so they don't grow too large
   const logo = (
     <img
-      src={client.img}
+      src={client.tile ?? client.img}
       alt={client.name}
       loading="lazy"
       draggable={false}
-      className="max-h-10 w-full max-w-[160px] object-contain transition-transform duration-500 group-hover:scale-105 sm:max-h-14 md:max-h-16"
+      className={`object-contain transition-transform duration-500 group-hover:scale-105 ${
+        client.tile ? "h-full w-full" : "max-h-10 w-full max-w-[160px] sm:max-h-14 md:max-h-16"
+      }`}
     />
   );
+  const pad = client.tile ? "p-1 sm:p-3 md:p-4" : "p-4 sm:p-8 md:p-10";
 
   if (!client.link) {
-    return <div className="flex aspect-[4/3] items-center justify-center p-4 sm:p-8 md:p-10">{logo}</div>;
+    return <div className={`flex aspect-[4/3] items-center justify-center ${pad}`}>{logo}</div>;
   }
 
   return (
@@ -101,7 +106,7 @@ function Tile({ client }: { client: Client }) {
       href={client.link}
       target="_blank"
       rel="nofollow noopener noreferrer"
-      className={`group relative flex aspect-[4/3] items-center justify-center p-4 transition-colors duration-300 sm:p-8 md:p-10 ${focusRing} focus-visible:-outline-offset-2 ${
+      className={`group relative flex aspect-[4/3] items-center justify-center transition-colors duration-300 ${pad} ${focusRing} focus-visible:-outline-offset-2 ${
         client.square === "navy" ? "hover:bg-[var(--ink-2)]" : "hover:bg-[var(--paper)]"
       }`}
     >

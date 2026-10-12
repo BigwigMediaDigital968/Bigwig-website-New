@@ -3,15 +3,16 @@
 // dark logos must be "white"; gold and mid-tone logos can go either way.
 // The page interleaves the two groups, so keep them roughly equal in size.
 // `link` is optional: logos without one aren't clickable.
-export type Client = { name: string; img: string; link?: string; square: "white" | "navy" };
+// `tile`: the square, evenly padded logo from public/clients-logo, used on the /clients wall. Strips elsewhere use `img`.
+export type Client = { name: string; img: string; tile?: string; link?: string; square: "white" | "navy" };
 
 export const clients: Client[] = [
-  { name: "Rehnoor Jewels", square: "white", img: "https://www.rehnoorjewels.com/rehnoor-jewels-svg-logo.svg", link: "https://www.rehnoorjewels.com/" },
-  { name: "RPH Realty", square: "white", img: "/RPH-logo.png", link: "https://rphrealty.com/" },
-  { name: "Fortune Asia", square: "navy", img: "/fortuneasia.png", link: "https://www.fortuneasia.ae/" },
-  { name: "Marketrixa", square: "navy", img: "/logo-marketrixa.webp", link: "https://www.marketrixa.com/" },
+  { name: "Rehnoor Jewels", square: "white", tile: "/clients-logo/rehnoorjewels.png", img: "/clients-logo/trimmed/rehnoorjewels.png", link: "https://www.rehnoorjewels.com/" },
+  { name: "RPH Realty", square: "white", tile: "/clients-logo/rphrealty.png", img: "/RPH-logo.png", link: "https://rphrealty.com/" },
+  { name: "Fortune Asia", square: "navy", tile: "/clients-logo/fortuneasiarealty.png", img: "/fortuneasia.png", link: "https://www.fortuneasia.ae/" },
+  { name: "Marketrixa", square: "navy", tile: "/clients-logo/marktrixa.png", img: "/logo-marketrixa.webp", link: "https://www.marketrixa.com/" },
   {
-    name: "Granth Dream Homes", square: "navy",
+    name: "Granth Dream Homes", square: "navy", tile: "/clients-logo/granthdreamhomes.png",
     img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493003/Granth_logo_6_kyrd5s.png",
     link: "https://granthdreamhomes.co.in/",
   },
@@ -26,48 +27,48 @@ export const clients: Client[] = [
     link: "https://www.mondusproperties.ae/",
   },
   {
-    name: "Stellar Binge", square: "white",
+    name: "Stellar Binge", square: "white", tile: "/clients-logo/stellarbinge.png",
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1765346115/logo_2_qiiitb.webp",
     link: "https://www.stellarbinge.com",
   },
   {
-    name: "Integrated Lognet", square: "navy",
+    name: "Integrated Lognet", square: "navy", tile: "/clients-logo/integratedlogisticsnetwork.png",
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826183/iln_logo_1_-By-pImIc_lgxxky.png",
     link: "https://www.integratedlognet.com/",
   },
   {
-    name: "Riverfront", square: "navy",
+    name: "Riverfront", square: "navy", tile: "/clients-logo/riverfront.png",
     img: "https://riverfront.vercel.app/assets/Logo%20for%20riverfront%20-CAIVvev0.png",
     link: "https://riverfront.vercel.app/",
   },
   {
-    name: "Destiny by Numbers", square: "navy",
+    name: "Destiny by Numbers", square: "navy", tile: "/clients-logo/destinybynumbbers.png",
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112478/DBN_logo_x7wjzx.webp",
     link: "https://www.destinybynumberrs.com/",
   },
   {
-    name: "Ethical Infrastructures", square: "white",
+    name: "Ethical Infrastructures", square: "white", tile: "/clients-logo/ethicalinfrastructure.png",
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112443/logo_1_tnncgd.webp",
     link: "https://www.ethicalinfrastructures.com/",
   },
   {
-    name: "Crown Point Estates", square: "navy",
+    name: "Crown Point Estates", square: "navy", tile: "/clients-logo/crownpointestates.png",
     img: "https://res.cloudinary.com/dyum0r6gf/image/upload/v1769074373/CPE_LOGO_FINAL__wb2eiw.png",
     link: "https://www.crownpointestates.com/",
   },
-  { name: "The Stellar Gymkhana", square: "navy", img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826338/logo_fz6mbq.png" },
+  { name: "The Stellar Gymkhana", square: "navy", tile: "/clients-logo/thestellargymkhana.png", img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826338/logo_fz6mbq.png" },
   {
-    name: "Gear Tek", square: "white",
+    name: "Gear Tek", square: "white", tile: "/clients-logo/gear-tek.png",
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826497/Gear_Tek_Logo-removebg-preview_j5p3wc-removebg-preview_x7urfm.png",
   },
   {
-    name: "Dr. Himanshu Verma", square: "white",
+    name: "Dr. Himanshu Verma", square: "white", tile: "/clients-logo/dr.himanshu1.png",
     img: "https://res.cloudinary.com/dyum0r6gf/image/upload/v1769074730/logo-removebg-preview_ti521v.webp",
     link: "https://www.drhimanshuverma.com/",
   },
-  { name: "Global Technologies India", square: "white", img: "/global-tech-logo.png", link: "https://www.globaltechnologiesindia.com/" },
-  { name: "Homes and Land Goa", square: "white", img: "/homes-land-goa-logo.png", link: "https://www.homesandlandgoa.com" },
-  { name: "AVF Care Workshop", square: "white", img: "/avfcare-logo.png", link: "https://avfcareworkshop.com/" },
+  { name: "Global Technologies India", square: "white", tile: "/clients-logo/globaltechnologies.png", img: "/global-tech-logo.png", link: "https://www.globaltechnologiesindia.com/" },
+  { name: "Homes and Land Goa", square: "white", tile: "/clients-logo/homesandlandgoa.png", img: "/clients-logo/trimmed/homesandlandgoa.png", link: "https://www.homesandlandgoa.com" },
+  { name: "AVF Care Workshop", square: "white", tile: "/clients-logo/avfcareworkshop.png", img: "/avfcare-logo.png", link: "https://avfcareworkshop.com/" },
 ];
 
 export const dubaiClients: Client[] = [

@@ -51,14 +51,24 @@ export default function Clients() {
             className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:col-span-7"
             aria-label="Client logos"
           >
-            {clientLogos.map((src) => (
+            {clientLogos.map((c) => (
               <motion.li
-                key={src}
+                key={c.name}
                 variants={scaleIn}
                 whileHover={{ y: -6, transition: { type: "spring", stiffness: 400, damping: 22 } }}
-                className="flex aspect-[3/2] items-center justify-center rounded-[20px] bg-white p-6 md:p-8"
+                // light logos sit on a navy card with a thin ring so it still reads as a card on the navy panel
+                className={`flex aspect-[3/2] items-center justify-center rounded-[20px] ${
+                  c.square === "navy" ? "bg-[var(--ink-2)] ring-1 ring-inset ring-white/15" : "bg-white"
+                } ${c.tile ? "p-1 md:p-2" : "p-6 md:p-8"}`}
               >
-                <img src={src} alt="" loading="lazy" draggable={false} className="max-h-14 w-full object-contain" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={c.tile ?? c.img}
+                  alt={c.name}
+                  loading="lazy"
+                  draggable={false}
+                  className={c.tile ? "h-full w-full object-contain" : "max-h-14 w-full object-contain"}
+                />
               </motion.li>
             ))}
           </motion.ul>

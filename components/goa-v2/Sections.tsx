@@ -25,7 +25,7 @@ export function Local() {
           variants={stagger(0.1)}
           className="wrap relative flex h-full flex-col justify-center text-white"
         >
-          <motion.h2 variants={fadeUp} className="serif max-w-[16ch] text-[clamp(2rem,3.6vw,3.25rem)] leading-[1.05]">
+          <motion.h2 variants={fadeUp} className="h-section max-w-[16ch]">
             A Goa team, not a call centre in another city.
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-5 max-w-[42ch] text-lg leading-relaxed text-white/80">
@@ -65,7 +65,7 @@ export function Reviews() {
   return (
     <section className="px-2 md:px-3">
       <div className="mx-auto max-w-[1600px] overflow-hidden rounded-[32px] bg-[var(--surface)] py-16 md:py-24">
-        <h2 className="wrap serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">In our clients’ words.</h2>
+        <h2 className="wrap h-section">In our clients’ words.</h2>
         <div className="mt-10 md:mt-12">
           <ReviewStrip reviews={reviews} cardClassName="bg-[var(--paper)]" />
         </div>
@@ -84,7 +84,7 @@ export function Faq() {
       <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-28">
-            <h2 className="serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">Questions Goa asks us.</h2>
+            <h2 className="h-section">Questions Goa asks us.</h2>
             <WipeIn className="mt-8 hidden lg:block">
               <div className="relative h-[300px] overflow-hidden rounded-[24px] bg-[var(--paper)]">
                 <ParallaxPhoto photo={photos.church} sizes="(min-width: 1024px) 36vw, 0px" travel={10} />

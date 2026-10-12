@@ -92,7 +92,7 @@ export default function Plan() {
     <section id="plan" className="scroll-mt-24 py-14 md:py-20">
       <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-5">
-          <h2 className="serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">Plan your season with us.</h2>
+          <h2 className="h-section">Plan your season with us.</h2>
           <p className="mt-4 max-w-[44ch] text-lg leading-relaxed text-[var(--muted)]">
             Tell us a little about your place. Our Goa team sends back a free written plan: the channels,
             how to split the budget, and a month-by-month calendar.
@@ -126,7 +126,7 @@ export default function Plan() {
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--ochre)]">
                   <Check className="h-6 w-6" aria-hidden />
                 </span>
-                <h3 ref={doneRef} tabIndex={-1} className="serif mt-5 text-3xl leading-tight focus:outline-none">
+                <h3 ref={doneRef} tabIndex={-1} className="mt-5 text-3xl font-semibold leading-tight tracking-tight focus:outline-none">
                   Thanks, {doneName}. Your season plan is on its way.
                 </h3>
                 <p className="mt-3 max-w-[46ch] leading-relaxed text-[var(--muted)]">

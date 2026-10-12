@@ -1,16 +1,21 @@
 // Shared homepage data: client logos, services, and the growth-process steps.
+import { type Client, clients } from "./clients";
 
 // Client logos shown in the Clients marquee and the About/Stats section
+/**
+ * Clients on the home page, from the shared list in data/clients. Ordered white, navy, white / navy, white, navy
+ * so the 3-column grid reads as a chessboard (each logo sits on the colour it reads on).
+ */
 export const clientLogos = [
-  "https://www.rehnoorjewels.com/rehnoor-jewels-svg-logo.svg",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493003/Granth_logo_6_kyrd5s.png",
-
-  "/logo-marketrixa.webp",
-  "/fortuneasia.png",
-
-  "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112478/DBN_logo_x7wjzx.webp",
-  "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1765873036/image_pau5br.webp",
-];
+  "Rehnoor Jewels",
+  "Granth Dream Homes",
+  "RPH Realty",
+  "Fortune Asia",
+  "Homes and Land Goa",
+  "Marketrixa",
+]
+  .map((n) => clients.find((c) => c.name === n))
+  .filter((c): c is Client => Boolean(c));
 
 export const services = [
   {

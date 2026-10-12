@@ -4,8 +4,20 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import aboutImg from "../../Assets/hero/2 (1).png";
-import { clientLogos } from "@/data/homeData";
 import { EASE, PillLead, PillLink, Reveal, fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
+
+/**
+ * The "Trusted by" row: full-colour logos that read on the light background, cropped to their edges
+ * (public/clients-logo/trimmed). `aspect` is width ÷ height of each file; `weight` tones down icon-heavy marks.
+ */
+const AREA = 4800;
+const TRUSTED: { name: string; src: string; aspect: number; weight?: number }[] = [
+  { name: "Rehnoor Jewels", src: "/clients-logo/trimmed/rehnoorjewels.png", aspect: 1.8 },
+  { name: "RPH Realty", src: "/clients-logo/trimmed/rphrealty.png", aspect: 4.62 },
+  { name: "Homes and Land Goa", src: "/clients-logo/trimmed/homesandlandgoa.png", aspect: 1.12 },
+  { name: "Granth Dream Homes", src: "/clients-logo/trimmed/granthdreamhomes.png", aspect: 2.25 },
+  { name: "Global Technologies India", src: "/clients-logo/trimmed/globaltechnologies.png", aspect: 1.33, weight: 0.7 },
+];
 
 const stats = [
   { value: 70, suffix: "+", label: "Digital Experts" },
@@ -128,11 +140,23 @@ export default function About() {
             Trusted by 50+ brands
           </motion.p>
           <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
-            {clientLogos.slice(0, 5).map((src) => (
-              <motion.li key={src} variants={fadeUp}>
-                <img src={src} alt="" draggable={false} className="h-7 w-auto max-w-[110px] object-contain opacity-80" />
-              </motion.li>
-            ))}
+            {TRUSTED.map((l) => {
+              // same visual weight for every logo: the box keeps one area, so stacked logos get more height and
+              // long wordmarks less (height = √(area ÷ aspect))
+              const h = Math.round(Math.sqrt((AREA * (l.weight ?? 1)) / l.aspect));
+              return (
+                <motion.li key={l.name} variants={fadeUp}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={l.src}
+                    alt={l.name}
+                    draggable={false}
+                    style={{ "--h": `${h}px` } as React.CSSProperties}
+                    className="h-[calc(var(--h)*0.8)] w-auto object-contain md:h-[var(--h)]"
+                  />
+                </motion.li>
+              );
+            })}
           </ul>
         </motion.div>
       </div>

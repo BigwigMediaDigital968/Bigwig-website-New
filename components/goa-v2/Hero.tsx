@@ -64,7 +64,7 @@ export default function Hero() {
               </motion.p>
               <motion.h1
                 variants={fadeUp}
-                className="serif mt-4 max-w-[19ch] text-[clamp(2.4rem,4.6vw,4.2rem)] leading-[1.03] tracking-[-0.02em] [text-wrap:balance]"
+                className="h-display mt-4 max-w-[19ch]"
               >
                 Ads, SEO, websites and social media for Goa businesses.
               </motion.h1>

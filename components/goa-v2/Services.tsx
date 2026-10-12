@@ -22,7 +22,7 @@ export default function Services() {
         <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <p className="text-sm font-medium text-[var(--link)]">What we do</p>
-            <h2 className="serif mt-3 text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">
+            <h2 className="h-section mt-3">
               Every channel your guests and customers use, from one team.
             </h2>
           </div>

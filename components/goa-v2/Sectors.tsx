@@ -20,7 +20,7 @@ export default function Sectors() {
     <section className="py-16 md:py-24">
       <div className="wrap">
         <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
-          <h2 className="serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05] lg:col-span-6">
+          <h2 className="h-section lg:col-span-6">
             Built for the way Goa does business.
           </h2>
           <p className="max-w-[46ch] text-[var(--muted)] lg:col-span-5 lg:col-start-8">
