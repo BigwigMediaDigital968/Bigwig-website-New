@@ -8,7 +8,7 @@ import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { services } from "@/data/homeData";
 import { useLeadPopup } from "../LeadPopup";
-import { EASE, EMAIL, contactFor, stagger } from "../ui";
+import { EASE, EMAIL, contactFor, isLanding, stagger } from "../ui";
 
 const itemIn: Variants = {
   hidden: { opacity: 0, y: 10 },
@@ -106,6 +106,8 @@ export default function Nav() {
   };
 
   const solid = !overlay || scrolled || servicesOpen;
+
+  if (isLanding(pathname)) return null;
 
   return (
     <header className={`${overlay ? "fixed inset-x-0" : "sticky"} top-0 z-50 px-2 pt-2 md:px-3 md:pt-3`}>

@@ -292,3 +292,5 @@ export const contactFor = (pathname: string | null) =>
       }
     : { phoneDisplay: PHONE_DISPLAY, phoneHref: PHONE_HREF, whatsapp: WHATSAPP_HREF };
 export const EMAIL = "support@bigwigmediadigital.com";
+/** Ad landing pages (/lead/...): no site nav, footer or desktop extras, so the form is the only way forward. */
+export const isLanding = (pathname: string | null) => pathname === "/lead" || !!pathname?.startsWith("/lead/");

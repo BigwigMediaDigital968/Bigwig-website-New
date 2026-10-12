@@ -13,7 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF, PillLead, WhatsAppPill, contactFor, fadeUp, inView, maskUp, stagger } from "../ui";
+import { EMAIL, PHONE_DISPLAY, PHONE_HREF, PillLead, WhatsAppPill, contactFor, fadeUp, isLanding, inView, maskUp, stagger } from "../ui";
 
 const HEADLINE = "Ready to grow your brand online?";
 
@@ -24,7 +24,7 @@ const companyLinks = [
   { name: "Blog", path: "/blogs" },
   { name: "FAQ", path: "/faq" },
   { name: "Contact", path: "/contact" },
-  { name: "Services in Dubai", path: "/digital-marketing-agency-dubai-uae" },
+  { name: "Services in Dubai", path: "/v3/digital-marketing-agency-dubai-uae" },
   { name: "Services in Bhopal", path: "/digital-marketing-agency-bhopal" },
   { name: "Services in Goa", path: "/v2/digital-marketing-agency-goa" },
   { name: "Services in Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },
@@ -71,7 +71,9 @@ function Heading({ children }: { children: React.ReactNode }) {
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const { whatsapp } = contactFor(usePathname());
+  const pathname = usePathname();
+  const { whatsapp } = contactFor(pathname);
+  if (isLanding(pathname)) return null;
 
   return (
     <footer className="mt-24 px-2 md:mt-32 md:px-3">

@@ -9,7 +9,8 @@ import { focusRing } from "../ui";
 import CountrySelect, { countryByIso } from "./CountrySelect";
 import ServicesSelect from "./ServicesSelect";
 
-const SERVICES = [
+/** service names the lead system knows; every form picks from these */
+export const SERVICES = [
   "SEO",
   "SMM",
   "Performance Marketing",

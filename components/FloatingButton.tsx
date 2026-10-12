@@ -7,7 +7,7 @@ import { ArrowUp, Phone } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faInstagram, faLinkedinIn, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
-import { EASE, contactFor, focusRing } from "./ui";
+import { EASE, contactFor, focusRing, isLanding } from "./ui";
 
 const WHATSAPP_GREEN = "#25D366";
 /** show "back to top" once the visitor is this far down the page */
@@ -38,9 +38,12 @@ export default function FloatingCTA() {
   return (
     <>
       {/* ================= DESKTOP ================= */}
-      <div className="fixed bottom-6 left-10 z-50 hidden md:block">
-        <SocialFan />
-      </div>
+      {/* no social links on ad landing pages: nothing should lead away from the form */}
+      {!isLanding(pathname) && (
+        <div className="fixed bottom-6 left-10 z-50 hidden md:block">
+          <SocialFan />
+        </div>
+      )}
 
       {/* WhatsApp above back-to-top; the back-to-top slot is always reserved so WhatsApp never jumps */}
       <div className="fixed bottom-6 right-6 z-50 hidden w-14 flex-col items-center gap-3 md:flex">
@@ -59,7 +62,9 @@ export default function FloatingCTA() {
             aria-hidden
             className="text-[1.6rem] transition-transform duration-300 group-hover:scale-110"
           />
-          {/* always-on chat bubble above the button; its tail points down at it. Part of the link, so it's clickable too */}
+          {/* always-on chat bubble above the button; its tail points down at it. Part of the link, so it's clickable too.
+              Left out on ad landing pages, where it would sit over the form's submit button. */}
+          {!isLanding(pathname) && (
           <motion.span
             aria-hidden
             initial={{ opacity: 0, y: 8, scale: 0.95 }}
@@ -71,6 +76,7 @@ export default function FloatingCTA() {
             Chat with us 👋
             <span className="absolute -bottom-1.5 right-5 h-3 w-3 rotate-45 bg-white ring-1 ring-[var(--line)] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
           </motion.span>
+          )}
         </a>
         <div className="flex h-12 w-14 justify-center">
           <BackToTop show={showTop} progress={scrollYProgress} onClick={toTop} />
