@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import aboutImg from "../../Assets/hero/2 (1).png";
-import { EASE, PillLead, PillLink, Reveal, fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
+import { clients } from "@/data/clients";
+import { EASE, PillLead, PillLink, Reveal, fadeUp, focusRing, inView, maskUp, stagger, wipeUp } from "../ui";
 
 /**
  * The "Trusted by" row: full-colour logos that read on the light background, cropped to their edges
@@ -144,16 +145,34 @@ export default function About() {
               // same visual weight for every logo: the box keeps one area, so stacked logos get more height and
               // long wordmarks less (height = √(area ÷ aspect))
               const h = Math.round(Math.sqrt((AREA * (l.weight ?? 1)) / l.aspect));
+              const link = clients.find((c) => c.name === l.name)?.link;
+              const logo = (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={l.src}
+                  alt={l.name}
+                  draggable={false}
+                  style={{ "--h": `${h}px` } as React.CSSProperties}
+                  // a touch muted at rest; full strength and a small lift on hover or keyboard focus
+                  className="h-[calc(var(--h)*0.8)] w-auto object-contain opacity-100 transition-[opacity,transform] duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 md:h-[var(--h)]"
+                />
+              );
               return (
                 <motion.li key={l.name} variants={fadeUp}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={l.src}
-                    alt={l.name}
-                    draggable={false}
-                    style={{ "--h": `${h}px` } as React.CSSProperties}
-                    className="h-[calc(var(--h)*0.8)] w-auto object-contain md:h-[var(--h)]"
-                  />
+                  {link ? (
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      title={l.name}
+                      className={`group block rounded-md p-1 ${focusRing}`}
+                    >
+                      {logo}
+                      <span className="sr-only">(opens {l.name} website in a new tab)</span>
+                    </a>
+                  ) : (
+                    <span className="group block p-1">{logo}</span>
+                  )}
                 </motion.li>
               );
             })}

@@ -51,17 +51,10 @@ export default function Clients() {
             className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:col-span-7"
             aria-label="Client logos"
           >
-            {clientLogos.map((c) => (
-              <motion.li
-                key={c.name}
-                variants={scaleIn}
-                whileHover={{ y: -6, transition: { type: "spring", stiffness: 400, damping: 22 } }}
-                // light logos sit on a navy card with a thin ring so it still reads as a card on the navy panel
-                className={`flex aspect-[3/2] items-center justify-center rounded-[20px] ${
-                  c.square === "navy" ? "bg-[var(--ink-2)] ring-1 ring-inset ring-white/15" : "bg-white"
-                } ${c.tile ? "p-1 md:p-2" : "p-6 md:p-8"}`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+            {clientLogos.map((c) => {
+              const inner = `flex h-full w-full items-center justify-center rounded-[20px] ${c.tile ? "p-1 md:p-2" : "p-6 md:p-8"}`;
+              const logo = (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={c.tile ?? c.img}
                   alt={c.name}
@@ -69,8 +62,34 @@ export default function Clients() {
                   draggable={false}
                   className={c.tile ? "h-full w-full object-contain" : "max-h-14 w-full object-contain"}
                 />
-              </motion.li>
-            ))}
+              );
+              return (
+                <motion.li
+                  key={c.name}
+                  variants={scaleIn}
+                  whileHover={{ y: -6, transition: { type: "spring", stiffness: 400, damping: 22 } }}
+                  // light logos sit on a navy card with a thin ring so it still reads as a card on the navy panel
+                  className={`aspect-[3/2] rounded-[20px] transition-shadow duration-300 hover:shadow-[0_20px_40px_-18px_rgba(0,0,0,0.6)] ${
+                    c.square === "navy" ? "bg-[var(--ink-2)] ring-1 ring-inset ring-white/15" : "bg-white"
+                  }`}
+                >
+                  {c.link ? (
+                    <a
+                      href={c.link}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      title={c.name}
+                      className={`${inner} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--cyan)]`}
+                    >
+                      {logo}
+                      <span className="sr-only">(opens {c.name} website in a new tab)</span>
+                    </a>
+                  ) : (
+                    <div className={inner}>{logo}</div>
+                  )}
+                </motion.li>
+              );
+            })}
           </motion.ul>
         </div>
       </motion.div>

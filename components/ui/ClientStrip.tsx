@@ -91,18 +91,33 @@ function Row({
   );
 }
 
+/** the box every logo gets, in px²: stacked logos grow taller and long wordmarks shorter, so they weigh the same */
+const AREA = 3600;
+
 function Logo({ client, copy }: { client: Client; copy: boolean }) {
+  // logos with a known shape are sized by area (height = √(area ÷ aspect)); the rest fall back to a height cap
+  const h = client.aspect ? Math.min(52, Math.round(Math.sqrt(AREA / client.aspect))) : undefined;
   const body = (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={client.img}
       alt={copy ? "" : client.name}
       loading="lazy"
       draggable={false}
-      className="max-h-10 w-full object-contain opacity-80 brightness-0 invert transition-[opacity,filter,scale] duration-300 ease-out group-hover:scale-105 group-hover:opacity-100 group-hover:invert-0 motion-reduce:transition-none motion-reduce:group-hover:scale-100 md:max-h-12"
+      style={h ? ({ "--h": `${h}px` } as React.CSSProperties) : undefined}
+      // white silhouettes at rest, so every logo reads on navy; on hover / focus the real colours return
+      className={`w-auto max-w-full object-contain opacity-75 brightness-0 invert transition-[opacity,filter,scale] duration-300 ease-out group-hover:scale-105 group-hover:opacity-100 group-hover:brightness-100 group-hover:invert-0 group-focus-visible:opacity-100 group-focus-visible:brightness-100 group-focus-visible:invert-0 motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${
+        h ? "h-[calc(var(--h)*0.8)] md:h-[var(--h)]" : "max-h-10 md:max-h-12"
+      }`}
     />
   );
-  // the white card fades in behind the logo on hover / focus
-  const box = `group relative flex h-20 w-[150px] items-center justify-center rounded-2xl px-6 transition-[background-color,box-shadow] duration-300 ease-out hover:bg-white hover:shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] focus-visible:bg-white md:h-24 md:w-[210px] md:px-8`;
+  // on hover / focus a card fades in behind the logo, in the colour the logo was made for: white for dark
+  // logos, a lighter navy (with a ring) for light ones
+  const card =
+    client.square === "navy"
+      ? "hover:bg-[var(--ink-2)] hover:ring-1 hover:ring-white/20 focus-visible:bg-[var(--ink-2)]"
+      : "hover:bg-white focus-visible:bg-white";
+  const box = `group relative flex h-20 w-[150px] items-center justify-center rounded-2xl px-5 transition-[background-color,box-shadow] duration-300 ease-out hover:shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] ${card} md:h-24 md:w-[210px] md:px-7`;
 
   if (!client.link) return <div className={box}>{body}</div>;
   return (
