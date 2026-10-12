@@ -139,7 +139,7 @@ export default function ServicesSelect({
               tabIndex={-1}
               aria-activedescendant={`${listId}-${active}`}
               onKeyDown={onListKey}
-              className="max-h-64 overflow-y-auto p-1.5 focus:outline-none"
+              className="max-h-48 overflow-y-auto p-1.5 focus:outline-none"
             >
               {options.map((s, i) => {
                 const on = value.includes(s);
@@ -153,7 +153,7 @@ export default function ServicesSelect({
                     onMouseEnter={() => setActive(i)}
                     onMouseDown={(e) => e.preventDefault()} // keep focus on the list
                     onClick={() => toggle(s)}
-                    className={`flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-[0.95rem] ${
+                    className={`flex cursor-pointer items-center gap-3 rounded-xl px-3 py-1.5 text-[0.95rem] ${
                       i === active ? "bg-[var(--paper)]" : ""
                     }`}
                   >

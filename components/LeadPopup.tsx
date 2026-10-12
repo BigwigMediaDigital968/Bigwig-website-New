@@ -23,11 +23,13 @@ export function LeadPopupProvider({ children }: { children: React.ReactNode }) {
     setSource(source);
     setIsOpen(true);
   }, []);
+  // stable, so the popup's open/close effect doesn't re-run while it's open
+  const close = useCallback(() => setIsOpen(false), []);
 
   return (
     <LeadPopupContext.Provider value={{ open }}>
       {children}
-      <PopupForm isOpen={isOpen} onClose={() => setIsOpen(false)} source={source} />
+      <PopupForm isOpen={isOpen} onClose={close} source={source} />
     </LeadPopupContext.Provider>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import useSubmitLead from "../../hooks/useSubmitLead";
 import RecaptchaNotice from "./RecaptchaNotice";
@@ -47,6 +47,8 @@ export default function EnquiryForm({
   compact?: boolean;
   defaultServices?: string[];
 }) {
+  // unique per form, so two forms on one page (e.g. a page form and the lead popup) don't share field ids
+  const uid = useId();
   const start = { ...EMPTY, country: defaultCountry, services: defaultServices };
   const [form, setForm] = useState(start);
   const [errors, setErrors] = useState<Errors>({});
@@ -115,36 +117,36 @@ export default function EnquiryForm({
   return (
     <form onSubmit={handleSubmit} noValidate className={compact ? "space-y-4" : "space-y-6"}>
       <div className={`grid grid-cols-1 sm:grid-cols-2 [&>*]:min-w-0 ${compact ? "gap-4" : "gap-5"}`}>
-        <Field id="contact-name" label="Name" error={errors.fullName}>
+        <Field id={`${uid}-name`} label="Name" error={errors.fullName}>
           <input
-            id="contact-name"
+            id={`${uid}-name`}
             type="text"
             autoComplete="name"
             placeholder="Your full name"
             value={form.fullName}
             onChange={(e) => set("fullName", e.target.value)}
             aria-invalid={!!errors.fullName}
-            aria-describedby={errors.fullName ? "contact-name-error" : undefined}
+            aria-describedby={errors.fullName ? `${uid}-name-error` : undefined}
             className={`h-12 w-full ${field}`}
           />
         </Field>
 
-        <Field id="contact-email" label="Email" error={errors.email}>
+        <Field id={`${uid}-email`} label="Email" error={errors.email}>
           <input
-            id="contact-email"
+            id={`${uid}-email`}
             type="email"
             autoComplete="email"
             placeholder="you@company.com"
             value={form.email}
             onChange={(e) => set("email", e.target.value)}
             aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? "contact-email-error" : undefined}
+            aria-describedby={errors.email ? `${uid}-email-error` : undefined}
             className={`h-12 w-full ${field}`}
           />
         </Field>
 
         <div className="sm:col-span-2">
-          <Field id="contact-phone" label="Phone" error={errors.phone}>
+          <Field id={`${uid}-phone`} label="Phone" error={errors.phone}>
             <div className="flex gap-2">
               <CountrySelect
                 value={form.country}
@@ -152,14 +154,14 @@ export default function EnquiryForm({
                 className="w-[7.25rem] shrink-0"
               />
               <input
-                id="contact-phone"
+                id={`${uid}-phone`}
                 type="tel"
                 autoComplete="tel-national"
                 placeholder="98765 43210"
                 value={form.phone}
                 onChange={(e) => set("phone", e.target.value)}
                 aria-invalid={!!errors.phone}
-                aria-describedby={errors.phone ? "contact-phone-error" : undefined}
+                aria-describedby={errors.phone ? `${uid}-phone-error` : undefined}
                 className={`h-12 min-w-0 flex-1 ${field}`}
               />
             </div>
@@ -169,11 +171,11 @@ export default function EnquiryForm({
 
       {compact ? (
         <div>
-          <label htmlFor="contact-services" className="mb-1.5 block text-sm font-medium">
+          <label htmlFor={`${uid}-services`} className="mb-1.5 block text-sm font-medium">
             Services <span className="font-normal text-[var(--muted)]">(optional)</span>
           </label>
           <ServicesSelect
-            id="contact-services"
+            id={`${uid}-services`}
             options={SERVICES}
             value={form.services}
             onChange={(next) => set("services", next)}
@@ -207,9 +209,9 @@ export default function EnquiryForm({
         </fieldset>
       )}
 
-      <Field id="contact-message" label="Message" optional>
+      <Field id={`${uid}-message`} label="Message" optional>
         <textarea
-          id="contact-message"
+          id={`${uid}-message`}
           rows={compact ? 2 : 4}
           placeholder="Tell us about your business and goals…"
           value={form.message}
