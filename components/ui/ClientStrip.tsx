@@ -18,8 +18,11 @@ export default function ClientStrip({
   clients,
   label = "Our clients",
   className = "",
+  duration = "48s",
 }: {
   clients: Client[];
+  /** time for one full loop of a row; longer is slower */
+  duration?: string;
   /** heading for screen readers; the strip has no visible title */
   label?: string;
   /** spacing around the band, e.g. a margin that separates it from a neighbouring panel */
@@ -50,8 +53,8 @@ export default function ClientStrip({
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: EASE }}
       >
-        <Row clients={clients} duration="48s" />
-        <Row clients={rowTwo} duration="48s" reverse hidden />
+        <Row clients={clients} duration={duration} />
+        <Row clients={rowTwo} duration={duration} reverse hidden />
       </motion.div>
     </section>
   );

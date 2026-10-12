@@ -12,7 +12,7 @@ import { Lakes } from "./Local";
 import { BHOPAL_WHATSAPP_HREF, areas, budgets, businesses, heroClients, wants, wider } from "./content";
 
 /**
- * The hero is the form. The visitor finishes a sentence about their business (each blank is a native select),
+ * The hero is the form. The visitor finishes a sentence about their business (each blank opens a small list),
  * and a Google Maps preview beside it shows their listing climbing to the top of the search they described.
  * "Make my free plan" reveals a second sentence for contact details.
  */
@@ -299,7 +299,7 @@ export default function Hero() {
   );
 }
 
-/* ---------- a blank in the sentence: a native select, sized to its chosen words ---------- */
+/* ---------- a blank in the sentence: a select-only combobox, sized to its chosen words ---------- */
 
 type Option = { id: string; label: string };
 
@@ -314,39 +314,188 @@ function Slot({
   onChange: (v: string) => void;
   groups: { label?: string; options: Option[] }[];
 }) {
-  const current = groups.flatMap((g) => g.options).find((o) => o.id === value)?.label ?? "";
-  const options = (opts: Option[]) =>
-    opts.map((o) => (
-      <option key={o.id} value={o.id}>
-        {o.label}
-      </option>
-    ));
+  const id = useId();
+  const reduce = useReducedMotion();
+  const all = groups.flatMap((g) => g.options);
+  const selected = Math.max(0, all.findIndex((o) => o.id === value));
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(selected);
+  const [up, setUp] = useState(false);
+  const [shift, setShift] = useState(0);
+  const rootRef = useRef<HTMLSpanElement>(null);
+  const listRef = useRef<HTMLSpanElement>(null);
+  const typed = useRef({ text: "", timer: 0 });
+
+  const show = () => {
+    const r = rootRef.current?.getBoundingClientRect();
+    if (r) setUp(window.innerHeight - r.bottom < 280 && r.top > window.innerHeight - r.bottom);
+    setShift(0);
+    setActive(selected);
+    setOpen(true);
+  };
+  const choose = (i: number) => {
+    onChange(all[i].id);
+    setOpen(false);
+  };
+
+  // close on a press anywhere else
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: PointerEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", away);
+    return () => document.removeEventListener("pointerdown", away);
+  }, [open]);
+
+  // keep the panel inside the viewport's side gutters
+  useEffect(() => {
+    if (!open || !listRef.current) return;
+    const r = listRef.current.getBoundingClientRect();
+    const gutter = 12;
+    if (r.right > window.innerWidth - gutter) setShift(window.innerWidth - gutter - r.right);
+    else if (r.left < gutter) setShift(gutter - r.left);
+  }, [open]);
+
+  useEffect(() => {
+    if (open) document.getElementById(`${id}-${active}`)?.scrollIntoView({ block: "nearest" });
+  }, [open, active, id]);
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    const last = all.length - 1;
+    const move = (i: number) => {
+      e.preventDefault();
+      if (!open) show();
+      else setActive(Math.min(last, Math.max(0, i)));
+    };
+    switch (e.key) {
+      case "ArrowDown":
+        return move(open ? active + 1 : selected);
+      case "ArrowUp":
+        return move(open ? active - 1 : selected);
+      case "Home":
+        return move(0);
+      case "End":
+        return move(last);
+      case "PageDown":
+        return move(active + 6);
+      case "PageUp":
+        return move(active - 6);
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        return open ? choose(active) : show();
+      case "Escape":
+        if (open) {
+          e.preventDefault();
+          setOpen(false);
+        }
+        return;
+      case "Tab":
+        if (open) choose(active);
+        return;
+    }
+    // typeahead: jump to the first option whose words start with what was typed
+    if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      window.clearTimeout(typed.current.timer);
+      typed.current.text += e.key.toLowerCase();
+      typed.current.timer = window.setTimeout(() => (typed.current.text = ""), 600);
+      const q = typed.current.text;
+      const hit = all.findIndex((o) => o.label.toLowerCase().replace(/^(a|an) /, "").startsWith(q) || o.label.toLowerCase().startsWith(q));
+      if (hit >= 0) {
+        if (!open) show();
+        setActive(hit);
+      }
+    }
+  };
+
+  let index = -1;
   return (
     // the chosen words are plain text (so they sit on the sentence's baseline and set the width); a transparent
-    // native select covers them and does the choosing
-    <span className="relative inline-block max-w-full rounded-md align-baseline hover:bg-[var(--cyan)]/30 has-[:focus-visible]:bg-[var(--cyan)]/50 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--link)]">
+    // button covers them and opens the list
+    <span
+      ref={rootRef}
+      className={`relative inline-block max-w-full rounded-md align-baseline transition-colors duration-150 hover:bg-[var(--cyan)]/30 has-[:focus-visible]:bg-[var(--cyan)]/50 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--link)] ${open ? "bg-[var(--cyan)]/40" : ""}`}
+    >
       {/* no overflow clipping here: it would move the blank's baseline to its bottom edge */}
       <span aria-hidden className="block whitespace-nowrap pr-[0.95em] font-semibold text-[var(--link)]">
-        {current}
+        {all[selected]?.label}
       </span>
-      <select
+      <button
+        type="button"
+        role="combobox"
         aria-label={label}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="absolute inset-0 h-full w-full cursor-pointer appearance-none opacity-0 [font-size:1rem]"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={`${id}-list`}
+        aria-activedescendant={open ? `${id}-${active}` : undefined}
+        onClick={() => (open ? setOpen(false) : show())}
+        onKeyDown={onKeyDown}
+        onBlur={() => setOpen(false)}
+        className="absolute inset-0 h-full w-full cursor-pointer rounded-md opacity-0 focus:outline-none"
       >
-        {groups.map((g, i) =>
-          g.label ? (
-            <optgroup key={i} label={g.label}>
-              {options(g.options)}
-            </optgroup>
-          ) : (
-            options(g.options)
-          ),
-        )}
-      </select>
-      <ChevronDown aria-hidden className="pointer-events-none absolute bottom-[0.45em] right-[0.1em] h-[0.6em] w-[0.6em] text-[var(--link)]" />
+        {all[selected]?.label}
+      </button>
+      <ChevronDown
+        aria-hidden
+        className={`pointer-events-none absolute bottom-[0.45em] right-[0.1em] h-[0.6em] w-[0.6em] text-[var(--link)] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+      />
       <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-[0.12em] h-[2px] rounded-full bg-[var(--teal)]" />
+
+      <AnimatePresence>
+        {open && (
+          <motion.span
+            ref={listRef}
+            id={`${id}-list`}
+            role="listbox"
+            aria-label={label}
+            initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: up ? 4 : -4 }}
+            animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, transition: { duration: 0.1 } }}
+            transition={{ duration: 0.18, ease: EASE_OUT }}
+            style={{ marginLeft: shift, transformOrigin: up ? "bottom left" : "top left" }}
+            // keep focus on the button so the keyboard keeps working while the pointer picks
+            onMouseDown={(e) => e.preventDefault()}
+            className={`absolute left-0 z-40 block max-h-[min(15rem,45vh)] w-max min-w-full max-w-[min(20rem,calc(100vw-24px))] overflow-y-auto overscroll-contain rounded-2xl bg-[var(--surface)] p-1.5 text-left text-[0.95rem] font-medium leading-snug tracking-normal text-[var(--ink)] shadow-[0_24px_48px_-20px_rgba(1,28,64,0.35)] ring-1 ring-[var(--line)] ${up ? "bottom-[calc(100%+8px)]" : "top-[calc(100%+8px)]"}`}
+          >
+            {groups.map((g, gi) => (
+              <span
+                key={gi}
+                role={g.label ? "group" : undefined}
+                aria-labelledby={g.label ? `${id}-g${gi}` : undefined}
+                className={`block ${gi > 0 ? "mt-1 border-t border-[var(--line)] pt-1" : ""}`}
+              >
+                {g.label && (
+                  <span
+                    id={`${id}-g${gi}`}
+                    className="block px-3 pb-1 pt-2 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]"
+                  >
+                    {g.label}
+                  </span>
+                )}
+                {g.options.map((o) => {
+                  const i = ++index;
+                  const isSelected = i === selected;
+                  return (
+                    <span
+                      key={o.id}
+                      id={`${id}-${i}`}
+                      role="option"
+                      aria-selected={isSelected}
+                      onPointerMove={() => i !== active && setActive(i)}
+                      onClick={() => choose(i)}
+                      className={`flex cursor-pointer items-center justify-between gap-4 whitespace-nowrap rounded-xl px-3 py-2 transition-colors duration-100 ${i === active ? "bg-[var(--cyan)]/35" : ""} ${isSelected ? "font-semibold text-[var(--link)]" : ""}`}
+                    >
+                      {o.label}
+                      <Check aria-hidden className={`h-4 w-4 flex-none text-[var(--teal)] ${isSelected ? "" : "invisible"}`} />
+                    </span>
+                  );
+                })}
+              </span>
+            ))}
+          </motion.span>
+        )}
+      </AnimatePresence>
     </span>
   );
 }

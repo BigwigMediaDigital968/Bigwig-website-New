@@ -3,11 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { ArrowUp, ArrowUpRight, Phone, Share2 } from "lucide-react";
+import { ArrowUp, Phone } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faInstagram, faLinkedinIn, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
-import { useLeadPopup } from "./LeadPopup";
 import { EASE, contactFor, focusRing } from "./ui";
 
 const WHATSAPP_GREEN = "#25D366";
@@ -19,7 +18,7 @@ const OWN_WHATSAPP_BAR = ["/v2/digital-marketing-agency-dubai-uae"];
 /**
  * Site-wide floating actions.
  * Desktop: social fan bottom-left; back-to-top above a "Chat with us" WhatsApp pill, bottom-right.
- * Mobile: one dock at the bottom (call, WhatsApp, share, free quote) with back-to-top floating above it.
+ * Mobile: one dock at the bottom (call and WhatsApp) with back-to-top floating above it.
  * The reCAPTCHA badge is hidden (see brand.css), so nothing here has to dodge it.
  */
 export default function FloatingCTA() {
@@ -138,15 +137,6 @@ function BackToTop({
   );
 }
 
-/* ---------- page title + URL, for the mobile dock's native share ---------- */
-
-function usePageInfo() {
-  const [page, setPage] = useState({ url: "", title: "" });
-  const pathname = usePathname();
-  useEffect(() => setPage({ url: window.location.href, title: document.title }), [pathname]);
-  return page;
-}
-
 /* ---------- social fan (desktop, bottom-left): the main button fans out our social profiles ---------- */
 
 const SOCIALS = [
@@ -248,24 +238,11 @@ function SocialFan() {
   );
 }
 
-/* ---------- mobile dock: call, WhatsApp, share, and the primary "free quote" ---------- */
+/* ---------- mobile dock: two equal buttons, call and WhatsApp ---------- */
 
 function MobileDock() {
-  const { open } = useLeadPopup();
-  const page = usePageInfo();
   const { phoneDisplay, phoneHref, whatsapp } = contactFor(usePathname());
-  const [canShare, setCanShare] = useState(false);
-  useEffect(() => setCanShare(typeof navigator !== "undefined" && "share" in navigator), []);
-
-  const share = async () => {
-    try {
-      await navigator.share({ title: page.title, url: page.url });
-    } catch {
-      /* dismissed */
-    }
-  };
-
-  const icon = `flex h-12 w-12 flex-none items-center justify-center rounded-full ${focusRing}`;
+  const btn = `flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-full text-[0.95rem] font-semibold ${focusRing}`;
 
   return (
     <nav
@@ -273,42 +250,21 @@ function MobileDock() {
       className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden"
     >
       <div className="flex items-center gap-1.5 rounded-full bg-[var(--ink)] p-1.5 shadow-[0_20px_44px_-16px_rgba(1,28,64,0.7)] ring-1 ring-white/10">
-        <a href={phoneHref} aria-label={`Call ${phoneDisplay}`} className={`${icon} bg-white/10 text-white`}>
+        <a href={phoneHref} aria-label={`Call ${phoneDisplay}`} className={`${btn} bg-white/10 text-white`}>
           <Phone className="h-5 w-5" aria-hidden />
+          Call
         </a>
         <a
           href={whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Chat on WhatsApp (opens in a new tab)"
           style={{ backgroundColor: WHATSAPP_GREEN }}
-          className={`${icon} text-[var(--ink)]`}
+          className={`${btn} text-[var(--ink)]`}
         >
           <FontAwesomeIcon icon={faWhatsapp} className="text-[1.35rem]" aria-hidden />
+          WhatsApp
+          <span className="sr-only">(opens in a new tab)</span>
         </a>
-        {canShare && (
-          <button
-            type="button"
-            onClick={share}
-            aria-label="Share this page"
-            className={`${icon} bg-white/10 text-white cursor-pointer`}
-          >
-            <Share2 className="h-5 w-5" aria-hidden />
-          </button>
-        )}
-        <button
-          type="button"
-          onClick={() => open("mobile-dock")}
-          className={`flex h-12 min-w-0 flex-1 items-center justify-between gap-2 rounded-full bg-[var(--cyan)] pl-5 pr-1.5 text-[0.95rem] font-semibold text-[var(--ink)] cursor-pointer ${focusRing}`}
-        >
-          <span className="truncate">Get a free quote</span>
-          <span
-            aria-hidden
-            className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[var(--ink)] text-[var(--cyan)]"
-          >
-            <ArrowUpRight className="h-4 w-4" />
-          </span>
-        </button>
       </div>
     </nav>
   );

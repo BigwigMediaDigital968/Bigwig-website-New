@@ -2,9 +2,10 @@
 
 import { useId, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, MapPin, Phone, Plus, Star } from "lucide-react";
+import { ArrowUpRight, MapPin, Phone, Plus } from "lucide-react";
 import { branches } from "@/data/offices";
 import { fadeUp, focusRing, inView, stagger } from "../ui";
+import ReviewStrip from "../ui/ReviewStrip";
 import { faqs, photos, reviews } from "./content";
 import { ParallaxPhoto, WipeIn } from "./media";
 
@@ -59,32 +60,14 @@ export function Local() {
 
 /* ---------- reviews ---------- */
 
-/** Real Google reviews as three calm cards that rise in one after another. */
+/** Real Google reviews as a slow strip of cards, as on the Bhopal page (see ui/ReviewStrip). */
 export function Reviews() {
   return (
     <section className="px-2 md:px-3">
-      <div className="mx-auto max-w-[1600px] rounded-[32px] bg-[var(--surface)] py-16 md:py-24">
-        <div className="wrap">
-          <h2 className="serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">In our clients’ words.</h2>
-          <motion.ul {...inView} variants={stagger(0.1)} className="mt-10 grid gap-4 md:mt-12 lg:grid-cols-3">
-            {reviews.map((r) => (
-              <motion.li key={r.name} variants={fadeUp} className="flex flex-col rounded-[24px] bg-[var(--paper)] p-7">
-                <span aria-hidden className="serif text-6xl leading-[0.5] text-[var(--teal)]">“</span>
-                <blockquote className="mt-5 leading-relaxed text-[var(--ink)]/85">{r.review}</blockquote>
-                <figure className="mt-auto flex items-center justify-between gap-3 pt-7 text-sm">
-                  <span className="font-semibold">{r.name}</span>
-                  <span className="flex items-center gap-1.5 text-[var(--muted)]">
-                    <span className="flex text-[var(--teal)]" aria-hidden>
-                      {Array.from({ length: r.rating }, (_, s) => (
-                        <Star key={s} className="h-3.5 w-3.5 fill-current" />
-                      ))}
-                    </span>
-                    <span className="sr-only">{r.rating} out of 5 stars, </span>Google
-                  </span>
-                </figure>
-              </motion.li>
-            ))}
-          </motion.ul>
+      <div className="mx-auto max-w-[1600px] overflow-hidden rounded-[32px] bg-[var(--surface)] py-16 md:py-24">
+        <h2 className="wrap serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">In our clients’ words.</h2>
+        <div className="mt-10 md:mt-12">
+          <ReviewStrip reviews={reviews} cardClassName="bg-[var(--paper)]" />
         </div>
       </div>
     </section>

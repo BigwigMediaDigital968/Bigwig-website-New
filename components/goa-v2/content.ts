@@ -219,10 +219,9 @@ export const areas = [
 
 /* ---------- reviews ---------- */
 
-/** Real Google reviews from the site's testimonial data. */
-const PICK = ["Manjot Singh", "Aparajita Pandey", "Amit Paal Siingh"];
-export const reviews = PICK.map((n) => testimonials.find((t) => t.name === n)).filter(
-  (t): t is (typeof testimonials)[number] => Boolean(t),
+/** Every real Google review from the site's testimonial data, the lead-generation one first (fills the strip). */
+export const reviews = [...testimonials].sort(
+  (a, b) => Number(b.name === "Manjot Singh") - Number(a.name === "Manjot Singh"),
 );
 
 /* ---------- FAQ ---------- */

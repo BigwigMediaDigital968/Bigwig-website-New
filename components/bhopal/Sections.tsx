@@ -1,8 +1,9 @@
 "use client";
 
 import { useId, useState } from "react";
-import { ArrowUpRight, Plus, Star } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 import { PHONE_DISPLAY, PHONE_HREF, focusRing } from "../ui";
+import ReviewStrip from "../ui/ReviewStrip";
 import { useBrief, useBriefLabels } from "./Brief";
 import { faqs, reviews, steps } from "./content";
 
@@ -30,42 +31,13 @@ export function Process() {
   );
 }
 
-/**
- * Real Google reviews as a slow strip of cards that pauses on hover (see .marquee in brand.css). The list is
- * doubled so the -50% loop is seamless; the copies are hidden from screen readers. With reduced motion the
- * strip stops and scrolls sideways by hand instead.
- */
+/** Real Google reviews as a slow strip of cards (see ui/ReviewStrip). */
 function Reviews() {
-  const strip = [...reviews, ...reviews];
   return (
     <div className="mt-12 md:mt-14">
       <h3 className="wrap text-sm font-medium text-[var(--muted)]">What clients say on Google</h3>
-      <div className="marquee-mask mt-5 overflow-hidden motion-reduce:overflow-x-auto">
-        <ul className="marquee gap-4 py-2" style={{ animationDuration: "70s" }}>
-          {strip.map((r, i) => {
-            const copy = i >= reviews.length;
-            return (
-              <li
-                key={i}
-                aria-hidden={copy || undefined}
-                className="flex w-[300px] flex-none flex-col rounded-[22px] bg-[var(--surface)] p-6 ring-1 ring-[var(--line)] sm:w-[380px]"
-              >
-                <span className="flex text-[var(--teal)]" aria-hidden>
-                  {Array.from({ length: r.rating }, (_, s) => (
-                    <Star key={s} className="h-4 w-4 fill-current" />
-                  ))}
-                </span>
-                <blockquote className="mt-4 leading-relaxed text-[var(--ink)]/85">“{r.review}”</blockquote>
-                <p className="mt-auto pt-5 text-sm">
-                  <span className="font-semibold">{r.name}</span>
-                  <span className="text-[var(--muted)]">
-                    <span className="sr-only">, {r.rating} out of 5 stars</span>, Google review
-                  </span>
-                </p>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="mt-5">
+        <ReviewStrip reviews={reviews} />
       </div>
     </div>
   );

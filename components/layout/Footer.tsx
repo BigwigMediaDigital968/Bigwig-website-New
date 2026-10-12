@@ -25,6 +25,10 @@ const companyLinks = [
   { name: "FAQ", path: "/faq" },
   { name: "Contact", path: "/contact" },
   { name: "Services in Dubai", path: "/digital-marketing-agency-dubai-uae" },
+  { name: "Services in Bhopal", path: "/digital-marketing-agency-bhopal" },
+  { name: "Services in Goa", path: "/v2/digital-marketing-agency-goa" },
+  { name: "Services in Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },
+
 ];
 
 const serviceLinks = [

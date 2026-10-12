@@ -212,10 +212,9 @@ export const bookings = { min: 100000, max: 3000000, step: 50000, initial: 60000
 
 /* ---------- reviews ---------- */
 
-/** Real Google reviews from the site's testimonial data, picked for leads, a restaurant's local SEO and trust. */
-const PICK = ["Manjot Singh", "Aparajita Pandey", "Amit Paal Siingh"];
-export const reviews = PICK.map((n) => testimonials.find((t) => t.name === n)).filter(
-  (t): t is (typeof testimonials)[number] => Boolean(t),
+/** Every real Google review from the site's testimonial data, the lead-generation one first (fills the strip). */
+export const reviews = [...testimonials].sort(
+  (a, b) => Number(b.name === "Manjot Singh") - Number(a.name === "Manjot Singh"),
 );
 
 /* ---------- FAQ ---------- */
