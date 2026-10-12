@@ -1,5 +1,8 @@
 "use client";
 
+import { coreServices, indiaServices } from "@/data/indiaServices";
+import { whatsappHref } from "../ui";
+import ServicesAccordion from "../ui/ServicesAccordion";
 import Calculator from "./Calculator";
 import Gallery from "./Gallery";
 import Hero from "./Hero";
@@ -27,6 +30,15 @@ export default function GoaPage() {
     >
       <Hero />
       <Season />
+      <ServicesAccordion
+        lead="Our digital marketing services in Goa"
+        title="Everything your business needs to grow online"
+        services={coreServices()}
+        allCount={indiaServices.length}
+        source="goa"
+        whatsapp={(t) => whatsappHref(`Hi BigWig Media Digital! I'm interested in ${t} for my business in Goa.`)}
+      />
+      <div className="h-14 md:h-20" aria-hidden />
       <Gallery />
       <div className="h-14 md:h-20" aria-hidden />
       <Calculator />

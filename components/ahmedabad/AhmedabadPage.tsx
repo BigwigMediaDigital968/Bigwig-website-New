@@ -1,7 +1,11 @@
 "use client";
 
 import { clients } from "@/data/clients";
+import { coreServices, indiaServices } from "@/data/indiaServices";
+import { whatsappHref } from "../ui";
 import ClientStrip from "../ui/ClientStrip";
+import ServicesAccordion from "../ui/ServicesAccordion";
+import { servicePhotos } from "./content";
 import Enquire from "./Enquire";
 import Hero, { Intro } from "./Hero";
 import { Faq, Reviews } from "./Sections";
@@ -20,6 +24,17 @@ export default function AhmedabadPage() {
       <Hero />
       <Intro />
       <ClientStrip clients={clients} duration="98s" />
+      <div className="mt-14 md:mt-20">
+        <ServicesAccordion
+          lead="Our digital marketing services in Ahmedabad"
+          title="Everything your business needs to grow online"
+          services={coreServices()}
+          allCount={indiaServices.length}
+          source="ahmedabad"
+          photos={servicePhotos}
+          whatsapp={(t) => whatsappHref(`Hi BigWig Media Digital! I'm interested in ${t} for my business in Ahmedabad.`)}
+        />
+      </div>
       <Sectors />
       <Social />
       <Work />

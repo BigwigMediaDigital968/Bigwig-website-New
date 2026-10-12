@@ -18,6 +18,16 @@ export const AHMEDABAD_WHATSAPP_HREF = whatsappHref(
 
 const unsplash = (id: string, w = 2400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
+/** Background per row of the services section (shown when a row opens), keyed by the service page link. */
+export const servicePhotos: Record<string, { src: string; alt: string }> = {
+  "/services/performance-marketing": { src: unsplash("1651408451633-ff492f347ec1", 1600), alt: "Atal Bridge at sunset" },
+  "/services/search-engine-optimization": { src: unsplash("1687840430404-b82859282de4", 1600), alt: "Ahmedabad from above" },
+  "/services/social-media-marketing": { src: unsplash("1700170554599-50c74065ecdd", 1600), alt: "Atal Bridge over the Sabarmati" },
+  "/services/website-development-company-in-delhi": { src: unsplash("1638006524490-492fdf36ee04", 1600), alt: "The Sabarmati riverfront at night" },
+  "/services/graphic-designing": { src: unsplash("1704730827544-ad473ecae95d", 1600), alt: "The orange canopy of Atal Bridge" },
+  "/services/online-reputation-management": { src: unsplash("1603651481343-0f71466bb14a", 1600), alt: "The Hutheesing Jain temple" },
+};
+
 export const photos = {
   temple: { src: unsplash("1603651481343-0f71466bb14a", 1200), alt: "The Hutheesing Jain temple, Ahmedabad" },
   bridge: { src: unsplash("1704730827544-ad473ecae95d", 1200), alt: "The walkway of Atal Bridge under its orange canopy" },
