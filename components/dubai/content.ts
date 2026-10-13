@@ -1,5 +1,4 @@
 // Copy and photos for the Dubai page sections. Unsplash (images.unsplash.com is allowed in next.config).
-const unsplash = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const BASE = "/digital-marketing-agency-dubai-uae";
 
@@ -99,37 +98,37 @@ export const industries = [
   {
     name: "Real estate",
     desc: "Off-plan launches, broker lead funnels and listing campaigns that fill viewing calendars.",
-    img: unsplash("1613490493576-7fde63acd811", 1400),
+    img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1400&q=80",
     alt: "A modern white villa with a long swimming pool",
   },
   {
     name: "Hospitality & tourism",
     desc: "Direct bookings for hotels, tours and desert experiences, for visitors and residents alike.",
-    img: unsplash("1739900225202-5d7b707f2f5c"),
+    img: "https://images.unsplash.com/photo-1739900225202-5d7b707f2f5c?auto=format&fit=crop&w=1200&q=80",
     alt: "A red 4x4 driving over the dunes on a Dubai desert safari",
   },
   {
     name: "Retail & e-commerce",
     desc: "Mall footfall, online stores and marketplace listings, all tracked to sales.",
-    img: unsplash("1562280963-8a5475740a10", 900),
+    img: "https://images.unsplash.com/photo-1562280963-8a5475740a10?auto=format&fit=crop&w=900&q=80",
     alt: "Shoppers on several levels of the Dubai Mall",
   },
   {
     name: "Food & beverage",
     desc: "Launches, delivery-app visibility and content made for Instagram.",
-    img: unsplash("1414235077428-338989a2e8c0", 900),
+    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80",
     alt: "Plated dishes and wine glasses on a busy restaurant table",
   },
   {
     name: "Beauty & wellness",
     desc: "Clinic and salon bookings driven by reviews, reels and local search.",
-    img: unsplash("1570172619644-dfd03ed5d881"),
+    img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80",
     alt: "A client receiving a facial treatment at a skin clinic",
   },
   {
     name: "Tech & startups",
     desc: "Product launches, app installs and B2B pipelines for growing UAE startups.",
-    img: unsplash("1586953208448-b95a79798f07"),
+    img: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=1200&q=80",
     alt: "A smartphone showing a shopping app on a white desk",
   },
 ];

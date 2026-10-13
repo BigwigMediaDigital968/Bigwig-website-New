@@ -18,8 +18,6 @@ type Platform = {
   strategy: string;
 };
 
-const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
-
 const platforms: Platform[] = [
   {
     id: "facebook",
@@ -27,7 +25,7 @@ const platforms: Platform[] = [
     tagline: "Community & lead gen",
     icon: <FaFacebookF />,
     brandColor: "#1877F2",
-    image: unsplash("1563986768609-322da13575f3"),
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80",
     strategy: "Targeted group engagement, localized ads, and community-building content.",
   },
   {
@@ -36,7 +34,7 @@ const platforms: Platform[] = [
     tagline: "Discovery & Reels",
     icon: <FaInstagram />,
     brandColor: "#E4405F",
-    image: unsplash("1611162617474-5b21e879e113"),
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80",
     strategy: "High-impact visual stories, trending Reels, and aesthetic profile grids.",
   },
   {
@@ -45,7 +43,7 @@ const platforms: Platform[] = [
     tagline: "B2B & thought leadership",
     icon: <FaLinkedinIn />,
     brandColor: "#0A66C2",
-    image: unsplash("1611944212129-29977ae1398c"),
+    image: "https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&w=900&q=80",
     strategy: "Executive branding, industry insights, decision-maker reach, and carousel decks.",
   },
   {
@@ -54,7 +52,7 @@ const platforms: Platform[] = [
     tagline: "Real-time trends",
     icon: <FaXTwitter />,
     brandColor: "#000000",
-    image: unsplash("1560250097-0b93528c311a"),
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
     strategy: "Bite-sized updates, active conversation threads, and real-time public relations.",
   },
   {
@@ -63,7 +61,7 @@ const platforms: Platform[] = [
     tagline: "Visual search & e-commerce",
     icon: <FaPinterestP />,
     brandColor: "#E60023",
-    image: unsplash("1618005182384-a83a8bd57fbe"),
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
     strategy: "Shoppable pins, mood boards, and long-tail organic search traffic.",
   },
   {
@@ -72,7 +70,7 @@ const platforms: Platform[] = [
     tagline: "Long-form video & Shorts",
     icon: <FaYoutube />,
     brandColor: "#FF0000",
-    image: unsplash("1611162616475-46b635cb6868"),
+    image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=900&q=80",
     strategy: "SEO-optimized long-form video, tutorials, and snackable Shorts.",
   },
 ];

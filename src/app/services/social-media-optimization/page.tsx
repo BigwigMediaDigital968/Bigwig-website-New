@@ -46,7 +46,6 @@ export const metadata: Metadata = {
 };
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const unsplash = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const results: ServiceResult[] = [
   { value: "2X–6X", label: "Increase in overall engagement" },
@@ -60,31 +59,31 @@ const process: ServiceStep[] = [
   {
     title: "Profile creation & optimization",
     desc: "We optimize your social media profiles with keyword-rich descriptions, visually appealing graphics, call-to-actions, and branded elements to build a strong digital identity.",
-    image: unsplash("1611162617474-5b21e879e113"),
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Social media app icons on a phone screen",
   },
   {
     title: "Engaging content & creative graphics",
     desc: "Our creative team produces high-quality posts, videos, infographics, carousels, and stories that resonate with your audience and drive continuous engagement.",
-    image: unsplash("1658863025658-4a259cc68fc9"),
+    image: "https://images.unsplash.com/photo-1658863025658-4a259cc68fc9?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Printed design samples and brochures",
   },
   {
     title: "Target audience refinement",
     desc: "We help you attract users who are genuinely interested in your products or services, ensuring maximum relevance and conversion potential.",
-    image: unsplash("1517048676732-d65bc937f952"),
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team planning around a meeting table",
   },
   {
     title: "Audience interaction & engagement",
     desc: "We manage comments, messages, and interactions in real time, helping your brand stay active, responsive, and customer-friendly.",
-    image: unsplash("1758274252219-5f20097548c9"),
+    image: "https://images.unsplash.com/photo-1758274252219-5f20097548c9?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Woman smiling while reading her phone",
   },
   {
     title: "Analytics & performance reporting",
     desc: "From reach and impressions to follower growth and engagement metrics, our detailed reports help you understand the impact of your SMO campaigns.",
-    image: unsplash("1551288049-bebda4e38f71"),
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Analytics dashboard on a laptop screen",
   },
 ];

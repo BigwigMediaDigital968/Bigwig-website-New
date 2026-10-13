@@ -43,7 +43,6 @@ export const metadata: Metadata = {
 };
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const unsplash = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const promises = [
   "Authentic content",
@@ -56,37 +55,37 @@ const whyChoose: ServiceItem[] = [
   {
     title: "Deep Understanding of Delhi’s Digital Culture",
     desc: "Every city has its own audience psychology. Delhi is driven by lifestyle, aspiration, energy, and relatability, and our localized insights make campaigns feel natural, not forced.",
-    image: unsplash("1543269865-cbf427effbad", 800),
+    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Friends laughing together around a café table",
   },
   {
     title: "Access to Verified, High-Impact Influencers",
     desc: "From nano and micro creators to celebrities, our network spans fashion, beauty, food, travel, fitness, finance, tech, parenting, and more, matched to your brand’s personality and goals.",
-    image: unsplash("1529139574466-a303027c1d8b", 800),
+    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Fashion creator posing in bold sunglasses",
   },
   {
     title: "Data-Led Influencer Shortlisting",
     desc: "We evaluate audience relevance, engagement quality, authenticity score, content style & tone, and historical performance, so you only work with influencers who deliver real outcomes.",
-    image: unsplash("1551288049-bebda4e38f71", 800),
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Analytics dashboard on a laptop screen",
   },
   {
     title: "Transparent, Authentic Partnerships",
     desc: "No inflated numbers. No fake followers. No unclear deliverables. We guarantee authentic content, full transparency, and proper disclosure guidelines.",
-    image: unsplash("1600096194534-95cf5ece04cf", 800),
+    image: "https://images.unsplash.com/photo-1600096194534-95cf5ece04cf?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Phone held up beneath a painted like-heart",
   },
   {
     title: "Full Campaign Management",
     desc: "Strategy → influencer selection → negotiation → briefing → content approvals → posting schedules → reporting. You focus on business. We handle the influence.",
-    image: unsplash("1521737604893-d14cc237f11d", 800),
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Campaign team working together at a long table",
   },
   {
     title: "Creative Strategies That Drive Engagement",
     desc: "Scroll-stopping content ideas tailored for Reels, YouTube Shorts, long-form videos, lifestyle posts, and trending formats.",
-    image: unsplash("1607968565043-36af90dde238", 800),
+    image: "https://images.unsplash.com/photo-1607968565043-36af90dde238?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Phone on a tripod filming a creator video",
   },
 ];
@@ -122,37 +121,37 @@ const workflow: ServiceStep[] = [
   {
     title: "Understanding your brand & audience",
     desc: "We start with a deep dive into your goals, product positioning, competitive landscape, and target persona.",
-    image: unsplash("1542744173-8e7e53415bb0"),
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Strategy meeting around a conference table",
   },
   {
     title: "Identifying ideal influencers",
     desc: "Our analytics tools ensure we find creators who genuinely influence your audience.",
-    image: unsplash("1611162616305-c69b3fa7fbe0"),
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Glossy 3D Instagram icon on pink",
   },
   {
     title: "Planning the content story",
     desc: "We map out the storytelling arc: authentic, engaging, and suited to each platform.",
-    image: unsplash("1557804506-669a67965ba0"),
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team planning a campaign at a whiteboard",
   },
   {
     title: "Collaboration & content creation",
     desc: "Influencers create content that your audience trusts and engages with.",
-    image: unsplash("1598550476439-6847785fcea6"),
+    image: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Creator studio with camera, monitors and lighting",
   },
   {
     title: "Campaign management & optimization",
     desc: "We monitor performance and tweak campaign elements to ensure maximum impact.",
-    image: unsplash("1556761175-b413da4baf72"),
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team reviewing a campaign on a desktop screen",
   },
   {
     title: "Reporting & insights",
     desc: "Detailed reports that clearly show ROI and audience reaction.",
-    image: unsplash("1543286386-713bdd548da4"),
+    image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Rising growth chart on paper",
   },
 ];
@@ -303,7 +302,7 @@ export default function InfluencerMarketingPage() {
             title: "Benefits of Hiring an Influencer Marketing Agency in Delhi",
             intro:
               "Authentic visibility, powerful storytelling, and measurable growth. Here’s what you gain when experts handle your campaigns:",
-            image: unsplash("1588516903720-8ceb67f9ef84"),
+            image: "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Smiling creator in glasses by the water",
             items: [
               "Build trust faster than traditional ads",
@@ -318,7 +317,7 @@ export default function InfluencerMarketingPage() {
           },
           {
             title: "Why We’re a Trusted Influencer Marketing Company in Delhi",
-            image: unsplash("1600880292203-757bb62b4baf"),
+            image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Two colleagues celebrating with a high five at their desk",
             items: [
               {
@@ -371,11 +370,11 @@ export default function InfluencerMarketingPage() {
         cta="Start your campaign"
         source="influencer-cta"
         photos={[
-          { src: unsplash("1611262588024-d12430b98920", 600), alt: "3D Instagram icon on a dark background" },
-          { src: unsplash("1596462502278-27bfdc403348", 800), alt: "Beauty products flat lay for a product seeding post" },
-          { src: unsplash("1567446537708-ac4aa75c9c28", 900), alt: "Giant winking smiley sign" },
-          { src: unsplash("1611162618071-b39a2ec055fb", 800), alt: "3D Facebook and Messenger icons" },
-          { src: unsplash("1609921205586-7e8a57516512", 600), alt: "Hand holding a phone showing an app" },
+          { src: "https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=600&q=80", alt: "3D Instagram icon on a dark background" },
+          { src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80", alt: "Beauty products flat lay for a product seeding post" },
+          { src: "https://images.unsplash.com/photo-1567446537708-ac4aa75c9c28?auto=format&fit=crop&w=900&q=80", alt: "Giant winking smiley sign" },
+          { src: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=800&q=80", alt: "3D Facebook and Messenger icons" },
+          { src: "https://images.unsplash.com/photo-1609921205586-7e8a57516512?auto=format&fit=crop&w=600&q=80", alt: "Hand holding a phone showing an app" },
         ]}
       />
 

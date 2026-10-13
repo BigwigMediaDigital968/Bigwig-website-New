@@ -42,7 +42,6 @@ export const metadata: Metadata = {
 };
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const unsplash = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 // placeholder photos; replace each URL with a real design (first two 4:5 portraits, then four squares)
 const designWork: GalleryPosts = [
   {
@@ -75,31 +74,31 @@ const designServices: ServiceItem[] = [
   {
     title: "Complete Branding Solutions",
     desc: "Logo design · Brand guidelines · Brand identity systems",
-    image: unsplash("1611532736597-de2d4265fba3", 800),
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Letter A type sketch on a tablet beside a brand guidelines book",
   },
   {
     title: "Marketing & Promotional Design",
     desc: "Brochures & flyers · Posters & banners · Catalogues & print ads",
-    image: unsplash("1572044162444-ad60f128bdea", 800),
+    image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Designer drawing on a pen tablet beside colour swatches",
   },
   {
     title: "Digital & Social Media Graphics",
     desc: "Instagram creatives · Facebook ads · YouTube thumbnails · Carousel designs",
-    image: unsplash("1634942537034-2531766767d1", 800),
+    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Glossy 3D Instagram icon",
   },
   {
     title: "Packaging & Product Design",
     desc: "Labels · Boxes · Custom packaging visuals",
-    image: unsplash("1607082348824-0a96f2a4b9da", 800),
+    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Red and black branded shopping bags",
   },
   {
     title: "UI/UX Graphics",
     desc: "Website layout graphics · App screens · Interface visuals",
-    image: unsplash("1609921212029-bb5a28e60960", 800),
+    image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Mobile app screen designs on a desktop monitor",
   },
 ];
@@ -255,7 +254,7 @@ export default function GraphicDesigningPage() {
         }
         cta="Get a free design sample"
         source="graphic-intro"
-        image={{ src: unsplash("1626785774573-4b799315345d", 1000), alt: "Adobe creative apps on a tablet beside a design playbook" }}
+        image={{ src: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=80", alt: "Adobe creative apps on a tablet beside a design playbook" }}
       />
 
       <StaticWorkGallery
@@ -322,7 +321,7 @@ export default function GraphicDesigningPage() {
         }
         cta="Get a free video editing consultation"
         source="graphic-video-intro"
-        image={{ src: unsplash("1574717024653-61fd2cf4d44d", 1000), alt: "Video editing timeline on a monitor" }}
+        image={{ src: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=80", alt: "Video editing timeline on a monitor" }}
       />
 
       <ServiceSplitCarousel
@@ -340,7 +339,7 @@ export default function GraphicDesigningPage() {
         title="Why Choose Us as Your Video Editing Agency in Delhi"
         cta="Book a free creative consultation"
         source="graphic-video-why-us"
-        image={{ src: unsplash("1535016120720-40c646be5580", 1000), alt: "Projector beam in a dark screening room" }}
+        image={{ src: "https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=1000&q=80", alt: "Projector beam in a dark screening room" }}
         body={
           <>
             <p>

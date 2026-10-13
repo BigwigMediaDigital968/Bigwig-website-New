@@ -45,14 +45,13 @@ export const metadata: Metadata = {
 };
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const unsplash = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const introPhotos = [
-  { src: unsplash("1556204975-1851fadab092", 600), alt: "Mail app icon with unread messages" },
-  { src: unsplash("1758274252219-5f20097548c9", 800), alt: "Woman smiling while reading her phone" },
-  { src: unsplash("1683117927786-f146451082fb", 900), alt: "Blue envelope icon" },
-  { src: unsplash("1615840287456-01c4cf540c55", 800), alt: "Hands typing on a laptop" },
-  { src: unsplash("1596526131083-e8c633c948d2", 600), alt: "Mail app on a phone home screen" },
+  { src: "https://images.unsplash.com/photo-1556204975-1851fadab092?auto=format&fit=crop&w=600&q=80", alt: "Mail app icon with unread messages" },
+  { src: "https://images.unsplash.com/photo-1758274252219-5f20097548c9?auto=format&fit=crop&w=800&q=80", alt: "Woman smiling while reading her phone" },
+  { src: "https://images.unsplash.com/photo-1683117927786-f146451082fb?auto=format&fit=crop&w=900&q=80", alt: "Blue envelope icon" },
+  { src: "https://images.unsplash.com/photo-1615840287456-01c4cf540c55?auto=format&fit=crop&w=800&q=80", alt: "Hands typing on a laptop" },
+  { src: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=600&q=80", alt: "Mail app on a phone home screen" },
 ];
 
 const whyChoose: ServiceItem[] = [
@@ -90,37 +89,37 @@ const process: ServiceStep[] = [
   {
     title: "Research & strategy",
     desc: "We start with your business goals, customers, and existing data, then define a measurable email strategy aligned with your KPIs: revenue, leads, and retention.",
-    image: unsplash("1517048676732-d65bc937f952"),
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team planning around a meeting table",
   },
   {
     title: "List building & segmentation",
     desc: "Clean lists and smart segments (behavioural, demographic, lifecycle stage) are the backbone of effective email. They let every message feel personal.",
-    image: unsplash("1783115259399-3a5a3e0e4592"),
+    image: "https://images.unsplash.com/photo-1783115259399-3a5a3e0e4592?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Laptop showing a subscriber spreadsheet",
   },
   {
     title: "Creative & copy",
     desc: "Compelling subject lines, concise benefit-led copy, and mobile-first design raise open and click rates, written in your brand’s voice for Delhi audiences.",
-    image: unsplash("1602016736566-7ed6a58894bd"),
+    image: "https://images.unsplash.com/photo-1602016736566-7ed6a58894bd?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Copywriter working on a laptop",
   },
   {
     title: "Automation & workflow setup",
     desc: "Welcome series, onboarding flows, cart recovery, and win-back campaigns turn one email into dozens of revenue opportunities.",
-    image: unsplash("1743385779347-1549dabf1320"),
+    image: "https://images.unsplash.com/photo-1743385779347-1549dabf1320?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Hand-drawn workflow diagram on a desk",
   },
   {
     title: "Testing & optimisation",
     desc: "A/B subject tests, send-time experiments, and content variants help us improve performance with every send.",
-    image: unsplash("1532622785990-d2c36a76f5a6"),
+    image: "https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Two people sketching test ideas on a whiteboard",
   },
   {
     title: "Monitoring & reporting",
     desc: "We track deliverability, opens, clicks, conversions, and revenue, then turn results into clear recommendations to grow ROI month over month.",
-    image: unsplash("1551288049-bebda4e38f71"),
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Analytics dashboard on a laptop screen",
   },
 ];
@@ -301,19 +300,19 @@ export default function EmailMarketingPage() {
           {
             title: "Opt-in strategies & lead magnets",
             desc: "Sign-up flows and high-value incentives that attract engaged subscribers, not just raw volume.",
-            image: unsplash("1762330471687-a05c0f99a046", 600),
+            image: "https://images.unsplash.com/photo-1762330471687-a05c0f99a046?auto=format&fit=crop&w=600&q=80",
             imageAlt: "Sign-up screen with email option",
           },
           {
             title: "Subscription management",
             desc: "Preference centres let subscribers choose topics and frequency, reducing unsubscribes and boosting retention.",
-            image: unsplash("1790749871439-a1762c75af2a", 1400),
+            image: "https://images.unsplash.com/photo-1790749871439-a1762c75af2a?auto=format&fit=crop&w=1400&q=80",
             imageAlt: "Woman reading email on her phone in a café",
           },
           {
             title: "List hygiene & bounce management",
             desc: "We regularly remove bounces and inactive users to protect sender reputation and keep deliverability high.",
-            image: unsplash("1460925895917-afdab827c52f", 600),
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
             imageAlt: "Laptop showing email list health metrics",
           },
         ]}
@@ -323,7 +322,7 @@ export default function EmailMarketingPage() {
         panels={[
           {
             title: "Key Features of Our Email Marketing Services in Delhi",
-            image: unsplash("1658863025658-4a259cc68fc9"),
+            image: "https://images.unsplash.com/photo-1658863025658-4a259cc68fc9?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Printed design samples and brochures",
             items: [
               {
@@ -346,7 +345,7 @@ export default function EmailMarketingPage() {
           },
           {
             title: "Crafting Engaging Email Content That Converts",
-            image: unsplash("1622675363311-3e1904dc1885"),
+            image: "https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Content team working together around a table",
             items: [
               {
@@ -434,7 +433,7 @@ export default function EmailMarketingPage() {
         title="Why We’re the Email Marketing Agency in Delhi You Should Choose"
         cta="Book a free strategy call"
         source="email-strategy-call"
-        image={{ src: unsplash("1522071820081-009f0129c71c", 1000), alt: "Email marketing team working together on laptops" }}
+        image={{ src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80", alt: "Email marketing team working together on laptops" }}
         body={
           <>
             <ul className="space-y-3">

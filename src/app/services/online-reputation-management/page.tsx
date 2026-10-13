@@ -45,7 +45,6 @@ export const metadata: Metadata = {
 };
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const unsplash = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const services: ServiceItem[] = [
   {
@@ -86,31 +85,31 @@ const strengthen: ServiceItem[] = [
   {
     title: "Developing a Positive Brand Image",
     desc: "We build a credible, engaging brand presence through tailored content strategies, review enhancement, and multi-platform reputation management, for higher visibility and stronger customer trust.",
-    image: unsplash("1521791136064-7986c2920216", 800),
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Two people shaking hands over a business deal",
   },
   {
     title: "Brand Monitoring",
     desc: "We track mentions across social media, blogs, review sites, and search engines, spot potential issues early, and keep your brand narrative consistent.",
-    image: unsplash("1551288049-bebda4e38f71", 800),
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Analytics dashboard on a laptop screen",
   },
   {
     title: "Responding to Negative Reviews",
     desc: "We respond professionally, address customer concerns, and aim to turn dissatisfaction into positive experiences that restore trust.",
-    image: unsplash("1551836022-d5d88e9218df", 800),
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Two colleagues talking through a customer issue at a desk",
   },
   {
     title: "Positive Content Promotion",
     desc: "We promote reviews, testimonials, case studies, and brand stories across relevant platforms so your brand gains visibility, credibility, and confidence.",
-    image: unsplash("1557804506-669a67965ba0", 800),
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Team planning content at a whiteboard",
   },
   {
     title: "Strengthening Your Social Media Presence",
     desc: "We create tailored content, engage with followers, and make sure your platforms reflect authenticity and professionalism, building recognition and loyalty.",
-    image: unsplash("1611162616305-c69b3fa7fbe0", 800),
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Glossy 3D Instagram icon on pink",
   },
 ];
@@ -119,25 +118,25 @@ const process: ServiceStep[] = [
   {
     title: "Understanding your brand",
     desc: "We begin with a detailed audit to analyse your current digital reputation.",
-    image: unsplash("1542744173-8e7e53415bb0"),
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Strategy meeting around a conference table",
   },
   {
     title: "Creating a customised ORM plan",
     desc: "We design a strategy aligned with your goals and brand personality.",
-    image: unsplash("1521737604893-d14cc237f11d"),
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team working on a plan together at a long table",
   },
   {
     title: "Execution and active monitoring",
     desc: "Using SEO, content marketing, social listening, and engagement tactics, we manage your reputation continuously.",
-    image: unsplash("1556761175-b413da4baf72"),
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team reviewing brand mentions on a desktop screen",
   },
   {
     title: "Optimisation and reporting",
     desc: "We adjust strategies as needed and keep you updated with clear, transparent reports.",
-    image: unsplash("1543286386-713bdd548da4"),
+    image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Rising growth chart on paper",
   },
 ];
@@ -287,7 +286,7 @@ export default function OnlineReputationManagementPage() {
         panels={[
           {
             title: "Benefits of Strong Online Reputation Management",
-            image: unsplash("1586953208448-b95a79798f07"),
+            image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Smartphone showing an app on a white desk",
             items: [
               {
@@ -316,7 +315,7 @@ export default function OnlineReputationManagementPage() {
             title: "Why Choose Bigwig Media Digital as Your ORM Agency in Delhi?",
             intro:
               "Partnering with an experienced team, recognised as one of the best ORM companies in Delhi, means measurable and long-lasting results. What you can expect:",
-            image: unsplash("1600880292203-757bb62b4baf"),
+            image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Two colleagues celebrating with a high five at their desk",
             items: [
               "Advanced tools for monitoring and analysis",
@@ -359,11 +358,11 @@ export default function OnlineReputationManagementPage() {
         cta="Start your project today"
         source="orm-cta"
         photos={[
-          { src: unsplash("1611262588024-d12430b98920", 600), alt: "3D Instagram icon on a dark background" },
-          { src: unsplash("1570172619644-dfd03ed5d881", 800), alt: "A client receiving treatment at a skin clinic" },
-          { src: unsplash("1517248135467-4c7edcad34c4", 900), alt: "A modern restaurant dining room" },
-          { src: unsplash("1611162618071-b39a2ec055fb", 800), alt: "3D Facebook and Messenger icons" },
-          { src: unsplash("1460925895917-afdab827c52f", 600), alt: "Website analytics on a laptop" },
+          { src: "https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=600&q=80", alt: "3D Instagram icon on a dark background" },
+          { src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80", alt: "A client receiving treatment at a skin clinic" },
+          { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80", alt: "A modern restaurant dining room" },
+          { src: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=800&q=80", alt: "3D Facebook and Messenger icons" },
+          { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80", alt: "Website analytics on a laptop" },
         ]}
       />
 

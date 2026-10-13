@@ -16,21 +16,19 @@ export const AHMEDABAD_WHATSAPP_HREF = whatsappHref(
 
 /* ---------- photos (images.unsplash.com is allowed in next.config; free Unsplash licence) ---------- */
 
-const unsplash = (id: string, w = 2400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
-
 /** Background per row of the services section (shown when a row opens), keyed by the service page link. */
 export const servicePhotos: Record<string, { src: string; alt: string }> = {
-  "/services/performance-marketing": { src: unsplash("1651408451633-ff492f347ec1", 1600), alt: "Atal Bridge at sunset" },
-  "/services/search-engine-optimization": { src: unsplash("1687840430404-b82859282de4", 1600), alt: "Ahmedabad from above" },
-  "/services/social-media-marketing": { src: unsplash("1700170554599-50c74065ecdd", 1600), alt: "Atal Bridge over the Sabarmati" },
-  "/services/website-development-company-in-delhi": { src: unsplash("1638006524490-492fdf36ee04", 1600), alt: "The Sabarmati riverfront at night" },
-  "/services/graphic-designing": { src: unsplash("1704730827544-ad473ecae95d", 1600), alt: "The orange canopy of Atal Bridge" },
-  "/services/online-reputation-management": { src: unsplash("1603651481343-0f71466bb14a", 1600), alt: "The Hutheesing Jain temple" },
+  "/services/performance-marketing": { src: "https://images.unsplash.com/photo-1651408451633-ff492f347ec1?auto=format&fit=crop&w=1600&q=80", alt: "Atal Bridge at sunset" },
+  "/services/search-engine-optimization": { src: "https://images.unsplash.com/photo-1687840430404-b82859282de4?auto=format&fit=crop&w=1600&q=80", alt: "Ahmedabad from above" },
+  "/services/social-media-marketing": { src: "https://images.unsplash.com/photo-1700170554599-50c74065ecdd?auto=format&fit=crop&w=1600&q=80", alt: "Atal Bridge over the Sabarmati" },
+  "/services/website-development-company-in-delhi": { src: "https://images.unsplash.com/photo-1638006524490-492fdf36ee04?auto=format&fit=crop&w=1600&q=80", alt: "The Sabarmati riverfront at night" },
+  "/services/graphic-designing": { src: "https://images.unsplash.com/photo-1704730827544-ad473ecae95d?auto=format&fit=crop&w=1600&q=80", alt: "The orange canopy of Atal Bridge" },
+  "/services/online-reputation-management": { src: "https://images.unsplash.com/photo-1603651481343-0f71466bb14a?auto=format&fit=crop&w=1600&q=80", alt: "The Hutheesing Jain temple" },
 };
 
 export const photos = {
-  temple: { src: unsplash("1603651481343-0f71466bb14a", 1200), alt: "The Hutheesing Jain temple, Ahmedabad" },
-  bridge: { src: unsplash("1704730827544-ad473ecae95d", 1200), alt: "The walkway of Atal Bridge under its orange canopy" },
+  temple: { src: "https://images.unsplash.com/photo-1603651481343-0f71466bb14a?auto=format&fit=crop&w=1200&q=80", alt: "The Hutheesing Jain temple, Ahmedabad" },
+  bridge: { src: "https://images.unsplash.com/photo-1704730827544-ad473ecae95d?auto=format&fit=crop&w=1200&q=80", alt: "The walkway of Atal Bridge under its orange canopy" },
 };
 
 /**
@@ -38,12 +36,12 @@ export const photos = {
  * are tall full-page shots, so they show their top (`top: true`).
  */
 export const strip: { src: string; alt: string; top?: boolean }[] = [
-  { src: unsplash("1687840430404-b82859282de4", 600), alt: "Ahmedabad from above" },
+  { src: "https://images.unsplash.com/photo-1687840430404-b82859282de4?auto=format&fit=crop&w=600&q=80", alt: "Ahmedabad from above" },
   { src: "/rehnoor-jewels-showcase.png", alt: "The Rehnoor Jewels website we built", top: true },
-  { src: unsplash("1603651481343-0f71466bb14a", 600), alt: "The Hutheesing Jain temple, Ahmedabad" },
-  { src: unsplash("1700170554599-50c74065ecdd", 800), alt: "Atal Bridge over the Sabarmati riverfront" },
+  { src: "https://images.unsplash.com/photo-1603651481343-0f71466bb14a?auto=format&fit=crop&w=600&q=80", alt: "The Hutheesing Jain temple, Ahmedabad" },
+  { src: "https://images.unsplash.com/photo-1700170554599-50c74065ecdd?auto=format&fit=crop&w=800&q=80", alt: "Atal Bridge over the Sabarmati riverfront" },
   { src: "/himanshu-verma.png", alt: "The Dr. Himanshu Verma clinic website we built", top: true },
-  { src: unsplash("1651408451633-ff492f347ec1", 600), alt: "Atal Bridge at sunset" },
+  { src: "https://images.unsplash.com/photo-1651408451633-ff492f347ec1?auto=format&fit=crop&w=600&q=80", alt: "Atal Bridge at sunset" },
   { src: "/crownpoint-estates-leads.png", alt: "The Crownpoint Estates website we built", top: true },
 ];
 

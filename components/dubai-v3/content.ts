@@ -13,12 +13,9 @@ import cgiChefs from "../../Assets/gallery/ChatGPT Image May 31, 2025, 02_57_46 
 import postServices from "../../Assets/gallery/BigWig Static Post (4).png";
 import postViral from "../../Assets/gallery/BigWig Static Post (5).png";
 
-const unsplash = (id: string, w = 1400) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
-
 export const photos = {
   /** white villa with an infinity pool: the hero's phone ad */
-  villa: unsplash("1600596542815-ffad4c1539a9", 700),
+  villa: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80",
 };
 
 /* ---------- real work ---------- */
@@ -267,7 +264,7 @@ export const playbooks: Playbook[] = [
       "Leads sent to your sales team on WhatsApp within moments",
     ],
     cta: "Plan my launch",
-    img: unsplash("1486406146926-c627a92ad1ab", 1400),
+    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
     alt: "Glass residential towers seen from street level",
   },
   {
@@ -282,7 +279,7 @@ export const playbooks: Playbook[] = [
       "Google Business Profile and review growth",
     ],
     cta: "Grow my brokerage",
-    img: unsplash("1600596542815-ffad4c1539a9", 1400),
+    img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80",
     alt: "White villa with an infinity pool under a blue sky",
   },
   {
@@ -297,7 +294,7 @@ export const playbooks: Playbook[] = [
       "Reputation management across Google and social",
     ],
     cta: "Build my brand",
-    img: unsplash("1582407947304-fd86f028f716", 1400),
+    img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1400&q=80",
     alt: "Modern residential towers against a clear sky",
   },
 ];

@@ -60,42 +60,41 @@ export const metadata: Metadata = {
 /* Stat cards and image showcase, commented out for now (see the JSX below).
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1200&q=80`;
 
 const stats: ServiceStat[] = [
   {
     value: "100+",
     label: "Delhi businesses",
     desc: "Real estate firms, clinics, retailers, and startups across Delhi NCR trust us with their websites.",
-    image: unsplash("1627599936744-51d288f89af4"),
+    image: "https://images.unsplash.com/photo-1627599936744-51d288f89af4?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Web developers working at desks in an office",
   },
   {
     value: "5.0",
     label: "Google rating",
     desc: "Rated 5.0 across 71 Google reviews from our clients.",
-    image: unsplash("1787647561667-7f3b6b34487c"),
+    image: "https://images.unsplash.com/photo-1787647561667-7f3b6b34487c?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team reviewing design printouts together",
   },
   {
     value: "65%",
     label: "Mobile visits",
     desc: "Of web visits in India come from phones, so every site we build is mobile-first.",
-    image: unsplash("1551650975-87deedd944c3"),
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Hand holding a phone showing a responsive dashboard",
   },
   {
     value: "94%",
     label: "Design-led first impressions",
     desc: "First impressions are design-driven. A custom website makes yours count.",
-    image: unsplash("1522542550221-31fd19575a2d"),
+    image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Watercolour wireframe sketches of website layouts",
   },
   {
     value: "4–8",
     label: "Weeks to launch",
     desc: "Typical time from brief to launch for a business website, with a clear timeline up front.",
-    image: unsplash("1600132806608-231446b2e7af"),
+    image: "https://images.unsplash.com/photo-1600132806608-231446b2e7af?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Hand-drawn website wireframe on paper",
   },
 ];
@@ -628,7 +627,7 @@ export default function WebsiteDevelopmentPage() {
           </>
         }
         features={whyFeatures}
-        image={unsplash("1498050108023-c5249f4df085")}
+        image={"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"}
         imageAlt="Laptop showing code on a bright developer desk"
         quote="The website they created was tailor-made for my startup’s goals, and it worked beautifully."
         quoteBy="Eshaan Aggarwal, Google review"

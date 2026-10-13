@@ -8,16 +8,13 @@ export const GOA_WHATSAPP_HREF = whatsappHref(
   "Hi BigWig Media Digital! I'm interested in your digital marketing services in Goa.",
 );
 
-const unsplash = (id: string, w = 1600) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
-
 export type Photo = { src: string; alt: string };
 
 export const photos = {
-  hero: { src: unsplash("1642516864335-2ca9d8b3a511", 2400), alt: "A Goan cove and headland from above at golden hour" },
-  fontainhas: { src: unsplash("1656155316674-d8fab9e65eab", 2400), alt: "Yellow and white Indo-Portuguese houses in Fontainhas, Panjim" },
-  door: { src: unsplash("1638797841332-1e5210f670d9", 1200), alt: "A black door in a green Goan house with white trim" },
-  church: { src: unsplash("1641230538352-c82768fa7db9", 1200), alt: "The white bell tower of Our Lady of the Immaculate Conception, Panjim" },
+  hero: { src: "https://images.unsplash.com/photo-1642516864335-2ca9d8b3a511?auto=format&fit=crop&w=2400&q=80", alt: "A Goan cove and headland from above at golden hour" },
+  fontainhas: { src: "https://images.unsplash.com/photo-1656155316674-d8fab9e65eab?auto=format&fit=crop&w=2400&q=80", alt: "Yellow and white Indo-Portuguese houses in Fontainhas, Panjim" },
+  door: { src: "https://images.unsplash.com/photo-1638797841332-1e5210f670d9?auto=format&fit=crop&w=1200&q=80", alt: "A black door in a green Goan house with white trim" },
+  church: { src: "https://images.unsplash.com/photo-1641230538352-c82768fa7db9?auto=format&fit=crop&w=1200&q=80", alt: "The white bell tower of Our Lady of the Immaculate Conception, Panjim" },
 } satisfies Record<string, Photo>;
 
 /* ---------- services ---------- */
@@ -39,42 +36,42 @@ export const services: Service[] = [
     name: "Google & Meta ads",
     line: "Campaigns by market and language, paid for by the booking, not the click.",
     href: "/services/performance-marketing",
-    photo: { src: unsplash("1580741186862-c5d0bf2aff33", 900), alt: "A beach resort with a jetty and palm trees in Goa" },
+    photo: { src: "https://images.unsplash.com/photo-1580741186862-c5d0bf2aff33?auto=format&fit=crop&w=900&q=80", alt: "A beach resort with a jetty and palm trees in Goa" },
     proof: { kind: "ad", brand: "Your stay", text: "Sea-view rooms for December. Book direct and save.", cta: "Book now" },
   },
   {
     name: "SEO & Google Maps",
     line: "First in the map pack when someone nearby searches for what you offer.",
     href: "/services/search-engine-optimization",
-    photo: { src: unsplash("1560179406-1c6c60e0dc76", 900), alt: "Yellow umbrellas and loungers outside a beach shack" },
+    photo: { src: "https://images.unsplash.com/photo-1560179406-1c6c60e0dc76?auto=format&fit=crop&w=900&q=80", alt: "Yellow umbrellas and loungers outside a beach shack" },
     proof: { kind: "maps", query: "beach shack near Morjim", name: "Your shack", rating: "4.8" },
   },
   {
     name: "Websites & booking pages",
     line: "Fast sites with a booking engine, WhatsApp and every enquiry tracked.",
     href: "/services/website-development-company-in-delhi",
-    photo: { src: unsplash("1653928359063-13eb336a4196", 900), alt: "A white Goan building with a red roof by the sea" },
+    photo: { src: "https://images.unsplash.com/photo-1653928359063-13eb336a4196?auto=format&fit=crop&w=900&q=80", alt: "A white Goan building with a red roof by the sea" },
     proof: { kind: "site", url: "yourplace.com", cta: "Check availability" },
   },
   {
     name: "Social media",
     line: "Reels, posts and stories that make people plan their trip around you.",
     href: "/services/social-media-marketing",
-    photo: { src: unsplash("1541738679621-172e4575a81d", 900), alt: "Palm trees leaning over a turquoise Goan bay" },
+    photo: { src: "https://images.unsplash.com/photo-1541738679621-172e4575a81d?auto=format&fit=crop&w=900&q=80", alt: "Palm trees leaning over a turquoise Goan bay" },
     proof: { kind: "reel", views: "48.2K", caption: "Sunset at the shack" },
   },
   {
     name: "Graphic designing & video editing",
     line: "Logos, ad creatives and edited reels that stop the scroll.",
     href: "/services/graphic-designing",
-    photo: { src: unsplash("1642516864959-0b3a40416c13", 900), alt: "A green Goan headland above a sandy bay" },
+    photo: { src: "https://images.unsplash.com/photo-1642516864959-0b3a40416c13?auto=format&fit=crop&w=900&q=80", alt: "A green Goan headland above a sandy bay" },
     proof: { kind: "shoot", label: "Reel edit, South Goa" },
   },
   {
     name: "Reviews & reputation",
     line: "More five-star Google reviews, and calm replies to the rest.",
     href: "/services/online-reputation-management",
-    photo: { src: unsplash("1512343879784-a960bf40e7f2", 900), alt: "A turquoise bay below a palm-lined beach in Goa" },
+    photo: { src: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=80", alt: "A turquoise bay below a palm-lined beach in Goa" },
     proof: { kind: "review", text: "New 5-star review on Google" },
   },
 ];
@@ -100,31 +97,31 @@ export const sectors: Sector[] = [
     id: "stay",
     name: "Hotels & boutique stays",
     line: "Direct bookings that don’t pay an OTA’s cut.",
-    photo: { src: unsplash("1736347505109-f02e0e5a0200", 1200), alt: "A row of beach cottages under palm trees at dusk" },
+    photo: { src: "https://images.unsplash.com/photo-1736347505109-f02e0e5a0200?auto=format&fit=crop&w=1200&q=80", alt: "A row of beach cottages under palm trees at dusk" },
   },
   {
     id: "villa",
     name: "Villas & homestays",
     line: "Booked weekends, in season and out.",
-    photo: { src: unsplash("1587922546307-776227941871", 900), alt: "Colourful wooden cottages near palm trees on a Goan beach" },
+    photo: { src: "https://images.unsplash.com/photo-1587922546307-776227941871?auto=format&fit=crop&w=900&q=80", alt: "Colourful wooden cottages near palm trees on a Goan beach" },
   },
   {
     id: "food",
     name: "Cafés, shacks & restaurants",
     line: "First on Google Maps for ‘near me’.",
-    photo: { src: unsplash("1682743710558-b338ba285925", 900), alt: "A beach restaurant lit with string lights at night" },
+    photo: { src: "https://images.unsplash.com/photo-1682743710558-b338ba285925?auto=format&fit=crop&w=900&q=80", alt: "A beach restaurant lit with string lights at night" },
   },
   {
     id: "real-estate",
     name: "Real estate & second homes",
     line: "Buyers from Mumbai, Bengaluru, Delhi and the Gulf.",
-    photo: { src: unsplash("1634714465560-57e9bf8feb88", 900), alt: "A restored yellow Indo-Portuguese building with balconies in Panjim" },
+    photo: { src: "https://images.unsplash.com/photo-1634714465560-57e9bf8feb88?auto=format&fit=crop&w=900&q=80", alt: "A restored yellow Indo-Portuguese building with balconies in Panjim" },
   },
   {
     id: "events",
     name: "Weddings & events",
     line: "Enquiries for the dates that matter.",
-    photo: { src: unsplash("1718275520594-8bb2d4fae9f0", 900), alt: "A white Goan church with a cross on top" },
+    photo: { src: "https://images.unsplash.com/photo-1718275520594-8bb2d4fae9f0?auto=format&fit=crop&w=900&q=80", alt: "A white Goan church with a cross on top" },
   },
 ];
 
@@ -138,28 +135,28 @@ export const seasons: Season[] = [
     months: "Oct – Mar",
     name: "Peak season",
     line: "Most of the budget, by market and language. Every enquiry straight to WhatsApp.",
-    photo: { src: unsplash("1614082242765-7c98ca0f3df3", 800), alt: "Colourful beach huts and palm trees on a sandy shore" },
+    photo: { src: "https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?auto=format&fit=crop&w=800&q=80", alt: "Colourful beach huts and palm trees on a sandy shore" },
   },
   {
     id: "shoulder",
     months: "Apr – May",
     name: "Shoulder months",
     line: "Short-break offers for drive-in travellers, and past guests brought back.",
-    photo: { src: unsplash("1757702244726-00198554c4a0", 800), alt: "A quiet sandy beach below a green headland" },
+    photo: { src: "https://images.unsplash.com/photo-1757702244726-00198554c4a0?auto=format&fit=crop&w=800&q=80", alt: "A quiet sandy beach below a green headland" },
   },
   {
     id: "monsoon",
     months: "Jun – Jul",
     name: "Monsoon",
     line: "Build: new pages, SEO and content that ranks by October.",
-    photo: { src: unsplash("1786267081755-5ee84640617e", 800), alt: "Dudhsagar waterfall in full monsoon flow above a railway bridge" },
+    photo: { src: "https://images.unsplash.com/photo-1786267081755-5ee84640617e?auto=format&fit=crop&w=800&q=80", alt: "Dudhsagar waterfall in full monsoon flow above a railway bridge" },
   },
   {
     id: "pre",
     months: "Aug – Sep",
     name: "Pre-season",
     line: "Early-bird campaigns while winter trips are being planned.",
-    photo: { src: unsplash("1652820330085-82a0c2b88d78", 800), alt: "A Goan beach and lagoon seen from a green headland" },
+    photo: { src: "https://images.unsplash.com/photo-1652820330085-82a0c2b88d78?auto=format&fit=crop&w=800&q=80", alt: "A Goan beach and lagoon seen from a green headland" },
   },
 ];
 

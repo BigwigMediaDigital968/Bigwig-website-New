@@ -45,7 +45,6 @@ export const metadata: Metadata = {
 };
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const unsplash = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const approach = [
   "Build strong affiliate relationships",
@@ -58,25 +57,25 @@ const whyChoose: ServiceItem[] = [
   {
     title: "Industry Expertise & Trusted Affiliate Network",
     desc: "We work with a strong network of high-quality publishers, influencers, and performance marketers across India. This ensures your brand is promoted through trusted, relevant, and result-oriented channels, making us a preferred affiliate marketing agency in Delhi for high-growth brands.",
-    image: unsplash("1521791136064-7986c2920216", 800),
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Two business partners shaking hands",
   },
   {
     title: "Complete End-to-End Affiliate Management",
     desc: "From strategy creation to onboarding affiliates, tracking performance, managing payouts, and optimizing results, our affiliate marketing company in Delhi handles everything so you can focus on scaling your business.",
-    image: unsplash("1557804506-669a67965ba0", 800),
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Team planning a campaign at a whiteboard",
   },
   {
     title: "Data-Driven Performance Optimization",
     desc: "We use advanced affiliate tracking tools and analytics to identify top-performing partners, eliminate low-quality traffic, and maximize ROI. Our data-driven approach ensures you get the most from your affiliate marketing services in Delhi.",
-    image: unsplash("1551288049-bebda4e38f71", 800),
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Analytics dashboard on a laptop screen",
   },
   {
     title: "Transparent, Performance-Based Growth",
     desc: "With affiliate marketing, you only pay for actual results: clicks, leads, or sales. This makes our affiliate marketing in Delhi extremely cost-effective and risk-free.",
-    image: unsplash("1556742049-0cfed4f6a45d", 800),
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Customer paying by phone at a shop counter",
   },
 ];
@@ -108,13 +107,13 @@ const howItWorks: ServiceStep[] = [
   {
     title: "Understanding Your Business Goals",
     desc: "We analyze your industry, competitors, target audience, and business objectives to build a strong affiliate marketing blueprint.",
-    image: unsplash("1542744173-8e7e53415bb0"),
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Strategy meeting around a conference table",
   },
   {
     title: "Identifying High-Value Affiliates",
     desc: "Our affiliate marketing company in Delhi connects you with niche-specific affiliates who can bring qualified traffic and genuine conversions.",
-    image: unsplash("1611926653458-09294b3142bf"),
+    image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Social media apps on a phone screen",
   },
   {
@@ -129,19 +128,19 @@ const howItWorks: ServiceStep[] = [
         team so affiliate traffic turns into real leads and sales.
       </>
     ),
-    image: unsplash("1607083206869-4c7672e72a8a"),
+    image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Sale banner with 50% off and gift boxes",
   },
   {
     title: "Continuous Optimization",
     desc: "We measure every affiliate’s performance and optimize partnerships, creatives, and promotions for maximum profitability.",
-    image: unsplash("1517245386807-bb43f82c33c4"),
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team discussing results around laptops",
   },
   {
     title: "ROI Reporting & Insights",
     desc: "Transparent reports on sales, conversions, revenue generated, top affiliates, and campaign improvements.",
-    image: unsplash("1543286386-713bdd548da4"),
+    image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Rising growth chart on paper",
   },
 ];
@@ -304,7 +303,7 @@ export default function AffiliateMarketingPage() {
         cta="Plan your affiliate program"
         source="affiliate-services"
         promo={{
-          image: unsplash("1579621970563-ebec7560ff3e", 1000),
+          image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1000&q=80",
           alt: "Young plant growing from a pile of coins",
           text: "Pay only for real results: clicks, leads, or sales.",
         }}
@@ -324,7 +323,7 @@ export default function AffiliateMarketingPage() {
         panels={[
           {
             title: "Benefits of Hiring an Affiliate Marketing Company in Delhi",
-            image: unsplash("1600880292203-757bb62b4baf"),
+            image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Two colleagues celebrating with a high five at their desk",
             items: [
               "Increased sales & revenue through targeted partner promotions",
@@ -341,7 +340,7 @@ export default function AffiliateMarketingPage() {
           },
           {
             title: "Key Features of Our Affiliate Marketing Services in Delhi",
-            image: unsplash("1573164713988-8665fc963095"),
+            image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Two women reviewing data on laptops in a server room",
             items: [
               {
@@ -366,7 +365,7 @@ export default function AffiliateMarketingPage() {
         title="Why We Are the Most Preferred Affiliate Marketing Agency in Delhi"
         cta="Talk to our affiliate team"
         source="affiliate-preferred"
-        image={{ src: unsplash("1556761175-5973dc0f32e7", 1000), alt: "Affiliate manager presenting to a team" }}
+        image={{ src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80", alt: "Affiliate manager presenting to a team" }}
         body={
           <>
             <ul className="space-y-5">
@@ -401,11 +400,11 @@ export default function AffiliateMarketingPage() {
         cta="Get started today"
         source="affiliate-cta"
         photos={[
-          { src: unsplash("1563013544-824ae1b704d3", 600), alt: "Shopper paying online with a card and laptop" },
-          { src: unsplash("1556740758-90de374c12ad", 800), alt: "Customer paying by card at a boutique counter" },
-          { src: unsplash("1586880244406-556ebe35f282", 900), alt: "Online store builder open on a laptop" },
-          { src: unsplash("1554224155-6726b3ff858f", 800), alt: "Calculator and paperwork for payouts" },
-          { src: unsplash("1559136555-9303baea8ebd", 600), alt: "Busy open-plan marketing office" },
+          { src: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80", alt: "Shopper paying online with a card and laptop" },
+          { src: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80", alt: "Customer paying by card at a boutique counter" },
+          { src: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?auto=format&fit=crop&w=900&q=80", alt: "Online store builder open on a laptop" },
+          { src: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80", alt: "Calculator and paperwork for payouts" },
+          { src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80", alt: "Busy open-plan marketing office" },
         ]}
       />
 
