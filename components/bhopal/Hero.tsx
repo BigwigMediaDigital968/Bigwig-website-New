@@ -7,9 +7,10 @@ import useSubmitLead from "../../hooks/useSubmitLead";
 import { trackLeadEvent } from "../../utils/leadTracking";
 import RecaptchaNotice from "../contact/RecaptchaNotice";
 import { EASE_OUT, PHONE_DISPLAY, PHONE_HREF, WhatsAppPill, focusRing } from "../ui";
+import TrustedStrip from "../ui/TrustedStrip";
 import { reachOptions, useBrief, useBriefLabels } from "./Brief";
 import { Lakes } from "./Local";
-import { BHOPAL_WHATSAPP_HREF, areas, budgets, businesses, heroClients, wants, wider } from "./content";
+import { BHOPAL_WHATSAPP_HREF, areas, budgets, businesses, wants, wider } from "./content";
 
 /**
  * The hero is the form. The visitor finishes a sentence about their business (each blank opens a small list),
@@ -275,25 +276,7 @@ export default function Hero() {
 
       {/* clients */}
       <div className="wrap mt-12">
-        <div className="flex flex-col gap-5 border-t border-[var(--line)] pt-7 md:flex-row md:items-center md:gap-10">
-          <p className="flex-none text-sm text-[var(--muted)]">Trusted by businesses across India</p>
-          <ul className="flex flex-wrap items-center gap-x-9 gap-y-5">
-            {heroClients.map((c) => (
-              <li key={c.name}>
-                <a href={c.link} target="_blank" rel="noopener noreferrer" className={`group block rounded-md ${focusRing}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={c.img}
-                    alt={c.name}
-                    loading="lazy"
-                    className="h-7 w-auto max-w-[130px] object-contain opacity-50 brightness-0 transition-opacity duration-300 group-hover:opacity-100 md:h-8"
-                  />
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <TrustedStrip label="Trusted by businesses across India" />
       </div>
     </section>
   );

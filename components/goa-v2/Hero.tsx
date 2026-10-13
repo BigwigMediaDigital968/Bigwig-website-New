@@ -4,17 +4,13 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MapPin } from "lucide-react";
-import { clients } from "@/data/clients";
 import { EASE, WhatsAppPill, fadeUp, focusRing, stagger } from "../ui";
+import TrustedStrip from "../ui/TrustedStrip";
 import { GOA_WHATSAPP_HREF, photos } from "./content";
 import { usePlan } from "./media";
 
 /** what we do, at a glance (the full list is in the services section below) */
 const heroServices = ["Google & Meta ads", "SEO & Google Maps", "Websites", "Social media", "Design & video", "Reputation"];
-
-const trusted = ["Homes and Land Goa", "Mondus Properties", "Granth Dream Homes", "Rehnoor Jewels", "Ethical Infrastructures"]
-  .map((n) => clients.find((c) => c.name === n))
-  .filter((c): c is (typeof clients)[number] => Boolean(c));
 
 /**
  * Full-bleed photographic hero in the site's rounded frame. The headline says what we do, and the service
@@ -105,25 +101,7 @@ export default function Hero() {
       </section>
 
       <div className="wrap mt-8">
-        <div className="flex flex-col gap-5 md:flex-row md:items-center md:gap-10">
-          <p className="flex-none text-sm text-[var(--muted)]">Trusted by property and lifestyle brands</p>
-          <ul className="flex flex-wrap items-center gap-x-10 gap-y-5">
-            {trusted.map((c) => (
-              <li key={c.name}>
-                <a href={c.link} target="_blank" rel="noopener noreferrer" className={`group block rounded-md ${focusRing}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={c.img}
-                    alt={c.name}
-                    loading="lazy"
-                    className="h-8 w-auto max-w-[130px] object-contain opacity-60 brightness-0 transition-opacity duration-300 group-hover:opacity-100"
-                  />
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <TrustedStrip label="Trusted by property and lifestyle brands" bordered={false} />
       </div>
     </>
   );

@@ -3,14 +3,10 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, MapPin } from "lucide-react";
-import { clients } from "@/data/clients";
 import { EASE, WhatsAppPill, fadeUp, focusRing, stagger } from "../ui";
+import TrustedStrip from "../ui/TrustedStrip";
 import { ArchWindow, GoaView } from "./motifs";
 import { GOA_WHATSAPP_HREF, photos } from "./content";
-
-const trusted = ["Homes and Land Goa", "Mondus Properties", "Granth Dream Homes", "Rehnoor Jewels"]
-  .map((n) => clients.find((c) => c.name === n))
-  .filter((c): c is (typeof clients)[number] => Boolean(c));
 
 /**
  * The hero: a calm serif headline on the left, and on the right a Goan dusk seen through an arched window with
@@ -87,25 +83,7 @@ export default function Hero() {
       </div>
 
       <div className="wrap mt-12 md:mt-14">
-        <div className="flex flex-col gap-5 border-t border-[var(--line)] pt-7 md:flex-row md:items-center md:gap-10">
-          <p className="flex-none text-sm text-[var(--muted)]">Trusted by property and lifestyle brands</p>
-          <ul className="flex flex-wrap items-center gap-x-9 gap-y-5">
-            {trusted.map((c) => (
-              <li key={c.name}>
-                <a href={c.link} target="_blank" rel="noopener noreferrer" className={`group block rounded-md ${focusRing}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={c.img}
-                    alt={c.name}
-                    loading="lazy"
-                    className="h-8 w-auto max-w-[130px] object-contain opacity-60 brightness-0 transition-opacity duration-300 group-hover:opacity-100"
-                  />
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <TrustedStrip label="Trusted by property and lifestyle brands" />
       </div>
     </section>
   );
