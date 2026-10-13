@@ -28,7 +28,7 @@ const services = [
   "SEO",
   "Websites",
   "Social media",
-  "CGI & video",
+  "Design & video",
   "Reputation",
 ];
 

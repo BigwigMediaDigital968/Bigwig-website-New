@@ -7,7 +7,7 @@
 // import { EASE, fadeUp, maskUp, stagger } from "../ui";
 
 // const facts = [
-//   { value: "8+", label: "Years" },
+//   { value: "5+", label: "Years" },
 //   { value: "50+", label: "Experts" },
 //   { value: "500+", label: "Clients" },
 //   { value: "360°", label: "Digital marketing" },
@@ -88,7 +88,7 @@ import tableImg from "../../Assets/map-lying-wooden-table.jpg";
 import { EASE, PillLead, PillLink, fadeUp, maskUp, stagger } from "../ui";
 
 const facts = [
-  { value: "8+", label: "Years" },
+  { value: "5+", label: "Years" },
   // { value: "50+", label: "Experts" },
   // { value: "500+", label: "Clients" },
   { value: "360°", label: "Digital marketing" },

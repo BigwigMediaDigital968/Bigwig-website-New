@@ -14,7 +14,7 @@ const reasons = [
   },
   {
     title: "A Strong Track Record",
-    desc: "8+ years of transforming brands into industry leaders through digital innovation.",
+    desc: "5+ years of transforming brands into industry leaders through digital innovation.",
   },
   {
     title: "Trusted by Leading Brands",

@@ -51,7 +51,7 @@ const approach = [
 ];
 
 const companyStats = [
-  { value: "10+", label: "Years of expertise in global & Dubai-focused SEO" },
+  { value: "5+", label: "Years of expertise in global & Dubai-focused SEO" },
   { value: "10,000+", label: "Campaigns managed successfully" },
   { value: "95%", label: "Client retention rate, showcasing trust and results" },
 ];

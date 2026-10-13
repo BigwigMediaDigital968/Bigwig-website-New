@@ -18,7 +18,7 @@ import { faqs } from "@/data/homeData";
 export const metadata: Metadata = {
   title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",
   description:
-    "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 8+ Years | 500+ Clients. Get a Free Strategy Session!",
+    "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 5+ Years | 500+ Clients. Get a Free Strategy Session!",
   keywords:
     "digital marketing agency in Delhi, best digital marketing company Delhi, SEO company in Delhi, social media marketing agency Delhi, website development company Delhi, performance marketing agency Delhi, online marketing services Delhi",
   alternates: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",
     description:
-      "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 8+ Years | 500+ Clients. Get a Free Strategy Session!",
+      "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 5+ Years | 500+ Clients. Get a Free Strategy Session!",
     url: "https://www.bigwigmediadigital.com/",
     siteName: "Bigwig Media Digital",
     locale: "en_IN",

@@ -24,7 +24,7 @@ const review2 =
 
 /**
  * Every service we sell, each shown as the thing it produces rather than an icon: a site, a search result, an
- * ad, a feed, a CGI film, a review, an inbox. Bento on a 12-column grid; one column on phones.
+ * ad, a feed, a creative, a review, an inbox. Titles use the names from the Dubai service list. Bento on a 12-column grid; one column on phones.
  */
 export default function Services() {
   return (
@@ -51,6 +51,8 @@ export default function Services() {
                 url={granthSite.url}
                 src={granthSite.src}
                 sizes="(min-width: 1024px) 50vw, 90vw"
+                height={1000}
+                width={1000}
               />
             </div>
           </Tile>
@@ -117,8 +119,8 @@ export default function Services() {
 
           <Tile
             className="lg:col-span-4"
-            title="CGI, AI ads & video"
-            desc="Scroll-stopping CGI, AI product shots and on-site video shoots for launches."
+            title="Graphic designing & video editing"
+            desc="Logos, ad creatives and edited video that make every launch and listing stand out."
           >
             <div
               aria-hidden
@@ -139,7 +141,7 @@ export default function Services() {
 
           <Tile
             className="lg:col-span-4"
-            title="Reputation management"
+            title="Online reputation management"
             desc="More five-star Google reviews, and fast, careful replies to the rest."
           >
             <div className="absolute inset-x-6 top-8 space-y-3">
@@ -179,21 +181,19 @@ export default function Services() {
 
           <Tile
             className="lg:col-span-4"
-            title="Content, influencer & affiliate"
-            desc="Blogs, area guides, creator partnerships and referral programmes that keep demand growing."
+            title="Content, influencer & affiliate marketing"
+            desc="Blogs and guides, creator partnerships and affiliate programmes, plus profiles optimised to convert."
           >
+            {/* the remaining services from the Dubai service list (data/dubaiData), by their real names */}
             <ul
               aria-hidden
               className="absolute inset-6 flex flex-wrap content-center justify-center gap-2"
             >
               {[
-                "Area guides",
-                "Blog & PR",
-                "Creator collabs",
-                "Referral partners",
-                "Graphic design",
-                "Landing page tests",
-                "Social optimisation",
+                "Content Marketing",
+                "Influencer Marketing",
+                "Affiliate Marketing",
+                "Social Media Optimization",
               ].map((t, i) => (
                 <li
                   key={t}

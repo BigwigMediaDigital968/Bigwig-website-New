@@ -18,6 +18,13 @@ const TRUSTED: { name: string; src: string; aspect: number; weight?: number }[] 
   { name: "Homes and Land Goa", src: "/clients-logo/trimmed/homesandlandgoa.png", aspect: 1.12 },
   { name: "Granth Dream Homes", src: "/clients-logo/trimmed/granthdreamhomes.png", aspect: 2.25 },
   { name: "Global Technologies India", src: "/clients-logo/trimmed/globaltechnologies.png", aspect: 1.33, weight: 0.7 },
+  // more logos that read on the light background, so the loop fills a wide screen (white-lettered logos stay out)
+  { name: "Gear Tek", src: "/clients-logo/trimmed/gear-tek.png", aspect: 1.51, weight: 0.8 },
+  { name: "Stellar Binge", src: "/clients-logo/trimmed/stellarbinge.png", aspect: 1.75, weight: 0.85 },
+  { name: "AVF Care Workshop", src: "/clients-logo/trimmed/avfcareworkshop.png", aspect: 1.93 },
+  { name: "Ethical Infrastructures", src: "/clients-logo/trimmed/ethicalinfrastructure.png", aspect: 1.45 },
+  { name: "Destiny by Numbers", src: "/clients-logo/trimmed/destinybynumbbers.png", aspect: 1.83 },
+  { name: "The Stellar Gymkhana", src: "/clients-logo/trimmed/thestellargymkhana.png", aspect: 2.51 },
 ];
 
 const stats = [
@@ -140,43 +147,53 @@ export default function About() {
           <motion.p variants={fadeUp} className="flex-none text-sm font-medium text-[var(--muted)]">
             Trusted by 50+ brands
           </motion.p>
-          <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
-            {TRUSTED.map((l) => {
-              // same visual weight for every logo: the box keeps one area, so stacked logos get more height and
-              // long wordmarks less (height = √(area ÷ aspect))
-              const h = Math.round(Math.sqrt((AREA * (l.weight ?? 1)) / l.aspect));
-              const link = clients.find((c) => c.name === l.name)?.link;
-              const logo = (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={l.src}
-                  alt={l.name}
-                  draggable={false}
-                  style={{ "--h": `${h}px` } as React.CSSProperties}
-                  // a touch muted at rest; full strength and a small lift on hover or keyboard focus
-                  className="h-[calc(var(--h)*0.8)] w-auto object-contain opacity-100 transition-[opacity,transform] duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 md:h-[var(--h)]"
-                />
-              );
-              return (
-                <motion.li key={l.name} variants={fadeUp}>
-                  {link ? (
-                    <a
-                      href={link}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer"
-                      title={l.name}
-                      className={`group block rounded-md p-1 ${focusRing}`}
-                    >
-                      {logo}
-                      <span className="sr-only">(opens {l.name} website in a new tab)</span>
-                    </a>
-                  ) : (
-                    <span className="group block p-1">{logo}</span>
-                  )}
-                </motion.li>
-              );
-            })}
-          </ul>
+          {/* a slow loop (see .marquee in brand.css): the list is doubled so moving by half is seamless; the copies are
+              hidden from screen readers and the tab order. Pauses on hover/focus; stops and scrolls by hand with
+              reduced motion. */}
+          <motion.div
+            variants={fadeUp}
+            className="marquee-mask min-w-0 flex-1 overflow-hidden motion-reduce:overflow-x-auto"
+          >
+            <ul className="marquee items-center gap-x-12 py-2 md:gap-x-14" style={{ animationDuration: "45s" }}>
+              {[...TRUSTED, ...TRUSTED].map((l, i) => {
+                const copy = i >= TRUSTED.length;
+                // same visual weight for every logo: the box keeps one area, so stacked logos get more height and
+                // long wordmarks less (height = √(area ÷ aspect))
+                const h = Math.round(Math.sqrt((AREA * (l.weight ?? 1)) / l.aspect));
+                const link = clients.find((c) => c.name === l.name)?.link;
+                const logo = (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={l.src}
+                    alt={copy ? "" : l.name}
+                    draggable={false}
+                    style={{ "--h": `${h}px` } as React.CSSProperties}
+                    // a touch muted at rest; full strength and a small lift on hover or keyboard focus
+                    className="h-[calc(var(--h)*0.8)] w-auto object-contain opacity-100 transition-[opacity,transform] duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 md:h-[var(--h)]"
+                  />
+                );
+                return (
+                  <li key={i} aria-hidden={copy || undefined} className="flex-none">
+                    {link ? (
+                      <a
+                        href={link}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        title={l.name}
+                        tabIndex={copy ? -1 : undefined}
+                        className={`group block rounded-md p-1 ${focusRing}`}
+                      >
+                        {logo}
+                        {!copy && <span className="sr-only">(opens {l.name} website in a new tab)</span>}
+                      </a>
+                    ) : (
+                      <span className="group block p-1">{logo}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.div>
         </motion.div>
       </div>
     </section>

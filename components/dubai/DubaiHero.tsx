@@ -12,7 +12,7 @@ const WHATSAPP_MESSAGE = "Hi BigWig Media Digital! I'm interested in your digita
 export const DUBAI_WHATSAPP_HREF = whatsappHref(WHATSAPP_MESSAGE, DUBAI_PHONE_NUMBER);
 
 const facts = [
-  { value: "8+", label: "Years in digital marketing" },
+  { value: "5+", label: "Years in digital marketing" },
   { value: "360°", label: "Digital marketing" },
   { value: "UAE & India", label: "Offices", small: true },
 ];

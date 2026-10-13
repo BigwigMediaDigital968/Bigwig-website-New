@@ -9,7 +9,7 @@ import { type Creative, creatives, festivals, socialIncludes } from "./content";
 const glass = "bg-[rgba(1,28,64,0.4)] ring-1 ring-inset ring-white/25 backdrop-blur-md";
 
 /**
- * Social media: a bento of real studio creatives (CGI and AI ads), each with a glass format chip like the hero's,
+ * Social media: a bento of real ad creatives and social posts, each with a glass format chip like the hero's,
  * and one navy card for the festive calendar. What's included runs underneath.
  */
 export default function Social() {

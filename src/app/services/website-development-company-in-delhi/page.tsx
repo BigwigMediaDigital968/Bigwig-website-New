@@ -416,7 +416,7 @@ const faqs: ServiceFaqItem[] = [
   },
   {
     q: "What is the best website design company in Delhi?",
-    a: "The best website design company delivers custom solutions at fair, transparent prices, blending creative design with technical expertise and a genuine understanding of your local market. At Bigwig Media Digital, our 8+ years of experience, 100+ Delhi-area clients, and 5.0 Google rating reflect our commitment to delivering websites that truly work for businesses like yours.",
+    a: "The best website design company delivers custom solutions at fair, transparent prices, blending creative design with technical expertise and a genuine understanding of your local market. At Bigwig Media Digital, our 5+ years of experience, 100+ Delhi-area clients, and 5.0 Google rating reflect our commitment to delivering websites that truly work for businesses like yours.",
   },
   {
     q: "Do you provide ongoing support after the website is launched?",
@@ -585,7 +585,7 @@ export default function WebsiteDevelopmentPage() {
       <ServiceStatement
         heading="Why Choose Bigwig Media Digital as Your Website Development Partner in Delhi?"
         lead="Your website is the first handshake between your brand and your audience."
-        rest="We blend 8+ years of design expertise with a deep understanding of Delhi’s digital landscape to deliver websites that don’t just impress, they perform."
+        rest="We blend 5+ years of design expertise with a deep understanding of Delhi’s digital landscape to deliver websites that don’t just impress, they perform."
         body={
           <>
             <p>
@@ -613,7 +613,7 @@ export default function WebsiteDevelopmentPage() {
       {/* Image-led alternative to the section above, commented out for now.
       <ServiceShowcase
         heading="Why choose Bigwig Media Digital as your website development partner in Delhi?"
-        statement="Your website is the first handshake between your brand and your audience. We blend 8+ years of design expertise with a deep understanding of Delhi’s digital landscape to deliver websites that don’t just impress, they perform."
+        statement="Your website is the first handshake between your brand and your audience. We blend 5+ years of design expertise with a deep understanding of Delhi’s digital landscape to deliver websites that don’t just impress, they perform."
         body={
           <>
             <p>

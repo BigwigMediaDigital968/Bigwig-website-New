@@ -95,12 +95,12 @@ export const indiaServices: ServiceItem[] = [
   },
   {
     title: "Graphic Designing & Video Editing",
-    desc: "Logos, ad creatives, reels and product videos, including CGI and AI-made ads.",
+    desc: "Logos, ad creatives, reels and product videos that make your brand stand out.",
     href: "/services/graphic-designing",
     bullets: [
       "Logos and brand identities",
       "Ad creatives sized for every platform",
-      "Reels, product videos and CGI ads",
+      "Reels and product videos, edited",
       "Brochures, banners and print",
     ],
   },

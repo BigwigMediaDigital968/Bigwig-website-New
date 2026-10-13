@@ -10,7 +10,7 @@ import { GOA_WHATSAPP_HREF, photos } from "./content";
 import { usePlan } from "./media";
 
 /** what we do, at a glance (the full list is in the services section below) */
-const heroServices = ["Google & Meta ads", "SEO & Google Maps", "Websites", "Social media", "Video & CGI", "Reputation"];
+const heroServices = ["Google & Meta ads", "SEO & Google Maps", "Websites", "Social media", "Design & video", "Reputation"];
 
 const trusted = ["Homes and Land Goa", "Mondus Properties", "Granth Dream Homes", "Rehnoor Jewels", "Ethical Infrastructures"]
   .map((n) => clients.find((c) => c.name === n))

@@ -8,7 +8,7 @@ import { photos } from "./content";
 
 // Facts already stated elsewhere on the site; no invented results.
 const metrics = [
-  { value: "8+", label: "Years in digital marketing" },
+  { value: "5+", label: "Years in digital marketing" },
   { value: "3", label: "Core services, one team" },
   { value: "UAE & India", label: "Offices", small: true },
 ];

@@ -9,7 +9,7 @@ import { creatives, sites } from "./content";
 
 /**
  * Proof in pictures: real property websites (hover one to scroll through the full page) and a slow strip of
- * CGI and social creatives. The strip pauses on hover (see .marquee in brand.css) and stops for reduced motion.
+ * ad creatives and social posts. The strip pauses on hover (see .marquee in brand.css) and stops for reduced motion.
  */
 export default function Work() {
   // doubled so the -50% marquee loop is seamless
@@ -49,7 +49,7 @@ export default function Work() {
         </div>
 
         <p className="wrap mt-16 text-sm text-[var(--muted)] md:mt-20">
-          CGI, AI and social creatives from our studio
+          Ad creatives and social posts from our design team
         </p>
         <div className="marquee-mask mt-5 overflow-hidden">
           <ul className="marquee gap-3" style={{ animationDuration: "60s" }}>

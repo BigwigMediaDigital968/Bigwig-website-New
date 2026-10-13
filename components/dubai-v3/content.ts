@@ -12,7 +12,6 @@ import cgiShake from "../../Assets/gallery/ChatGPT Image Jun 3, 2025, 06_27_27 P
 import cgiChefs from "../../Assets/gallery/ChatGPT Image May 31, 2025, 02_57_46 PM.png";
 import postServices from "../../Assets/gallery/BigWig Static Post (4).png";
 import postViral from "../../Assets/gallery/BigWig Static Post (5).png";
-import granth from "../../Assets/gallery/granth.png";
 
 const unsplash = (id: string, w = 1400) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
@@ -71,27 +70,27 @@ export const sites: Site[] = [
 
 export type Creative = { src: StaticImageData; alt: string };
 
-/** CGI and AI ad creatives and social posts made by the studio. */
+/** Ad creatives and social posts made by the design team. */
 export const creatives: Creative[] = [
   {
     src: cgiDonut,
-    alt: "CGI ad: a giant glazed doughnut kiosk on a city street",
+    alt: "Ad creative: a giant glazed doughnut kiosk on a city street",
   },
   {
     src: cgiInstagram,
-    alt: "CGI ad: a building shaped like the Instagram logo",
+    alt: "Ad creative: a building shaped like the Instagram logo",
   },
   {
     src: cgiCoffee,
-    alt: "CGI ad: a coffee cup the size of a café on a cobbled square",
+    alt: "Ad creative: a coffee cup the size of a café on a cobbled square",
   },
   {
     src: cgiChefs,
-    alt: "CGI ad: miniature chefs making latte art in a giant cup",
+    alt: "Ad creative: miniature chefs making latte art in a giant cup",
   },
-  { src: cgiMeta, alt: "CGI ad: a 3D character flying with a drone" },
-  { src: cgiBerries, alt: "AI product shot: berries bursting over a meringue" },
-  { src: cgiShake, alt: "AI product shot: a strawberry milkshake splash" },
+  { src: cgiMeta, alt: "Ad creative: a character flying with a drone" },
+  { src: cgiBerries, alt: "Product shot: berries bursting over a meringue" },
+  { src: cgiShake, alt: "Product shot: a strawberry milkshake splash" },
   { src: postServices, alt: "Social post listing services in bold type" },
   { src: postViral, alt: "Social post: we can make your brand go viral" },
 ];
@@ -103,7 +102,7 @@ export const heroCreatives = {
 };
 
 /** Granth Dream Homes, a real estate site we built: the services section's website example */
-export const granthSite = { url: "Granth Dream Homes", src: granth };
+export const granthSite = { url: "Fortune Asia", src:"/portfolio/fortuneasia.webp" };
 
 /* ---------- planner ---------- */
 
@@ -187,7 +186,7 @@ export const goals: Goal[] = [
   {
     id: "creative",
     label: "Standout creative",
-    hint: "CGI, video and design",
+    hint: "Graphic design and video editing",
     services: ["Graphic Designing", "Content Marketing"],
   },
   {
@@ -264,7 +263,7 @@ export const playbooks: Playbook[] = [
     points: [
       "Project page with payment plan, floor plans and brochure download",
       "Campaigns in the buyer markets that matter for your project",
-      "CGI walkthroughs and launch creative for every placement",
+      "Video walkthroughs and launch creative for every placement",
       "Leads sent to your sales team on WhatsApp within moments",
     ],
     cta: "Plan my launch",

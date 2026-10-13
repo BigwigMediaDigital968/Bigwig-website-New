@@ -52,15 +52,15 @@ export const strip: { src: string; alt: string; top?: boolean }[] = [
 export type Creative = { src: StaticImageData; alt: string; format: string; caption: string };
 
 export const creatives: Record<"tall" | "shake" | "donut" | "chefs" | "berries", Creative> = {
-  tall: { src: cgiCoffee, alt: "CGI ad: a coffee cup the size of a café on a cobbled square at dusk", format: "Reel", caption: "CGI launch film for a café" },
-  shake: { src: cgiShake, alt: "AI product shot: a strawberry milkshake splash", format: "Post", caption: "AI product shot" },
-  donut: { src: cgiDonut, alt: "CGI ad: a giant glazed doughnut kiosk on a city street", format: "Reel", caption: "CGI street ad" },
-  chefs: { src: cgiChefs, alt: "CGI ad: miniature chefs making latte art in a giant cup", format: "Reel", caption: "CGI café ad" },
-  berries: { src: cgiBerries, alt: "AI product shot: berries bursting over a meringue", format: "Post", caption: "AI product shot" },
+  tall: { src: cgiCoffee, alt: "Ad creative: a coffee cup the size of a café on a cobbled square at dusk", format: "Reel", caption: "Launch film for a café" },
+  shake: { src: cgiShake, alt: "Product shot: a strawberry milkshake splash", format: "Post", caption: "Product shot" },
+  donut: { src: cgiDonut, alt: "Ad creative: a giant glazed doughnut kiosk on a city street", format: "Reel", caption: "Street ad" },
+  chefs: { src: cgiChefs, alt: "Ad creative: miniature chefs making latte art in a giant cup", format: "Reel", caption: "Café ad" },
+  berries: { src: cgiBerries, alt: "Product shot: berries bursting over a meringue", format: "Post", caption: "Product shot" },
 };
 
 export const socialIncludes = [
-  { name: "Reels & shoots", does: "Shot at your shop, site or factory, or made in CGI." },
+  { name: "Reels & shoots", does: "Shot at your shop, site or factory, then edited for every platform." },
   { name: "Posts & carousels", does: "A month planned ahead, approved by you on WhatsApp." },
   { name: "Meta ads", does: "Boosts and lead ads, paid for by the enquiry." },
   { name: "DMs & comments", does: "Answered fast, with leads passed to your team." },
@@ -151,7 +151,7 @@ export const sectors: Sector[] = [
     we: [
       "Meta and Google Shopping campaigns run on return on ad spend, not clicks",
       "A fast store with clear product pages and checkout",
-      "Product shots, CGI and AI ads that stop the scroll",
+      "Graphic design and video editing that stop the scroll",
     ],
     monthly: ["Orders and revenue from ads", "Return on ad spend", "New creatives tested"],
   },

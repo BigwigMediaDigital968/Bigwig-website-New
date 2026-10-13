@@ -6,7 +6,7 @@ import tabletImg from "../../Assets/1759473431835.jpg";
 import { EASE, PillLink, fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
 
 const stats = [
-  { value: "8+", unit: "Years", label: "Industry Experience" },
+  { value: "5+", unit: "Years", label: "Industry Experience" },
   { value: "25+", unit: "Industries", label: "We’ve Worked Across" },
 ];
 

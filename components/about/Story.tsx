@@ -33,7 +33,7 @@ export default function Story() {
             </p>
             <p>
               From the moment an algorithm shifts on Google, Instagram, YouTube, Facebook, or
-              Twitter, Our Team is already two steps ahead. With more than Eight Years of
+              Twitter, Our Team is already two steps ahead. With more than five years of
               deep-rooted expertise, we design integrated, data-powered strategies that help
               businesses grow, compete, and dominate their digital landscapes.
             </p>

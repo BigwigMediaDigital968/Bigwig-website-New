@@ -206,7 +206,7 @@ export default function Nav() {
                 Everything you need to grow online, under one roof.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
-                Strategy, creative and media from one Delhi team with 8+ years behind it.
+                Strategy, creative and media from one Delhi team with 5+ years behind it.
               </p>
               <Link
                 href="/services"

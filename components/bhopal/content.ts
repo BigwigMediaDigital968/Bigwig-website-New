@@ -187,17 +187,17 @@ export const projects: Project[] = [
 
 export type Post = { src: StaticImageData; alt: string; caption: string };
 
-/** CGI, AI and social creatives from the studio, shown as a phone feed. */
+/** Ad creatives and social posts from the design team, shown as a phone feed. */
 export const posts: Post[] = [
-  { src: cgiDonut, alt: "CGI ad: a giant glazed doughnut kiosk on a city street", caption: "CGI launch ad" },
+  { src: cgiDonut, alt: "Ad creative: a giant glazed doughnut kiosk on a city street", caption: "Launch ad" },
   { src: postViral, alt: "Social post: we can make your brand go viral", caption: "Brand post" },
-  { src: cgiShake, alt: "AI product shot: a strawberry milkshake splash", caption: "AI product shot" },
-  { src: cgiInstagram, alt: "CGI ad: a building shaped like the Instagram logo", caption: "CGI concept" },
-  { src: cgiChefs, alt: "CGI ad: miniature chefs making latte art in a giant cup", caption: "CGI café ad" },
+  { src: cgiShake, alt: "Product shot: a strawberry milkshake splash", caption: "Product shot" },
+  { src: cgiInstagram, alt: "Ad creative: a building shaped like the Instagram logo", caption: "Concept ad" },
+  { src: cgiChefs, alt: "Ad creative: miniature chefs making latte art in a giant cup", caption: "Café ad" },
   { src: postServices, alt: "Social post listing services in bold type", caption: "Offer post" },
-  { src: cgiBerries, alt: "AI product shot: berries bursting over a meringue", caption: "AI product shot" },
-  { src: cgiCoffee, alt: "CGI ad: a coffee cup the size of a café on a cobbled square", caption: "CGI street ad" },
-  { src: cgiMeta, alt: "CGI ad: a 3D character flying with a drone", caption: "3D character ad" },
+  { src: cgiBerries, alt: "Product shot: berries bursting over a meringue", caption: "Product shot" },
+  { src: cgiCoffee, alt: "Ad creative: a coffee cup the size of a café on a cobbled square", caption: "Street ad" },
+  { src: cgiMeta, alt: "Ad creative: a character flying with a drone", caption: "Character ad" },
 ];
 
 export const services = [
@@ -205,7 +205,7 @@ export const services = [
   { name: "Google & Meta ads", does: "Campaigns paid for by the lead, not the like." },
   { name: "Websites & landing pages", does: "Fast pages with call, WhatsApp and a form." },
   { name: "Social media", does: "Reels, posts and festive campaigns, DMs answered." },
-  { name: "CGI, AI ads & video", does: "Product shots and films that stop the scroll." },
+  { name: "Graphic designing & video editing", does: "Logos, ad creatives and edited video that stop the scroll." },
   { name: "Reviews & reputation", does: "More five-star reviews, calm replies to the rest." },
 ];
 

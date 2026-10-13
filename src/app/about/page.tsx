@@ -10,7 +10,7 @@ import Motto from "../../../components/about/Motto";
 
 const title = "About BigWig Media Digital | Digital Marketing Agency Delhi";
 const description =
-  "Bigwig Media Digital, 360° Digital Marketing Agency in Delhi. 8+ Years | 50+ Experts | 500+ Clients. Google & Meta Partner. Know Our Story!";
+  "Bigwig Media Digital, 360° Digital Marketing Agency in Delhi. 5+ Years | 50+ Experts | 500+ Clients. Google & Meta Partner. Know Our Story!";
 
 export const metadata: Metadata = {
   title,

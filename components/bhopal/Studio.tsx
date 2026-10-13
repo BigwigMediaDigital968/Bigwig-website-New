@@ -8,7 +8,7 @@ import { posts, services } from "./content";
 
 /**
  * What we make, shown in the place it ends up: a phone scrolling an Instagram-style feed of the studio's
- * CGI, AI and social creatives (hover to pause), beside the six services. The feed list is doubled for a
+ * ad creatives and social posts (hover to pause), beside the six services. The feed list is doubled for a
  * seamless loop; the copies are hidden from screen readers.
  */
 export default function Studio() {

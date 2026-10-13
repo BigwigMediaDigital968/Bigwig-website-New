@@ -248,7 +248,7 @@ export default function SocialMediaOptimizationPage() {
               don’t translate into revenue.
             </span>{" "}
             We fix that specific problem. We don’t just manage your profiles; we re-engineer them to convert, drawing on
-            over a decade of learning what keeps brands active, relevant, and genuinely engaging on every major platform.
+            5+ years of learning what keeps brands active, relevant, and genuinely engaging on every major platform.
           </p>
         }
         cta="Get your free SMO audit"
@@ -265,7 +265,7 @@ export default function SocialMediaOptimizationPage() {
         body={
           <>
             <p>
-              Bigwig Media Digital has spent more than a decade as a social media service in Delhi, and in that time
+              Bigwig Media Digital has spent more than five years as a social media service in Delhi, and in that time
               we’ve learned the difference between agencies that post content and agencies that build growth engines.
               We’re the second kind. Our comprehensive SMO services connect your brand with the audience that actually
               buys from you, not just an audience that likes your posts and scrolls on.
@@ -289,7 +289,7 @@ export default function SocialMediaOptimizationPage() {
       <ServiceResults
         lead="Client results"
         title="5+ Years, Real Clients, Numbers You Can Verify"
-        intro="We don’t ask you to take our word for it. Here’s what more than a decade of running SMO campaigns in Delhi has actually produced for clients."
+        intro="We don’t ask you to take our word for it. Here’s what more than five years of running SMO campaigns in Delhi has actually produced for clients."
         items={results}
         note="These ranges exist because every business starts from a different baseline. A brand with zero social presence sees a very different growth curve than one that’s already active but underperforming. As a trusted social media optimization company in Delhi, we’d rather show you a realistic range backed by actual reviews than a single inflated number designed to impress."
         cta="Get your free SMO audit"
