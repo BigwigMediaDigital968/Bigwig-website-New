@@ -29,7 +29,7 @@ const list = "list-disc space-y-2 pl-6 marker:text-[var(--teal)]";
 export default function PrivacyPolicy() {
   return (
     <main className="wrap pb-24 pt-14 md:pb-32 md:pt-20">
-      <div className="max-w-3xl">
+      <div className="max-w-3xl mx-auto">
         <p className="text-[0.95rem] font-medium text-[var(--link)]">Legal</p>
         <h1 className="mt-4 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
           Privacy Policy
