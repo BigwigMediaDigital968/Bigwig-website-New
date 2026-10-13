@@ -3,12 +3,40 @@
 import { useId, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Check, Plus } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Check, Plus } from "lucide-react";
 import { dubaiServices } from "@/data/dubaiData";
-import { DUBAI_PHONE_NUMBER, PillLead, SectionHead, WhatsAppPill, fadeUp, inView, stagger, whatsappHref } from "../ui";
+import {
+  DUBAI_PHONE_NUMBER,
+  PillLead,
+  PillLink,
+  SectionHead,
+  WhatsAppPill,
+  fadeUp,
+  focusRing,
+  inView,
+  stagger,
+  whatsappHref,
+} from "../ui";
 import { MuseumOfTheFutureLine, PalmJumeirahLine } from "./Landmarks";
 import { serviceDetails } from "./content";
 import { servicePreviews } from "./photos";
+
+/** the main service page for each Dubai service (the general /services pages, not the Dubai-specific ones) */
+const mainPage = (dubaiHref: string) =>
+  ({
+    "seo-services-in-dubai-uae": "/services/search-engine-optimization",
+    "social-media-marketing-services-in-dubai-uae": "/services/social-media-marketing",
+    "ppc-services-in-dubai-uae": "/services/performance-marketing",
+    "content-marketing-services-in-dubai-uae": "/services/content-marketing",
+    "website-designing-services-in-dubai-uae": "/services/website-development-company-in-delhi",
+    "email-marketing-services-in-dubai-uae": "/services/email-marketing",
+    "social-media-optimization-services-in-dubai-uae": "/services/social-media-optimization",
+    "graphic-designing-services-in-dubai-uae": "/services/graphic-designing",
+    "affiliate-marketing-services-in-dubai-uae": "/services/affiliate-marketing",
+    "influencer-marketing-services-in-dubai-uae": "/services/influencer-marketing",
+    "orm-services-in-dubai-uae": "/services/online-reputation-management",
+  })[dubaiHref.split("/").pop() ?? ""] ?? "/services";
 
 const FINE_POINTER = "(hover: hover) and (pointer: fine)";
 
@@ -45,7 +73,14 @@ export default function DubaiServices() {
           <SectionHead
             lead="Our digital marketing services in Dubai, UAE"
             title="Your trusted digital marketing partner in Dubai, UAE"
-            actions={<PillLead source="dubai-services">Get a free recommendation</PillLead>}
+            actions={
+              <>
+                <PillLead source="dubai-services">Get a free recommendation</PillLead>
+                <PillLink href="/services" tone="ghost">
+                  View all services
+                </PillLink>
+              </>
+            }
           />
           <motion.p
             {...inView}
@@ -147,6 +182,14 @@ export default function DubaiServices() {
                             dark
                             href={whatsappHref(`Hi BigWig Media Digital! I'm interested in ${s.title} in Dubai, UAE.`, DUBAI_PHONE_NUMBER)}
                           />
+                          <Link
+                            href={mainPage(s.href)}
+                            className={`ml-1 inline-flex items-center gap-1 rounded-sm text-sm font-semibold text-white/85 hover:text-white hover:underline ${focusRing}`}
+                          >
+                            Learn more
+                            <ArrowUpRight className="h-4 w-4" aria-hidden />
+                            <span className="sr-only"> about {s.title}</span>
+                          </Link>
                         </div>
                       </div>
                     </div>
