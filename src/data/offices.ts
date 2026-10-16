@@ -21,14 +21,14 @@ export const headOffice: Office & { mapEmbed: string } = {
 // TODO: DUMMY addresses for Ahmedabad and Dubai ("Sample Tower"). Replace them with the real street addresses, and
 // the directions links with each office's Google Maps listing, before this goes live.
 export const branches: Office[] = [
-  {
-    city: "Ahmedabad",
-    label: "Branch",
-    address: "Office 000, Sample Tower, SG Highway, Ahmedabad, Gujarat 380054",
-    phoneDisplay: "+91 96858 92813",
-    phoneHref: "tel:+919685892813",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=Bigwig+Media+Digital+Ahmedabad",
-  },
+  // {
+  //   city: "Ahmedabad",
+  //   label: "Branch",
+  //   address: "Office 000, Sample Tower, SG Highway, Ahmedabad, Gujarat 380054",
+  //   phoneDisplay: "+91 96858 92813",
+  //   phoneHref: "tel:+919685892813",
+  //   mapUrl: "https://www.google.com/maps/search/?api=1&query=Bigwig+Media+Digital+Ahmedabad",
+  // },
   {
     city: "Bhopal",
     label: "Branch",
