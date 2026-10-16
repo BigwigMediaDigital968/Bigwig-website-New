@@ -91,7 +91,9 @@ body {
 }
 
 .marquee-mask:hover .marquee,
-.marquee-mask:focus-within .marquee {
+.marquee-mask:focus-within .marquee,
+.marquee-pause:hover .marquee,
+.marquee-pause:focus-within .marquee {
   animation-play-state: paused;
 }
 

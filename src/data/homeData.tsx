@@ -1,34 +1,25 @@
 // Shared homepage data: client logos, services, and the growth-process steps.
-import { type Client, clients } from "./clients";
+import { AboutClientList, type Client, clients } from "./clients";
 
 // Client logos shown in the Clients marquee and the About/Stats section
 /**
  * Clients on the home page, from the shared list in data/clients. Ordered white, navy, white / navy, white, navy
  * so the 3-column grid reads as a chessboard (each logo sits on the colour it reads on).
  */
-export const clientLogos = [
-  "Rehnoor Jewels",
-  "Granth Dream Homes",
-  "RPH Realty",
-  "Fortune Asia",
-  "Homes and Land Goa",
-  "Marketrixa",
-]
-  .map((n) => clients.find((c) => c.name === n))
-  .filter((c): c is Client => Boolean(c));
+export const clientLogos = AboutClientList;
 
 export const services = [
   {
-    title: "Performance Marketing",
-    slug: "/services/performance-marketing",
+    title: "Website Designing & Development",
+    slug: "/services/website-development-company-in-delhi",
     desc: (
       <>
-        As a results-driven{" "}
+        As a trusted{" "}
         <span className="text-[var(--color3)] font-medium underline decoration-[var(--color4)]/60 underline-offset-4">
-          performance marketing agency in Delhi
+          website development company in Delhi,
         </span>{" "}
-        we run optimized Google Ads and Meta Ads campaigns to generate
-        high-quality leads, improve conversions, and scale revenue.
+        we build fast, responsive, and conversion-focused websites that support
+        your digital marketing goals.
       </>
     ),
   },
@@ -48,7 +39,7 @@ export const services = [
     ),
   },
   {
-    title: "Social Media Marketing (SMM)",
+    title: "Social Media Management (SMM)",
     slug: "/services/social-media-marketing",
     desc: (
       <>
@@ -62,33 +53,18 @@ export const services = [
     ),
   },
   {
-    title: "Website Designing & Development",
-    slug: "/services/website-development-company-in-delhi",
+    title: "Performance Marketing",
+    slug: "/services/performance-marketing",
     desc: (
       <>
-        As a trusted{" "}
+        As a results-driven{" "}
         <span className="text-[var(--color3)] font-medium underline decoration-[var(--color4)]/60 underline-offset-4">
-          website development company in Delhi,
+          performance marketing agency in Delhi
         </span>{" "}
-        we build fast, responsive, and conversion-focused websites that support
-        your digital marketing goals.
+        we run optimized Google Ads and Meta Ads campaigns to generate
+        high-quality leads, improve conversions, and scale revenue.
       </>
     ),
-  },
-  {
-    title: "Content Marketing",
-    slug: "/services/content-marketing",
-    desc: "We create SEO-optimized blogs, landing pages, and brand storytelling content that strengthens authority and supports long-term digital growth.",
-  },
-  {
-    title: "Email Marketing",
-    slug: "/services/email-marketing",
-    desc: "Personalized and automated email marketing campaigns designed to nurture leads, improve retention, and increase customer lifetime value.",
-  },
-  {
-    title: "Influencer Marketing",
-    slug: "/services/influencer-marketing",
-    desc: "Strategic influencer collaborations that expand brand reach and build credibility within your target audience.",
   },
   {
     title: "Online Reputation Management (ORM)",
@@ -104,9 +80,14 @@ export const services = [
     ),
   },
   {
-    title: "Social Media Optimization (SMO)",
-    slug: "/services/social-media-optimization",
-    desc: "Optimize your social profiles to improve discoverability, engagement, and brand consistency across platforms.",
+    title: "Influencer Marketing",
+    slug: "/services/influencer-marketing",
+    desc: "Strategic influencer collaborations that expand brand reach and build credibility within your target audience.",
+  },
+  {
+    title: "Email Marketing",
+    slug: "/services/email-marketing",
+    desc: "Personalized and automated email marketing campaigns designed to nurture leads, improve retention, and increase customer lifetime value.",
   },
   {
     title: "Graphic Designing & Video Editing",
@@ -118,6 +99,18 @@ export const services = [
     slug: "/services/affiliate-marketing",
     desc: "Scale revenue through a structured, performance-based affiliate marketing network that drives consistent sales growth.",
   },
+  {
+    title: "Content Marketing",
+    slug: "/services/content-marketing",
+    desc: "We create SEO-optimized blogs, landing pages, and brand storytelling content that strengthens authority and supports long-term digital growth.",
+  },
+  {
+    title: "Social Media Optimization (SMO)",
+    slug: "/services/social-media-optimization",
+    desc: "Optimize your social profiles to improve discoverability, engagement, and brand consistency across platforms.",
+  },
+
+
 ];
 
 export type Service = (typeof services)[number];

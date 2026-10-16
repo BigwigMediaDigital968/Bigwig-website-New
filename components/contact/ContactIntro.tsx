@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Clock, Mail, MapPin, Phone } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Check, ChevronDown, Clock, ExternalLink, Mail, MapPin, Minus, Phone, Plus } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { headOffice } from "@/data/offices";
+import { branches, headOffice, Office } from "@/data/offices";
 import { EASE, EMAIL, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_HREF, fadeUp, focusRing, maskUp, stagger } from "../ui";
 import EnquiryForm from "./EnquiryForm";
+import { useEffect, useRef, useState } from "react";
 
 // WhatsApp keeps its brand green, matching WhatsAppPill
 const channels = [
@@ -83,7 +84,7 @@ export default function ContactIntro() {
                 </motion.li>
               ))}
 
-              <motion.li variants={fadeUp} className="flex gap-4 border-b border-[var(--line)] py-5">
+              {/* <motion.li variants={fadeUp} className="flex gap-4 border-b border-[var(--line)] py-5">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--link)] ring-1 ring-inset ring-[var(--line)]">
                   <MapPin className="h-5 w-5" aria-hidden />
                 </span>
@@ -99,7 +100,8 @@ export default function ContactIntro() {
                     Get directions<span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </div>
-              </motion.li>
+              </motion.li> */}
+              <OfficeAddressListItem/>
 
               <motion.li variants={fadeUp} className="flex gap-4 border-b border-[var(--line)] py-5">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--link)] ring-1 ring-inset ring-[var(--line)]">
@@ -132,5 +134,121 @@ export default function ContactIntro() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+export function OfficeAddressListItem() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.li
+      variants={fadeUp}
+      className="border-b border-[var(--line)] py-5"
+    >
+      {/* FAQ-style Accordion Header */}
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className={`flex w-full items-center justify-between text-left transition-colors ${focusRing}`}
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center gap-4">
+          {/* White Circular Badge matching the MapPin icon in image */}
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-[var(--ink)] shadow-xs ring-1 ring-inset ring-[var(--line)]">
+            <MapPin className="h-5 w-5 text-[var(--ink)]" aria-hidden />
+          </span>
+          <div>
+            <p className="text-sm font-medium text-[var(--muted)]">Our offices</p>
+            <p className="text-base font-semibold text-[var(--ink)]">
+              {headOffice.city} (HQ) + {branches.length} Branches
+            </p>
+          </div>
+        </div>
+
+        {/* Plus / Minus Circle Toggle Matching Image */}
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[var(--ink)] shadow-xs ring-1 ring-inset ring-[var(--line)] transition-transform duration-200">
+          {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+        </span>
+      </button>
+
+      {/* Accordion Content Area */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden pl-15 pt-4"
+          >
+            <div className="space-y-5 border-l-2 border-[var(--line)] pl-4">
+              {/* Head Office */}
+              <div className="space-y-1">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--link)]">
+                  {headOffice.city} ({headOffice.label})
+                </span>
+                <p className="text-sm font-semibold text-[var(--ink)] leading-snug">
+                  {headOffice.address}
+                </p>
+                <div className="flex items-center gap-2 text-xs pt-0.5">
+                  <a
+                    href={headOffice.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[var(--link)] hover:underline"
+                  >
+                    Get directions
+                  </a>
+                  {headOffice.phoneDisplay && (
+                    <>
+                      <span className="text-[var(--muted)]/40">•</span>
+                      <a
+                        href={headOffice.phoneHref}
+                        className="font-medium text-[var(--muted)] hover:text-[var(--ink)]"
+                      >
+                        {headOffice.phoneDisplay}
+                      </a>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Branch Offices */}
+              {branches.map((branch) => (
+                <div key={branch.city} className="space-y-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--link)]">
+                    {branch.city} ({branch.label})
+                  </span>
+                  <p className="text-sm font-semibold text-[var(--ink)] leading-snug">
+                    {branch.address}
+                  </p>
+                  <div className="flex items-center gap-2 text-xs pt-0.5">
+                    <a
+                      href={branch.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-[var(--link)] hover:underline"
+                    >
+                      Get directions
+                    </a>
+                    {branch.phoneDisplay && (
+                      <>
+                        <span className="text-[var(--muted)]/40">•</span>
+                        <a
+                          href={branch.phoneHref}
+                          className="font-medium text-[var(--muted)] hover:text-[var(--ink)]"
+                        >
+                          {branch.phoneDisplay}
+                        </a>
+                      </>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.li>
   );
 }

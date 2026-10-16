@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClientWall from "../../../components/clients/ClientWall";
 import Testimonials from "../../../components/home/Testimonials";
+import ClientWall2 from "../../../components/clients/ClientWall2";
 
 const title = "Our Clients | BigWig Media Digital Portfolio";
 const description =
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
 export default function ClientsPage() {
   return (
     <main>
-      <ClientWall />
+      {/* <ClientWall /> */}
+      <ClientWall2 />
       <Testimonials />
     </main>
   );
