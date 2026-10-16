@@ -27,7 +27,7 @@ const companyLinks = [
   { name: "Services in Dubai", path: "/v3/digital-marketing-agency-dubai-uae" },
   { name: "Services in Bhopal", path: "/digital-marketing-agency-bhopal" },
   { name: "Services in Goa", path: "/v2/digital-marketing-agency-goa" },
-  { name: "Services in Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },
+  // { name: "Services in Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },
 
 ];
 
