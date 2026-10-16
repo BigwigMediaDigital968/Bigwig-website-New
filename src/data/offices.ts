@@ -50,7 +50,7 @@ export const branches: Office[] = [
   {
     city: "Dubai",
     label: "UAE branch",
-    address: "Office 000, Sample Tower, Business Bay, Dubai, United Arab Emirates",
+    address: "Business Bay XL Tower Floor 17 office 1703 - Dubai - United Arab Emirates",
     phoneDisplay: "+971 58 848 6324",
     phoneHref: "tel:+971588486324",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Bigwig+Media+Digital+Business+Bay+Dubai",
