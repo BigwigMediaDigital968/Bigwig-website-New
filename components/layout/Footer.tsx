@@ -257,15 +257,16 @@ const serviceLinks = [
   { name: "Social Media Optimization", path: "/services/social-media-optimization" },
 ];
 
-const industries = [
-  "Real Estate",
-  "Beauty",
-  "Education",
-  "Finance/Lending",
-  "Healthcare",
-  "Manufacturing",
-  "Events",
-  "Astrology",
+// `path` only where an industry page exists
+const industries: { name: string; path?: string }[] = [
+  { name: "Real Estate", path: "/industries/real-estate-digital-marketing-web-development" },
+  { name: "Beauty" },
+  { name: "Education" },
+  { name: "Finance/Lending" },
+  { name: "Healthcare" },
+  { name: "Manufacturing" },
+  { name: "Events" },
+  { name: "Astrology" },
 ];
 
 const legalLinks = [
@@ -412,8 +413,10 @@ export default function Footer() {
             <motion.div variants={fadeUp} className="col-span-1 lg:col-span-2">
               <Heading>Industries</Heading>
               <ul className="space-y-2.5 text-sm text-white/65">
-                {industries.map((n) => (
-                  <li key={n}>{n}</li>
+                {industries.map((i) => (
+                  <li key={i.name}>
+                    {i.path ? <Link href={i.path} className={linkClass}>{i.name}</Link> : i.name}
+                  </li>
                 ))}
               </ul>
             </motion.div>
