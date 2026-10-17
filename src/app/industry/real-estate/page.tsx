@@ -460,7 +460,7 @@ export default function RealEstateIndustryPage() {
         source="real-estate-faq"
       />
 
-      <RealEstateCta source="real-estate-cta" whatsappMessage={waMessage} />
+      {/* <RealEstateCta source="real-estate-cta" whatsappMessage={waMessage} /> */}
 
       <RelatedLinks
         links={[
