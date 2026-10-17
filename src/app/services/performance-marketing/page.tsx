@@ -18,7 +18,7 @@ const PATH = "/services/performance-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
 const title = "Performance Marketing Services in Delhi | Bigwig Media Digital";
 const description =
-  "Maximize ROI with Performance Marketing Services in Delhi. Google Ads & Meta Ads campaigns for leads, conversions & revenue. Free Ad Audit!";
+  "Performance marketing services in Delhi: Google Ads, Meta Ads and lead generation campaigns tracked to leads and sales. Get a free ad audit.";
 
 export const metadata: Metadata = {
   title,
@@ -39,74 +39,113 @@ export const metadata: Metadata = {
   },
 };
 
-const whyPartner: ServiceItem[] = [
+const performanceMarketingServices: ServiceItem[] = [
   {
-    title: "Strategic Insights",
-    desc: "As a leading performance marketing company in Delhi, we take the time to understand your business model, market landscape, and customer behaviour. This lets us craft strategies that truly connect with your audience and consistently drive conversions.",
+    title: "Google Ads Management",
+    desc: "Google Ads puts your business in front of people at the moment they search for what you offer. We manage Search, Display, Shopping, YouTube, and Performance Max campaigns, using keyword research, ad copy, bid strategies, and regular search-term reviews to reduce wasted clicks.",
   },
   {
-    title: "Data-Driven Campaigns",
-    desc: "Every campaign we run is powered by data. We make decisions based on analytics, not assumptions, so your budget is optimised for maximum ROI, making us one of the most effective performance-based marketing teams in the region.",
-  },
-  {
-    title: "Comprehensive Service Spectrum",
+    title: "Meta Ads (Facebook and Instagram)",
     desc: (
       <>
-        Our performance marketing services in Delhi cover the full range of digital growth channels. From{" "}
-        <Link href="/services/website-development-company-in-delhi" className={inlineLink}>
-          Web Development
+        Meta Ads reach people based on interests, behaviour, and location, making them useful for lead forms, e-commerce sales, and brand discovery. We build audiences, test image, video, and carousel creatives, and allocate budgets to the ads that perform best. Explore our{" "}
+        <Link
+          href="/services/social-media-marketing"
+          className={inlineLink}
+        >
+          Social Media Marketing
         </Link>{" "}
-        to SEO and PPC to social media, content marketing, and conversion optimisation, you get a complete, integrated
-        marketing solution under one roof.
+        services.
       </>
     ),
   },
   {
-    title: "Transparent Reporting",
-    desc: "Clarity is at the core of our approach. As a trusted performance marketing agency in Delhi, we provide clear, easy-to-understand reports that highlight your campaign’s progress, insights, and opportunities for improvement.",
+    title: "LinkedIn Ads for B2B",
+    desc: "For B2B businesses, LinkedIn lets you target audiences by job title, industry, and company size. We set up lead-generation campaigns that reach decision-makers with a clear offer and a simple way to enquire.",
   },
   {
-    title: "Adaptive and Agile",
-    desc: "The digital world moves fast, and staying static means falling behind. Our team stays ahead of trends, algorithm updates, and consumer shifts to keep your marketing relevant, competitive, and future-ready.",
+    title: "Lead Generation Campaigns",
+    desc: "Our lead generation campaigns bring in enquiries through calls, forms, and WhatsApp messages. We align your ads, landing pages, and follow-up processes so the leads you receive match your business goals and your sales team's capacity.",
   },
   {
-    title: "Continuous Optimisation",
-    desc: "Top performance marketing agencies in Delhi succeed by constantly refining strategies. We monitor industry trends, audience behaviour, and platform changes so your campaigns don’t just perform, but keep outperforming in a crowded marketplace.",
+    title: "Remarketing and Retargeting",
+    desc: "Most visitors do not convert on their first visit. Remarketing shows relevant ads to people who have visited your website or engaged with your content, encouraging them to return and complete the desired action.",
+  },
+  {
+    title: "Landing Page Optimisation and CRO",
+    desc: (
+      <>
+        Even a well-performing ad can fail when it leads to a weak landing page. We review your landing pages and forms, recommend improvements, and test headlines, layouts, and calls to action to increase conversions. Discover our{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className={inlineLink}
+        >
+          Website Development
+        </Link>{" "}
+        services.
+      </>
+    ),
+  },
+  {
+    title: "Conversion Tracking and Analytics",
+    desc: "Accurate tracking is the foundation of performance marketing. We configure GA4, Google Tag Manager, and advertising platform conversion tracking to measure leads, calls, and sales accurately, giving you clear insights into campaign performance.",
+  },
+  {
+    title: "Email and Automation Funnels",
+    desc: (
+      <>
+        Email marketing and automated follow-ups nurture leads after they enquire and help bring past customers back. We create targeted email sequences that support customer engagement and drive repeat conversions. Explore our{" "}
+        <Link href="/services/email-marketing" className={inlineLink}>
+          Email Marketing
+        </Link>{" "}
+        services.
+      </>
+    ),
+  },
+  {
+    title: "SEO and Content Marketing",
+    desc: (
+      <>
+        Organic search and valuable content complement paid campaigns by building sustainable traffic beyond advertising spend. We help improve search visibility and create relevant content through our{" "}
+        <Link
+          href="/services/search-engine-optimization"
+          className={inlineLink}
+        >
+          Search Engine Optimization
+        </Link>{" "}
+        and{" "}
+        <Link
+          href="/services/content-marketing"
+          className={inlineLink}
+        >
+          Content Marketing
+        </Link>{" "}
+        services.
+      </>
+    ),
   },
 ];
 
-const industries: ServiceItem[] = [
+const performanceMarketingProcess: ServiceItem[] = [
   {
-    title: "Fashion",
-    desc: "Visually compelling, trend-focused campaigns that showcase collections, attract enthusiasts, and drive sales through targeted performance marketing.",
+    title: "1. Audit and Goals",
+    desc: "We review your advertising accounts, website, tracking setup, and competitors to understand your current performance. Together, we define clear goals, such as cost per lead or return on ad spend, to measure success.",
   },
   {
-    title: "Electronics & Technology",
-    desc: "Whether it’s smartphones, accessories, or advanced gadgets, we use precision targeting to reach tech-savvy audiences, increasing brand awareness and boosting product sales.",
+    title: "2. Strategy and Setup",
+    desc: "We select the right advertising platforms, allocate budgets, define target audiences, and prepare conversion tracking, ad copy, and landing pages to build a strong foundation for your campaigns.",
   },
   {
-    title: "Healthcare",
-    desc: "Compliant, informative, and high-performing campaigns that educate, engage, and convert, helping healthcare providers reach the right patients ethically and effectively.",
+    title: "3. Launch",
+    desc: "We launch your campaigns with clear performance benchmarks and properly configured tracking, ensuring results can be measured and evaluated from day one.",
   },
   {
-    title: "Hospitality & Travel",
-    desc: "Hotels, restaurants, and travel agencies trust us to craft captivating visuals and persuasive messaging that attract travellers, boost bookings, and enhance brand visibility.",
+    title: "4. Optimise",
+    desc: "We regularly review search terms, audience performance, ad creatives, and bidding strategies. By identifying what drives conversions, we continuously refine campaigns and shift budgets towards the best-performing opportunities.",
   },
   {
-    title: "Education & E-Learning",
-    desc: "We help institutions and e-learning platforms connect with potential students by promoting courses and programmes through targeted, high-intent advertising.",
-  },
-  {
-    title: "Retail & E-Commerce",
-    desc: "From apparel to home goods, we create performance-driven strategies that increase traffic, boost online sales, and improve customer retention across diverse e-commerce niches.",
-  },
-  {
-    title: "Finance & Banking",
-    desc: "With an emphasis on security and compliance, we develop campaigns for banks, fintech brands, and financial institutions, promoting loans, investments, and financial products to highly targeted audiences.",
-  },
-  {
-    title: "Automotive",
-    desc: "From dealerships to manufacturers, we create campaigns that highlight vehicle features, build interest, and generate qualified leads from potential buyers.",
+    title: "5. Report and Scale",
+    desc: "You receive transparent reports covering advertising spend, leads, and cost per result. As campaigns demonstrate consistent performance, we scale successful strategies to support sustainable business growth.",
   },
 ];
 
@@ -163,14 +202,17 @@ export default function PerformanceMarketingPage() {
       <ServiceHero
         image={heroImg}
         lead="Performance marketing"
-        title="Performance Marketing Company in Delhi"
+        title="Performance Marketing Services in Delhi"
         intro={
-          <p>
-            <span className="text-white">More than just another performance marketing agency in Delhi.</span> We’re a
-            team driven by results and creativity, serving businesses across Delhi NCR, including Noida and Gurgaon.
-            Whether you need a reliable Google Ads agency in Delhi or a growth partner “near me”, we boost visibility,
-            engagement, and ROI with data-backed strategies that actually work.
+          <>
+          <div>
+            <h2 className="text-xl md:text-2xl font-medium">Google Ads, Meta Ads and lead generation campaigns tracked to the leads and sales they produce</h2>
+             <p className="mt-2">
+            Bigwig Media Digital is a performance marketing agency in Delhi serving businesses across Delhi NCR, including Noida and Gurgaon. We plan, launch and optimise paid campaigns on Google, Meta and other platforms, and we judge every campaign by the leads, enquiries and sales it generates.
           </p>
+          </div>
+          </>
+         
         }
         cta="Get a free ad audit"
         whatsappMessage="Hi BigWig Media Digital! I'm interested in your Performance Marketing services and would like to discuss more."
@@ -180,27 +222,19 @@ export default function PerformanceMarketingPage() {
 
       <ServiceIntro
         lead="Performance marketing agency in Delhi"
-        title="Build Your Brand with a Leading Performance Marketing Agency in Delhi"
+        title="What Is Performance Marketing?"
         image={introImg}
-        imageAlt="Top PPC Company in Delhi"
+        imageAlt="Performance marketing campaign planning"
         body={
           <>
             <p>
-              In the fast-moving digital pulse of India’s capital, businesses need more than just presence. They need
-              performance. At Bigwig Media Digital, we stand as a trusted performance marketing company in Delhi,
-              helping brands cut through the noise and reach their true growth potential.
+              Performance marketing is a form of digital advertising where results are measured and optimised against specific actions, such as a click, a form fill, a phone call or a purchase. Instead of judging an ad by how many people saw it, you judge it by what those people did next.
             </p>
             <p>
-              Amidst the energy and competition of Delhi, our performance marketing agency has built a reputation for
-              strategies that aren’t just creative, but measurable and ROI-driven. With a full suite of performance
-              marketing services tailored to your goals, we position your brand right at the forefront of your
-              industry.
+              Platforms such as Google Ads and Meta Ads charge for clicks or impressions, so the aim is to make sure that spend turns into outcomes you can count. Conversion tracking connects each ad to a result, which lets you stop what is not working and put more budget behind what is.
             </p>
             <p>
-              As one of the top performance marketing agencies in Delhi, we create tailored strategies that fit your
-              business goals, not generic templates. We go beyond generating traffic to deliver meaningful interactions
-              that actually convert. From awareness to acquisition, every step is optimised for measurable,
-              revenue-focused outcomes.
+              This is different from traditional marketing, such as print or hoardings, where it is hard to link spend to sales. In performance marketing, cost per lead, cost per acquisition and return on ad spend are visible, so decisions are based on numbers.
             </p>
           </>
         }
@@ -209,34 +243,29 @@ export default function PerformanceMarketingPage() {
       <ServiceCarousel
         id="why-partner"
         lead="Why partner with us"
-        title="Why Partner with a Premier Performance Marketing Company in Delhi?"
-        intro="When you’re searching for a performance-driven partner who understands what real growth looks like, we’re here to make it happen."
-        items={whyPartner}
+        title="Our Performance Marketing Services in Delhi"
+        // intro="When you’re searching for a performance-driven partner who understands what real growth looks like, we’re here to make it happen."
+        items={performanceMarketingServices}
         cta="Get started today"
         source="performance-why-partner"
       />
 
       <ServiceArticle
         lead="Why Bigwig"
-        title="Why Bigwig Media Digital, and No One Else?"
+        title="Why Delhi Businesses Use Performance Marketing"
         cta="Talk to our team"
         source="performance-why-bigwig"
         body={
           <>
             <p>
-              When you’re investing serious money into growth, you deserve to work with the best. At Bigwig Media
-              Digital, our team lives and breathes performance marketing. We’re obsessed with the numbers, the strategy
-              behind them, and the results they create.
+             Delhi NCR is one of the most competitive markets in India. Many businesses in the same area compete for the same searches and the same audiences on Google, Instagram, Facebook and YouTube.
+
             </p>
             <p>
-              We offer complete, end-to-end performance marketing solutions across every channel that matters to your
-              business. From crafting compelling ad creatives to decoding analytics, our team of creative thinkers,
-              problem-solvers, and data-driven doers ensures every campaign is built for impact.
+              Performance marketing helps you reach people who are searching for your service right now, or who match your ideal customer. Ad platforms let you target by city, area and pin code, so you can focus on Delhi, Noida, Gurgaon and the rest of NCR.
             </p>
             <p>
-              We’re constantly refining ideas, exploring trends, and pushing boundaries. That’s how we deliver fresh,
-              high-performing campaigns that don’t just compete, but stand out. If you want a team that’s committed,
-              creative, and relentlessly performance-focused, you won’t find a better partner.
+              Because results are tracked, you can start with a controlled budget, learn what works and scale from there.
             </p>
           </>
         }
@@ -244,8 +273,8 @@ export default function PerformanceMarketingPage() {
 
       <ServiceCarousel
         lead="Industries we serve"
-        title="Industries That Benefit from a Performance Marketing Agency in Delhi"
-        items={industries}
+        title="How Our Performance Marketing Process Works"
+        items={performanceMarketingProcess}
         cta="Discuss your industry"
         source="performance-industries"
       />

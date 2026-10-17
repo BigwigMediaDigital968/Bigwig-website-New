@@ -113,7 +113,7 @@ export default function ServiceHero({
           transition={{ duration: 1, delay: 0.5, ease: EASE }}
         >
           <p className="text-sm font-medium text-[var(--link)]">Send us a message</p>
-          <h2 className="mt-1 text-2xl font-semibold leading-tight tracking-tight">Get a free consultation</h2>
+          <h2 className="mt-1 text-2xl font-semibold leading-tight tracking-tight">Get in Touch</h2>
           <div className="mt-5">
             <EnquiryForm source={formSource} defaultCountry={formCountry} defaultServices={formServices} compact />
           </div>

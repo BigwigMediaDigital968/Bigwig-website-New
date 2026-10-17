@@ -236,9 +236,10 @@ const companyLinks = [
 // Branch / Regional landing pages (moved under logo section)
 const branchLinks = [
   { name: "Delhi, HQ", path: "/contact" },
-  { name: "Dubai, UAE", path: "/v3/digital-marketing-agency-dubai-uae" },
   { name: "Bhopal", path: "/digital-marketing-agency-bhopal" },
   { name: "Goa", path: "/v2/digital-marketing-agency-goa" },
+    { name: "Dubai, UAE", path: "/v3/digital-marketing-agency-dubai-uae" },
+
   // { name: "Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },
 ];
 
