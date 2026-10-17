@@ -42,11 +42,11 @@ export default function IndustryHero({
       className="relative isolate -mt-[5.5rem] flex overflow-hidden bg-[var(--ink)] text-white lg:min-h-[100svh] lg:items-center"
     >
       <motion.div aria-hidden className="absolute inset-0 -z-20" style={reduce ? undefined : { scale: imageScale, y: imageY }}>
-        <Image src={image} alt="" fill priority sizes="100vw" placeholder="blur" className="object-cover" />
+        <Image src={image} alt="" fill priority sizes="100vw" placeholder="blur" className="object-contain" />
       </motion.div>
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(1,28,64,0.82)_0%,rgba(1,28,64,0.92)_100%)] lg:bg-[linear-gradient(100deg,rgba(1,28,64,0.94)_0%,rgba(1,28,64,0.78)_45%,rgba(2,56,89,0.4)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(1,28,64,0.82)_0%,rgba(1,28,64,0.92)_100%)] lg:bg-[linear-gradient(100deg,rgba(1,28,64,0.88)_0%,rgba(1,28,64,0.4)_45%,rgba(2,56,89,0.4)_100%)]"
       />
       <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(1,28,64,0.6),transparent_40%)]" />
 
@@ -56,7 +56,7 @@ export default function IndustryHero({
           <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--cyan)]">
             {lead}
           </motion.p>
-          <h1 className="mt-4 max-w-2xl text-[1.9rem] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(2rem,2.6vw,2.5rem)]">
+          <h1 className="mt-4 max-w-2xl text-[1.9rem] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(3rem,2.6vw,2.5rem)]">
             <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
               <motion.span variants={maskUp} className="block">
                 {title}

@@ -10,7 +10,7 @@ import {
   Share2,
   UserCheck,
 } from "lucide-react";
-import heroImg from "../../../../Assets/Services hero/website.jpg";
+import heroImg from "../../../../Assets/industry/real-estate-hero.png";
 import introImg from "../../../../Assets/industry/real-estate-intro.png";
 import IndustryHero from "../../../../components/industry/IndustryHero";
 import {
@@ -340,7 +340,7 @@ export default function RealEstateIndustryPage() {
       <IndustryHero
         image={heroImg}
         lead="Real estate industry"
-        title="Real Estate Website Development & Digital Marketing That Generates Qualified Property Leads"
+        title="Real Estate Websites & Digital Marketing That Generate Leads"
         intro={
           <p>
             We design, develop and market real estate websites that turn
