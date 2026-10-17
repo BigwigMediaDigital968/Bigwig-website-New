@@ -259,7 +259,7 @@ const serviceLinks = [
 
 // `path` only where an industry page exists
 const industries: { name: string; path?: string }[] = [
-  { name: "Real Estate", path: "/industries/real-estate-digital-marketing-web-development" },
+  { name: "Real Estate", path: "/industry/real-estate" },
   { name: "Beauty" },
   { name: "Education" },
   { name: "Finance/Lending" },

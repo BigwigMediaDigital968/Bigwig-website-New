@@ -17,9 +17,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/social-media-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Social Media Marketing Services in Delhi | Bigwig Media Digital";
+const title = "Social Media Marketing Agency in Delhi | Bigwig Media Digital";
 const description =
-  "Result-driven Social Media Marketing Services in Delhi. Instagram, Facebook, YouTube & LinkedIn campaigns. Creative content + targeted ads. Book Now!";
+  "Social media marketing services in Delhi: strategy, content, community management and paid social, reported in leads. Get a free social media audit.";
 
 export const metadata: Metadata = {
   title,
@@ -120,176 +120,670 @@ const adManagement: ServiceItem[] = [
 const faqs: ServiceFaqItem[] = [
   {
     q: "What is included in social media marketing services?",
-    a: "At Bigwig Media Digital, our Social Media Marketing Services in Delhi include everything your brand needs to build a strong online presence: content creation, page management, audience engagement, hashtag research, competitor analysis, and strategic posting. We also provide creative design, reels, story creatives, monthly content calendars, and performance tracking. For brands looking to grow faster, we integrate Social Media Advertising and paid campaign management for maximum reach and conversions.",
+    a: "Our social media marketing services typically include strategy development, a monthly content calendar, post and reel creation, community management, paid social campaigns where needed, and performance reporting.",
   },
   {
-    q: "What are the benefits of social media marketing services?",
-    a: "Our SMM Services in Delhi help businesses increase brand awareness, engage with their audience, generate high-quality leads, and improve customer loyalty. With consistent posting, high-performing creatives, data-driven strategies, and ROI-focused Social Media Ads, you can grow your presence across platforms like Facebook, Instagram, LinkedIn, YouTube, Twitter (X), and Snapchat. Social media marketing also boosts website traffic, reputation, and conversions.",
+    q: "How much do social media marketing services cost in Delhi?",
+    a: "Social media marketing costs depend on your management fee, advertising budget, number of platforms, content requirements, industry and business goals. We offer a free audit to help estimate a suitable starting budget.",
   },
   {
-    q: "Why should you hire a social media marketing agency in India?",
-    a: "Hiring a professional agency like Bigwig Media Digital ensures your brand gets expert-led strategy, creative direction, and performance-driven execution. Our team specialises in Social Media Services in Delhi, allowing you to focus on your business while we handle content creation, campaign management, audience targeting, and ongoing optimisation. With deep industry insights, creative capabilities, and proven advertising frameworks, we help your brand achieve consistent, measurable results.",
+    q: "How many posts will you publish each month?",
+    a: "Most plans include 12 to 20 posts per month, along with stories and reels, depending on your package, content strategy and business goals.",
   },
   {
-    q: "How often will you post content on my social media profiles?",
-    a: "Posting frequency depends on your package and marketing goals. Typically, we create a structured monthly content calendar that includes 12–20 posts per month, along with stories, reels, and engagement activities. Our Social Media Marketing Services in Delhi ensure your brand stays active, relevant, and consistently visible to your audience.",
+    q: "Which social media platforms should my business use?",
+    a: "The right platforms depend on your target audience and goals. Instagram and Facebook work well for many consumer and local businesses, LinkedIn suits B2B and professional services, and YouTube is ideal for video-focused brands. We recommend the right mix after an initial audit.",
   },
   {
-    q: "How does Bigwig Media Digital measure the success of social media campaigns?",
-    a: "We use advanced tracking tools and detailed analytics to measure KPIs like engagement rate, reach, impressions, CPC, CTR, conversions, ROAS, and follower growth. Our performance reports offer complete transparency, and our team optimises campaigns weekly to ensure continuous improvement. Whether it’s organic growth or Social Media Advertising, we focus on delivering measurable and meaningful results.",
+    q: "How long does it take to see results from social media marketing?",
+    a: "Paid campaigns can start generating enquiries within a few weeks once conversion tracking is configured and creatives are tested. Organic growth typically takes several months of consistent posting and engagement. Results depend on your industry, budget, audience and content quality.",
   },
   {
-    q: "Can you help with social media advertising?",
-    a: "Absolutely! Bigwig Media Digital specialises in high-impact Social Media Advertising across Meta (Facebook & Instagram), LinkedIn, YouTube, Snapchat, and Twitter (X). We create conversion-focused Social Media Ads, handle audience targeting, A/B testing, funnel building, and ongoing optimisation to help you generate leads, sales, and brand awareness at scale.",
+    q: "Do you manage paid social media ads as well?",
+    a: "Yes. We manage paid campaigns across platforms such as Meta, LinkedIn and YouTube, using audience targeting, A/B testing and conversion tracking to improve campaign performance. Your advertising budget is paid directly to the respective platform.",
   },
   {
-    q: "What platforms do you manage?",
-    a: "We manage all major social media platforms, including Facebook, Instagram, LinkedIn, YouTube, Twitter (X), Snapchat, and Pinterest. Our Social Media Services in Delhi ensure your brand performs consistently across every platform where your audience is active.",
+    q: "Do I need paid ads, or is organic social media marketing enough?",
+    a: "Organic content builds trust, strengthens brand identity and keeps your audience engaged, while paid campaigns help you reach new audiences faster. Many businesses benefit from combining both, with the right balance based on their goals and budget.",
+  },
+  {
+    q: "How do you measure the success of social media marketing?",
+    a: "We track metrics relevant to your goals, including reach, impressions, engagement rate, follower growth, click-through rate (CTR), cost per click (CPC), cost per lead (CPL) and return on ad spend (ROAS).",
+  },
+  {
+    q: "Is social media marketing better than SEO?",
+    a: "They serve different purposes. Social media marketing builds brand awareness, engagement and visibility, while SEO helps attract long-term organic traffic from search engines. Many businesses use both strategies together for stronger digital growth.",
+  },
+  {
+    q: "Can social media marketing help with lead generation?",
+    a: "Yes. Lead forms, messaging campaigns and targeted advertisements can generate enquiries for businesses in real estate, education, healthcare and other service industries. Campaigns must comply with the advertising policies of each platform.",
+  },
+  {
+    q: "Can social media marketing work for a small business?",
+    a: "Yes. Small businesses can start with a manageable budget, focus on one or two relevant platforms, track enquiries and engagement, and gradually scale the strategies that deliver results.",
+  },
+  {
+    q: "How is social media marketing different from social media optimisation?",
+    a: "Social media optimisation (SMO) focuses on improving your profiles, business information and discoverability. Social media marketing includes ongoing content creation, community management and paid campaigns to grow your audience, engagement and enquiries.",
+  },
+  {
+    q: "How is social media marketing different from performance marketing?",
+    a: "Social media marketing includes organic content, community management and paid social campaigns. Performance marketing focuses on measurable advertising outcomes such as leads, sales and conversions across channels such as Google Ads and Meta Ads. Both can work together to support business growth.",
+  },
+  {
+    q: "What do I need to get started with social media marketing?",
+    a: "You will need access to your social media pages and advertising accounts, if available, along with your business goals, monthly budget, offer details and target audience. We use this information to develop a tailored social media strategy.",
+  },
+  {
+    q: "Do you provide social media marketing services across Delhi NCR?",
+    a: "Yes. We serve businesses across Delhi NCR, including Noida and Gurgaon, helping them build their online presence, engage relevant audiences and generate business enquiries.",
   },
 ];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function SocialMediaMarketingPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <ServiceHero
         image={heroImg}
-        lead="Social media marketing"
-        title="Best SMM Services in Delhi to Grow Your Brand Online"
+        lead="Enhance Your Social Media Presence"
+        title="Social Media Marketing Services in Delhi"
         intro={
           <p>
-            <span className="text-white">Take your brand to the next level on social.</span> Our Social Media
-            Marketing Services in Delhi increase engagement, build brand authority, and generate quality leads through
-            strategic content and targeted campaigns, giving your business maximum visibility across every major
-            platform.
+            <span className="text-white">
+              Bigwig Media Digital is a social media marketing agency in Delhi
+            </span>{" "}
+            serving businesses across Delhi NCR, including Noida and Gurgaon. We
+            plan your content, manage your Instagram, Facebook, LinkedIn and
+            YouTube pages, and run paid social campaigns when you are ready to
+            scale. Every plan is judged by the reach, engagement, leads and
+            enquiries it produces.
           </p>
         }
-        cta="Book a free SMM consultation"
+        cta="Get a Free Social Media Audit"
         whatsappMessage="Hi BigWig Media Digital! I'm interested in your Social Media Marketing services and would like to discuss more."
         formSource="smm-hero"
         formServices={["SMM"]}
       />
 
+      {/* B2. What Is Social Media Marketing */}
       <ServiceIntro
-        lead="SMM company in Delhi"
-        title="Why Your Business Needs SMM Services in Delhi"
+        lead="Social media marketing agency in Delhi"
+        title="What Is Social Media Marketing?"
         image={introImg}
-        imageAlt="Social Media Marketing Agency in Delhi"
+        imageAlt="Social media marketing planning for a Delhi business"
         body={
           <>
             <p>
-              In a competitive market like Delhi, businesses must stay active and visible on social media platforms.
-              Professional Social Media Marketing Services in Delhi help you connect with your audience, drive
-              engagement, and build a strong brand presence. Whether you want brand awareness, website traffic, or lead
-              generation, our specialised SMM Services in Delhi provide the perfect solution.
+              Social media marketing is the use of platforms such as Instagram,
+              Facebook, LinkedIn and YouTube to build awareness, start
+              conversations and bring in customers. It combines content,
+              community management and paid advertising.
             </p>
             <p>
-              Social media is no longer optional. Your customers expect active communication and consistent content.
-              With our Social Media Services in Delhi, we ensure your brand stays ahead of competitors.
+              It works in two ways. Organic social media builds trust and keeps
+              your audience engaged through regular posts, reels, stories and
+              replies. Paid social puts your content in front of a chosen
+              audience and can drive enquiries, sales or website visits.
+            </p>
+            <p>
+              Unlike print or hoardings, social media shows you who saw your
+              content and what they did next. Reach, engagement, clicks and
+              leads are visible, so decisions are based on numbers.
             </p>
           </>
         }
       />
 
-      <ServiceCarousel
-        id="smm-services"
-        lead="What we offer"
-        title="Our Social Media Advertising Services in India"
-        intro="As part of our premium SMM Services in Delhi, we offer targeted, result-driven Social Media Advertising designed to increase brand visibility, generate leads, and maximise ROI. Our performance-focused Social Media Ads help businesses connect with their ideal audience across the most influential platforms in India."
-        items={adServices}
-        cta="Launch your ad campaign"
-        source="smm-services"
-      />
-
+      {/* B3. Why Delhi Businesses Use It */}
       <ServiceArticle
-        lead="Targeted results"
-        title="Reach Targeted Results With Social Media Marketing Services"
-        cta="Start growing with SMM"
-        source="smm-results"
-        body={
-          <>
-            <p>
-              Your search for powerful, result-driven Social Media Marketing Services in Delhi ends here. At Bigwig
-              Media Digital, our expert team crafts data-driven strategies, creative content, and high-impact campaigns
-              that help you connect with your ideal audience. With our premium SMM Services in Delhi, we focus on
-              building brand visibility, boosting engagement, and driving measurable business growth.
-            </p>
-            <p>
-              From strategic planning to content creation, campaign execution, Social Media Advertising, and detailed
-              performance analysis, we offer fully customised Social Media Services in Delhi tailored to your business
-              goals. Whether you need organic growth or performance-based Social Media Ads, we ensure every step leads
-              to real, trackable results.
-            </p>
-            <p>
-              To maximise conversions, Bigwig Media Digital also specialises in high-converting{" "}
-              <Link href="/services/website-development-company-in-delhi" className={inlineLink}>
-                Landing Page Development
-              </Link>
-              . Our landing pages combine compelling UI/UX, persuasive copy, and conversion-optimised layouts that
-              complement your social media campaigns, turning clicks into customers and ad spend into measurable growth.
-            </p>
-          </>
-        }
-      />
-
-      <ServiceCarousel
         lead="Why Bigwig"
-        title="Why Choose Bigwig Media Digital for Social Media Marketing in India"
-        intro="We don’t just run basic campaigns. We build strategic, conversion-focused digital ecosystems that amplify your brand presence and deliver measurable results, combining creativity, analytics, and performance marketing expertise so every campaign drives maximum ROI."
-        items={whyBigwig}
-        cta="Start your growth journey"
-        source="smm-why-us"
-      />
-
-      <ServiceCards
-        lead="Ad management"
-        title="What You Get with Our Social Media Ad Management"
-        intro="Partnering with Bigwig Media Digital means a complete, end-to-end solution for your Social Media Ads, and a strategic partner dedicated to high-impact, ROI-driven results in Delhi and across India."
-        items={adManagement}
-        cta="Get a free SMM consultation"
-        source="smm-ad-management"
-      />
-
-      <ServiceArticle
-        lead="Proven results"
-        title="A Trusted SMM Company in Delhi Delivering Proven Results"
-        cta="Talk to our SMM team"
-        source="smm-trusted"
+        title="Why Delhi Businesses Use Social Media Marketing"
+        cta="Talk to our team"
+        source="smm-why-delhi"
         body={
           <>
             <p>
-              As a leading and trusted SMM company in Delhi, we specialise in result-driven social media solutions that
-              help businesses grow faster in today’s digital-first world. With years of experience providing premium
-              SMM Services in Delhi, our team understands what it takes to build a powerful brand presence across
-              multiple platforms. Our comprehensive Social Media Marketing Services in Delhi cover everything from
-              content creation, page management, and community engagement to full-funnel Social Media Ads and
-              high-performance Social Media Advertising campaigns.
+              Delhi NCR is one of the most competitive markets in India.
+              Businesses in the same area compete for the same customers, and
+              most of those customers spend time on Instagram, Facebook, YouTube
+              and LinkedIn every day.
             </p>
             <p>
-              We take the time to understand your business goals, target audience, and competition. This lets us craft
-              customised strategies that not only elevate your brand but also deliver measurable results month after
-              month. Whether you want to build awareness, increase engagement, generate leads, or scale your sales, our
-              proven social media frameworks provide a clear growth roadmap, and we continuously optimise campaigns to
-              keep your brand ahead in an ever-evolving digital landscape.
+              Social media lets you stay visible to people who live or work in
+              your area, show your work, answer questions and build trust before
+              a customer ever calls. Ad platforms let you target by city, area,
+              age and interest, so you can focus on Delhi, Noida, Gurgaon and
+              the rest of NCR.
             </p>
             <p>
-              Businesses across industries trust us for transparent reporting, consistent performance, and innovative
-              ideas that make their brand stand out. If you’re looking for a reliable partner to handle everything from
-              organic marketing to high-impact Social Media Advertising, we are the SMM company in Delhi you can count
-              on for proven, measurable results.
+              Because results are tracked, you can start with a plan that fits
+              your budget, see what works and grow from there.
             </p>
           </>
         }
       />
 
-      <ServiceFaq title="Social media marketing, answered" faqs={faqs} source="smm-faq" />
+      {/* B4. Services */}
+      <ServiceCarousel
+        id="our-services"
+        lead="What we offer"
+        title="Our Social Media Marketing Services in Delhi"
+        cta="Get started today"
+        source="smm-services"
+        items={[
+          {
+            title: "Social Media Strategy and Audit",
+            desc: "We review your accounts, competitors and audience, then set goals and a content plan. You see what to fix and what to focus on before you spend on ads.",
+          },
+          {
+            title: "Content Creation",
+            desc: (
+              <>
+                Posts, carousels, reels and stories written and designed to fit
+                your brand. You approve a monthly content calendar before
+                anything goes live. Discover our{" "}
+                <Link href="/services/graphic-designing" className={inlineLink}>
+                  Graphic Designing
+                </Link>{" "}
+                and{" "}
+                <Link href="/services/content-marketing" className={inlineLink}>
+                  Content Marketing
+                </Link>{" "}
+                services.
+              </>
+            ),
+          },
+          {
+            title: "Social Media Management and Community Engagement",
+            desc: "Scheduling, replies to comments and messages, hashtag research and brand-voice control, so your pages stay active and consistent.",
+          },
+          {
+            title: "Instagram and Facebook Marketing",
+            desc: "These platforms suit most consumer and local businesses. We plan reels, stories and posts, build audiences, and use lead forms and messaging to turn followers into enquiries.",
+          },
+          {
+            title: "LinkedIn Marketing for B2B",
+            desc: "For B2B and professional services, LinkedIn reaches decision-makers by job title, industry and company size. We manage your company page and thought-leadership content and run lead-generation campaigns.",
+          },
+          {
+            title: "YouTube Marketing",
+            desc: "Video helps customers see your work and builds recall. We help with channel setup, video content, and in-feed and in-stream ads.",
+          },
+          {
+            title: "Paid Social Advertising",
+            desc: (
+              <>
+                Paid campaigns on Meta, LinkedIn and YouTube with audience
+                targeting, A/B testing, and pixel and conversion tracking. For
+                full paid-media detail, see our{" "}
+                <Link
+                  href="/services/performance-marketing"
+                  className={inlineLink}
+                >
+                  Performance Marketing
+                </Link>{" "}
+                page.
+              </>
+            ),
+          },
+          {
+            title: "Influencer Marketing",
+            desc: (
+              <>
+                We shortlist creators whose audience matches yours and brief
+                them on your offer. Explore our{" "}
+                <Link
+                  href="/services/influencer-marketing"
+                  className={inlineLink}
+                >
+                  Influencer Marketing
+                </Link>{" "}
+                services.
+              </>
+            ),
+          },
+          {
+            title: "Social Media Optimisation",
+            desc: (
+              <>
+                Profile setup, bios, highlights and posting structure, so your
+                pages are easy to find and easy to act on. Explore our{" "}
+                <Link
+                  href="/services/social-media-optimization"
+                  className={inlineLink}
+                >
+                  Social Media Optimisation
+                </Link>{" "}
+                services.
+              </>
+            ),
+          },
+          {
+            title: "Reporting and Analytics",
+            desc: "Weekly check-ins and a monthly report covering reach, engagement, leads and cost per lead, plus CTR and ROAS for paid campaigns.",
+          },
+        ]}
+      />
+
+      {/* B5. Process */}
+      <ServiceCarousel
+        lead="Our method"
+        title="How Our Social Media Marketing Process Works"
+        cta="Discuss your strategy"
+        source="smm-process"
+        items={[
+          {
+            title: "1. Audit and goals",
+            desc: "We review your accounts, competitors and audience, then agree on goals such as leads, enquiries or reach.",
+          },
+          {
+            title: "2. Strategy and calendar",
+            desc: "We choose the platforms, content themes and posting plan, and prepare your first monthly content calendar for approval.",
+          },
+          {
+            title: "3. Launch",
+            desc: "Posts go live on schedule. Tracking is set up for any paid campaigns, so results can be measured from day one.",
+          },
+          {
+            title: "4. Optimise",
+            desc: "We review what is working every week, reply to your audience, and refine content and campaigns.",
+          },
+          {
+            title: "5. Report and scale",
+            desc: "You receive clear reports on reach, engagement, leads and cost per result. As the plan proves itself, we scale what works.",
+          },
+        ]}
+      />
+
+      {/* B6. Metrics Section */}
+      <ServiceArticle
+        lead="Metrics that matter"
+        title="Social Media Metrics We Track"
+        cta="Get a performance audit"
+        source="smm-metrics"
+        body={
+          <>
+            <p className="mb-6">
+              We track key performance indicators to ensure every content piece
+              and ad campaign delivers tangible growth for your business.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">Reach</h3>
+                <p className="text-sm text-gray-600">
+                  How many people saw your content
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">Impressions</h3>
+                <p className="text-sm text-gray-600">
+                  How many times your content was shown
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">Engagement Rate</h3>
+                <p className="text-sm text-gray-600">
+                  Share of viewers who liked, commented, shared or saved
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">Follower Growth</h3>
+                <p className="text-sm text-gray-600">
+                  How fast your audience is growing
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">
+                  Click-Through Rate (CTR)
+                </h3>
+                <p className="text-sm text-gray-600">
+                  How many people who saw a post or ad clicked the link
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">
+                  Cost Per Click (CPC)
+                </h3>
+                <p className="text-sm text-gray-600">
+                  What you pay for each click on paid campaigns
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">
+                  Cost Per Lead (CPL)
+                </h3>
+                <p className="text-sm text-gray-600">
+                  What you pay to get one enquiry
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-semibold text-gray-900">
+                  Return On Ad Spend (ROAS)
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Revenue earned for every rupee of ad spend
+                </p>
+              </div>
+            </div>
+          </>
+        }
+      />
+
+      {/* B7. Platform Guide */}
+      <ServiceArticle
+        lead="Platform selection"
+        title="Which Social Media Platform Is Right for Your Business?"
+        cta="Find your ideal platform mix"
+        source="smm-platforms"
+        body={
+          <>
+            <p className="mb-6">
+              Each platform does a different job. Choose based on where your
+              customers spend time.
+            </p>
+
+            <div className="space-y-4 my-6">
+              <div className="p-4 border-l-4 border-pink-500 bg-gray-50 rounded-r-lg">
+                <h3 className="font-bold text-gray-900">Instagram</h3>
+                <p className="text-gray-700">
+                  Best for consumer brands, beauty, retail and events. Strong
+                  for reels, stories and visual products.
+                </p>
+              </div>
+              <div className="p-4 border-l-4 border-blue-600 bg-gray-50 rounded-r-lg">
+                <h3 className="font-bold text-gray-900">Facebook</h3>
+                <p className="text-gray-700">
+                  Best for local services, real estate, education and
+                  healthcare. Strong for local targeting, community and lead
+                  forms.
+                </p>
+              </div>
+              <div className="p-4 border-l-4 border-blue-700 bg-gray-50 rounded-r-lg">
+                <h3 className="font-bold text-gray-900">LinkedIn</h3>
+                <p className="text-gray-700">
+                  Best for B2B, finance, manufacturing and professional
+                  services. Strong for reaching decision-makers.
+                </p>
+              </div>
+              <div className="p-4 border-l-4 border-red-600 bg-gray-50 rounded-r-lg">
+                <h3 className="font-bold text-gray-900">YouTube</h3>
+                <p className="text-gray-700">
+                  Best for brand awareness, tutorials and product demos. Strong
+                  for long-term recall.
+                </p>
+              </div>
+              <div className="p-4 border-l-4 border-gray-600 bg-gray-50 rounded-r-lg">
+                <h3 className="font-bold text-gray-900">Pinterest and X</h3>
+                <p className="text-gray-700">
+                  Useful for niche and campaign-led use. We manage them when
+                  they match your audience.
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-4 font-medium text-gray-900">
+              Most businesses do not need every platform. We recommend a mix
+              after reviewing your audience, goals and budget.
+            </p>
+          </>
+        }
+      />
+
+      {/* B8. Why Choose Us */}
+      <ServiceArticle
+        lead="Why Bigwig Media Digital"
+        title="Why Choose Bigwig Media Digital as Your Social Media Marketing Company in Delhi"
+        cta="Partner with us today"
+        source="smm-why-choose-us"
+        body={
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+            <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Strategy First
+              </h3>
+              <p>
+                We start by understanding your business, customers and
+                competitors, so content and campaigns are built around your
+                goals.
+              </p>
+            </div>
+            <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Consistent Content
+              </h3>
+              <p>
+                Most plans include 12 to 20 posts a month, plus stories and
+                reels, depending on your package and goals. A monthly calendar
+                keeps your pages active and on brand.
+              </p>
+            </div>
+            <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Transparent Reporting
+              </h3>
+              <p>
+                Clear reports show reach, engagement, leads and cost per result,
+                with a plain summary of what to do next.
+              </p>
+            </div>
+            <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Continuous Optimisation
+              </h3>
+              <p>
+                We review content and campaigns every week and keep refining as
+                platforms, audiences and competition change.
+              </p>
+            </div>
+            <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50 md:col-span-2">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Tracking From Day One
+              </h3>
+              <p>
+                Pixel and conversion tracking is set up before paid campaigns go
+                live, so leads and sales are counted.
+              </p>
+            </div>
+          </div>
+        }
+      />
+
+      {/* B9. Industries */}
+      <ServiceCarousel
+        lead="Sectors We Empower"
+        title="Industries We Work With"
+        cta="Discuss your industry strategy"
+        source="smm-industries"
+        items={[
+          {
+            title: "Real Estate",
+            desc: "Location-based lead campaigns and project launch content that bring in qualified enquiries.",
+          },
+          {
+            title: "Beauty",
+            desc: "Reels and before-and-after content that show results and drive bookings.",
+          },
+          {
+            title: "Education",
+            desc: "Admission-season campaigns and content that speak to students and parents.",
+          },
+          {
+            title: "Finance and Lending",
+            desc: "Compliant, lead-focused content and campaigns built around platform policies.",
+          },
+          {
+            title: "Healthcare",
+            desc: "Informative, trust-building content that helps patients find the right provider, within advertising rules.",
+          },
+          {
+            title: "Manufacturing",
+            desc: "LinkedIn authority content and campaigns that generate business enquiries.",
+          },
+          {
+            title: "Events",
+            desc: "Teaser-to-ticket campaigns and live coverage that build attendance.",
+          },
+          {
+            title: "Astrology",
+            desc: "Consistent video content that builds an audience and drives consultation bookings.",
+          },
+        ]}
+      />
+
+      {/* B10. Pricing */}
+      <ServiceArticle
+        lead="Investment & Packages"
+        title="How Social Media Marketing Pricing Works in Delhi"
+        cta="Request a custom quote"
+        source="smm-pricing"
+        body={
+          <>
+            <p className="mb-4">
+              Social media marketing cost has two parts: your management fee,
+              which covers strategy, content, community management and
+              reporting, and your ad spend, which goes to the advertising
+              platform if you run paid campaigns.
+            </p>
+            <p className="mb-4">
+              Agencies commonly charge in one of three ways: a fixed monthly fee
+              based on a package, a project-based fee for a campaign or launch,
+              or a management fee plus a share of ad spend. The right model
+              depends on your budget and goals.
+            </p>
+
+            <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">
+              What affects your cost:
+            </h3>
+            <ul className="list-disc pl-5 space-y-2 mb-4">
+              <li>The number of platforms you want managed</li>
+              <li>How many posts, reels and stories you need each month</li>
+              <li>
+                Whether you run paid campaigns and how large the ad budget is
+              </li>
+              <li>How competitive your industry and area are</li>
+              <li>How much design and video production is needed</li>
+            </ul>
+
+            <p className="mt-4 font-medium text-gray-900">
+              Request a free social media audit and we will suggest a plan and
+              starting budget for your business.
+            </p>
+          </>
+        }
+      />
+
+      {/* B11. Who It Is For, Mistakes, and How to Choose */}
+      <ServiceArticle
+        lead="Strategic Fit & Recommendations"
+        title="Who It Is For, Common Mistakes, and How to Choose"
+        cta="Claim your free audit"
+        source="smm-guide"
+        body={
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Who Should Invest in Social Media Marketing?
+              </h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  Local and service businesses that want a steady flow of
+                  enquiries
+                </li>
+                <li>
+                  E-commerce and D2C brands that want to grow online sales
+                </li>
+                <li>B2B companies that need to reach decision-makers</li>
+                <li>
+                  Educational institutes, clinics and real estate businesses
+                  that run on enquiries
+                </li>
+                <li>
+                  Startups that want to build awareness with a controlled budget
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Common Mistakes That Waste Time and Budget
+              </h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  <strong>Posting without a plan:</strong> Random posts do not
+                  build an audience.
+                </li>
+                <li>
+                  <strong>Being on every platform:</strong> Spreading thin gives
+                  weak results everywhere.
+                </li>
+                <li>
+                  <strong>Ignoring comments and messages:</strong> Replies build
+                  trust and bring enquiries.
+                </li>
+                <li>
+                  <strong>Boosting posts without a goal:</strong> Spend needs a
+                  clear action, such as a lead or a message.
+                </li>
+                <li>
+                  <strong>Judging by likes alone:</strong> Likes do not pay the
+                  bills, leads and sales do.
+                </li>
+                <li>
+                  <strong>Stopping too early:</strong> Social media needs
+                  consistent posting over months before you judge it.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                How to Choose a Social Media Marketing Agency in Delhi
+              </h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  Check for experience in your industry and ask for relevant
+                  examples.
+                </li>
+                <li>
+                  Make sure you own your social and ad accounts and can see your
+                  data.
+                </li>
+                <li>Ask how they report, how often, and which metrics.</li>
+                <li>Ask to see a sample content calendar and past content.</li>
+                <li>
+                  Get clear pricing: the agency fee and your ad spend should be
+                  separate.
+                </li>
+                <li>
+                  Ask how they handle content or campaigns that underperform.
+                </li>
+              </ul>
+            </div>
+          </div>
+        }
+      />
+
+      <ServiceFaq
+        title="Social media marketing, answered"
+        faqs={faqs}
+        source="smm-faq"
+      />
 
       <OtherServices current={PATH} />
     </main>
