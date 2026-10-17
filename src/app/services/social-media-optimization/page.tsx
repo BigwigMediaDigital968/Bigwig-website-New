@@ -19,12 +19,14 @@ import PartnerBrands from "../../../../components/services/social-media-optimiza
 import StaticWorkGallery from "../../../../components/services/social-media-optimization/StaticWorkGallery";
 import SocialPlatforms from "../../../../components/services/social-media-optimization/SocialPlatforms";
 import { WorkShowcase } from "../../../../components/services/WorkShowcase";
+import Link from "next/link";
+import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/social-media-optimization";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "SMO Service in Delhi That Actually Grows Your Brand";
+const title = "SMO Services in Delhi | Social Media Optimization Agency";
 const description =
-  "Tired of posting into silence? Delhi's results-driven SMO agency turns dead profiles into revenue. See real client numbers - get your free audit!";
+  "SMO services in Delhi from a social media optimization agency: profile setup, content, engagement and reports. Book a free audit.";
 
 export const metadata: Metadata = {
   title,
@@ -239,26 +241,21 @@ export default function SocialMediaOptimizationPage() {
       <ServiceHero
         image={heroImg}
         lead="Social media optimization"
-        title="SMO Service in Delhi That Turns Silent Followers Into Paying Customers"
+        title="SMO Services in Delhi That Turn Silent Followers Into Customers"
         intro={
           <p>
-            <span className="text-white">
-              Most brands post consistently and still see nothing move: no leads, no real engagement, just numbers that
-              don’t translate into revenue.
-            </span>{" "}
-            We fix that specific problem. We don’t just manage your profiles; we re-engineer them to convert, drawing on
-            5+ years of learning what keeps brands active, relevant, and genuinely engaging on every major platform.
+            Our Social Media Optimization services in Delhi fix your profiles, content, and engagement so they bring enquiries. We have done this for 5+ years across every major platform.
           </p>
         }
-        cta="Get your free SMO audit"
-        whatsappMessage="Hi BigWig Media Digital! I'm interested in your Social Media Optimization services and would like to discuss more."
+        cta="Get Your Free Social Audit"
+        whatsappMessage="Hi! I’m interested in your SMO (social media optimization) services in Delhi."
         formSource="smo-hero"
         formServices={["SMO"]}
       />
 
       <ServiceIntro
         lead="SMO company in Delhi"
-        title="The Social Media Optimization Company in Delhi Built on Results, Not Promises"
+        title="SMO Services in Delhi Built Around Results"
         image={introImg}
         imageAlt="Social Media Optimization Services"
         body={
@@ -297,9 +294,34 @@ export default function SocialMediaOptimizationPage() {
 
       <SocialPlatforms />
 
+      {/* SMO vs Social Media Marketing Section */}
+      <ServiceArticle
+        lead="Understanding the Difference"
+        title="SMO vs Social Media Marketing: What's the Difference?"
+        cta="Get a free social media audit"
+        source="smo-vs-smm"
+        body={
+          <>
+            <p className="mb-4">
+              Social media optimization (SMO) improves your organic presence: profile setup, content, engagement, community, and reporting. You are building an audience and credibility that last.
+            </p>
+            <p className="mb-4">
+              Social media marketing (SMM) usually adds paid campaigns and promotions to reach people faster. It is a separate service, covered on our{" "}
+              <Link href="/services/social-media-marketing" className={inlineLink}>
+                Social Media Marketing
+              </Link>{" "}
+              page.
+            </p>
+            <p>
+              Many clients start with SMO and add paid ads later. If you are unsure which you need, the free audit will tell you.
+            </p>
+          </>
+        }
+      />
+
       <ServiceSteps
         id="smo-process"
-        heading="How Our SMO Process Works"
+        heading="How Our Social Media Optimization Services in Delhi Work, Step by Step"
         lead="From profile to report, every step is built to move visibility, engagement, and leads."
         rest="Here’s what we do for your brand, in order."
         steps={process}
@@ -316,7 +338,7 @@ export default function SocialMediaOptimizationPage() {
 
       <ServiceArticle
         lead="Why us"
-        title="The SMO Agency in Delhi Businesses Actually Stick With"
+        title="An SMO Agency in Delhi Clients Work With Long Term"
         cta="Start your project today"
         source="smo-why-us"
         body={

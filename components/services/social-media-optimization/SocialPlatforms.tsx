@@ -100,7 +100,7 @@ export default function SocialPlatforms() {
         <SectionHead lead="Platforms we manage" title="One Team, Every Platform Where Your Customers Actually Are" />
         <motion.p {...inView} variants={fadeUp} className="mt-6 max-w-5xl text-base leading-relaxed text-[var(--muted)]">
           Your audience isn&apos;t spread evenly across every platform, and neither is your effort once we know where
-          they are. Our SMO services cover Facebook, Instagram, LinkedIn, Twitter (X), Pinterest, and YouTube, each
+          they are. Our social media services cover Facebook, Instagram, LinkedIn, Twitter (X), Pinterest, and YouTube, each
           managed with platform-specific content and posting strategy rather than one post copy-pasted six times. A
           LinkedIn post built for decision-makers looks nothing like an Instagram Reel built for discovery, and treating
           them the same is one of the most common reasons brands plateau.

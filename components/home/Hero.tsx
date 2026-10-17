@@ -83,7 +83,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.h1
-            className="mt-6 max-w-5xl text-[2.3rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-5xl lg:text-[4.25rem]"
+            className="mt-6 max-w-5xl text-[2.3rem] font-semibold leading-[1.02] sm:text-5xl"
             initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0, y: 12 }}
             animate={{ clipPath: "inset(0 0% 0 0)", opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
