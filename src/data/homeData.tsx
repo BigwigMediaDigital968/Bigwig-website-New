@@ -38,20 +38,20 @@ export const services = [
       </>
     ),
   },
-  {
-    title: "Social Media Management (SMM)",
-    slug: "/services/social-media-marketing",
-    desc: (
-      <>
-        We are a creative{" "}
-        <span className="text-[var(--color3)] font-medium underline decoration-[var(--color4)]/60 underline-offset-4">
-          social media marketing agency in Delhi
-        </span>{" "}
-        helping brands grow across Instagram, Facebook, LinkedIn, and YouTube
-        using strategic content and targeted advertising.
-      </>
-    ),
-  },
+  // {
+  //   title: "Social Media Management (SMM)",
+  //   slug: "/services/social-media-marketing",
+  //   desc: (
+  //     <>
+  //       We are a creative{" "}
+  //       <span className="text-[var(--color3)] font-medium underline decoration-[var(--color4)]/60 underline-offset-4">
+  //         social media marketing agency in Delhi
+  //       </span>{" "}
+  //       helping brands grow across Instagram, Facebook, LinkedIn, and YouTube
+  //       using strategic content and targeted advertising.
+  //     </>
+  //   ),
+  // },
   {
     title: "Performance Marketing",
     slug: "/services/performance-marketing",
@@ -289,7 +289,7 @@ export const testimonials: Testimonial[] = [
 export const cases = [
   {
     image:
-      "https://img.freepik.com/free-photo/people-tablet-with-bar-graph_1134-473.jpg?t=st=1734521827~exp=1734525427~hmac=a538c7ecac674ca88ab223133d3c932a78502f43944562a09b9eac8f82b860f6&w=900",
+      "/home/ecom-growth.png",
     title: "Driving 75% Growth in E-commerce",
     description:
       "We implemented a comprehensive SEO and performance marketing strategy for an e-commerce brand, boosting conversions by 75% and significantly increasing revenue.",
@@ -297,7 +297,7 @@ export const cases = [
   },
   {
     image:
-      "https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063150.jpg?t=st=1734521679~exp=1734525279~hmac=62da27c16e954020d54a96e759573076fe3fa5f1d978970d95e0ca6db8fac276&w=900",
+      "/home/social-growth.png",
     title: "Social Media Engagement Growth",
     description:
       "For a fashion brand, we leveraged influencer marketing and compelling content to increase social media engagement and drive brand awareness from scratch.",
@@ -305,7 +305,7 @@ export const cases = [
   },
   {
     image:
-      "https://img.freepik.com/premium-vector/viral-content-magnetic-attraction-people-communication_24908-2.jpg?w=740",
+      "/home/lead-growth.png",
     title: "Scaling Lead Generation by 60%",
     description:
       "We boosted lead generation by 60% for a SaaS company by optimizing their website for SEO, running targeted ads, and delivering personalized content marketing strategies.",

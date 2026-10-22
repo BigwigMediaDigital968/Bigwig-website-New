@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { animate, motion, useInView, useReducedMotion } from "framer-motion";
-import aboutImg from "../../Assets/hero/2 (1).png";
 import { EASE, PillLead, PillLink, Reveal, fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
 import TrustedStrip from "../ui/TrustedStrip";
 
@@ -65,7 +64,7 @@ export default function About() {
           <motion.div
             {...inView}
             variants={wipeUp}
-            className="relative overflow-hidden rounded-[28px] bg-[var(--ink)] lg:col-span-5 lg:min-h-[440px]"
+            className="relative overflow-hidden rounded-[12px] bg-[var(--ink)] lg:col-span-5 lg:min-h-[440px]"
           >
             {/* image settles from a slight zoom as the frame opens */}
             <motion.div
@@ -76,8 +75,12 @@ export default function About() {
               transition={{ duration: 1.6, ease: EASE }}
             >
               <Image
-                src={aboutImg}
-                alt="The Bigwig team reviewing campaign results"
+                src="/home/about-image-1.png"
+                width={800}
+                height={600}
+                priority
+                quality={100}
+                alt="The Bigwig team working in the office, collaborating on digital marketing strategies and campaigns."
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="h-full w-full object-cover"
               />

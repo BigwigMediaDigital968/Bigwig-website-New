@@ -24,9 +24,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/social-media-optimization";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "SMO Services in Delhi | Social Media Optimization Agency";
+const title = "Social Media Optimization Agency | SMO Services in Delhi";
 const description =
-  "SMO services in Delhi from a social media optimization agency: profile setup, content, engagement and reports. Book a free audit.";
+  "Improve your digital presence with social media management services in Delhi. Build brand credibility and connect with your target audience.";
 
 export const metadata: Metadata = {
   title,
@@ -54,122 +54,180 @@ const results: ServiceResult[] = [
   { value: "50–400%", label: "Growth in qualified leads" },
   { value: "100–1800%", label: "Boost in new followers" },
   { value: "150–900%", label: "Improvement in brand visibility" },
-  { value: "Significant", label: "Enhancement in social reach & impressions, campaign-dependent" },
+  {
+    value: "Significant",
+    label: "Enhancement in social reach & impressions, campaign-dependent",
+  },
 ];
 
 const process: ServiceStep[] = [
   {
-    title: "Profile creation & optimization",
-    desc: "We optimize your social media profiles with keyword-rich descriptions, visually appealing graphics, call-to-actions, and branded elements to build a strong digital identity.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
+    title: "Profile Creation & Optimization",
+    desc: (
+      <>
+        We rebuild your bio, handle, link, highlights, cover images, and contact
+        buttons on each platform, so a first-time visitor knows who you are and
+        how to reach you.
+        <br />
+        <strong>You get:</strong> A consistent profile set across every platform
+        we manage.
+      </>
+    ),
+    image:
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Social media app icons on a phone screen",
   },
   {
-    title: "Engaging content & creative graphics",
-    desc: "Our creative team produces high-quality posts, videos, infographics, carousels, and stories that resonate with your audience and drive continuous engagement.",
-    image: "https://images.unsplash.com/photo-1658863025658-4a259cc68fc9?auto=format&fit=crop&w=1200&q=80",
+    title: "Engaging Content & Creative Graphics",
+    desc: (
+      <>
+        We plan a monthly calendar of posts, carousels, Reels, and Stories, and
+        our in-house design team produces the creatives. You approve the
+        calendar before anything goes live.
+        <br />
+        <strong>You get:</strong> Approximately 16 creatives a month and a
+        content calendar.
+      </>
+    ),
+    image:
+      "https://images.unsplash.com/photo-1658863025658-4a259cc68fc9?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Printed design samples and brochures",
   },
   {
-    title: "Target audience refinement",
-    desc: "We help you attract users who are genuinely interested in your products or services, ensuring maximum relevance and conversion potential.",
-    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+    title: "Target Audience Refinement",
+    desc: (
+      <>
+        We map who actually buys from you, including their city, interests, and
+        the questions they ask. We then shape content formats, hashtags, and
+        posting times around them.
+        <br />
+        <strong>You get:</strong> An audience and competitor brief.
+      </>
+    ),
+    image:
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team planning around a meeting table",
   },
   {
-    title: "Audience interaction & engagement",
-    desc: "We manage comments, messages, and interactions in real time, helping your brand stay active, responsive, and customer-friendly.",
-    image: "https://images.unsplash.com/photo-1758274252219-5f20097548c9?auto=format&fit=crop&w=1200&q=80",
+    title: "Audience Interaction & Engagement",
+    desc: (
+      <>
+        We reply to comments and messages within 24 hours, join relevant
+        conversations, and pass genuine enquiries to your team.
+        <br />
+        <strong>You get:</strong> An active, responsive profile and a list of
+        enquiries.
+      </>
+    ),
+    image:
+      "https://images.unsplash.com/photo-1758274252219-5f20097548c9?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Woman smiling while reading her phone",
   },
   {
-    title: "Analytics & performance reporting",
-    desc: "From reach and impressions to follower growth and engagement metrics, our detailed reports help you understand the impact of your SMO campaigns.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    title: "Analytics & Performance Reporting",
+    desc: (
+      <>
+        Each month, you receive a report covering reach, impressions, follower
+        growth, engagement rate, click-through rate, and your best and weakest
+        posts, along with recommendations for the next month.
+        <br />
+        <strong>You get:</strong> A monthly performance report.
+      </>
+    ),
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Analytics dashboard on a laptop screen",
   },
 ];
 
 const benefits: ServiceItem[] = [
   {
-    title: "Enhanced Brand Visibility Across Social Platforms",
-    desc: "High-quality and consistent social media optimization ensures your brand becomes more visible and memorable. With strategic content and profile optimization, your business appears frequently in search results, trending categories, and platform recommendations.",
+    title: "Be Seen by the Right People",
+    desc: "Consistent posting and well-optimized profiles keep your brand in front of the people most likely to need you. Strategic content, hashtags, and profile keywords make it easier for new audiences to discover your business.",
   },
   {
-    title: "Higher Engagement & Stronger Customer Relationships",
-    desc: "Through professional Social Media Optimization Services in Delhi, you can create meaningful interactions with your audience. Engaging posts, quick responses, and community management help build trust and long-term customer loyalty.",
+    title: "Stronger Relationships With Customers",
+    desc: "Useful posts, quick replies, and active community management turn followers into people who know your brand, trust it, and come back. Meaningful interactions help build lasting customer relationships.",
   },
   {
-    title: "Increase in Targeted Traffic & Quality Leads",
-    desc: "SMO helps drive highly relevant traffic to your website. Because users actively engage with your content, the chances of generating high-quality, conversion-ready leads increase significantly.",
+    title: "More Relevant Visitors and Leads",
+    desc: "Content built for the right audience sends more relevant visitors to your website and enquiry channels, helping attract potential customers who are more ready to talk to your team.",
   },
   {
-    title: "Improved Brand Reputation & Online Credibility",
-    desc: "Positive engagement, active posting, and reputation management make your brand appear reliable and authoritative. With well-managed SMO Services in Delhi, your online reputation improves across platforms.",
+    title: "A Reputation People Can Check",
+    desc: "An active, responsive profile shows customers that your business is real and reliable. Prompt replies, useful content, and steady posting help build credibility over time.",
   },
   {
-    title: "Better Search Engine Rankings (Indirect SEO Benefits)",
-    desc: "Optimized social profiles and strong engagement send positive social signals to search engines. This contributes to better rankings and enhances your overall digital presence.",
+    title: "Easier to Find by Name",
+    desc: "Well-optimized social profiles can appear in search results when people look for your brand, helping new customers verify your business before getting in touch. Likes and shares are not a confirmed Google ranking factor, so we never promise ranking gains from them.",
   },
   {
-    title: "Cost-Effective Marketing With High ROI",
-    desc: "Compared to paid advertising, Social Media Services in Delhi offer long-term value at a minimal cost. With the right strategy, you can achieve measurable growth without overspending.",
+    title: "Organic Reach You Keep",
+    desc: "Consistent organic social media work builds an audience and a library of content that can continue attracting attention after each post. Over time, this can reduce reliance on paid ads, which can be added when you want to pursue faster reach.",
   },
   {
-    title: "Insightful Analytics & Data-Driven Decisions",
-    desc: "Performance reports and analytics help you understand user behavior, content performance, and audience demographics. These insights help refine your strategy for continuous improvement.",
+    title: "Data to Decide With",
+    desc: "Monthly reports show reach, impressions, follower growth, engagement rate, and click-through rate, along with your best-performing posts. These insights help you understand what works and direct your effort and budget toward activities that deliver results.",
   },
   {
-    title: "Competitive Advantage in Your Industry",
-    desc: "With consistent and optimized social media efforts, your brand stays ahead of competitors who are either inactive or not leveraging SMO effectively.",
+    title: "Competitor Awareness",
+    desc: "We study what your competitors post, how often they publish, which hashtags they use, and how their audiences respond. The gaps we identify become content ideas and positioning opportunities that help your brand stand out.",
   },
   {
-    title: "Increased Followers & Community Growth",
-    desc: "Professional SMO Services in Delhi ensure steady follower growth through strategic content, trends, and engagement tactics. A larger community naturally amplifies your brand reach.",
+    title: "Community Growth",
+    desc: "We grow a steady community of relevant followers through useful content, trends, and genuine interaction. We never buy followers, because inflated numbers do not necessarily translate into meaningful engagement or enquiries.",
   },
   {
-    title: "Strengthened Brand Authority & Trust",
-    desc: "Publishing valuable content and maintaining an active presence helps position your brand as a leader in your niche. High authority translates into greater customer confidence.",
+    title: "Brand Authority and Trust",
+    desc: "Publishing valuable content and maintaining an active presence positions your brand as a dependable name in your niche. A consistent visual identity, brand voice, and profile information across platforms make your business easier to recognize and trust.",
   },
 ];
 
 const goals = [
-  "Increase your social media followers",
+  "Grow their social following with relevant people",
   "Improve brand visibility",
-  "Strengthen online reputation",
+  "Strengthen their online reputation",
   "Generate more leads",
-  "Boost website traffic",
+  "Bring more traffic to their website",
   "Build an active online community",
 ];
 
 const faqs: ServiceFaqItem[] = [
   {
-    q: "What exactly is included in your SMO services?",
-    a: "Our SMO services cover everything your brand needs to build a strong and engaging online presence, including profile setup and optimization, creative content production, post scheduling, hashtag strategy, audience engagement, trend analysis, brand monitoring, reputation management, and detailed performance reporting. We deliver everything as one connected strategy rather than outsourcing individual tasks.",
+    q: "What is the difference between SMO and social media marketing?",
+    a: "SMO improves your organic presence through profile optimization, content, and audience engagement. Social media marketing can also include paid promotion to reach specific audiences faster. SMO builds the foundation, while paid campaigns can extend your reach. See the comparison above for more details.",
   },
   {
-    q: "Which social media platforms do you actually work on?",
-    a: "We manage Facebook, Instagram, LinkedIn, Twitter (X), Pinterest, and YouTube. Our team recommends the platforms that best match your target audience, ensuring your brand focuses on the channels where your customers are most active.",
+    q: "How much do SMO services cost?",
+    a: "Pricing depends on the number of platforms, how much content you need each month, and the level of engagement and reporting required. After your free audit, we provide a quote based on the agreed scope, so you pay for the services your business actually needs.",
   },
   {
-    q: "How do you decide what content to create?",
-    a: "We begin with audience research and competitor analysis, identify trending content formats, and create graphics, captions, reels, and stories that align with your brand voice. Every piece of content is designed to strengthen your brand identity and generate meaningful engagement.",
+    q: "How long does it take to see results?",
+    a: "Engagement and profile visits may improve first. Steady follower growth and enquiries typically build over the following months, depending on your starting point, industry, audience, and posting frequency. We track performance regularly and refine the strategy based on the data.",
   },
   {
-    q: "How do you actually engage with our audience, not just post at them?",
-    a: "Our team actively manages your social media communities by responding to comments and messages, participating in relevant conversations, and using platform-specific features like polls, reels, and trending audio to encourage genuine audience interaction.",
+    q: "How often should we post?",
+    a: "Posting frequency depends on the platform, your audience, and your available resources. As a general rule, a few high-quality posts each week can be more effective than daily filler. We create a realistic publishing schedule and adjust it based on your performance reports.",
   },
   {
-    q: "Will your approach change based on how big or small our company is?",
-    a: "Yes. We customize every SMO strategy based on your business size, goals, industry, and budget. Whether you're a startup, SME, or enterprise, we create a tailored social media plan instead of using a one-size-fits-all approach.",
+    q: "Can small businesses benefit from SMO?",
+    a: "Yes. SMO relies on consistency, relevance, and understanding your audience rather than requiring a large advertising budget. A local business with a clear message, useful content, and an active profile can build visibility and compete effectively within its niche.",
   },
   {
-    q: "Do you actually study our competitors, or is that just a line in the pitch?",
-    a: "Competitor analysis is an ongoing part of our SMO process. We evaluate competitors' content strategies, engagement levels, hashtags, posting frequency, and audience behavior to identify opportunities that help your brand stand out.",
+    q: "Who owns our social accounts?",
+    a: "You retain ownership and control of your social media accounts. We work through authorized admin or manager access that you can revoke at any time. We never require you to hand over your personal login credentials.",
   },
   {
-    q: "How will we know if it's actually working?",
-    a: "We provide transparent performance reports that track key metrics such as follower growth, reach, impressions, engagement rate, click-through rate, content performance, and community interactions. Weekly or monthly reports keep you informed about the progress and results of your social media campaigns.",
+    q: "Do you guarantee a specific number of followers?",
+    a: "No. We do not guarantee a specific follower count or buy followers to inflate numbers. Purchased followers may increase vanity metrics without generating genuine engagement or enquiries. We commit to an agreed scope of work and report performance honestly each month.",
+  },
+  {
+    q: "What do you need from us to get started?",
+    a: "We need access to your social media profiles, brand assets such as your logo, colours, and previous creatives, a list of your main products or services, and a short discussion about your goals. We use this information to conduct your audit and identify what should be improved first.",
+  },
+  {
+    q: "How do we choose between SMO and paid ads?",
+    a: "SMO builds your organic foundation through profile optimization, content, and community engagement. Paid ads can help you reach targeted audiences faster. If your profiles and content are not ready to convert visitors, advertising may send traffic to a weak destination. We generally recommend strengthening the foundation first, then adding paid campaigns when they support your goals.",
   },
 ];
 
@@ -214,7 +272,8 @@ const serviceSchema = {
   ],
   audience: {
     "@type": "Audience",
-    audienceType: "Startups, SMEs, and Enterprises in Delhi and Delhi-NCR seeking social media growth",
+    audienceType:
+      "Startups, SMEs, and Enterprises in Delhi and Delhi-NCR seeking social media growth",
   },
   offers: {
     "@type": "Offer",
@@ -222,21 +281,32 @@ const serviceSchema = {
     availability: "https://schema.org/InStock",
     areaServed: "Delhi, Delhi-NCR",
     url: URL,
-    description: "Custom SMO packages priced according to business size, platforms, and scope. Contact for a tailored quote.",
+    description:
+      "Custom SMO packages priced according to business size, platforms, and scope. Contact for a tailored quote.",
   },
 };
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function SocialMediaOptimizationPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <ServiceHero
         image={heroImg}
@@ -244,7 +314,9 @@ export default function SocialMediaOptimizationPage() {
         title="SMO Services in Delhi That Turn Silent Followers Into Customers"
         intro={
           <p>
-            Our Social Media Optimization services in Delhi fix your profiles, content, and engagement so they bring enquiries. We have done this for 5+ years across every major platform.
+            As a social media optimization agency in Delhi, we fix your
+            profiles, content, and engagement so they bring enquiries. We have
+            done this for 5+ years across every major platform.
           </p>
         }
         cta="Get Your Free Social Audit"
@@ -261,16 +333,46 @@ export default function SocialMediaOptimizationPage() {
         body={
           <>
             <p>
-              Bigwig Media Digital has spent more than five years as a social media service in Delhi, and in that time
-              we’ve learned the difference between agencies that post content and agencies that build growth engines.
-              We’re the second kind. Our comprehensive SMO services connect your brand with the audience that actually
-              buys from you, not just an audience that likes your posts and scrolls on.
+              Bigwig Media Digital has spent 5+ years as a social media
+              optimization agency in Delhi, and in that time we have learned the
+              difference between agencies that post content and agencies that
+              build growth engines. We are the second kind. Our SMO services
+              connect your brand with the audience that actually buys from you,
+              not just an audience that likes your posts and scrolls on.
             </p>
             <p>
-              As a social media service agency in Delhi, our certified professionals combine proven frameworks, original
-              creative, and continuous data analysis to move three specific numbers: visibility, engagement, and
-              qualified leads. Nothing we do is guesswork. Every content decision traces back to what’s already working
-              for your audience, and every underperforming post gets diagnosed, not ignored.
+              Our team combines proven frameworks, original creative, and
+              continuous data analysis to move three specific numbers:
+              visibility, engagement, and qualified leads. Nothing we do is
+              guesswork. Every content decision traces back to what is already
+              working for your audience, and every underperforming post gets
+              diagnosed, not ignored.
+            </p>
+          </>
+        }
+      />
+
+      {/* 4. What is social media optimization? */}
+      <ServiceArticle
+        lead="Foundational Growth"
+        title="What Is Social Media Optimization?"
+        cta="Get a free social audit"
+        source="smo-definition"
+        body={
+          <>
+            <p className="mb-4">
+              Social media optimization (SMO) is the work of making your social
+              profiles and content easier to find, trust, and act on. It covers
+              your bio and links, the posts you publish, how you reply to
+              people, and how you measure what works.
+            </p>
+            <p>
+              Think of it as the foundation under your social presence. A
+              visitor who lands on your Instagram or LinkedIn page should know
+              within seconds who you are, what you offer, and how to reach you.
+              SMO makes that happen, then keeps it working month after month. As
+              a social media optimization agency in Delhi, we handle all of this
+              for you.
             </p>
           </>
         }
@@ -278,7 +380,7 @@ export default function SocialMediaOptimizationPage() {
 
       <PartnerBrands />
 
-      <WorkShowcase />
+      <WorkShowcase intro="Explore how our SMO services in Delhi have helped brands across industries increase reach, engagement, leads, and revenue through data-driven social media." />
 
       <StaticWorkGallery />
 
@@ -303,18 +405,72 @@ export default function SocialMediaOptimizationPage() {
         body={
           <>
             <p className="mb-4">
-              Social media optimization (SMO) improves your organic presence: profile setup, content, engagement, community, and reporting. You are building an audience and credibility that last.
+              Social media optimization (SMO) improves your organic presence:
+              profile setup, content, engagement, community, and reporting. You
+              are building an audience and credibility that last.
             </p>
             <p className="mb-4">
-              Social media marketing (SMM) usually adds paid campaigns and promotions to reach people faster. It is a separate service, covered on our{" "}
-              <Link href="/services/social-media-marketing" className={inlineLink}>
+              Social media marketing (SMM) usually adds paid campaigns and
+              promotions to reach people faster. It is a separate service,
+              covered on our{" "}
+              <Link
+                href="/services/social-media-marketing"
+                className={inlineLink}
+              >
                 Social Media Marketing
               </Link>{" "}
               page.
             </p>
             <p>
-              Many clients start with SMO and add paid ads later. If you are unsure which you need, the free audit will tell you.
+              Many clients start with SMO and add paid ads later. If you are
+              unsure which you need, the free audit will tell you.
             </p>
+          </>
+        }
+      />
+
+      {/* 11. Why social media stalls */}
+      <ServiceArticle
+        lead="Common Bottlenecks"
+        title="Why Social Media Stalls for Delhi Brands"
+        cta="Fix your social presence"
+        source="smo-stalls"
+        body={
+          <>
+            <p className="mb-6 font-medium text-gray-800">
+              Most brands we meet are already posting. The problem is that the
+              posts are not building anything. These are the six patterns we fix
+              first.
+            </p>
+
+            <ul className="space-y-3 list-disc pl-5 text-gray-700">
+              <li>
+                <strong>A crowded market:</strong> Delhi brands compete with
+                hundreds of similar businesses for the same local audience, so
+                generic posts disappear.
+              </li>
+              <li>
+                <strong>Wrong platforms:</strong> Effort is spread across every
+                platform instead of where your buyers actually spend time.
+              </li>
+              <li>
+                <strong>Flat engagement:</strong> Posts get views but no
+                comments, saves, or enquiries because there is no clear message
+                or call to action.
+              </li>
+              <li>
+                <strong>Algorithm changes:</strong> What worked last year stops
+                working, and nobody notices until reach has already dropped.
+              </li>
+              <li>
+                <strong>Inconsistent posting:</strong> Bursts of activity
+                followed by silence teach the audience to stop looking.
+              </li>
+              <li>
+                <strong>No tracking:</strong> Without reports, nobody knows
+                which posts brought enquiries and which only brought likes.
+              </li>
+            </ul>
           </>
         }
       />
@@ -322,9 +478,106 @@ export default function SocialMediaOptimizationPage() {
       <ServiceSteps
         id="smo-process"
         heading="How Our Social Media Optimization Services in Delhi Work, Step by Step"
-        lead="From profile to report, every step is built to move visibility, engagement, and leads."
-        rest="Here’s what we do for your brand, in order."
+        lead="Each aspect of our Social Media Optimization Services in Delhi is designed to increase visibility, engagement, and leads. Here is what happens after you sign on."
         steps={process}
+      />
+
+      {/* 13. What's included */}
+      <ServiceArticle
+        lead="Clear Deliverables"
+        title="What’s Included in Our SMO Plans in Delhi"
+        cta="Get a customized quote"
+        source="smo-pricing"
+        body={
+          <>
+            <p className="mb-6">
+              Every plan is built around your goals, but here is what a typical
+              engagement includes. We share a quote after the free audit, based
+              on your scope.
+            </p>
+
+            <div className="overflow-x-auto my-6">
+              <table className="w-full text-left border-collapse border border-gray-200">
+                <thead>
+                  <tr className="bg-gray-100 border-b border-gray-200">
+                    <th className="p-3 font-semibold text-gray-900 border-r border-gray-200">
+                      Features
+                    </th>
+                    <th className="p-3 font-semibold text-gray-900 border-r border-gray-200">
+                      Starter
+                    </th>
+                    <th className="p-3 font-semibold text-gray-900 border-r border-gray-200">
+                      Growth
+                    </th>
+                    <th className="p-3 font-semibold text-gray-900">Scale</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 text-sm">
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200">
+                      Platforms
+                    </td>
+                    <td className="p-3 border-r border-gray-200">1–2</td>
+                    <td className="p-3 border-r border-gray-200">3–4</td>
+                    <td className="p-3">5–6</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200">
+                      Creatives per month
+                    </td>
+                    <td className="p-3 border-r border-gray-200">10</td>
+                    <td className="p-3 border-r border-gray-200">16</td>
+                    <td className="p-3">30</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200">
+                      Reels or videos
+                    </td>
+                    <td className="p-3 border-r border-gray-200">4</td>
+                    <td className="p-3 border-r border-gray-200">7</td>
+                    <td className="p-3">12</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200">
+                      Engagement and replies
+                    </td>
+                    <td className="p-3 border-r border-gray-200">
+                      Within 24 Hours
+                    </td>
+                    <td className="p-3 border-r border-gray-200">
+                      Within 24 Hours
+                    </td>
+                    <td className="p-3">Within 24 Hours</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200">
+                      Competitor review
+                    </td>
+                    <td className="p-3 border-r border-gray-200">Quarterly</td>
+                    <td className="p-3 border-r border-gray-200">Monthly</td>
+                    <td className="p-3">Monthly</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200">
+                      Report
+                    </td>
+                    <td className="p-3 border-r border-gray-200">Monthly</td>
+                    <td className="p-3 border-r border-gray-200">
+                      Monthly + call
+                    </td>
+                    <td className="p-3">Monthly + call</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-sm text-gray-600 mt-4">
+              Not sure which fits? Start with the free audit, and we will
+              recommend one. Paid ads are not included, and we can add them
+              later if you want faster reach.
+            </p>
+          </>
+        }
       />
 
       <ServiceCarousel
@@ -344,29 +597,39 @@ export default function SocialMediaOptimizationPage() {
         body={
           <>
             <p>
-              Plenty of agencies win a first project. Fewer keep clients for years. Our reviews and portfolio reflect
-              the second kind of relationship, built on results clients can verify and a process transparent enough to
-              survive scrutiny. Clients across India work with us because we focus on delivering long-term value,
-              whether the goal is to:
+              We measure success by whether you keep seeing results. Clients
+              across India work with us to:
             </p>
             <ul className="grid gap-3 sm:grid-cols-2">
               {goals.map((g) => (
                 <li key={g} className="flex gap-3">
-                  <span aria-hidden className="mt-[0.6em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]" />
+                  <span
+                    aria-hidden
+                    className="mt-[0.6em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]"
+                  />
                   {g}
                 </li>
               ))}
             </ul>
             <p>
-              Every strategy is personalized to your industry, goals, and target audience, because a strategy built for
-              a real estate brand in South Delhi has almost nothing in common with one built for a D2C skincare label,
-              and pretending otherwise is how agencies produce forgettable results.
+              Every plan is built for your industry, goals, and audience. A real
+              estate brand in South Delhi and a D2C skincare label need very
+              different strategies.
+            </p>
+            <p>
+              <b>Brands We Work With:</b> Monto · HOCO · Crown Point Estates ·
+              Dr Manshi (logos, each linking to its case study or the Clients
+              page)
             </p>
           </>
         }
       />
 
-      <ServiceFaq title="Social media optimization, answered" faqs={faqs} source="smo-faq" />
+      <ServiceFaq
+        title="SMO Services in Delhi: Questions Clients Ask"
+        faqs={faqs}
+        source="smo-faq"
+      />
 
       <OtherServices current={PATH} />
     </main>

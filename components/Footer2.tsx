@@ -108,14 +108,14 @@ function Footer2() {
                     Google My Business
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="/social-media-management"
                     className="hover:text-blue-600"
                   >
                     Social Media Management
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
 

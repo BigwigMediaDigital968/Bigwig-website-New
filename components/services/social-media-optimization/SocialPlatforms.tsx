@@ -20,22 +20,26 @@ type Platform = {
 
 const platforms: Platform[] = [
   {
-    id: "facebook",
-    name: "Facebook",
-    tagline: "Community & lead gen",
-    icon: <FaFacebookF />,
-    brandColor: "#1877F2",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80",
-    strategy: "Targeted group engagement, localized ads, and community-building content.",
-  },
-  {
     id: "instagram",
     name: "Instagram",
-    tagline: "Discovery & Reels",
+    tagline: "Reels, carousels & profile growth",
     icon: <FaInstagram />,
     brandColor: "#E4405F",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80",
-    strategy: "High-impact visual stories, trending Reels, and aesthetic profile grids.",
+    image:
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80",
+    strategy:
+      "Focused execution: platform-native creative, copy, Reels, carousels, and profile grid optimization that encourages visitors to follow and enquire. Targeting Instagram? Get a free platform audit.",
+  },
+  {
+    id: "facebook",
+    name: "Facebook",
+    tagline: "Community & lead generation",
+    icon: <FaFacebookF />,
+    brandColor: "#1877F2",
+    image:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80",
+    strategy:
+      "Focused execution: community-first posts, local audience cues, local discovery, and lead-focused formats. Targeting Facebook? Get a free platform audit.",
   },
   {
     id: "linkedin",
@@ -43,26 +47,32 @@ const platforms: Platform[] = [
     tagline: "B2B & thought leadership",
     icon: <FaLinkedinIn />,
     brandColor: "#0A66C2",
-    image: "https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&w=900&q=80",
-    strategy: "Executive branding, industry insights, decision-maker reach, and carousel decks.",
+    image:
+      "https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&w=900&q=80",
+    strategy:
+      "Focused execution: company page setup, thought-leadership posts, and B2B-ready copy designed to reach decision-makers. Targeting LinkedIn? Get a free platform audit.",
   },
   {
     id: "twitter",
-    name: "Twitter (X)",
-    tagline: "Real-time trends",
+    name: "X",
+    tagline: "Timely updates & conversations",
     icon: <FaXTwitter />,
     brandColor: "#000000",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
-    strategy: "Bite-sized updates, active conversation threads, and real-time public relations.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+    strategy:
+      "Focused execution: timely posts, engaging thread formats, real-time brand conversations, and a consistent brand voice. Targeting X? Get a free platform audit.",
   },
   {
     id: "pinterest",
     name: "Pinterest",
-    tagline: "Visual search & e-commerce",
+    tagline: "Visual search & discovery",
     icon: <FaPinterestP />,
     brandColor: "#E60023",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
-    strategy: "Shoppable pins, mood boards, and long-tail organic search traffic.",
+    image:
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
+    strategy:
+      "Focused execution: search-friendly pins, organized boards, and optimized descriptions built to drive visual discovery and organic traffic, especially for retail and D2C brands. Targeting Pinterest? Get a free platform audit.",
   },
   {
     id: "youtube",
@@ -70,8 +80,10 @@ const platforms: Platform[] = [
     tagline: "Long-form video & Shorts",
     icon: <FaYoutube />,
     brandColor: "#FF0000",
-    image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=900&q=80",
-    strategy: "SEO-optimized long-form video, tutorials, and snackable Shorts.",
+    image:
+      "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=900&q=80",
+    strategy:
+      "Focused execution: channel setup, search-optimized titles, compelling thumbnails, long-form videos, and Shorts built to be discovered. Targeting YouTube? Get a free platform audit.",
   },
 ];
 

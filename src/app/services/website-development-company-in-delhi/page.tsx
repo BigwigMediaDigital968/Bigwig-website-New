@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 // import { Palette, Search, ShieldCheck, Smartphone } from "lucide-react";
 import { Code2, Server, ShoppingBag, Sparkles } from "lucide-react";
 import heroImg from "../../../../Assets/Services hero/website.jpg";
-import introImg from "../../../../Assets/services/1.jpg";
+import introImg from "../../../../Assets/services/website/website-intro.png";
 import Partners from "../../../../components/home/Partners";
 import Clients from "../../../../components/home/Clients";
 import Testimonials from "../../../../components/home/Testimonials";
@@ -57,77 +57,10 @@ export const metadata: Metadata = {
   },
 };
 
-/* Stat cards and image showcase, commented out for now (see the JSX below).
-
-// Photos from Unsplash (images.unsplash.com is allowed in next.config)
-
-const stats: ServiceStat[] = [
-  {
-    value: "100+",
-    label: "Delhi businesses",
-    desc: "Real estate firms, clinics, retailers, and startups across Delhi NCR trust us with their websites.",
-    image: "https://images.unsplash.com/photo-1627599936744-51d288f89af4?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Web developers working at desks in an office",
-  },
-  {
-    value: "5.0",
-    label: "Google rating",
-    desc: "Rated 5.0 across 71 Google reviews from our clients.",
-    image: "https://images.unsplash.com/photo-1787647561667-7f3b6b34487c?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Team reviewing design printouts together",
-  },
-  {
-    value: "65%",
-    label: "Mobile visits",
-    desc: "Of web visits in India come from phones, so every site we build is mobile-first.",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Hand holding a phone showing a responsive dashboard",
-  },
-  {
-    value: "94%",
-    label: "Design-led first impressions",
-    desc: "First impressions are design-driven. A custom website makes yours count.",
-    image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Watercolour wireframe sketches of website layouts",
-  },
-  {
-    value: "4–8",
-    label: "Weeks to launch",
-    desc: "Typical time from brief to launch for a business website, with a clear timeline up front.",
-    image: "https://images.unsplash.com/photo-1600132806608-231446b2e7af?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Hand-drawn website wireframe on paper",
-  },
-];
-
-const whyFeatures: ServiceFeature[] = [
-  {
-    icon: <Palette size={18} />,
-    title: "Personalised design",
-    desc: "A creative design strategy built around your Delhi audience.",
-  },
-  {
-    icon: <Smartphone size={18} />,
-    title: "Mobile-first layouts",
-    desc: "Modern, adaptive layouts optimised for mobile browsing.",
-  },
-  {
-    icon: <Search size={18} />,
-    title: "SEO-ready build",
-    desc: "Search-friendly architecture and an easy-to-use CMS from the first page.",
-  },
-  {
-    icon: <ShieldCheck size={18} />,
-    title: "Tested before launch",
-    desc: "Thorough QA across devices, browsers, and screen sizes, with scalable features.",
-  },
-];
-*/
-
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
 const photo = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
-// Steps follow what the page already promises: consultation, competitor research, a clear plan and
-// timeline, custom design, QA across devices, CMS training, and post-launch support.
+
 const processSteps: ServiceStep[] = [
   {
     title: "Understand your goals",
@@ -504,19 +437,19 @@ export default function WebsiteDevelopmentPage() {
         title="Best Website Development Company in Delhi NCR"
         image={introImg}
         imageAlt="Best Web Development Company in Delhi"
-        collage={{
-          // Placeholder photos from Unsplash, to be replaced with designed images
-          images: [
-            {
-              src: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80",
-              alt: "Responsive website on a phone",
-            },
-            {
-              src: "https://images.unsplash.com/photo-1600132806608-231446b2e7af?auto=format&fit=crop&w=800&q=80",
-              alt: "Website wireframe sketch",
-            },
-          ],
-        }}
+        // collage={{
+        //   // Placeholder photos from Unsplash, to be replaced with designed images
+        //   images: [
+        //     {
+        //       src: "/website/website-intro.png",
+        //       alt: "Responsive website on a phone",
+        //     },
+        //     {
+        //       src: "/website/website-intro.png",
+        //       alt: "Website wireframe sketch",
+        //     },
+        //   ],
+        // }}
         body={
           <>
             <p>

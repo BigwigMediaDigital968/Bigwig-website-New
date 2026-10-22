@@ -240,7 +240,7 @@ export default function EnquiryForm({
             <ArrowUpRight className="h-4 w-4" />
           </span>
         </button>
-        <RecaptchaNotice className="text-[var(--muted)]" />
+        {/* <RecaptchaNotice className="text-[var(--muted)]" /> */}
       </div>
     </form>
   );

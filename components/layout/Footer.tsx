@@ -246,7 +246,7 @@ const branchLinks = [
 const serviceLinks = [
   { name: "Website Design & Development", path: "/services/website-development-company-in-delhi" },
   { name: "Search Engine Optimization", path: "/services/search-engine-optimization" },
-  { name: "Social Media Management", path: "/services/social-media-marketing" },
+  // { name: "Social Media Management", path: "/services/social-media-marketing" },
   { name: "Performance Marketing", path: "/services/performance-marketing" },
   { name: "ORM Services", path: "/services/online-reputation-management" },
   { name: "Influencer Marketing", path: "/services/influencer-marketing" },
