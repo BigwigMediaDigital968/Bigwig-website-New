@@ -23,7 +23,7 @@ const PATH = "/services/email-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
 const title = "Email Marketing Services in Delhi | Bigwig Media Digital";
 const description =
-  "Personalized Email Marketing Services in Delhi. Automated campaigns, newsletters & drip emails to boost open rates & retention. Contact Us!";
+  "Looking for email marketing services in Delhi? We help businesses with email campaigns, automation, segmentation and deliverability. Discuss your goals with our team.";
 
 export const metadata: Metadata = {
   title,
@@ -47,39 +47,59 @@ export const metadata: Metadata = {
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
 
 const introPhotos = [
-  { src: "https://images.unsplash.com/photo-1556204975-1851fadab092?auto=format&fit=crop&w=600&q=80", alt: "Mail app icon with unread messages" },
-  { src: "https://images.unsplash.com/photo-1758274252219-5f20097548c9?auto=format&fit=crop&w=800&q=80", alt: "Woman smiling while reading her phone" },
-  { src: "https://images.unsplash.com/photo-1683117927786-f146451082fb?auto=format&fit=crop&w=900&q=80", alt: "Blue envelope icon" },
-  { src: "https://images.unsplash.com/photo-1615840287456-01c4cf540c55?auto=format&fit=crop&w=800&q=80", alt: "Hands typing on a laptop" },
-  { src: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=600&q=80", alt: "Mail app on a phone home screen" },
+  {
+    src: "https://images.unsplash.com/photo-1556204975-1851fadab092?auto=format&fit=crop&w=600&q=80",
+    alt: "Mail app icon with unread messages",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1758274252219-5f20097548c9?auto=format&fit=crop&w=800&q=80",
+    alt: "Woman smiling while reading her phone",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1683117927786-f146451082fb?auto=format&fit=crop&w=900&q=80",
+    alt: "Blue envelope icon",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1615840287456-01c4cf540c55?auto=format&fit=crop&w=800&q=80",
+    alt: "Hands typing on a laptop",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=600&q=80",
+    alt: "Mail app on a phone home screen",
+  },
 ];
 
 const whyChoose: ServiceItem[] = [
   {
-    title: "Deep Local Market Knowledge",
-    desc: "We understand Delhi’s market dynamics, from festivals and sales cycles to audience preferences across neighbourhoods, so your emails feel timely and relevant.",
+    title: "Understanding of the Local Market",
+    desc: "We consider your target audience, business goals, local events, and seasonal trends to create email campaigns that are relevant to your customers in Delhi.",
   },
   {
-    title: "End-to-End Email Marketing Services",
-    desc: "List building, segmentation, creative design, copywriting, automation, transactional emails, and analytics. One email marketing company in Delhi for all of it.",
+    title: "Complete Email Marketing Support",
+    desc: "From campaign planning and email copywriting to automation and performance tracking, we help manage the key parts of your email marketing activities.",
   },
   {
-    title: "Technology & Deliverability Expertise",
-    desc: "We work with HubSpot, Klaviyo, Mailchimp, and major SMTP providers, and manage SPF/DKIM/DMARC and IP reputation so your emails land in inboxes, not spam.",
+    title: "Email Setup and Deliverability",
+    desc: "We help configure email authentication, maintain list quality, and follow deliverability best practices to improve the chances of your emails reaching the inbox.",
   },
   {
-    title: "ROI-Focused & Scalable Solutions",
-    desc: "Whether you need high-volume promotional sends or automated drip journeys, our email marketing services scale to your goals and budget.",
+    title: "Flexible Solutions for Your Business",
+    desc: "Whether you need regular newsletters, promotional campaigns, or automated email sequences, we can plan activities around your business needs and budget.",
   },
   {
-    title: "Send from Your Own Website",
+    title: "Website and Email Integration",
     desc: (
       <>
-        We can also{" "}
-        <Link href="/services/website-development-company-in-delhi" className={inlineLink}>
+        If your business needs it, we can{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className={inlineLink}
+        >
           develop your website
         </Link>{" "}
-        with an admin dashboard that sends bulk emails, so your campaigns run from your own site.
+        with email functionality integrated into your website or admin
+        dashboard. The right setup depends on your requirements, email platform,
+        and sending volume.
       </>
     ),
   },
@@ -87,39 +107,45 @@ const whyChoose: ServiceItem[] = [
 
 const process: ServiceStep[] = [
   {
-    title: "Research & strategy",
-    desc: "We start with your business goals, customers, and existing data, then define a measurable email strategy aligned with your KPIs: revenue, leads, and retention.",
-    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+    title: "Research and Strategy",
+    desc: "We learn about your business, target customers, and marketing goals. Based on this information, we create an email strategy focused on objectives such as lead generation, sales, or customer retention.",
+    image:
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Team planning around a meeting table",
   },
   {
-    title: "List building & segmentation",
-    desc: "Clean lists and smart segments (behavioural, demographic, lifecycle stage) are the backbone of effective email. They let every message feel personal.",
-    image: "https://images.unsplash.com/photo-1783115259399-3a5a3e0e4592?auto=format&fit=crop&w=1200&q=80",
+    title: "Email List Segmentation",
+    desc: "We organise your consent-based subscriber list into relevant groups based on customer interests, activity, and buying stage. This helps us send more useful and relevant messages to each audience.",
+    image:
+      "https://images.unsplash.com/photo-1783115259399-3a5a3e0e4592?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Laptop showing a subscriber spreadsheet",
   },
   {
-    title: "Creative & copy",
-    desc: "Compelling subject lines, concise benefit-led copy, and mobile-first design raise open and click rates, written in your brand’s voice for Delhi audiences.",
-    image: "https://images.unsplash.com/photo-1602016736566-7ed6a58894bd?auto=format&fit=crop&w=1200&q=80",
+    title: "Email Design and Copywriting",
+    desc: "We create clear subject lines, engaging email copy, and mobile-friendly designs that match your brand. Each email is planned around a specific message and action.",
+    image:
+      "https://images.unsplash.com/photo-1602016736566-7ed6a58894bd?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Copywriter working on a laptop",
   },
   {
-    title: "Automation & workflow setup",
-    desc: "Welcome series, onboarding flows, cart recovery, and win-back campaigns turn one email into dozens of revenue opportunities.",
-    image: "https://images.unsplash.com/photo-1743385779347-1549dabf1320?auto=format&fit=crop&w=1200&q=80",
+    title: "Automation Setup",
+    desc: "We set up suitable automated email journeys, such as welcome emails, lead nurturing, abandoned-cart reminders, and customer re-engagement campaigns, depending on your business needs and email platform.",
+    image:
+      "https://images.unsplash.com/photo-1743385779347-1549dabf1320?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Hand-drawn workflow diagram on a desk",
   },
   {
-    title: "Testing & optimisation",
-    desc: "A/B subject tests, send-time experiments, and content variants help us improve performance with every send.",
-    image: "https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?auto=format&fit=crop&w=1200&q=80",
+    title: "Testing and Optimisation",
+    desc: "We test relevant elements such as subject lines, email content, calls to action, and send times. These tests help identify opportunities to improve campaign performance and make future emails more effective.",
+    image:
+      "https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Two people sketching test ideas on a whiteboard",
   },
   {
-    title: "Monitoring & reporting",
-    desc: "We track deliverability, opens, clicks, conversions, and revenue, then turn results into clear recommendations to grow ROI month over month.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    title: "Reporting and Improvement",
+    desc: "We review available campaign data, including clicks, conversions, and revenue where tracking is configured. We use these insights to recommend practical improvements for future campaigns.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Analytics dashboard on a laptop screen",
   },
 ];
@@ -127,27 +153,27 @@ const process: ServiceStep[] = [
 const emailTypes: ServiceItem[] = [
   {
     title: "Email Campaign Management",
-    desc: "Promotional campaigns, newsletters, and product launches crafted for maximum engagement.",
+    desc: "We plan and manage newsletters, promotional emails, announcements, and product launch campaigns to keep your audience informed and engaged.",
   },
   {
     title: "Email Automation & Drip Campaigns",
-    desc: "Welcome sequences, onboarding flows, cart recovery, and lifecycle automations that nurture leads automatically.",
+    desc: "We create automated email sequences that deliver relevant messages at different stages of the customer journey, from welcoming new subscribers to nurturing leads.",
   },
   {
     title: "Transactional Emails",
-    desc: "Order confirmations, password resets, and system notifications optimised for clarity and conversion.",
+    desc: "We help set up essential service-related emails, including order confirmations, account notifications, and password reset messages, where supported by your systems.",
   },
   {
     title: "B2B Email Marketing",
-    desc: "Account-based campaigns and nurture sequences designed for longer, more complex B2B sales cycles.",
+    desc: "We help B2B businesses nurture prospects through useful content, follow-up emails, and targeted communication that supports longer sales cycles.",
   },
   {
     title: "E-commerce Email Marketing",
-    desc: "Abandoned cart recovery, personalised product recommendations, and post-purchase flows that increase repeat purchases.",
+    desc: "We help online stores engage customers through product updates, abandoned-cart reminders, post-purchase emails, and repeat-purchase campaigns.",
   },
   {
     title: "Local Business Email Campaigns",
-    desc: "Location-based promotions and event invites crafted for Delhi neighbourhood audiences.",
+    desc: "We create targeted email campaigns for local businesses to share offers, announce events, promote services, and maintain strong connections with subscribers.",
   },
 ];
 
@@ -164,73 +190,84 @@ const industries = [
 
 const faqs: ServiceFaqItem[] = [
   {
-    q: "Why is email marketing important for businesses?",
-    a: "Email marketing offers high ROI, personalised communication, and direct customer reach. When handled by an experienced email marketing company in Delhi, it boosts sales, nurtures leads, and strengthens long-term customer relationships.",
+    q: "What do email marketing services include?",
+    a: "Email marketing services can include campaign planning, copywriting, template design, audience segmentation, automation, scheduling, and performance tracking. At Bigwig Media Digital, we tailor our approach to your business goals and marketing needs.",
   },
   {
-    q: "How can an email marketing agency in Delhi/NCR benefit my business?",
-    a: "A trusted email marketing agency in Delhi helps you develop a tailored strategy, create engaging content, improve deliverability, and automate workflows, resulting in higher engagement, conversions, and revenue.",
+    q: "How much should email marketing cost?",
+    a: "The cost of email marketing depends on your contact list size, email volume, platform features, and service requirements. Small businesses may start with a basic email platform, while businesses needing strategy, design, automation, and reporting may require a larger budget.",
   },
   {
-    q: "What services do you offer as an email marketing company in Delhi?",
-    a: "Our email marketing services in Delhi include newsletters, drip automation, transactional emails, template design, segmentation, copywriting, A/B testing, analytics, and deliverability monitoring.",
+    q: "How much does an email marketing agency cost?",
+    a: "Email marketing agency costs vary based on campaign frequency, subscriber list size, automation requirements, and reporting needs. Contact Bigwig Media Digital to discuss your goals and receive a quote tailored to your business.",
   },
   {
-    q: "Can you provide email marketing services in Delhi NCR and nearby cities?",
-    a: "Yes, we serve clients across Delhi, Noida, Gurugram, Faridabad, Ghaziabad, and other NCR regions. As a leading email marketing company in Delhi, we also support clients across India and overseas.",
+    q: "How much does it cost to send 1,000 emails?",
+    a: "The cost of sending 1,000 emails depends on your email marketing platform, pricing plan, and included features. Some providers offer free plans with sending limits, while others charge monthly or based on usage. Compare current provider pricing before choosing a plan.",
   },
   {
-    q: "How do I get started with email marketing?",
-    a: "We begin by helping you build or refine your list, choose a platform, create a strategy, and set up your campaigns. Working with an email marketing agency in Delhi ensures smooth implementation and faster results.",
+    q: "What are the 7 types of emails?",
+    a: "Seven common types of marketing emails are welcome emails, newsletters, promotional emails, transactional emails, lead-nurturing emails, abandoned-cart emails, and re-engagement emails. The right mix depends on your audience and business objectives.",
   },
   {
-    q: "How often should I send emails to my subscribers?",
-    a: "Most brands send 1–4 emails per week, depending on goals and audience behaviour. Our experts help you find the ideal frequency for engagement without overwhelming your subscribers.",
+    q: "What is the 80/20 rule in email marketing?",
+    a: "The 80/20 rule is a general marketing guideline suggesting that around 80% of your email content should provide useful information or value, while around 20% can focus on promotions. It is not a strict rule, so test different content mixes to find what works for your audience.",
   },
   {
-    q: "How do you prevent emails from going to spam?",
-    a: "We avoid spam triggers, verify domains, maintain list quality, and use proper authentication, ensuring high deliverability for every campaign.",
+    q: "Is email marketing still worth it in 2026?",
+    a: "Yes, email marketing can still be valuable in 2026 when campaigns are relevant, permission-based, and focused on customer needs. It can help businesses nurture leads, share updates, build relationships, and encourage repeat purchases. Results depend on your strategy, audience, and execution.",
   },
   {
-    q: "What email marketing tools or platforms do you recommend?",
-    a: "We use Mailchimp, Klaviyo, HubSpot, ActiveCampaign, and enterprise SMTP systems. As a modern email marketing agency in Delhi, we select the best platform for your needs.",
+    q: "What is email automation, and does my business need it?",
+    a: "Email automation sends messages automatically when a customer takes a specific action or reaches a certain stage. Examples include welcome emails, follow-up messages, and abandoned-cart reminders. It can help your business save time and communicate with customers more consistently.",
   },
   {
-    q: "How do you measure email campaign success?",
-    a: "We evaluate engagement, conversions, sales, and ROI. Our email marketing services in Delhi include detailed analytics dashboards and monthly performance reports.",
+    q: "How can I stop my marketing emails from going to spam?",
+    a: "Use a permission-based email list, authenticate your sending domain, create relevant content, and remove invalid or inactive addresses when appropriate. Make unsubscribing easy and follow applicable email marketing rules. These practices can improve deliverability but cannot guarantee inbox placement.",
   },
   {
-    q: "How do you create engaging email content?",
-    a: "We use persuasive copy, personalised messaging, strong visuals, and compelling CTAs. As a leading email marketing company in Delhi, we create content that drives clicks and conversions.",
+    q: "How often should a business send marketing emails?",
+    a: "The ideal email frequency depends on your audience, industry, and content. Some businesses send weekly newsletters, while others send emails less often or use automated messages based on customer activity. Monitor engagement and unsubscribe rates to find a suitable schedule.",
   },
   {
-    q: "How do you build an effective email list?",
-    a: "We use opt-in forms, lead magnets, landing pages, and sign-up incentives, so your email marketing targets qualified, engaged subscribers.",
+    q: "How do you measure whether an email campaign is successful?",
+    a: "Email campaign performance can be measured through delivery rates, clicks, conversions, leads, sales, unsubscribes, and revenue where tracking is available. The most important metrics depend on your campaign goals. Open rates can also be tracked, although privacy features may make them less reliable.",
   },
   {
-    q: "What’s included in your email marketing services packages?",
-    a: "Packages include campaign creation, automation setup, template design, segmentation, testing, analytics, optimisation, and full support from our email marketing agency in Delhi.",
+    q: "Can email marketing help generate leads and sales?",
+    a: "Yes, email marketing can support lead generation and sales by sharing useful content, nurturing potential customers, promoting relevant offers, and following up with interested users. Results depend on list quality, audience targeting, campaign content, and the overall customer journey.",
   },
   {
-    q: "Can email marketing work for B2B companies?",
-    a: "Yes. Email is one of the most powerful channels for B2B lead nurturing. We build tailored sequences that improve conversions and shorten sales cycles.",
+    q: "Which email marketing platform is best for my business?",
+    a: "The best email marketing platform depends on your budget, contact list size, automation needs, integrations, and reporting requirements. Compare current features, sending limits, ease of use, and pricing before choosing a platform for your business.",
   },
   {
-    q: "Can you integrate email marketing with CRM or shopping cart systems?",
-    a: "Yes. We integrate email tools with CRMs like HubSpot, Zoho, and Salesforce, and e-commerce platforms like Shopify, WooCommerce, and Magento, strengthening your automation and tracking.",
+    q: "Can email marketing connect with my website, CRM, or online store?",
+    a: "Yes, many email marketing platforms integrate with websites, customer relationship management (CRM) systems, and online stores. These integrations can help collect sign-ups, organise customer data, track conversions, and send relevant automated emails. Available integrations depend on the tools your business uses.",
+  },
+  {
+    q: "What is the 60/40 rule in email marketing?",
+    a: "The 60/40 rule is sometimes used as a guideline for balancing email content or design elements, but its meaning varies by source. It is not a universal email marketing standard. Focus on clear messaging, useful content, and testing different formats with your audience.",
   },
 ];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function EmailMarketingPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <ServiceHero
         image={heroImg}
@@ -238,9 +275,10 @@ export default function EmailMarketingPage() {
         title="Email Marketing Services in Delhi"
         intro={
           <p>
-            <span className="text-white">Email that lands in the inbox and gets opened.</span> We design, build, and
-            run high-performing email programs that increase opens, clicks, and conversions for startups, e-commerce
-            brands, B2B firms, and local businesses across Delhi.
+            Turn your email list into stronger customer relationships and
+            business growth. Bigwig Media Digital provides email marketing
+            services in Delhi to help businesses connect with the right audience
+            through relevant, well-planned email campaigns.
           </p>
         }
         cta="Book a free email consultation"
@@ -254,10 +292,20 @@ export default function EmailMarketingPage() {
         lead="Delhi’s inboxes are crowded. Standing out takes strategy, relevance, and flawless execution."
         rest="We combine data, copywriting, and automation to send personal emails that convert."
         body={
-          <p>
-            From audience segmentation to deliverability, our email marketing in Delhi focuses on business outcomes:
-            higher revenue, repeat purchases, and greater customer lifetime value.
-          </p>
+          <>
+            <p>
+              Your customers receive many emails every day. To get noticed, your
+              messages need to be relevant, useful, and easy to act on. We
+              combine campaign planning, email content, audience segmentation,
+              and performance tracking to support your business goals.
+            </p>
+            <p>
+              Our email marketing services in Delhi can help you nurture leads,
+              stay connected with customers, and support repeat purchases. We
+              plan campaigns around your audience and review results to identify
+              what can be improved.
+            </p>
+          </>
         }
         cta="Get started today"
         source="email-intro"
@@ -277,8 +325,8 @@ export default function EmailMarketingPage() {
       <ServiceSteps
         id="email-process"
         heading="Our Complete Process for Email Marketing in Delhi"
-        lead="From strategy to reporting, every step is built to be measured."
-        rest="Here’s how our process delivers scalable results for brands in Delhi."
+        lead="A good email campaign starts with a clear plan."
+        rest=" We follow a structured process to understand your audience, create relevant messages, and improve campaign performance over time."
         steps={process}
       />
 
@@ -293,26 +341,29 @@ export default function EmailMarketingPage() {
 
       <ServiceBento
         heading="Building & Managing High-Quality Email Lists"
-        lead="A smaller list of people who want your emails beats a big one that ignores them."
-        rest="We grow, manage, and clean your list so every send counts."
+        lead="A strong email list is built on permission and genuine customer interest."
+        rest="We help businesses organise their subscriber data, improve list quality, and send relevant emails to people who want to hear from them."
         icon={<SlidersHorizontal size={20} />}
         items={[
           {
-            title: "Opt-in strategies & lead magnets",
-            desc: "Sign-up flows and high-value incentives that attract engaged subscribers, not just raw volume.",
-            image: "https://images.unsplash.com/photo-1762330471687-a05c0f99a046?auto=format&fit=crop&w=600&q=80",
+            title: "Opt-in Forms and Lead Magnets",
+            desc: "We help plan sign-up forms and useful incentives that encourage interested visitors to subscribe to your emails.",
+            image:
+              "https://images.unsplash.com/photo-1762330471687-a05c0f99a046?auto=format&fit=crop&w=600&q=80",
             imageAlt: "Sign-up screen with email option",
           },
           {
-            title: "Subscription management",
-            desc: "Preference centres let subscribers choose topics and frequency, reducing unsubscribes and boosting retention.",
-            image: "https://images.unsplash.com/photo-1790749871439-a1762c75af2a?auto=format&fit=crop&w=1400&q=80",
+            title: "Subscriber Preferences",
+            desc: "Where supported, we help organise subscription preferences so people can choose the types of emails they want to receive.",
+            image:
+              "https://images.unsplash.com/photo-1790749871439-a1762c75af2a?auto=format&fit=crop&w=1400&q=80",
             imageAlt: "Woman reading email on her phone in a café",
           },
           {
-            title: "List hygiene & bounce management",
-            desc: "We regularly remove bounces and inactive users to protect sender reputation and keep deliverability high.",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+            title: "List Cleaning & bounce management",
+            desc: "We review list quality, manage bounced addresses, and identify inactive subscribers to help maintain a healthier sending list.",
+            image:
+              "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
             imageAlt: "Laptop showing email list health metrics",
           },
         ]}
@@ -322,47 +373,49 @@ export default function EmailMarketingPage() {
         panels={[
           {
             title: "Key Features of Our Email Marketing Services in Delhi",
-            image: "https://images.unsplash.com/photo-1658863025658-4a259cc68fc9?auto=format&fit=crop&w=1200&q=80",
+            image:
+              "https://images.unsplash.com/photo-1658863025658-4a259cc68fc9?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Printed design samples and brochures",
             items: [
               {
-                title: "Professional templates & responsive design",
-                desc: "Custom-built responsive templates that strengthen your brand identity and improve engagement.",
+                title: "Professional Email Design",
+                desc: "We create clean, mobile-friendly email templates that reflect your brand and make your message easy to read.",
               },
               {
-                title: "Advanced tracking & analytics",
-                desc: "Beyond opens and clicks, we track behaviour, conversions, purchases, and lifetime value to show real ROI.",
+                title: "Campaign Tracking and Analytics",
+                desc: "We monitor available performance data, such as clicks, conversions, and campaign engagement, to help you understand what is working.",
               },
               {
-                title: "Dedicated deliverability management",
-                desc: "Authenticated sending, IP warming, and list hygiene keep your campaigns reaching the inbox.",
+                title: "Deliverability Support",
+                desc: "We follow email authentication, list hygiene, and sending best practices to help improve inbox placement.",
               },
               {
-                title: "Easy CRM & e-commerce integration",
-                desc: "Seamless integration with leading CRMs and platforms to personalise communication at scale.",
+                title: "CRM & e-commerce integration",
+                desc: "Where compatible, we connect email platforms with CRM systems or online stores to support better data use, segmentation, and automation.",
               },
             ],
           },
           {
-            title: "Crafting Engaging Email Content That Converts",
-            image: "https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80",
+            title: "Creating Email Content That Encourages Action",
+            image:
+              "https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Content team working together around a table",
             items: [
               {
-                title: "Understand your audience",
-                desc: "We study intent, behaviour, and purchase trends so each email speaks directly to your readers’ needs.",
+                title: "Understand Your Audience",
+                desc: "We consider customer needs, interests, and behaviour to make email messages more relevant to the people receiving them.",
               },
               {
-                title: "Write compelling subject lines",
-                desc: "Curiosity, urgency, and value-driven messaging maximise open rates.",
+                title: "Write Clear Subject Lines",
+                desc: "We write subject lines that communicate value and encourage subscribers to open the email without misleading promises.",
               },
               {
-                title: "Personalisation & dynamic content",
-                desc: "Localised recommendations, personalised offers, and smart segmentation increase conversions.",
+                title: "Use Relevant Personalisation",
+                desc: "Where suitable data is available, we tailor messages, offers, and recommendations to different subscriber groups.",
               },
               {
-                title: "Clear calls to action",
-                desc: "Every email is built around one strong CTA to drive action and revenue.",
+                title: "Include a Clear Call to Action",
+                desc: "Each email should guide readers towards a useful next step, such as visiting a page, exploring a product, or contacting your team.",
               },
             ],
           },
@@ -374,31 +427,105 @@ export default function EmailMarketingPage() {
         source="email-benefits"
         panels={[
           {
-            title: "Ensuring Maximum Deliverability for Email Marketing in Delhi",
-            intro: "Deliverability is technical but non-negotiable. We manage everything that gets your emails to the inbox.",
+            title: "Improving Email Deliverability",
+            intro:
+              "Sending an email does not guarantee that it will reach the inbox. Deliverability depends on several factors, including sender reputation, authentication, subscriber engagement, and list quality.",
             items: [
-              "SPF, DKIM, and DMARC setup",
-              "IP reputation and warming",
-              "List hygiene to remove bounces and inactive subscribers",
-              "Compliance with anti-spam laws and opt-in best practices",
+              "SPF, DKIM, and DMARC configuration support.",
+              "Sender reputation monitoring and appropriate warm-up practices.",
+              "List cleaning and bounce management.",
+              "Permission-based email practices and unsubscribe management.",
+              "Review of sending patterns and campaign engagement.",
             ],
-            outro: "These steps keep your emails consistently reaching the inbox.",
+            outro:
+              "These practices help create a healthier email program and reduce avoidable delivery issues. Actual inbox placement depends on the email provider, audience behaviour, and other factors.",
           },
           {
-            title: "Benefits of Email Marketing in Delhi",
+            title: "Benefits of Email Marketing for Your Business",
+            intro:
+              "Email marketing gives businesses a direct way to communicate with subscribers and existing customers. When planned well, it can support several business goals.",
             items: [
-              "High ROI from one of the most cost-effective channels",
-              "Direct customer access with no reliance on algorithms",
-              "Personalisation and relevance at scale",
-              "Measurable performance with clear attribution",
-              "Automation that saves time and increases revenue",
-              "Fast testing and optimisation for continuous improvement",
+              "Better customer relationships: Share useful updates and stay connected with your audience.",
+              "Targeted communication: Send relevant messages to different subscriber groups.",
+              "Support for sales and leads: Guide interested customers towards enquiries, purchases, or other actions.",
+              "Measurable performance: Track clicks, conversions, and other available campaign metrics.",
+              "Time-saving automation: Schedule campaigns and automate suitable customer journeys.",
+              "Continuous improvement: Use campaign data to improve future email content and strategy.",
             ],
           },
         ]}
       />
 
-      <ServicePair
+      {/* Practical, Results-Focused Approach */}
+      <ServiceArticle
+        lead="Our Approach"
+        title="A Practical, Results-Focused Approach to Email Marketing"
+        cta="Build your email strategy"
+        source="email-practical-approach"
+        body={
+          <>
+            <p className="mb-6 font-medium text-gray-800">
+              At Bigwig Media Digital, we focus on building email campaigns
+              around your business goals and customer needs.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-bold text-gray-900 mb-1">
+                  Strategy before sending
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We plan campaigns around clear objectives and audience needs.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-bold text-gray-900 mb-1">
+                  Relevant messaging
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We focus on useful content rather than unnecessary promotional
+                  emails.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-bold text-gray-900 mb-1">Reliable setup</h3>
+                <p className="text-sm text-gray-700">
+                  We pay attention to list quality, authentication, and sending
+                  practices.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="font-bold text-gray-900 mb-1">
+                  Performance tracking
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We review campaign data and identify areas for improvement.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50 md:col-span-2">
+                <h3 className="font-bold text-gray-900 mb-1">
+                  Flexible execution
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We tailor the approach to your business, audience, and
+                  available tools.
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-4 text-gray-700 font-medium">
+              Our goal is to help you build a more organised and effective email
+              marketing program.
+            </p>
+          </>
+        }
+      />
+
+      {/* <ServicePair
         cta="Boost your email marketing today"
         source="email-invest"
         panels={[
@@ -412,7 +539,8 @@ export default function EmailMarketingPage() {
               "Measure performance across KPIs",
               "Optimise continuously based on data",
             ],
-            outro: "This loop makes each campaign smarter and more profitable over time.",
+            outro:
+              "This loop makes each campaign smarter and more profitable over time.",
           },
           {
             title: "Why Invest in an Email Marketing Company in Delhi?",
@@ -426,14 +554,17 @@ export default function EmailMarketingPage() {
             ],
           },
         ]}
-      />
+      /> */}
 
       <ServiceArticle
         lead="Why us"
         title="Why We’re the Email Marketing Agency in Delhi You Should Choose"
         cta="Book a free strategy call"
         source="email-strategy-call"
-        image={{ src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80", alt: "Email marketing team working together on laptops" }}
+        image={{
+          src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80",
+          alt: "Email marketing team working together on laptops",
+        }}
         body={
           <>
             <ul className="space-y-3">
@@ -445,12 +576,17 @@ export default function EmailMarketingPage() {
                 "Local market knowledge combined with global best practices.",
               ].map((d) => (
                 <li key={d} className="flex gap-3">
-                  <span aria-hidden className="mt-[0.6em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]" />
+                  <span
+                    aria-hidden
+                    className="mt-[0.6em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]"
+                  />
                   {d}
                 </li>
               ))}
             </ul>
-            <h3 className="pt-3 text-xl font-semibold tracking-tight text-[var(--ink)]">Industries we serve</h3>
+            <h3 className="pt-3 text-xl font-semibold tracking-tight text-[var(--ink)]">
+              Industries we serve
+            </h3>
             <ul className="flex flex-wrap gap-2">
               {industries.map((ind) => (
                 <li
@@ -465,14 +601,19 @@ export default function EmailMarketingPage() {
               Ready to grow with email marketing services in Delhi?
             </h3>
             <p>
-              If you’re ready to turn your email list into predictable revenue, let’s talk. Book a free strategy call,
-              share your goals, and we’ll send a tailored roadmap and sample campaign plan.
+              If you’re ready to turn your email list into predictable revenue,
+              let’s talk. Book a free strategy call, share your goals, and we’ll
+              send a tailored roadmap and sample campaign plan.
             </p>
           </>
         }
       />
 
-      <ServiceFaq title="Email marketing, answered" faqs={faqs} source="email-faq" />
+      <ServiceFaq
+        title="Email marketing, answered"
+        faqs={faqs}
+        source="email-faq"
+      />
 
       <OtherServices current={PATH} />
     </main>

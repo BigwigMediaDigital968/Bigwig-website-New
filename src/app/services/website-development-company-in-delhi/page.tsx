@@ -20,14 +20,12 @@ import {
   ServiceTechTabs,
   type TechDomain,
   ServiceSplitCarousel,
-  // ServiceShowcase,
-  // ServiceStats,
   type ServiceFaqItem,
-  // type ServiceFeature,
   type ServiceItem,
-  // type ServiceStat,
+  ServiceArticle,
 } from "../../../../components/service/ServiceSections";
 import type { Testimonial } from "@/data/homeData";
+import Link from "next/link";
 
 const PATH = "/services/website-development-company-in-delhi";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
@@ -58,8 +56,8 @@ export const metadata: Metadata = {
 };
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const photo = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
-
+const photo = (id: string, w = 1200) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const processSteps: ServiceStep[] = [
   {
@@ -100,7 +98,10 @@ const processSteps: ServiceStep[] = [
   },
 ];
 
-const whyImage = { src: photo("1547658719-da2b51169166", 1100), alt: "Desk with a website design on screen and tablet" };
+const whyImage = {
+  src: photo("1547658719-da2b51169166", 1100),
+  alt: "Desk with a website design on screen and tablet",
+};
 
 const deliverables = [
   "A creative, personalised design strategy built around your Delhi audience",
@@ -114,7 +115,7 @@ const deliverables = [
 const webServices: ServiceItem[] = [
   {
     title: "Responsive Web Design",
-    desc: "We build fully responsive websites for businesses across South Delhi, West Delhi, and Delhi NCR that look sharp and load fast on every device. With 65%+ of Delhi’s internet users browsing on mobile, a responsive website is non-negotiable.",
+    desc: "Most visitors in India browse on mobile, so a responsive website is essential. With 65%+ of Delhi’s internet users browsing on mobile, a responsive website is non-negotiable.",
   },
   {
     title: "Static Website Design",
@@ -138,34 +139,53 @@ const webServices: ServiceItem[] = [
   },
   {
     title: "Landing Page Design",
-    desc: "High-converting landing pages with compelling copy, strong visual hierarchy, and clear CTAs, built to support your Google Ads, Meta Ads, and performance marketing campaigns.",
+    desc: (
+      <>
+        High-converting landing pages with compelling copy, strong visual
+        hierarchy, and clear CTAs, built to support your Google Ads, Meta Ads,
+        and
+        <Link href="/services/performance-marketing" className="text-blue-600">
+          {" "}
+          performance marketing{" "}
+        </Link>
+        campaigns.
+      </>
+    ),
   },
   {
     title: "SEO-Friendly Website Design",
-    desc: "Clean code structure, fast Core Web Vitals, proper heading hierarchy, schema markup, and mobile-first indexing. We build websites that rank in Delhi’s competitive search landscape.",
+    desc: "Clean code structure, fast Core Web Vitals, proper heading hierarchy, schema markup, and mobile-first indexing. We build websites designed to compete in Delhi’s search landscape.",
   },
   {
     title: "PSD to HTML Design",
     desc: "We convert Photoshop and Figma designs into pixel-perfect, responsive HTML, preserving every design detail while ensuring fast load times and cross-browser compatibility.",
   },
+  {
+    title: "E-commerce Website Development",
+    desc: "Online stores built for sales: product pages, cart, checkout, payment setup and order management on platforms such as Shopify and WordPress. We help you choose the platform that fits your catalogue and budget.",
+  },
+  {
+    title: "WordPress and CMS Development",
+    desc: "We build on WordPress and other CMS platforms so your team can manage pages, blogs and images without technical knowledge. We provide training and documentation so you can update your site confidently.",
+  },
 ];
 
 const customWebsite: ServiceItem[] = [
   {
-    title: "100% Mobile Responsive",
-    desc: "With mobile accounting for nearly 65.49% of all web visits in India, your Delhi audience is browsing on their phones. Every website we build delivers a flawless experience on all screen sizes.",
+    title: "Mobile Responsive",
+    desc: "Most of your Delhi audience is browsing on their phones. Every website we build delivers a smooth experience on all screen sizes.",
   },
   {
-    title: "A Customised Website",
-    desc: "94% of first impressions are design-driven. A custom website makes your business stand out immediately and communicates your brand values in a way template sites simply can’t.",
+    title: "Customised Website",
+    desc: "First impressions are largely design-driven. A custom website makes your business stand out immediately and communicates your brand values in a way template sites simply can’t.",
   },
   {
-    title: "A User-Friendly Website",
-    desc: "89% of users abandon a website after a poor experience and switch to a competitor. We design intuitive navigation, fast load times, and clear journeys that keep users engaged.",
+    title: "User-Friendly Website",
+    desc: "Many visitors leave a website after a poor experience and switch to a competitor. We design intuitive navigation, fast load times, and clear journeys that keep users engaged.",
   },
   {
-    title: "A Well-Designed Website",
-    desc: "75% of users judge a company’s credibility by its website design. If your website looks outdated, customers will trust your competitors instead.",
+    title: "Well-Designed Website",
+    desc: "Visitors often judge a company’s credibility by its website design. If your website looks outdated, customers will trust your competitors instead.",
   },
   {
     title: "Your Website Reflects Your Brand",
@@ -212,7 +232,8 @@ const benefits: ServiceItem[] = [
   },
 ];
 
-const devicon = (path: string) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}.svg`;
+const devicon = (path: string) =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}.svg`;
 
 // Same technologies as before, grouped. Add a domain (e.g. Mobile Apps, AI) by adding an entry here.
 const techDomains: TechDomain[] = [
@@ -227,7 +248,10 @@ const techDomains: TechDomain[] = [
       { name: "TypeScript", logo: devicon("typescript/typescript-original") },
       { name: "React", logo: devicon("react/react-original") },
       { name: "Next.js", logo: devicon("nextjs/nextjs-original") },
-      { name: "Tailwind CSS", logo: devicon("tailwindcss/tailwindcss-original") },
+      {
+        name: "Tailwind CSS",
+        logo: devicon("tailwindcss/tailwindcss-original"),
+      },
       { name: "Vite", logo: devicon("vitejs/vitejs-original") },
     ],
   },
@@ -236,8 +260,14 @@ const techDomains: TechDomain[] = [
     desc: "Smooth interactions and scroll effects that bring pages to life",
     icon: <Sparkles size={20} />,
     items: [
-      { name: "GSAP", logo: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/gsap_1_lkfznz.png" },
-      { name: "Framer Motion", logo: devicon("framermotion/framermotion-original") },
+      {
+        name: "GSAP",
+        logo: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/gsap_1_lkfznz.png",
+      },
+      {
+        name: "Framer Motion",
+        logo: devicon("framermotion/framermotion-original"),
+      },
       { name: "AOS", emoji: "🌊" },
     ],
   },
@@ -256,7 +286,10 @@ const techDomains: TechDomain[] = [
     icon: <ShoppingBag size={20} />,
     items: [
       { name: "WordPress", logo: devicon("wordpress/wordpress-plain") },
-      { name: "Shopify", logo: "https://cdn.worldvectorlogo.com/logos/shopify.svg" },
+      {
+        name: "Shopify",
+        logo: "https://cdn.worldvectorlogo.com/logos/shopify.svg",
+      },
     ],
   },
 ];
@@ -323,44 +356,96 @@ const reviews: Testimonial[] = [
 
 const faqs: ServiceFaqItem[] = [
   {
-    q: "Why should you hire a web design company in Delhi?",
-    a: "Hiring a professional web design company in Delhi gives your business a competitive edge in one of India’s most crowded digital markets. A well-designed website increases traffic, builds credibility with local customers, improves user engagement, and generates more leads. If you’re searching for the best website designers near me, our team delivers custom-designed solutions tailored to your brand and your Delhi audience.",
+    q: "How much does it cost to develop a website in Delhi?",
+    a: "The cost depends on the type of website, number of pages, design complexity, features, and integrations. A simple business website costs less than an e-commerce store or a custom web application. After a free consultation, we share a detailed proposal so you know exactly what you are paying for.",
   },
   {
-    q: "How do I hire a web design company?",
-    a: "Set a clear project budget, define your goals and requirements, review the agency’s portfolio and case studies, ask about their process and timelines, and finalise the contract with a clearly defined scope of work. We recommend scheduling a free consultation with us. We’ll walk you through exactly what your website needs and what it will cost.",
+    q: "How much does an e-commerce website cost in Delhi?",
+    a: "An online store costs more than a business website because it needs product management, a cart, payments, shipping, and order handling. The final cost depends on the number of products, the platform, such as Shopify or WordPress, and the integrations you need.",
   },
   {
-    q: "How much time does website design take?",
-    a: "A standard business website typically takes 4 to 8 weeks from briefing to launch, depending on design complexity, number of pages, content readiness, and revision rounds. E-commerce websites or custom web applications may take longer. We always provide a clear timeline before starting so you know exactly what to expect.",
+    q: "Why do website prices vary so much between companies?",
+    a: "Prices differ because the project scope differs. A template website, a custom-designed website, and a custom web application are very different projects. Costs also depend on design effort, technology, SEO requirements, testing, and post-launch support. Always compare quotes based on what is included, not just the price.",
   },
   {
-    q: "How much does a custom website design cost?",
-    a: "Website design costs vary based on the number of pages, design complexity, required features, and integrations. After an initial consultation, we provide a transparent, detailed pricing proposal with no hidden charges. We offer packages suitable for Delhi startups, growing SMEs, and large corporates alike.",
+    q: "Are domain and hosting included in the website cost?",
+    a: "Domain registration and hosting are usually separate annual costs, although some website packages include them. Ask for these details to be clearly listed in the proposal so you understand any recurring charges before the project begins.",
   },
   {
-    q: "How can I get started with your website design services?",
-    a: "Simply reach out via our website contact form, email us at support@bigwigmediadigital.com, or call us at +91 96858 92813. We’ll schedule a free strategy session to understand your business goals and craft a website plan tailored to your needs.",
+    q: "Is a website builder cheaper than custom development?",
+    a: "Website builders such as Wix and Squarespace can be cheaper initially, but they offer less flexibility for custom features and functionality. Custom development usually costs more upfront but allows you to build around your business requirements and scale as your needs grow.",
   },
   {
-    q: "What important features do you consider when designing a web page?",
-    a: "We incorporate your branding elements (colours, typography, logos, and taglines) alongside a well-planned navigation structure, visual hierarchy, whitespace, infographics, and clear calls to action. Every design decision is made to enhance credibility, improve user experience, and drive conversions.",
+    q: "How long does it take to build a website?",
+    a: "A standard business website typically takes 4 to 8 weeks from briefing to launch. The timeline depends on the number of pages, design complexity, content readiness, and revision rounds. E-commerce websites and custom web applications may take longer.",
   },
   {
-    q: "What is the best website design company in Delhi?",
-    a: "The best website design company delivers custom solutions at fair, transparent prices, blending creative design with technical expertise and a genuine understanding of your local market. At Bigwig Media Digital, our 5+ years of experience, 100+ Delhi-area clients, and 5.0 Google rating reflect our commitment to delivering websites that truly work for businesses like yours.",
+    q: "What do you need from me to start a website project?",
+    a: "We need to understand your business goals, brand identity, preferred pages, website content, design preferences, and required features, such as payments or bookings. If your content is not ready, let us know and we can plan content preparation as part of the project.",
+  },
+  {
+    q: "Which is better for my business: a static or a dynamic website?",
+    a: "A static website suits businesses that mainly need to share information, such as consultants and local service providers. A dynamic website is better for businesses that need user accounts, bookings, search functionality, or frequently updated content. We recommend the right option after understanding your business requirements.",
+  },
+  {
+    q: "Should I choose WordPress or a custom-coded website?",
+    a: "WordPress is a good choice when you want to update content easily and launch efficiently. A custom-coded website, for example using React or Next.js, is suitable for projects that need greater flexibility, custom functionality, or specific performance requirements. The right choice depends on your goals, budget, and growth plans.",
+  },
+  {
+    q: "Can you build an e-commerce website on Shopify or WordPress?",
+    a: "Yes. We build online stores on platforms such as Shopify and WordPress, including product pages, shopping carts, checkout, and payment integration. We help you choose the platform that best fits your product catalogue, business requirements, and budget.",
+  },
+  {
+    q: "What is the difference between a website and a web application?",
+    a: "A website mainly presents information through pages, images, and contact forms. A web application allows users to perform tasks such as logging in, managing data, making bookings, or accessing dashboards. Web applications generally require more planning and development than informational websites.",
+  },
+  {
+    q: "Do you redesign an existing website?",
+    a: "Yes. Our website redesign services can improve your design, loading speed, mobile experience, usability, and conversions. We review your existing website first to understand what works well and identify areas that need improvement.",
+  },
+  {
+    q: "Is SEO included in website development?",
+    a: "We build websites with an SEO-ready foundation, including clean code, proper heading structure, mobile-friendly layouts, fast loading, and relevant schema markup where appropriate. Ongoing SEO services, such as keyword targeting and link building, are separate services that can be added after launch.",
+  },
+  {
+    q: "Does website speed affect Google rankings?",
+    a: "Yes. Website performance and Core Web Vitals are among the factors Google uses to evaluate page experience. Slow pages can also frustrate visitors and reduce conversions. We optimise images, code, and loading behaviour to support a fast, user-friendly experience.",
+  },
+  {
+    q: "Will a new website affect my existing Google rankings?",
+    a: "It can if the redesign or migration is not handled properly. We plan URL redirects, preserve relevant page titles and content, review technical SEO settings, and prepare an updated sitemap for submission to Google. These steps help protect existing organic traffic, although rankings cannot be guaranteed.",
+  },
+  {
+    q: "How much does website maintenance cost?",
+    a: "Maintenance costs depend on your website's size and requirements, including software updates, backups, security checks, bug fixes, and performance monitoring. We can include a suitable support plan in your proposal so the ongoing costs are clear from the start.",
   },
   {
     q: "Do you provide ongoing support after the website is launched?",
-    a: "Yes. We offer comprehensive post-launch support including regular updates, automated backups, security monitoring, bug fixes, and continuous performance optimisation, so your website stays fast, secure, and up to date at all times.",
+    a: "Yes. We offer post-launch support based on your chosen plan, which may include software updates, backups, security monitoring, bug fixes, and performance optimisation. We explain the support scope and response arrangements so you know what assistance is available after launch.",
   },
   {
-    q: "Will I be able to update the website myself once it’s live?",
-    a: "Absolutely. We build most websites on user-friendly CMS platforms like WordPress, so you can update text, images, blogs, and pages without any technical knowledge. We also provide hands-on training after launch so your team feels fully confident managing the site.",
+    q: "Will I be able to update the website myself once it's live?",
+    a: "Yes. We can build your website with a user-friendly content management system, such as WordPress, so you can update text, images, blogs, and pages without coding. We can also provide training after launch. For custom-coded websites, editing options depend on the content management features included in the project.",
   },
   {
-    q: "Why is Bigwig Media Digital the top choice for website design in Delhi?",
-    a: "We combine creative design, technical depth, local market knowledge, and genuine client focus. Our designers stay current with the latest trends, our developers build for speed and SEO, and our project managers ensure timely, on-budget delivery every time. Our 71 five-star Google reviews from Delhi-area clients speak for themselves.",
+    q: "Why should you hire a web design company in Delhi?",
+    a: "Hiring a professional web design company in Delhi gives your business an opportunity to stand out in a competitive digital market. A well-designed website can build credibility with local customers, improve user engagement, support search visibility, and generate more enquiries. Our team delivers custom-designed solutions tailored to your brand and Delhi audience.",
+  },
+  {
+    q: "How to pick a web design and development company in Delhi?",
+    a: "Review the company's portfolio, check whether its websites are built for speed and SEO, ask about its process and timelines, and make sure the quote clearly lists the project scope and deliverables. Also, check what support is available after launch. A free consultation is a useful way to assess whether the team understands your business.",
+  },
+  {
+    q: "Which is the best website development company in Delhi?",
+    a: "There is no single best company for every business. The right choice depends on your goals, budget, and timeline. Evaluate each company based on its portfolio, project process, transparent pricing, performance and SEO practices, post-launch support, and verifiable client reviews. Book a free consultation with Bigwig Media Digital to discuss your requirements and request a written proposal.",
+  },
+  {
+    q: "Is web design still in demand in 2026?",
+    a: "Yes. Businesses still need effective websites to market their services, reach customers, and support online sales. Expectations now include fast loading, mobile-first design, an SEO-ready structure, accessibility, and clear paths to enquire or buy. Website builders and AI tools can create basic pages, but thoughtful design and tailored functionality remain valuable for building a distinctive brand and supporting business growth.",
+  },
+  {
+    q: "Do you work with businesses across Delhi NCR?",
+    a: "Yes. We work with businesses across Delhi NCR, including Delhi, Noida, and Gurgaon, providing website design and development solutions tailored to different business needs.",
   },
 ];
 
@@ -373,20 +458,43 @@ const schemas = [
     description:
       "Looking for the best website development company in Delhi? Bigwig Media Digital builds responsive, SEO-friendly websites for businesses across Delhi NCR.",
     inLanguage: "en-IN",
-    isPartOf: { "@type": "WebSite", name: "Bigwig Media Digital", url: "https://www.bigwigmediadigital.com" },
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Bigwig Media Digital",
+      url: "https://www.bigwigmediadigital.com",
+    },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.bigwigmediadigital.com" },
-        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.bigwigmediadigital.com/services" },
-        { "@type": "ListItem", position: 3, name: "Website Development Company in Delhi", item: URL },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.bigwigmediadigital.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Services",
+          item: "https://www.bigwigmediadigital.com/services",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Website Development Company in Delhi",
+          item: URL,
+        },
       ],
     },
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   },
   {
     "@context": "https://schema.org",
@@ -403,13 +511,15 @@ const schemas = [
   },
 ];
 
-const strong = "font-semibold text-[var(--ink)]";
-
 export default function WebsiteDevelopmentPage() {
   return (
     <main>
       {schemas.map((s) => (
-        <script key={s["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+        <script
+          key={s["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
+        />
       ))}
 
       <ServiceHero
@@ -418,10 +528,13 @@ export default function WebsiteDevelopmentPage() {
         title="Best Website Development Company in Delhi"
         intro={
           <p>
-            <span className="text-white">We don’t just design websites. We engineer digital growth engines.</span>{" "}
-            With 5+ years of hands-on experience, we build websites for businesses across Delhi NCR, from Connaught
-            Place startups to Gurugram enterprises and Noida e-commerce brands, that attract the right audience and turn
-            visitors into customers.
+            <span className="text-white">
+              We don’t just design websites. We engineer digital growth engines.
+            </span>{" "}
+            With 5+ years of hands-on experience, we build websites for
+            businesses across Delhi NCR, from Connaught Place startups to
+            Gurugram enterprises and Noida e-commerce brands, that attract the
+            right audience and turn visitors into customers.
           </p>
         }
         cta="Request a free website consultation"
@@ -453,16 +566,18 @@ export default function WebsiteDevelopmentPage() {
         body={
           <>
             <p>
-              As a trusted <strong className={strong}>Website Development Company in Delhi NCR</strong>, we’ve helped
-              100+ local businesses, from real estate firms in Greater Noida to healthcare clinics in Rohini, establish
-              a powerful, credible online presence. Our process is straightforward: we understand your business goals,
-              research your competition, plan a focused digital strategy, and deliver a website that converts.
+              We help businesses across Delhi NCR, from real estate firms in
+              Greater Noida to healthcare clinics in Rohini, build a strong,
+              credible online presence. Our process is straightforward: we
+              understand your business goals, research your competition, plan a
+              focused digital strategy and deliver a website that converts.
             </p>
             <p>
-              Delhi’s market is competitive. Whether you’re targeting clients in Saket, Vasant Kunj, Lajpat Nagar, or
-              beyond, your website needs to stand out in both design and search performance. Businesses searching for a
-              reliable <strong className={strong}>website development company near me</strong> in Delhi trust us
-              because we combine global design standards with a deep understanding of the local business landscape.
+              Delhi’s market is competitive. Whether you’re targeting customers
+              in Saket, Vasant Kunj, Lajpat Nagar or beyond, your website needs
+              to stand out in both design and search performance. We combine
+              strong design standards with an understanding of the local
+              business landscape.
             </p>
           </>
         }
@@ -499,8 +614,8 @@ export default function WebsiteDevelopmentPage() {
 
       <ServiceSplitCarousel
         lead="Website development company near me"
-        title="Benefits of Hiring Bigwig Media Digital for Your Business Website"
-        intro="Delhi businesses choose us because we understand the local market, deliver on time, and build websites that generate real results."
+        title="Benefits of Hiring Bigwig Media Digital"
+        intro="We understand the local market and build websites designed to generate enquiries and sales."
         items={benefits}
         cta="Get a website consultation"
         source="website-benefits"
@@ -521,16 +636,23 @@ export default function WebsiteDevelopmentPage() {
         body={
           <>
             <p>
-              We’ve worked with real estate developers in Greater Noida, healthcare providers in Rohini, e-commerce
-              brands in Lajpat Nagar, educational institutions in Dwarka, and financial services firms in Connaught
-              Place. We remove the pain points (slow websites, cluttered layouts, poor mobile experience, weak SEO) and
-              replace them with websites your customers love and Google rewards.
+              We’ve worked with real estate developers in Greater Noida,
+              healthcare providers in Rohini, e-commerce brands in Lajpat Nagar,
+              educational institutions in Dwarka, and financial services firms
+              in Connaught Place. We remove the pain points (slow websites,
+              cluttered layouts, poor mobile experience, weak SEO) and replace
+              them with websites your customers love and Google rewards.
             </p>
-            <h3 className="pt-2 font-semibold text-[var(--ink)]">What we deliver</h3>
+            <h3 className="pt-2 font-semibold text-[var(--ink)]">
+              What we deliver
+            </h3>
             <ul className="grid gap-x-6 gap-y-2.5 text-[0.95rem] sm:grid-cols-2">
               {deliverables.map((d) => (
                 <li key={d} className="flex gap-2.5">
-                  <span aria-hidden className="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]" />
+                  <span
+                    aria-hidden
+                    className="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]"
+                  />
                   {d}
                 </li>
               ))}
@@ -542,33 +664,6 @@ export default function WebsiteDevelopmentPage() {
         image={whyImage}
       />
 
-      {/* Image-led alternative to the section above, commented out for now.
-      <ServiceShowcase
-        heading="Why choose Bigwig Media Digital as your website development partner in Delhi?"
-        statement="Your website is the first handshake between your brand and your audience. We blend 5+ years of design expertise with a deep understanding of Delhi’s digital landscape to deliver websites that don’t just impress, they perform."
-        body={
-          <>
-            <p>
-              We’ve worked with real estate developers in Greater Noida, healthcare providers in Rohini, e-commerce
-              brands in Lajpat Nagar, educational institutions in Dwarka, and financial services firms in Connaught
-              Place.
-            </p>
-            <p>
-              We remove the pain points (slow websites, cluttered layouts, poor mobile experience, weak SEO) and
-              replace them with websites your customers love and Google rewards.
-            </p>
-          </>
-        }
-        features={whyFeatures}
-        image={"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"}
-        imageAlt="Laptop showing code on a bright developer desk"
-        quote="The website they created was tailor-made for my startup’s goals, and it worked beautifully."
-        quoteBy="Eshaan Aggarwal, Google review"
-        cta="Start your website project"
-        source="website-why-us"
-      />
-      */}
-
       <Clients />
 
       <Testimonials
@@ -577,7 +672,102 @@ export default function WebsiteDevelopmentPage() {
         source="website-testimonials"
       />
 
-      <ServiceFaq title="Website development, answered" faqs={faqs} source="website-faq" />
+      {/* Website Development Cost in Delhi: What Affects the Price */}
+      <ServiceArticle
+        lead="Investment & Timelines"
+        title="Website Development Cost in Delhi: What Affects the Price"
+        cta="Get a Free Website Consultation"
+        source="web-dev-cost"
+        body={
+          <>
+            <p className="mb-6 font-medium text-gray-800">
+              The cost of a website depends on what it needs to do. A simple
+              business website costs less than an online store or a custom web
+              application. After a free consultation, we share a detailed
+              proposal so you know exactly what you are paying for.
+            </p>
+
+            {/* Cost & Timeline Table */}
+            <div className="overflow-x-auto my-6">
+              <table className="w-full text-left border-collapse border border-gray-200">
+                <thead>
+                  <tr className="bg-gray-100 border-b border-gray-200">
+                    <th className="p-3 font-semibold text-gray-900 border-r border-gray-200">
+                      Project type
+                    </th>
+                    <th className="p-3 font-semibold text-gray-900 border-r border-gray-200">
+                      Best for
+                    </th>
+                    <th className="p-3 font-semibold text-gray-900">
+                      Typical timeline
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 text-sm">
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200 text-gray-900">
+                      Business website
+                    </td>
+                    <td className="p-3 border-r border-gray-200 text-gray-700">
+                      Service businesses, consultants, local companies
+                    </td>
+                    <td className="p-3 text-gray-700">4 to 8 weeks</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200 text-gray-900">
+                      E-commerce website
+                    </td>
+                    <td className="p-3 border-r border-gray-200 text-gray-700">
+                      Retailers and brands selling online
+                    </td>
+                    <td className="p-3 text-gray-700">
+                      Longer, depends on products and features
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200 text-gray-900">
+                      Corporate website
+                    </td>
+                    <td className="p-3 border-r border-gray-200 text-gray-700">
+                      Larger organisations with many pages and departments
+                    </td>
+                    <td className="p-3 text-gray-700">Depends on scope</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-medium border-r border-gray-200 text-gray-900">
+                      Custom web application
+                    </td>
+                    <td className="p-3 border-r border-gray-200 text-gray-700">
+                      Portals, dashboards, booking and membership platforms
+                    </td>
+                    <td className="p-3 text-gray-700">Depends on scope</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Cost Factors List */}
+            <div className="mt-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                What affects the cost:
+              </h3>
+              <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <li>Number of pages and design complexity</li>
+                <li>Features and integrations, such as payments or bookings</li>
+                <li>The platform and technology used</li>
+                <li>Content writing, images and SEO setup</li>
+                <li>Support and maintenance after launch</li>
+              </ul>
+            </div>
+          </>
+        }
+      />
+
+      <ServiceFaq
+        title="Website development, answered"
+        faqs={faqs}
+        source="website-faq"
+      />
 
       <OtherServices current={PATH} />
     </main>

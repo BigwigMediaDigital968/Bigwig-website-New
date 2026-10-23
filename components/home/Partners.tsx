@@ -15,7 +15,7 @@ export default function Partners() {
         transition={{ duration: 0.8, ease: EASE }}
       >
         <h2 className="flex-none text-sm font-semibold leading-snug text-[var(--ink)] md:max-w-[10rem]">
-          Technology & Platform Partnerships
+          Technologies and Platforms We Work With
         </h2>
         <div className="marquee-mask min-w-0 flex-1 overflow-hidden">
           <div role="list" aria-label="Partners and platforms" className="marquee items-center" style={{ animationDuration: "45s" }}>
