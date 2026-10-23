@@ -6,7 +6,6 @@ import {
   ServiceArticle,
   ServiceCarousel,
   ServiceFaq,
-  ServiceSplitCarousel,
   ServiceStatement,
   ServiceTimeline,
   type ServiceFaqItem,
@@ -20,7 +19,7 @@ const PATH = "/services/graphic-designing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
 const title = "Graphic Designing Services in Delhi | Bigwig Media Digital";
 const description =
-  "Premium Graphic Designing Services in Delhi; logos, social creatives, brand kits & video editing for high-impact campaigns. Get a Free Sample!";
+  "Explore graphic designing services in Delhi for logos, branding, social media creatives and promotional designs, plus professional video editing services.";
 
 export const metadata: Metadata = {
   title,
@@ -45,223 +44,216 @@ export const metadata: Metadata = {
 // placeholder photos; replace each URL with a real design (first two 4:5 portraits, then four squares)
 const designWork: GalleryPosts = [
   {
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&h=1500&q=80",
-    alt: "Colour swatches beside a tablet with colour sketches",
+    image: "/assets/graphic/1.jpg",
+    alt: "Creative digital marketing poster featuring a relaxed golden retriever on a yellow background with branding and marketing elements",
   },
   {
-    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&h=1500&q=80",
-    alt: "Icon set in a design book beside a tablet and stylus",
+    image: "/assets/graphic/2.jpg",
+    alt: "Luxury jewellery promotional design showcasing an emerald green necklace display and limited edition collection",
   },
   {
-    image: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=1200&h=1200&q=80",
-    alt: "Abstract 3D ribbon in blue and violet",
+    image: "/assets/graphic/3.jpg",
+    alt: "Luxury jewellery brand creatives featuring gold rings, artisan craftsmanship, premium packaging, and elegant product photography",
   },
   {
-    image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1200&h=1200&q=80",
-    alt: "Blueprint-style website wireframe",
+    image: "/assets/graphic/4.jpg",
+    alt: "Digital marketing agency promotional poster featuring a woman holding a newspaper with a best digital marketing agency headline",
   },
   {
-    image: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=1200&h=1200&q=80",
-    alt: "Soft 3D render of pastel spheres",
+    image: "/assets/graphic/5.jpg",
+    alt: "Premium jewellery catalogue design featuring a model wearing a necklace alongside elegant jewellery product layouts",
   },
   {
-    image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1200&h=1200&q=80",
-    alt: "Vivid colour gradient study",
+    image: "/assets/graphic/6.jpg",
+    alt: "Luxury jewellery promotional artwork featuring diamond rings and earrings arranged on a rich burgundy textured background",
   },
 ];
 
 const designServices: ServiceItem[] = [
   {
-    title: "Complete Branding Solutions",
-    desc: "Logo design · Brand guidelines · Brand identity systems",
-    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Letter A type sketch on a tablet beside a brand guidelines book",
+    title: "Logo & Brand Identity Design",
+    desc: "Logo concepts · Brand visuals · Consistent brand identity",
+    image:
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=800&q=80",
+    imageAlt:
+      "Logo design concepts and brand identity guidelines displayed on a designer's workspace",
   },
   {
     title: "Marketing & Promotional Design",
-    desc: "Brochures & flyers · Posters & banners · Catalogues & print ads",
-    image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Designer drawing on a pen tablet beside colour swatches",
+    desc: "Brochures & flyers · Promotional graphics · Banners & posters",
+    image:
+      "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=800&q=80",
+    imageAlt:
+      "Graphic designer creating marketing and promotional materials using a digital pen tablet",
   },
   {
-    title: "Digital & Social Media Graphics",
-    desc: "Instagram creatives · Facebook ads · YouTube thumbnails · Carousel designs",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Glossy 3D Instagram icon",
+    title: "Social Media Post Design",
+    desc: "Social media creatives · Product updates · Promotional campaigns",
+    image:
+      "https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=800&q=80",
+    imageAlt:
+      "Creative social media graphic design for brand promotions and digital campaigns",
   },
   {
-    title: "Packaging & Product Design",
-    desc: "Labels · Boxes · Custom packaging visuals",
-    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Red and black branded shopping bags",
+    title: "Packaging & Print Design",
+    desc: "Product packaging · Labels · Business cards & brochures",
+    image:
+      "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80",
+    imageAlt:
+      "Branded packaging and printed promotional materials for product presentation",
   },
   {
-    title: "UI/UX Graphics",
-    desc: "Website layout graphics · App screens · Interface visuals",
-    image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Mobile app screen designs on a desktop monitor",
+    title: "Website & Digital Graphics",
+    desc: "Website graphics · Landing page visuals · Digital campaign creatives",
+    image:
+      "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?auto=format&fit=crop&w=800&q=80",
+    imageAlt:
+      "Website interface and digital graphic designs displayed on a desktop monitor",
   },
 ];
 
 const process = [
   {
-    title: "Research & creative strategy",
-    desc: "We start with your goals, audience and style preferences, then study your market and competitors to set a clear creative direction.",
+    title: "Understanding Your Requirements",
+    desc: "We discuss your business, target audience, design preferences, and project goals to understand your needs before starting the work.",
   },
   {
-    title: "Concept development",
-    desc: "Rough concepts, moodboards and wireframes let us agree the idea before any pixel is polished.",
+    title: "Research & Planning",
+    desc: "We review your requirements and plan a visual direction that aligns with your brand identity, audience, and the purpose of the design.",
   },
   {
-    title: "Design execution",
-    desc: "Our designers build the final artwork in industry-standard tools, true to your brand’s colours, type and voice.",
+    title: "Design Creation",
+    desc: "We develop design concepts based on your brief, brand style, and agreed project requirements to create visuals suited to your business.",
   },
   {
-    title: "Revisions & refinements",
-    desc: "You share feedback and we refine. Revision rounds are included until the work matches your vision.",
+    title: "Review & Revisions",
+    desc: "You review the designs and share your feedback. We make revisions according to the scope and terms agreed upon before the project begins.",
   },
   {
-    title: "Final delivery with brand consistency",
-    desc: "Print- and screen-ready files in every format you need, consistent with the rest of your brand.",
+    title: "Final Delivery",
+    desc: "Once the designs are approved, we deliver the final files in the agreed formats, ready for their intended print or digital use.",
   },
-];
-
-const videoServices: ServiceItem[] = [
-  {
-    title: "Corporate & Business Videos",
-    desc: "Corporate profiles · Training videos · Employee orientation videos",
-  },
-  {
-    title: "Promotional & Marketing Videos",
-    desc: "Brand promo videos · Product ads · YouTube ads",
-  },
-  {
-    title: "Social Media Video Editing",
-    desc: "Reels · Shorts · TikTok edits · Influencer videos",
-  },
-  {
-    title: "Event Video Editing",
-    desc: "Weddings · Corporate events · Award ceremonies · Launch events",
-  },
-  {
-    title: "Motion Graphics & Animation Editing",
-    desc: "Explainer videos · Infographic animations · Title animations · Logo reveal animations",
-  },
-];
-
-const videoReasons = [
-  "Fast turnaround times without compromising on quality.",
-  "Cinematic storytelling that keeps viewers engaged from start to finish.",
-  "Professional sound mixing for clean, impactful audio output.",
-  "High-quality transitions and visual enhancements using industry-leading tools.",
-  "Expertise across multiple industries, from corporate to lifestyle to e-commerce.",
-  "Customized video editing styles tailored to your brand identity and audience.",
-  "Motion graphics and animation capabilities for added visual appeal.",
-  "Consistent communication and reliable project management throughout the process.",
-  "Multiple revision rounds to ensure complete client satisfaction.",
 ];
 
 const faqs: ServiceFaqItem[] = [
   {
-    q: "What services do you offer in graphic designing and video editing?",
-    a: "We provide complete creative solutions including logo design, branding, social media creatives, brochures, packaging, promotional videos, reels, corporate films, product videos, and motion graphics.",
+    q: "What graphic designing services do you offer in Delhi?",
+    a: "We offer graphic design solutions such as logo design, brand identity, social media graphics, marketing materials, packaging design, and digital graphics. Available services depend on your project requirements.",
   },
   {
-    q: "How do you start a graphic designing or video editing project?",
-    a: "Our process begins with understanding your goals, audience, and style preferences. Then we move into concept creation, design/editing development, revisions, and final delivery.",
+    q: "How much do graphic designing services cost in Delhi?",
+    a: "The cost of graphic design depends on the type of design, project complexity, number of deliverables, timeline, and revision requirements. Contact Bigwig Media Digital with your project details to discuss a suitable quote.",
   },
   {
-    q: "What makes your creative agency in Delhi different from others?",
-    a: "We offer a rare combination of high-quality graphic designing and professional video editing, ensuring your brand visuals stay consistent across all platforms. Our strategies are data-driven, creative, and tailored to each brand.",
+    q: "How much does it cost to design a logo in Delhi?",
+    a: "Logo design costs vary depending on the project scope, design complexity, concepts required, and final files. Share your business details and requirements with us to receive a project-specific quote.",
   },
   {
-    q: "Can I provide input during the design or editing process?",
-    a: "Yes! We encourage collaboration. You can share references, feedback, and changes throughout the project to ensure the final result matches your vision.",
+    q: "How much do video editing services cost in Delhi?",
+    a: "Video editing costs depend on video length, raw footage, editing complexity, graphics, subtitles, revisions, and delivery requirements. We can review your brief and provide a quote based on the project scope.",
   },
   {
-    q: "How long does it take to complete a graphic design or video edit?",
-    a: "Basic graphic designs are usually delivered within 2–4 days, while video edits take 2–7 days depending on complexity. Urgent projects are also handled on priority.",
+    q: "Can you edit videos for Instagram Reels and YouTube Shorts?",
+    a: "Yes, you can enquire about short-form video editing for Instagram Reels and YouTube Shorts. Depending on your requirements, editing may include vertical formatting, captions, text overlays, transitions, and audio adjustments.",
   },
   {
-    q: "What is your pricing structure?",
-    a: "Pricing depends on project type, complexity, duration, and deliverables. We offer one-time projects as well as monthly creative packages for brands needing regular content.",
+    q: "What does video editing include?",
+    a: "Video editing may include trimming footage, arranging clips, improving pacing, adding transitions, adjusting audio, inserting text, and preparing the final video in an agreed format. Deliverables depend on your project requirements.",
   },
   {
-    q: "Do you offer revisions if I’m not satisfied with the initial work?",
-    a: "Yes, we include revision rounds for both graphic designs and video edits to ensure you receive the perfect final output.",
+    q: "How long does a graphic design or video editing project take?",
+    a: "Project timelines depend on the scope, complexity, number of deliverables, and feedback process. We discuss the expected timeline with you after understanding your requirements.",
   },
   {
-    q: "What file formats will I receive for designs and videos?",
-    a: "Graphic designs are delivered in JPG, PNG, PDF, AI, EPS, or SVG formats, while videos are delivered in high-quality MP4, MOV, or the format of your choice.",
+    q: "Can I request changes to my design or video?",
+    a: "Yes, you can share feedback during the agreed review process. The number of included revisions and any additional charges are confirmed before the project begins.",
   },
   {
-    q: "Do you offer custom packages for graphic designing and video editing together?",
-    a: "Yes, we create combined packages specially designed for brands that require both visuals and video content on a monthly or project basis.",
+    q: "Which file formats will I receive for designs and videos?",
+    a: "Final file formats depend on the service and agreed deliverables. Tell us where you plan to use your designs or videos so we can confirm suitable formats before starting the project.",
   },
   {
-    q: "Will the final designs and videos reflect my brand identity?",
-    a: "Absolutely. Every design and video is created from scratch with your brand’s voice, colors, message, and target audience in mind.",
+    q: "Can I get graphic designing and video editing services together?",
+    a: "Yes, you can enquire about combining graphic design and video editing services for your business. Coordinating both can help maintain a consistent visual style across your branding, social media posts, and videos.",
   },
   {
-    q: "How do I get started with your services?",
-    a: "Simply contact us with your requirements, share your content, and our team will guide you through the process from planning to delivery.",
+    q: "What information should I provide to get a quote?",
+    a: "Share the service you need, your business details, project goals, estimated number of designs or videos, preferred timeline, and reference examples. This helps us understand your requirements and prepare a relevant quote.",
   },
   {
-    q: "I’m not located in Delhi, can I still work with your agency?",
-    a: "Yes! We work with clients across India and internationally. Everything can be coordinated online, including briefings, feedback, and final delivery.",
+    q: "Do you work with clients outside Delhi?",
+    a: "You can contact Bigwig Media Digital to discuss your location and project requirements. Remote collaboration may be possible depending on the scope of work and delivery needs.",
   },
 ];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function GraphicDesigningPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <ServiceHero
         image={heroImg}
-        lead="Graphic designing & video editing"
-        title="Top Graphic Designing & Video Editing Company in Delhi"
+        lead="Engaging visuals that make your brand unforgettable."
+        title="Graphic Designing & Video Editing Services in Delhi"
         intro={
           <p>
-            <span className="text-white">Visuals that tell your story, and videos that make people stay.</span> From
-            logos and social creatives to corporate films and Reels, our creative team helps brands stand out with
-            designs and edits delivered with quality, speed, and fresh ideas.
+            <span className="text-white">
+              Looking for professional graphic designing services in Delhi for
+              your business?
+            </span>{" "}
+            Bigwig Media Digital helps businesses create attractive designs and
+            engaging videos that support their brand identity and marketing
+            goals.
           </p>
         }
-        cta="Get a free creative consultation"
+        cta="Get a Free Quote"
         whatsappMessage="Hi BigWig Media Digital! I'm interested in your Graphic Designing & Video Editing services and would like to discuss more."
         formSource="graphic-hero"
         formServices={["Graphic Designing"]}
       />
 
       <ServiceStatement
-        heading="Leading Graphic Designing Company in Delhi"
-        lead="We create visually powerful designs that help brands communicate with clarity, creativity, and impact."
-        rest="Our designers blend strategy with aesthetics to craft logos, branding, marketing materials, and digital creatives that truly represent your brand’s personality."
+        heading="Professional Graphic Designing Services in Delhi"
+        lead="Your brand's visual identity plays an important role in how people recognise and remember your business."
+        rest="Our graphic designing services in Delhi help businesses communicate their message through clear, creative and professional designs."
         body={
           <p>
-            From startups to established businesses, we deliver end-to-end graphic design that enhances visibility,
-            builds trust, and drives engagement across every platform. As a reliable graphic designing agency in Delhi,
-            we focus on originality, attention to detail, and timely delivery, so every design looks stunning and
-            supports your business goals.
+            We create visual content for branding, marketing campaigns, social
+            media and other business requirements. Every design is planned
+            around your brand style, target audience and purpose.
+            <br />
+            <br />
+            Whether you need a new logo, promotional graphics or creative social
+            media posts, we help you present your business consistently across
+            different platforms.
           </p>
         }
         cta="Get a free design sample"
         source="graphic-intro"
-        image={{ src: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=80", alt: "Adobe creative apps on a tablet beside a design playbook" }}
+        image={{
+          src: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=80",
+          alt: "Adobe creative apps on a tablet beside a design playbook",
+        }}
       />
 
       <StaticWorkGallery
-        lead="Design work"
-        title="Designs That Speak Louder Than Words"
-        intro="Brand systems, colour studies, layouts and 3D visuals. A glimpse of the craft our designers bring to every project."
-        cta="Start your design project"
+        lead="Designs That Speak Louder Than Words"
+        title="Our Graphic Design Portfolio"
+        intro="Explore our graphic design portfolio to see examples of creative work across different design categories. Our projects demonstrate how visual design can support branding, marketing and online communication."
+        cta="Get a Graphic Design Quote"
         source="graphic-gallery"
         posts={designWork}
       />
@@ -269,8 +261,8 @@ export default function GraphicDesigningPage() {
       <ServiceCarousel
         id="graphic-services"
         lead="Our expertise"
-        title="Our Expertise in Graphic Designing in Delhi"
-        intro="Every brand has a unique voice. Our designers work closely with you to translate it into visuals that are both striking and strategic, from brand identity to digital creatives, packaging, marketing collateral, and UI graphics."
+        title="Creative Graphic Design Solutions for Your Business"
+        intro="Every business needs strong visuals to communicate with its audience. Our graphic design solutions help you maintain a professional and consistent brand image across digital platforms and marketing materials."
         items={designServices}
         cta="Discuss your design needs"
         source="graphic-services"
@@ -278,90 +270,263 @@ export default function GraphicDesigningPage() {
 
       <ServiceTimeline
         id="graphic-process"
-        heading="Our Graphic Designing Process"
-        lead="Five clear steps from first brief to final files."
-        rest="You stay involved at every stage, so there are no surprises at the end."
+        heading="Our Graphic Design Process"
+        lead="We follow a clear process to understand your requirements and deliver designs that match your business goals."
+        rest="Each project is handled according to its scope, timeline and deliverables."
         steps={process}
-        cta="Start your design project"
+        cta="Get a Graphic Design Quote"
         source="graphic-process"
       />
 
+      {/* SECTION 6 — WHY CHOOSE US FOR GRAPHIC DESIGNING */}
       <ServiceArticle
-        lead="Why us"
-        title="Why We Are the Most Trusted Graphic Designing Agency in Delhi"
-        cta="Book a free creative consultation"
-        source="graphic-why-us"
+        lead="Why Bigwig Media Digital"
+        title="Why Choose Bigwig Media Digital for Graphic Designing?"
+        cta="Talk to Our Team"
+        source="graphic-design-why-choose-us"
         body={
           <>
-            <p>
-              Clients choose us because we go beyond basic visuals. Every design is crafted with purpose, backed by
-              research, and aligned with your brand’s identity and goals. We stay committed to originality, so each
-              concept is tailored uniquely to your business.
+            <p className="mb-6 font-medium text-gray-800">
+              Choosing the right design partner can help your business build a
+              consistent and professional visual identity. We focus on
+              understanding your needs and creating designs that suit your brand
+              and marketing objectives.
             </p>
-            <p>
-              Seamless communication, timely delivery, and a professional workflow make the whole process smooth and
-              reliable. Whether it’s building a brand from scratch or refreshing an existing identity, we deliver
-              end-to-end design excellence that consistently exceeds expectations. That dedication to quality,
-              creativity, and client satisfaction is what makes us one of the most trusted graphic designing partners
-              in Delhi.
-            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Designs That Match Your Brand
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We consider your brand style, target audience and business
+                  goals before developing design concepts.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Creative and Clear Visuals
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We aim to create designs that communicate your message clearly
+                  and help your audience understand your business.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Solutions for Different Business Needs
+                </h3>
+                <p className="text-sm text-gray-700">
+                  From logo design to social media graphics and promotional
+                  materials, we can help with a range of visual design
+                  requirements.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  A Clear Working Process
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We discuss project scope, timelines, deliverables and revision
+                  terms before beginning the work.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50 md:col-span-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Graphic Design and Video Editing Support
+                </h3>
+                <p className="text-sm text-gray-700">
+                  You can discuss both graphic design and video editing
+                  requirements with our team to maintain a consistent visual
+                  style across your marketing content.
+                </p>
+              </div>
+            </div>
           </>
         }
       />
 
       <ServiceStatement
-        heading="Professional Video Editing Company in Delhi"
-        lead="We turn raw footage into high-quality, engaging videos that elevate your brand’s story."
-        rest="Our editors combine creativity with technical precision in Adobe Premiere Pro, Final Cut Pro, and After Effects for seamless transitions, crisp audio, dynamic effects, and impactful storytelling."
+        heading="Professional Video Editing Services in Delhi"
+        lead="Videos help businesses explain their services, promote products and connect with their audience."
+        rest="Our video editing services in Delhi help turn raw footage into clear and engaging videos for business communication and digital marketing."
         body={
           <p>
-            Whether you need corporate videos, promotional content, YouTube edits, social media Reels, or event
-            highlights, every video is crafted with clarity, purpose, and a professional finish.
+            We work on different types of video projects, including promotional
+            videos, corporate videos, social media content and event videos.
+            Depending on your requirements, editing may include clip
+            arrangement, transitions, text overlays, audio adjustments and
+            visual effects.
+            <br />
+            <br />
+            Whether you need videos for your website, YouTube channel, Instagram
+            or a marketing campaign, we work to understand your goals and the
+            type of content you want to create.
           </p>
         }
         cta="Get a free video editing consultation"
         source="graphic-video-intro"
-        image={{ src: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=80", alt: "Video editing timeline on a monitor" }}
+        image={{
+          src: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=80",
+          alt: "Video editing timeline on a monitor",
+        }}
       />
 
-      <ServiceSplitCarousel
-        id="graphic-video-services"
-        lead="Video editing in Delhi"
-        title="Comprehensive Video Editing for Every Industry"
-        intro="Corporate brands, e-commerce, real estate, education, or creators: each sector needs its own storytelling style, and our editors tailor the pacing, messaging, and sound design to match."
-        items={videoServices}
-        cta="Start your video project"
-        source="graphic-video-services"
-      />
-
+      {/* SECTION 8 — TYPES OF VIDEO EDITING SERVICES */}
       <ServiceArticle
-        lead="Why choose us"
-        title="Why Choose Us as Your Video Editing Agency in Delhi"
-        cta="Book a free creative consultation"
-        source="graphic-video-why-us"
-        image={{ src: "https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=1000&q=80", alt: "Projector beam in a dark screening room" }}
+        lead="Video Solutions"
+        title="Video Editing Solutions for Different Needs"
+        cta="Discuss Your Video Project"
+        source="video-editing-solutions"
         body={
           <>
-            <p>
-              The right video editing agency makes all the difference in how your brand is seen, heard, and remembered.
-              We combine creativity, technical expertise, and strategic storytelling to bring raw footage to life with
-              precision editing, polished transitions, cinematic visuals, and impactful audio, delivered on time and
-              aligned with your marketing goals.
+            <p className="mb-6 font-medium text-gray-800">
+              Different videos serve different purposes. We provide video
+              editing solutions based on your content, target audience, platform
+              and project requirements.
             </p>
-            <h3 className="pt-2 text-xl font-semibold tracking-tight text-[var(--ink)]">Key reasons to choose us</h3>
-            <ul className="space-y-3">
-              {videoReasons.map((r) => (
-                <li key={r} className="flex gap-3">
-                  <span aria-hidden className="mt-[0.6em] h-1.5 w-1.5 flex-none rounded-full bg-[var(--teal)]" />
-                  {r}
-                </li>
-              ))}
-            </ul>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Corporate and Business Video Editing
+                </h3>
+                <p className="text-sm text-gray-700">
+                  Create professional videos for company introductions, business
+                  presentations, service explanations and internal
+                  communication. Editing may include clip arrangement, titles,
+                  transitions and audio adjustments.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Promotional and Marketing Video Editing
+                </h3>
+                <p className="text-sm text-gray-700">
+                  Present your products, services and campaigns through
+                  promotional videos. We help organise footage and highlight key
+                  messages to suit your marketing objectives.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Social Media Video Editing
+                </h3>
+                <p className="text-sm text-gray-700">
+                  Create short-form videos for platforms such as Instagram Reels
+                  and YouTube Shorts. Depending on your brief, editing can
+                  include vertical formatting, captions, text overlays and
+                  transitions.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Event Video Editing
+                </h3>
+                <p className="text-sm text-gray-700">
+                  Turn event footage into an organised video that captures
+                  important moments. This service may suit business events,
+                  product launches, celebrations and other occasions.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50 md:col-span-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Motion Graphics and Animated Videos
+                </h3>
+                <p className="text-sm text-gray-700">
+                  Make your message more engaging with animated text, graphic
+                  elements and motion-based visuals. The style and complexity
+                  depend on your project requirements.
+                </p>
+              </div>
+            </div>
           </>
         }
       />
 
-      <ServiceFaq title="Graphic design & video editing, answered" faqs={faqs} source="graphic-faq" />
+      {/* SECTION 9 — WHY CHOOSE US FOR VIDEO EDITING */}
+      <ServiceArticle
+        lead="Video Editing Expertise"
+        title="Why Choose Bigwig Media Digital for Video Editing?"
+        cta="Request a Video Editing Quote"
+        source="video-editing-why-choose-us"
+        body={
+          <>
+            <p className="mb-6 font-medium text-gray-800">
+              A well-edited video can help communicate your message clearly and
+              hold your audience&apos;s attention. We consider your content,
+              target audience and publishing platform when planning a video
+              editing project.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Editing Based on Your Goals
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We consider whether your video is intended for marketing,
+                  social media, business communication or another purpose.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Platform-Ready Video Formats
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We can prepare videos in agreed aspect ratios, resolutions and
+                  file formats based on where you plan to publish them.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Clear Communication
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We discuss project scope, delivery timelines, required files
+                  and the feedback process before starting the edit.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Consistent Brand Style
+                </h3>
+                <p className="text-sm text-gray-700">
+                  We aim to keep your videos visually consistent with your brand
+                  identity and other marketing materials.
+                </p>
+              </div>
+
+              <div className="p-4 border border-gray-100 rounded-lg bg-gray-50/50 md:col-span-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Project-Based Editing Solutions
+                </h3>
+                <p className="text-sm text-gray-700">
+                  Share your footage, references and objectives with us so we
+                  can understand the editing support your project requires.
+                </p>
+              </div>
+            </div>
+          </>
+        }
+      />
+
+      <ServiceFaq
+        title="Frequently Asked Questions About Graphic Design and Video Editing"
+        faqs={faqs}
+        source="graphic-faq"
+      />
 
       <OtherServices current={PATH} />
     </main>

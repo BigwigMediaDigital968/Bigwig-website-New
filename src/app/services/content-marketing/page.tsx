@@ -18,7 +18,7 @@ const PATH = "/services/content-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
 const title = "Content Marketing Services in Delhi | Bigwig Media Digital";
 const description =
-  "Strategic Content Marketing Services in Delhi. SEO blogs, landing pages & brand storytelling that ranks and converts. Request a Free Audit!";
+  "Grow your business with content marketing services in Delhi, including SEO blogs, website copy, content strategy and social media content.";
 
 export const metadata: Metadata = {
   title,
@@ -42,175 +42,180 @@ export const metadata: Metadata = {
 const contentServices: ServiceItem[] = [
   {
     title: "SEO-Friendly Blogs & Articles",
-    desc: "Informative, keyword-rich blogs that improve rankings, attract organic traffic, and establish domain authority.",
+    desc: "We create informative, search-focused blogs and articles that answer audience questions, target relevant keywords, and support your website's organic visibility.",
   },
   {
     title: "Content-Driven Websites & Landing Pages",
     desc: (
       <>
-        We{" "}
-        <Link href="/services/website-development-company-in-delhi" className={inlineLink}>
-          develop content-driven websites
-        </Link>{" "}
-        and high-converting landing pages that engage audiences, strengthen brand messaging, and turn traffic into
-        qualified leads.
+        We create clear content structures and page messaging that communicate
+        your value, address customer needs, and guide visitors towards relevant
+        actions. For website development, explore our{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className={inlineLink}
+        >
+          website development services
+        </Link>
+        .
       </>
     ),
   },
   {
     title: "Website Copywriting & Landing Page Content",
-    desc: "High-converting copy optimised for user experience, messaging clarity, and search intent, crafted by professional writers.",
+    desc: "We write audience-focused copy for service pages, landing pages, and other website sections to explain your offerings clearly, address customer concerns, and support conversion goals.",
   },
   {
     title: "Social Media Content Creation",
-    desc: "Platform-specific content, including creatives, scripts, captions, memes, carousels, reels, and storytelling posts.",
+    desc: "We create platform-specific captions, carousel copy, creative concepts, reels scripts, and storytelling content to help your brand communicate consistently across social media.",
   },
   {
     title: "Video Scripts & Storyboards",
-    desc: "Engaging scripts for brand films, explainer videos, testimonials, YouTube videos, short reels, and educational content.",
+    desc: "We develop scripts and storyboards for explainer videos, brand films, testimonials, YouTube videos, and short-form content, tailored to your message and target audience.",
   },
   {
     title: "Email Newsletter Content",
-    desc: "Conversion-focused newsletters and drip sequences that nurture leads and strengthen brand relationships.",
+    desc: "We create relevant email newsletters and nurture sequences that share useful information, communicate offers, and maintain relationships with your audience.",
   },
   {
     title: "Case Studies & Success Stories",
-    desc: "Data-driven narratives that highlight your achievements and build trust with high-intent prospects.",
+    desc: "We turn verified project information and customer experiences into clear case studies that explain challenges, solutions, and outcomes to help potential customers make informed decisions.",
   },
   {
     title: "E-books & Whitepapers",
-    desc: "In-depth, research-backed resources that build authority and attract qualified leads.",
+    desc: "We develop in-depth, research-based resources that explain important topics, demonstrate expertise, and support relevant lead-generation campaigns.",
   },
   {
     title: "Infographics & Visual Content",
-    desc: "High-quality graphics, visual storytelling assets, and educational illustrations that simplify complex information.",
+    desc: "We help turn information, data, and ideas into clear visual content that makes complex topics easier for your audience to understand.",
   },
   {
     title: "Content Strategy & Editorial Planning",
-    desc: "A full content roadmap covering topics, formats, SEO opportunities, funnel mapping, and publishing schedules.",
+    desc: "We create content plans based on audience needs, relevant search opportunities, content formats, business goals, and practical publishing schedules.",
   },
   {
     title: "Content Distribution & Amplification",
-    desc: "We promote your content across social media, email, communities, PR, and paid channels to maximise reach and engagement.",
+    desc: "We plan content distribution across suitable channels, including social media, email, and other relevant platforms, to help your content reach its intended audience.",
   },
 ];
 
 const whyChooseUs: ServiceItem[] = [
   {
     title: "SEO-Driven Content That Ranks",
-    desc: "Every piece is optimised for search intent, keywords, readability, and semantic relevance, so your brand captures the right audience at the right time.",
+    desc: "We create content around relevant search intent, keyword research, readability and on-page SEO practices to help search engines and readers understand your content.",
   },
   {
     title: "End-to-End Execution",
-    desc: "From research to writing, design to distribution, we manage everything: blogs, videos, case studies, newsletters, website copy, social content, and more.",
+    desc: "From content planning and writing to editing and distribution, we help coordinate the content activities included in your agreed service scope.",
   },
   {
     title: "Experienced Strategists & Industry Experts",
-    desc: "Your content is managed by writers, editors, SEO specialists, designers, and strategists who understand your market and create content that resonates.",
+    desc: "Our content approach considers your audience, industry, brand voice and business objectives to create content that is relevant to your customers.",
   },
   {
     title: "Consistent Delivery & Quality Assurance",
-    desc: "Strict editorial guidelines, plagiarism checks, and quality reviews ensure every piece is accurate, engaging, and conversion-focused.",
+    desc: "We review content for clarity, grammar, accuracy, readability and consistency before delivery or publication.",
   },
   {
     title: "Customised Strategies for Every Business",
-    desc: "We tailor your content roadmap to your industry, audience intent, and goals, whether you want more traffic, thought leadership, or leads.",
+    desc: "We tailor content plans to your business goals, audience needs and industry, whether you want to improve visibility, explain your services or support lead generation.",
   },
 ];
 
 const process: ServiceItem[] = [
   {
     title: "Research & Competitor Analysis",
-    desc: "We study your audience, competitors, keyword ecosystem, market trends, and search behaviour. This becomes the backbone of your strategy.",
+    desc: "We review your audience, competitors, existing content and relevant search queries to identify opportunities and understand what your customers need.",
   },
   {
     title: "Content Strategy Development",
-    desc: "We define your content goals, messaging pillars, formats, tone, SEO themes, and publishing calendar.",
+    desc: "We define content goals, key topics, formats, messaging and a publishing plan based on your business priorities and audience needs.",
   },
   {
     title: "Content Creation",
-    desc: "Our writers and designers create high-quality content tailored to each stage of your funnel: awareness, consideration, and conversion.",
+    desc: "We create content for relevant stages of the customer journey, helping your audience understand their options and learn more about your business.",
   },
   {
     title: "Optimisation & Editing",
-    desc: "Each piece goes through SEO optimisation, readability improvements, grammar checks, and quality review.",
+    desc: "We review content for readability, grammar, relevance, keyword use and on-page SEO before it is published.",
   },
   {
     title: "Publishing & Distribution",
-    desc: "We publish your content across your website, social media, email, PR, and other channels for maximum exposure.",
+    desc: "We prepare content for suitable platforms and plan its distribution to help it reach the intended audience.",
   },
   {
     title: "Performance Tracking & Reporting",
-    desc: "We track rankings, traffic, engagement, lead flow, and conversions, then refine the strategy to improve ROI.",
+    desc: "We review available metrics such as organic traffic, engagement, leads and conversions to understand performance and identify opportunities for improvement.",
   },
 ];
 
 const benefits: ServiceItem[] = [
   {
     title: "Build Long-Term Authority",
-    desc: "Consistent content builds trust, credibility, and industry leadership.",
+    desc: "Consistent, useful content helps your audience understand your expertise and develop greater confidence in your brand over time.",
   },
   {
     title: "Generate High-Quality Leads",
-    desc: "Content marketing attracts customers who are actively searching for solutions in your niche.",
+    desc: "Content that answers relevant customer questions can attract people who are actively researching solutions related to your business.",
   },
   {
     title: "Improve Search Engine Rankings",
-    desc: "Google rewards brands that regularly publish valuable, fresh, and optimised content.",
+    desc: "Search-focused, useful content can support organic visibility when combined with relevant keywords, strong website structure and good SEO practices. Rankings are not guaranteed.",
   },
   {
     title: "Increase Website Traffic & Engagement",
-    desc: "Strategic content helps you reach a broader audience and keep them engaged for longer.",
+    desc: "Relevant content can help your business reach potential customers, answer their questions and encourage them to explore more of your website.",
   },
   {
-    title: "Boost Conversions with Educational Content",
-    desc: "Case studies, guides, landing pages, and webinars help customers make confident buying decisions.",
+    title: "Support Conversions with Educational Content",
+    desc: "Guides, case studies, service pages and landing pages help potential customers understand your offering and make informed decisions.",
   },
 ];
 
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
-const photo = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=80`;
+const photo = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=80`;
 
 const industries: ServiceItem[] = [
   {
     title: "Healthcare",
-    desc: "Accurate, trustworthy healthcare content that makes you a credible authority.",
+    desc: "Clear, carefully reviewed healthcare content that explains services and helps audiences understand relevant health information.",
     image: photo("1532938911079-1b06ac7ceec7"),
     imageAlt: "Doctor holding a stethoscope",
   },
   {
     title: "E-Commerce",
-    desc: "Product descriptions, SEO pages, buying guides, and sales-driven content.",
+    desc: "Product descriptions, category content, buying guides and useful articles that help customers discover and understand your products.",
     image: photo("1664455340023-214c33a9d0bd"),
     imageAlt: "Shopping cart full of parcels",
   },
   {
     title: "EdTech",
-    desc: "Educational blogs, course content, curriculum storytelling, and SEO-led funnels.",
+    desc: "Educational blogs, course content and learning resources that explain offerings and address learner questions.",
     image: photo("1513258496099-48168024aec0"),
     imageAlt: "Student learning on a laptop",
   },
   {
     title: "Real Estate",
-    desc: "Hyperlocal SEO content, brochures, property descriptions, and project storytelling.",
+    desc: "Property descriptions, location-focused content, project information and useful guides for buyers and investors.",
     image: photo("1515263487990-61b07816b324"),
     imageAlt: "Modern residential building",
   },
   {
     title: "Finance & Banking",
-    desc: "Compliance-friendly, research-backed content for financial institutions.",
+    desc: "Clear, research-based financial content that is reviewed for accuracy and applicable compliance requirements.",
     image: photo("1633158829585-23ba8f7c8caf"),
     imageAlt: "Hands stacking coins",
   },
   {
     title: "Technology & SaaS",
-    desc: "Technical blogs, product pages, feature explanations, and automation guides.",
+    desc: "Technical articles, product pages, feature explanations and educational content that make software offerings easier to understand.",
     image: photo("1572021335469-31706a17aaef"),
     imageAlt: "Software team gathered around a laptop",
   },
   {
     title: "Automotive",
-    desc: "Content that educates buyers about vehicles, technology, and brand differentiation.",
+    desc: "Vehicle-related articles, product information and educational content that help customers understand features and available options.",
     image: photo("1692406069831-0bb7ea297645"),
     imageAlt: "Car showroom",
   },
@@ -218,48 +223,73 @@ const industries: ServiceItem[] = [
 
 const faqs: ServiceFaqItem[] = [
   {
-    q: "What is content marketing, and how does it help businesses?",
-    a: "Content marketing is the strategic creation and distribution of valuable content to attract, educate, and convert customers. Working with a content marketing agency in Delhi helps you build authority, grow organic traffic, and generate qualified leads.",
+    q: "What Are Content Marketing Services?",
+    a: "Content marketing services involve planning, creating, optimising and distributing useful content to support business goals. These services may include SEO blogs, website copy, landing pages, social media content, email newsletters and content strategy, depending on the agreed scope.",
   },
   {
-    q: "How long does content marketing take to show results?",
-    a: "You’ll see engagement improvements in 30–45 days. SEO, traffic growth, and consistent lead generation typically take 3–6 months.",
+    q: "What Does a Content Marketing Agency Do?",
+    a: "A content marketing agency helps businesses understand their audience, plan relevant content, create marketing materials and improve how content reaches potential customers. Depending on the service plan, this may also include SEO optimisation, content distribution and performance reporting.",
   },
   {
-    q: "Do you provide SEO along with content marketing services?",
-    a: "Yes. As a full-service content marketing company in Delhi, we include keyword research, on-page SEO, and content optimisation in all strategies.",
+    q: "How Much Do Content Marketing Services Cost in Delhi?",
+    a: "The cost of content marketing services in Delhi depends on the type and volume of content, research requirements, SEO needs and level of ongoing support. Contact Bigwig Media Digital to discuss your business goals and receive a plan based on your requirements.",
   },
   {
-    q: "Can you create content for any industry?",
-    a: "Absolutely. We work across healthcare, real estate, finance, SaaS, e-commerce, education, and more.",
+    q: "What Services Are Included in Content Marketing?",
+    a: "Content marketing can include content strategy, keyword research, blog writing, website content, landing pages, social media content, email newsletters, case studies and content promotion. The exact services depend on your business needs and agreed scope.",
   },
   {
-    q: "Do you offer content for social media and video platforms?",
-    a: "Yes: reels, scripts, shorts, animations, carousels, captions, and more.",
+    q: "What Are the Main Types of Content Marketing?",
+    a: "Common content marketing formats include blog articles, website content, videos, social media posts, email newsletters, case studies, e-books and infographics. The right mix depends on your target audience, business goals and the channels your customers use.",
+  },
+  {
+    q: "How Can Content Marketing Generate Leads for My Business?",
+    a: "Content marketing can support lead generation by answering customer questions, explaining your services and building trust with potential customers. Helpful articles, focused landing pages, case studies and clear calls to action can encourage interested visitors to contact your business.",
+  },
+  {
+    q: "How Long Does Content Marketing Take to Show Results?",
+    a: "The timeline depends on factors such as competition, website authority, content quality, publishing consistency and promotion. Some engagement may appear earlier, while meaningful organic traffic and lead growth can take several months. No specific ranking or results timeline can be guaranteed.",
+  },
+  {
+    q: "How Do I Choose the Best Content Marketing Agency in Delhi?",
+    a: "Look for an agency that understands your business goals, explains its strategy, provides clear deliverables and communicates how performance will be measured. Review relevant work, reporting practices and the proposed scope before choosing a content marketing agency in Delhi.",
   },
 ];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function ContentMarketingPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <ServiceHero
         image={heroImg}
-        lead="Content marketing"
+        lead="Content ranks, engages, and converts."
         title="Content Marketing Services in Delhi"
         intro={
           <p>
-            <span className="text-white">Content is the backbone of brand authority and digital growth.</span> As a
-            leading content marketing agency in Delhi, we create powerful stories, high-performing content assets, and
-            data-driven strategies that educate, engage, and convert, whether you want to build awareness, outrank
-            competitors, or nurture leads.
+            <span className="text-white">
+              Content helps your business build trust, answer customer questions
+              and communicate its value.
+            </span>{" "}
+            At Bigwig Media Digital, our content marketing services in Delhi
+            help businesses create useful, engaging and SEO-focused content for
+            their target audience. From blog articles and website copy to social
+            media content and content strategy, we help you share the right
+            message across relevant digital channels and support your business
+            goals.
           </p>
         }
         cta="Request a free content audit"
@@ -270,22 +300,28 @@ export default function ContentMarketingPage() {
 
       <ServiceIntro
         lead="Content marketing company in Delhi"
-        title="Leading Content Marketing Company in Delhi for High-Impact Growth"
+        title="Leading Content Marketing Company in Delhi for Business Growth"
         image={introImg}
         imageAlt="Content Marketing Services in Delhi"
         body={
           <>
             <p>
-              Delhi’s digital landscape is competitive, with thousands of brands fighting for attention every day. To
-              stand out, you need more than just blogs and social media posts. You need strategy, storytelling, and
-              consistent content execution.
+              Delhi's digital market is competitive, and businesses need more
+              than occasional blogs or social media posts to stand out. They
+              need useful content that answers customer questions, communicates
+              their value and supports their marketing goals.
             </p>
             <p>
-              As a full-stack content marketing company in Delhi, we combine research, creativity, SEO, and
-              distribution to create content that drives organic traffic, enhances credibility, and supports every
-              stage of your customer journey.
+              As a content marketing company in Delhi, Bigwig Media Digital
+              helps businesses plan, create and optimise content using audience
+              research, relevant keywords, clear messaging and suitable
+              distribution channels.
             </p>
-            <p>Our approach ensures your brand becomes discoverable, memorable, and trusted.</p>
+            <p>
+              Our approach focuses on creating content that helps your brand
+              build credibility, reach relevant audiences and support customers
+              throughout their buying journey.
+            </p>
           </>
         }
       />
@@ -307,7 +343,8 @@ export default function ContentMarketingPage() {
         cta="Get started today"
         source="content-why-us"
         promo={{
-          image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=900&q=80",
+          image:
+            "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=900&q=80",
           alt: "Writing desk with an open notebook and laptop",
           text: "Content that ranks, engages, and converts.",
         }}
@@ -337,7 +374,11 @@ export default function ContentMarketingPage() {
         source="content-industries"
       />
 
-      <ServiceFaq title="Content marketing, answered" faqs={faqs} source="content-faq" />
+      <ServiceFaq
+        title="Content marketing, answered"
+        faqs={faqs}
+        source="content-faq"
+      />
 
       <OtherServices current={PATH} />
     </main>
