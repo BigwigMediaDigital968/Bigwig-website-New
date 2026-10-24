@@ -61,10 +61,10 @@ export default function Studio() {
         </div>
 
         <div className="lg:col-span-7">
-          <h2 className="h-section max-w-[18ch]">Everything your customers see, made in one studio.</h2>
+          <h2 className="h-section max-w-[18ch]">One studio for everything your customers see.</h2>
           <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-[var(--muted)]">
-            The posts in this feed are ours. The same team shoots your reels, builds your pages,
-            runs your ads and looks after your Google listing.
+            Our digital marketing agency in Bhopal shoots your reels, builds your pages, runs your
+            ads and looks after your Google listing, all under one roof.
           </p>
           <ul className="mt-8 grid grid-cols-2 gap-x-5 sm:gap-x-8">
             {services.map((s) => (

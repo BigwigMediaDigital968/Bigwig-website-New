@@ -88,8 +88,8 @@ export default function Hero() {
         <div className="min-w-0 lg:col-span-7">
           <h1 className="h-display max-w-[16ch]">Digital marketing agency in Bhopal</h1>
           <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-[var(--muted)]">
-            Ads, Google Maps, websites and social media for every kind of local business, run by
-            a team with an office in the city.
+            Bigwig is a digital marketing agency in Bhopal that runs ads, Google Maps, websites and
+            social media for local businesses, from an office in the city.
           </p>
 
           <form

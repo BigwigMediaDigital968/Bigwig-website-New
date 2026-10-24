@@ -26,9 +26,12 @@ export default function Showcase() {
       <div className="mx-auto max-w-[1600px] rounded-[32px] bg-[var(--surface)] py-14 md:py-20">
         <div className="wrap">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <h2 className="h-section max-w-[18ch]">Websites we’ve built, live and working.</h2>
+            <h2 className="h-section max-w-[24ch]">
+              Websites built by a digital marketing agency in Bhopal, live and working.
+            </h2>
             <p className="max-w-[40ch] text-[var(--muted)]">
-              Real client sites. Pick one to scroll through it, and see what it did for them.
+              Real client sites, not mockups. Pick one to scroll through it and see the results it
+              brought, like 3× more appointments for an orthopaedic clinic.
             </p>
           </div>
 

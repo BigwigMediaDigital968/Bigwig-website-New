@@ -67,10 +67,12 @@ export default function Local() {
       <div className="mx-auto max-w-[1600px] rounded-[32px] bg-[var(--surface)] py-14 md:py-20">
         <div className="wrap grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
           <div className="lg:col-span-5">
-            <h2 className="h-section max-w-[16ch]">A Bhopal team, a few streets away.</h2>
+            <h2 className="h-section max-w-[20ch]">
+              Your digital marketing agency in Bhopal, a few streets away.
+            </h2>
             <p className="mt-4 max-w-[46ch] text-lg leading-relaxed text-[var(--muted)]">
-              We plan around the neighbourhoods your customers live in, and you can always drop by
-              the office.
+              We plan around the neighbourhoods your customers live in, from MP Nagar to Kolar
+              Road, and you can always drop by the office.
             </p>
             <p className="mt-6 flex items-start gap-3 leading-relaxed">
               <MapPin className="mt-0.5 h-5 w-5 flex-none text-[var(--teal)]" aria-hidden />

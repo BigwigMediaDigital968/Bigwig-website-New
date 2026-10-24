@@ -201,18 +201,21 @@ export const posts: Post[] = [
 ];
 
 export const services = [
-  { name: "Google Maps & local SEO", does: "Show up first when people nearby search." },
-  { name: "Google & Meta ads", does: "Campaigns paid for by the lead, not the like." },
-  { name: "Websites & landing pages", does: "Fast pages with call, WhatsApp and a form." },
-  { name: "Social media", does: "Reels, posts and festive campaigns, DMs answered." },
+  { name: "Google Maps & local SEO", does: "Rank higher on Google Maps and local search, so people near you find and call you first." },
+  { name: "Google & Meta ads", does: "Campaigns tracked to the lead, with cost per lead reported every month, not likes or clicks." },
+  { name: "Websites & landing pages", does: "Fast pages with call, WhatsApp and enquiry buttons, built to turn visitors into customers." },
+  { name: "Social media", does: "Reels, posts and festive campaigns for Bhopal audiences, with DMs and comments answered." },
   { name: "Graphic designing & video editing", does: "Logos, ad creatives and edited video that stop the scroll." },
-  { name: "Reviews & reputation", does: "More five-star reviews, calm replies to the rest." },
+  { name: "Reviews & reputation", does: "More five-star Google reviews, and calm, professional replies to the rest." },
 ];
 
 /* ---------- after you send it ---------- */
 
 export const steps = [
-  { title: "We call you", desc: "About your business, customers and what you’ve tried. Or visit the office." },
+  {
+    title: "We call you",
+    desc: "Our digital marketing agency in Bhopal starts with your business, customers and what you’ve tried. Or visit the office.",
+  },
   { title: "You get a written plan", desc: "Channels, costs and what we expect them to bring." },
   { title: "We go live", desc: "Listings, pages and ads launched, enquiries sent to your WhatsApp." },
   { title: "You see the numbers", desc: "A monthly report: calls, enquiries and cost per lead." },
@@ -223,23 +226,23 @@ export const steps = [
 export const faqs = [
   {
     q: "How much does digital marketing cost in Bhopal?",
-    a: "It depends on the channels and how much you spend on ads. Most plans are a monthly fee plus an ad budget you pay to Google or Meta directly. Pick your budget in the sentence at the top and we’ll plan around it.",
+    a: "A digital marketing agency in Bhopal usually charges a monthly fee plus an ad budget you pay to Google or Meta directly. The total depends on the channels you pick and your goals. Choose your budget in the sentence at the top and we’ll plan around it.",
   },
   {
     q: "Do you work with my kind of business?",
-    a: "Very likely. We work with shops, clinics, schools and coaching institutes, restaurants, salons, gyms, hotels, real estate, online stores, manufacturers and professional firms.",
+    a: "Yes. As a digital marketing agency in Bhopal, we work with clinics, real estate firms, jewellers, manufacturers, coaching and consultation practices, restaurants and online stores. If your customers search on Google or scroll Instagram, we can plan for them.",
   },
   {
     q: "Can we meet in person?",
-    a: "Yes. Our office is at Idgah Hills, and we’re happy to meet there or at your business. Day to day, most work happens over WhatsApp and calls.",
+    a: "Yes. Visit our digital marketing agency in Bhopal at Plot Number 2, near Hanuman Mandir, Idgah Hills, or call or WhatsApp us on +91 96858 92813 to fix a time that suits you.",
   },
   {
     q: "How soon will the phone ring?",
-    a: "Ads usually bring enquiries within the first weeks. Google Maps and SEO rankings take three to six months to build, but then keep bringing customers without paying per click.",
+    a: "A digital marketing agency in Bhopal can start ads soon after launch, but Google Maps and SEO usually take a few months to build. Your written plan says what to expect from each channel before you spend anything.",
   },
   {
     q: "Can you reach customers outside Bhopal?",
-    a: "Yes. Campaigns can stay within a few kilometres of your door, cover Indore and the rest of Madhya Pradesh, or reach all of India.",
+    a: "Yes. Our digital marketing agency in Bhopal runs campaigns for clients across India, with offices in Delhi, Goa and Dubai. Whether you want customers in Indore, Delhi or across the country, we set the targeting to match.",
   },
 ];
 
