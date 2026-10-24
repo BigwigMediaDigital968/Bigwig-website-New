@@ -52,6 +52,7 @@ export const metadata: Metadata = {
     siteName: "Bigwig Media Digital",
     locale: "en_IN",
     type: "website",
+    images: [{ url: "https://www.bigwigmediadigital.com/og-bigwig.png" }],
   },
 };
 

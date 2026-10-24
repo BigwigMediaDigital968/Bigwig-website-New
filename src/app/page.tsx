@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032818/WhatsApp_Image_2026-02-02_at_4.12.04_PM_ac0qj8.jpg",
+        url: "https://www.bigwigmediadigital.com/og-bigwig.png",
       },
     ],
   },
