@@ -17,9 +17,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/search-engine-optimization";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "SEO Services in Delhi | Best SEO Company | Bigwig Media Digital";
+const title = "SEO Services in Delhi NCR | Bigwig Media Digital";
 const description =
-  "Expert SEO Services in Delhi, Technical SEO, Local SEO, On-Page & Link Building. Rank on Page 1 with Bigwig Media Digital. Free SEO Audit!";
+  "Looking for SEO services in Delhi NCR? Bigwig Media Digital helps businesses improve search visibility, attract relevant traffic, and generate qualified leads.";
 
 export const metadata: Metadata = {
   title,
