@@ -2,4 +2,4 @@
 
 /** Class for links inside service-page body copy. */
 export const inlineLink =
-  "font-medium text-[var(--teal)]/50 underline decoration-[var(--teal)]/60 underline-offset-4 transition-colors hover:decoration-[var(--link)]";
+  "font-medium text-[var(--link)] underline decoration-[var(--teal)] underline-offset-4 transition-colors hover:text-[var(--teal)]";
