@@ -237,7 +237,7 @@ const companyLinks = [
 const branchLinks = [
   { name: "Delhi, HQ", path: "/contact" },
   { name: "Bhopal", path: "/digital-marketing-agency-bhopal" },
-  { name: "Goa", path: "/v2/digital-marketing-agency-goa" },
+  { name: "Goa", path: "/digital-marketing-agency-goa" },
     { name: "Dubai, UAE", path: "/v3/digital-marketing-agency-dubai-uae" },
 
   // { name: "Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },

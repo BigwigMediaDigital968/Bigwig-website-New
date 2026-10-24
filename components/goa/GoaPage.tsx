@@ -1,50 +1,35 @@
 "use client";
 
-import { coreServices, indiaServices } from "@/data/indiaServices";
-import { whatsappHref } from "../ui";
-import ServicesAccordion from "../ui/ServicesAccordion";
-import Calculator from "./Calculator";
 import Gallery from "./Gallery";
 import Hero from "./Hero";
 import Plan from "./Plan";
-import Season from "./Season";
-import { Faq, Reviews } from "./Sections";
+import Seasons from "./Seasons";
+import Services from "./Services";
+import Sectors from "./Sectors";
+import { Faq, Local, Reviews } from "./Sections";
+import { PlanProvider } from "./media";
 
 /**
- * The Goa page, in the site's navy and type but with its own idea: the Goan house. An arched window with a
- * carepa (oyster-shell) fanlight frames the hero, the work hangs in arched frames, the reviews sit under
- * azulejo tiles, and the page is planned around Goa's season. Headlines use the site's serif. Ochre (the
- * Fontainhas yellow) is the one accent. The site footer gives the closing call to action.
+ * v2 of the Goa page: photography-led and editorial, in the site's navy and type (the site's sans headlines; serif only for numbers). The hero
+ * and the services section say plainly what we do, every service included. Goa is carried by real photographs (the coast, Fontainhas, Panjim's church, Dudhsagar in the monsoon), revealed
+ * with wipes and drifting with the scroll. Sector cards pre-fill the form. The site footer closes the page.
  */
 export default function GoaPage() {
   return (
-    <main
-      style={
-        {
-          "--porcelain": "#f8f7f4",
-          "--ochre": "#d9a441",
-          // ochre deep enough for text and small marks on white
-          "--ochre-deep": "#9a6a12",
-        } as React.CSSProperties
-      }
-    >
-      <Hero />
-      <Season />
-      <ServicesAccordion
-        lead="Our digital marketing services in Goa"
-        title="Everything your business needs to grow online"
-        services={coreServices()}
-        allCount={indiaServices.length}
-        source="goa"
-        whatsapp={(t) => whatsappHref(`Hi BigWig Media Digital! I'm interested in ${t} for my business in Goa.`)}
-      />
-      <div className="h-14 md:h-20" aria-hidden />
-      <Gallery />
-      <div className="h-14 md:h-20" aria-hidden />
-      <Calculator />
-      <Plan />
-      <Reviews />
-      <Faq />
-    </main>
+    <PlanProvider>
+      <main style={{ "--porcelain": "#f8f7f4", "--ochre": "#d9a441" } as React.CSSProperties}>
+        <Hero />
+        <Services />
+        <Sectors />
+        <Seasons />
+        <div className="h-16 md:h-24" aria-hidden />
+        <Gallery />
+        <div className="h-16 md:h-24" aria-hidden />
+        <Local />
+        <Plan />
+        <Reviews />
+        <Faq />
+      </main>
+    </PlanProvider>
   );
 }

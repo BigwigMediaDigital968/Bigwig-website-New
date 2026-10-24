@@ -3,7 +3,7 @@ import GoaPage from "../../../components/goa/GoaPage";
 
 const title = "Digital Marketing Agency in Goa | Bigwig Media Digital";
 const description =
-  "Direct bookings, enquiries and footfall for Goa hotels, villas, cafés, real estate and local brands, from a team based in Mapusa. Get a free season plan.";
+  "Looking for a digital marketing agency in Goa? Boost your online visibility with SEO, social media marketing, PPC, and content marketing.";
 
 export const metadata: Metadata = {
   title,

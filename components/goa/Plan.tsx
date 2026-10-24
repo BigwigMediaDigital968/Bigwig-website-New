@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import { branches } from "@/data/offices";
@@ -8,7 +8,8 @@ import useSubmitLead from "../../hooks/useSubmitLead";
 import { trackLeadEvent } from "../../utils/leadTracking";
 import RecaptchaNotice from "../contact/RecaptchaNotice";
 import { EASE_OUT, WhatsAppPill, focusRing } from "../ui";
-import { GOA_WHATSAPP_HREF, areas, goals, kinds } from "./content";
+import { GOA_WHATSAPP_HREF, areas, goals, kinds, photos } from "./content";
+import { ParallaxPhoto, WipeIn, usePlan } from "./media";
 
 const office = branches.find((b) => b.city === "Goa")!;
 
@@ -20,6 +21,7 @@ const EMPTY: Fields = { kind: "", goal: "", area: "", name: "", phone: "", email
 /**
  * The page's lead form, all on one card: what you run, what you want, where you are, and how to reach you.
  * Choices are radio chips (real radios, so arrow keys work). Errors sit under the field they belong to.
+ * A sector card elsewhere on the page can choose "what do you run" before the visitor arrives (usePlan).
  */
 export default function Plan() {
   const [f, setF] = useState<Fields>(EMPTY);
@@ -30,6 +32,12 @@ export default function Plan() {
   const doneRef = useRef<HTMLHeadingElement>(null);
   const { submitLead, loading } = useSubmitLead();
   const uid = useId();
+  const plan = usePlan();
+
+  // a sector card picked a business: reflect it here
+  useEffect(() => {
+    if (plan.kind) setF((x) => ({ ...x, kind: plan.kind }));
+  }, [plan.kind]);
 
   const set = (patch: Partial<Fields>) => {
     if (!started.current) {
@@ -84,12 +92,17 @@ export default function Plan() {
     <section id="plan" className="scroll-mt-24 py-14 md:py-20">
       <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-5">
-          <h2 className="serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">Plan your season with us.</h2>
+          <h2 className="h-section">Plan your season with us.</h2>
           <p className="mt-4 max-w-[44ch] text-lg leading-relaxed text-[var(--muted)]">
-            Tell us a little about your place. Our Goa team sends back a free written plan: the channels,
-            how to split the budget, and a month-by-month calendar.
+            Tell us a little about your place. Our digital marketing agency in Goa sends back a free
+            written plan: the channels, how to split the budget, and a month-by-month calendar.
           </p>
-          <div className="mt-8 border-t border-[var(--line)] pt-6">
+          <WipeIn className="mt-8 hidden lg:block">
+            <div className="relative h-[260px] overflow-hidden rounded-[24px] bg-[var(--paper)]">
+              <ParallaxPhoto photo={photos.door} sizes="(min-width: 1024px) 34vw, 0px" travel={10} />
+            </div>
+          </WipeIn>
+          <div className="mt-6 border-t border-[var(--line)] pt-6">
             <p className="text-sm text-[var(--muted)]">
               Rather talk?{" "}
               <a href={office.phoneHref} className="font-semibold text-[var(--link)] hover:underline">
@@ -113,7 +126,7 @@ export default function Plan() {
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--ochre)]">
                   <Check className="h-6 w-6" aria-hidden />
                 </span>
-                <h3 ref={doneRef} tabIndex={-1} className="serif mt-5 text-3xl leading-tight focus:outline-none">
+                <h3 ref={doneRef} tabIndex={-1} className="mt-5 text-3xl font-semibold leading-tight tracking-tight focus:outline-none">
                   Thanks, {doneName}. Your season plan is on its way.
                 </h3>
                 <p className="mt-3 max-w-[46ch] leading-relaxed text-[var(--muted)]">

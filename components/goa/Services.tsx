@@ -23,7 +23,7 @@ export default function Services() {
           <div className="lg:col-span-7">
             <p className="text-sm font-medium text-[var(--link)]">What we do</p>
             <h2 className="h-section mt-3">
-              Every channel your guests and customers use, from one team.
+              Every channel your guests and customers use, from one digital marketing agency in Goa.
             </h2>
           </div>
           <div className="lg:col-span-4 lg:col-start-9 lg:justify-self-end">

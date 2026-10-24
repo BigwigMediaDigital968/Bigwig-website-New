@@ -1,90 +1,108 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MapPin } from "lucide-react";
 import { EASE, WhatsAppPill, fadeUp, focusRing, stagger } from "../ui";
 import TrustedStrip from "../ui/TrustedStrip";
-import { ArchWindow, GoaView } from "./motifs";
 import { GOA_WHATSAPP_HREF, photos } from "./content";
+import { usePlan } from "./media";
+
+/** what we do, at a glance (the full list is in the services section below) */
+const heroServices = ["Google & Meta ads", "SEO & Google Maps", "Websites", "Social media", "Design & video", "Reputation"];
 
 /**
- * The hero: a calm serif headline on the left, and on the right a Goan dusk seen through an arched window with
- * a carepa fanlight. One quiet entrance: the copy rises and the window settles.
+ * Full-bleed photographic hero in the site's rounded frame. The headline says what we do, and the service
+ * chips list it. The photo settles from a slight zoom on load, then drifts and the copy fades as the page
+ * scrolls away. Copy sits bottom-left on a soft dark gradient.
  */
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const { toForm } = usePlan();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section className="relative overflow-hidden pb-12 pt-8 md:pb-16 md:pt-12">
-      <div className="wrap grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-        <motion.div
-          className="min-w-0 lg:col-span-6"
-          initial="hidden"
-          animate="show"
-          variants={stagger(0.08, 0.05)}
-        >
-          <motion.p variants={fadeUp} className="flex items-center gap-2 text-sm font-medium text-[var(--link)]">
-            <MapPin className="h-4 w-4" aria-hidden />
-            Digital marketing agency in Goa, based in Mapusa
-          </motion.p>
-          <motion.h1
-            variants={fadeUp}
-            className="serif mt-5 max-w-[14ch] text-[clamp(2.6rem,4.6vw,4.1rem)] leading-[1.02] tracking-[-0.02em] [text-wrap:balance]"
-          >
-            Marketing for Goa, in season and out.
-          </motion.h1>
-          <motion.p variants={fadeUp} className="mt-5 max-w-[46ch] text-lg leading-relaxed text-[var(--muted)]">
-            Direct bookings, enquiries and full tables for hotels, villas, cafés, real estate and every
-            Goa business, planned around the months that matter.
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="#plan"
-              className={`group inline-flex h-12 items-center gap-3 rounded-full bg-[var(--ink)] pl-6 pr-1.5 text-[0.95rem] font-semibold text-white transition-[background-color,transform] duration-200 ease-[var(--ease-out)] hover:bg-[var(--ink-2)] active:scale-[0.97] ${focusRing}`}
+    <>
+      <section ref={ref} className="px-2 pt-3 md:px-3">
+        <div className="relative mx-auto h-[min(86svh,820px)] min-h-[560px] max-w-[1600px] overflow-hidden rounded-[32px] bg-[var(--ink)]">
+          <motion.div className="absolute inset-0" style={{ y: reduce ? 0 : y }}>
+            <motion.div
+              className="absolute inset-0"
+              initial={reduce ? false : { scale: 1.12 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 2.4, ease: EASE }}
             >
-              Plan my season
-              <span
-                aria-hidden
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--ochre)] text-[var(--ink)] transition-transform duration-300 group-hover:translate-y-0.5"
-              >
-                <ArrowDown className="h-4 w-4" />
-              </span>
-            </a>
-            <WhatsAppPill href={GOA_WHATSAPP_HREF} />
+              <Image src={photos.hero.src} alt={photos.hero.alt} fill priority unoptimized sizes="100vw" className="object-cover" />
+            </motion.div>
           </motion.div>
-        </motion.div>
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,28,64,0.35)_0%,rgba(1,28,64,0)_28%,rgba(1,28,64,0.25)_50%,rgba(1,28,64,0.9)_100%),linear-gradient(90deg,rgba(1,28,64,0.45)_0%,rgba(1,28,64,0)_60%)]"
+          />
 
-        {/* the window */}
-        <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[420px] lg:col-span-5 lg:col-start-8 lg:max-w-none">
           <motion.div
-            initial={reduce ? { opacity: 0 } : { opacity: 0, transform: "translateY(24px)" }}
-            animate={{ opacity: 1, transform: "translateY(0px)" }}
-            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-            className="mx-auto max-h-[72vh] w-[min(100%,calc(72vh*0.8))]"
+            className="absolute inset-x-0 bottom-0"
+            style={{ opacity: reduce ? 1 : fade }}
           >
-            <ArchWindow aspect={0.8} className="shadow-[0_50px_100px_-50px_rgba(1,28,64,0.6)]">
-              {photos.hero.src ? (
-                <Image
-                  src={photos.hero.src}
-                  alt={photos.hero.alt}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 34vw, 90vw"
-                  className="object-cover"
-                />
-              ) : (
-                <GoaView className="absolute inset-0 h-full w-full" />
-              )}
-            </ArchWindow>
+            <motion.div
+              className="wrap pb-10 text-white md:pb-14"
+              initial="hidden"
+              animate="show"
+              variants={stagger(0.09, 0.5)}
+            >
+              <motion.p variants={fadeUp} className="flex items-center gap-2 text-sm font-medium text-white/80">
+                <MapPin className="h-4 w-4" aria-hidden />
+                Digital marketing agency in Goa, based in Mapusa
+              </motion.p>
+              <motion.h1
+                variants={fadeUp}
+                className="h-display mt-4 max-w-[24ch]"
+              >
+                Digital Marketing Agency in Goa for Ads, SEO, Websites and Social Media
+              </motion.h1>
+              <motion.div variants={fadeUp} className="mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="max-w-[48ch] text-lg leading-relaxed text-white/85">
+                    Bigwig Media Digital is the full-service digital marketing agency in Goa behind the
+                    state’s stays, cafés, real estate and brands, from the first post to the booked table.
+                  </p>
+                  <ul aria-label="Our services" className="mt-5 flex max-w-[44rem] flex-wrap gap-2">
+                    {heroServices.map((s) => (
+                      <li
+                        key={s}
+                        className="rounded-full bg-white/12 px-3.5 py-1.5 text-sm font-medium text-white ring-1 ring-inset ring-white/25 backdrop-blur-md"
+                      >
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex flex-none flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => toForm()}
+                    className={`group inline-flex h-12 items-center gap-3 rounded-full bg-white pl-6 pr-1.5 text-[0.95rem] font-semibold text-[var(--ink)] transition-[background-color,transform] duration-200 ease-[var(--ease-out)] hover:bg-[var(--cyan)] active:scale-[0.97] cursor-pointer ${focusRing}`}
+                  >
+                    Plan my season
+                    <span aria-hidden className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--ink)] text-white transition-transform duration-300 group-hover:translate-y-0.5">
+                      <ArrowDown className="h-4 w-4" />
+                    </span>
+                  </button>
+                  <WhatsAppPill href={GOA_WHATSAPP_HREF} dark />
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
-
         </div>
-      </div>
+      </section>
 
-      <div className="wrap mt-12 md:mt-14">
-        <TrustedStrip label="Trusted by property and lifestyle brands" />
+      <div className="wrap mt-8">
+        <TrustedStrip label="Trusted by property and lifestyle brands" bordered={false} />
       </div>
-    </section>
+    </>
   );
 }

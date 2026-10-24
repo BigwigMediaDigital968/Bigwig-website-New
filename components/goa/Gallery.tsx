@@ -32,9 +32,9 @@ export default function Gallery() {
       <div className="mx-auto max-w-[1600px] overflow-hidden rounded-[32px] bg-[var(--surface)] py-14 md:py-20">
         <div className="wrap flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="serif text-[clamp(2rem,3.4vw,3rem)] leading-[1.05]">Work that brings people in.</h2>
+            <h2 className="h-section">Work that brings people in.</h2>
             <p className="mt-3 max-w-[48ch] text-[var(--muted)]">
-              Sites and campaigns for property, lifestyle and local brands.
+              Sites and campaigns from a digital marketing agency in Goa, built for property, lifestyle and local brands.
               <span className="hidden md:inline"> Hover a frame to walk through the site.</span>
             </p>
           </div>

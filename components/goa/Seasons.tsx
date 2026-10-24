@@ -25,8 +25,8 @@ export default function Seasons() {
               Goa runs on seasons. So does our plan.
             </h2>
             <p className="max-w-[46ch] text-[var(--muted)] lg:col-span-5 lg:col-start-8">
-              Most of your year is decided between October and March. We plan all twelve months around
-              it, including the quiet ones.
+              Most of your year is decided between October and March. Our digital marketing agency in
+              Goa plans all twelve months around it, including the quiet ones.
             </p>
           </div>
 

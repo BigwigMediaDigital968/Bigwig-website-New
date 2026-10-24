@@ -24,8 +24,8 @@ export default function Sectors() {
             Built for the way Goa does business.
           </h2>
           <p className="max-w-[46ch] text-[var(--muted)] lg:col-span-5 lg:col-start-8">
-            Stays, kitchens, homes and celebrations each fill up differently. Pick yours and we’ll start
-            the plan from there.
+            As a digital marketing agency in Goa, we know that stays, kitchens, homes and celebrations
+            each fill up differently. Pick yours and we start the plan from there.
           </p>
         </div>
 
