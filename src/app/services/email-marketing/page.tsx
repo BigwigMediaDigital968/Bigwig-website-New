@@ -21,9 +21,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/email-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Email Marketing Services in Delhi | Bigwig Media Digital";
+const title = "Top Email Marketing Services in Delhi to Reach More Customers";
 const description =
-  "Looking for email marketing services in Delhi? We help businesses with email campaigns, automation, segmentation and deliverability. Discuss your goals with our team.";
+  "Connect with the right audience through email marketing services in Delhi. Create engaging campaigns, promote your services and build lasting customer relationships.";
 
 export const metadata: Metadata = {
   title,

@@ -16,9 +16,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/content-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Content Marketing Services in Delhi | Bigwig Media Digital";
+const title = "Best Content Marketing Services in Delhi That Engage & Convert";
 const description =
-  "Grow your business with content marketing services in Delhi, including SEO blogs, website copy, content strategy and social media content.";
+  "Turn your ideas into engaging content. Our content marketing services in Delhi help businesses create useful blogs, website content and marketing materials that connect with their audience.";
 
 export const metadata: Metadata = {
   title,

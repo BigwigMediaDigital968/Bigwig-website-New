@@ -17,9 +17,9 @@ import StaticWorkGallery, {
 
 const PATH = "/services/graphic-designing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Graphic Designing Services in Delhi | Bigwig Media Digital";
+const title = "Best Creative Graphic Designing Services in Delhi for Your Brand";
 const description =
-  "Explore graphic designing services in Delhi for logos, branding, social media creatives and promotional designs, plus professional video editing services.";
+  "Make your brand stand out with creative graphic designing services in Delhi. Get eye-catching visuals for social media, advertisements and business promotions.";
 
 export const metadata: Metadata = {
   title,

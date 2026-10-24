@@ -29,9 +29,9 @@ import Link from "next/link";
 
 const PATH = "/services/website-development-company-in-delhi";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Website Development Company in Delhi | Bigwig Media Digital";
+const title = "Top Website Development Company in Delhi";
 const description =
-  "Need a Website Development Company in Delhi? We build fast, responsive & SEO-friendly websites. Custom | E-Commerce | CMS. Get a Free Quote!";
+  "Need a professional website for your business? Explore website development services in Delhi with responsive design, user-friendly navigation and a layout that suits your brand.";
 
 export const metadata: Metadata = {
   title,

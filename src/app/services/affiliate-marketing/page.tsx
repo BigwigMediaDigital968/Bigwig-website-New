@@ -21,9 +21,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/affiliate-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Affiliate Marketing Services in Delhi | Bigwig Media Digital";
+const title = "Top Affiliate Marketing Services in Delhi to Boost Sales";
 const description =
-  "Looking for affiliate marketing services in Delhi? Bigwig Media Digital helps businesses manage affiliate campaigns, recruit partners, track performance, and grow sales.";
+  "Grow your business through affiliate partnerships. Our affiliate marketing services help you find relevant partners, manage campaigns and track performance.";
 
 export const metadata: Metadata = {
   title,
