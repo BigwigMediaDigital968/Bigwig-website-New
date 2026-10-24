@@ -13,7 +13,7 @@ const WHATSAPP_GREEN = "#25D366";
 /** show "back to top" once the visitor is this far down the page */
 const SHOW_TOP_AFTER = 600;
 /** pages with their own desktop WhatsApp bar (lg+), where the global pill would be a duplicate */
-const OWN_WHATSAPP_BAR = ["/v2/digital-marketing-agency-dubai-uae"];
+const OWN_WHATSAPP_BAR: string[] = [];
 
 /**
  * Site-wide floating actions.

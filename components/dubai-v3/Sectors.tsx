@@ -18,7 +18,7 @@ export default function Sectors() {
       <div className="wrap">
         <SectionHead
           lead="Beyond real estate"
-          title="Not in property? The same lead engine works for you."
+          title="Not in property? The same digital marketing agency in Dubai works for you."
         />
 
         <motion.ul

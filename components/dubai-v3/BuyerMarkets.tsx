@@ -24,9 +24,10 @@ export default function BuyerMarkets() {
             title="Your next buyer probably isn’t in Dubai yet."
           />
           <p className="mt-6 max-w-md text-lg leading-relaxed text-[var(--muted)]">
-            Most international buyers come from a handful of markets. We plan
-            campaigns around them: their platforms, their time zones and the
-            questions they ask before they fly in for a viewing.
+            Most international buyers come from a handful of markets. Our digital
+            marketing agency in Dubai plans campaigns around them: their
+            platforms, their time zones, and the questions they ask before they
+            fly in for a viewing.
           </p>
           <PlanButton source="buyer-markets" className="mt-8">
             Target my buyers
@@ -36,6 +37,7 @@ export default function BuyerMarkets() {
         <figure className="rounded-[28px] bg-[var(--surface)] p-7 ring-1 ring-[var(--line)] md:p-10 lg:col-span-7">
           <figcaption className="text-sm text-[var(--muted)]">
             Share of international property purchases in Dubai, early 2026
+            (source: Khaleej Times)
           </figcaption>
           <ul className="mt-7 space-y-5">
             {buyerMarkets.map((m, i) => (

@@ -19,9 +19,9 @@ import { creatives, granthSite, heroCreatives } from "./content";
 
 // real Google reviews from the site's testimonial data
 const review =
-  testimonials.find((t) => t.name === "Kashvi Chhabra") ?? testimonials[0];
+  testimonials.find((t) => t.name === "Amit Paal Siingh") ?? testimonials[0];
 const review2 =
-  testimonials.find((t) => t.name === "Aparajita Pandey") ?? testimonials[1];
+  testimonials.find((t) => t.name === "Manjot Singh") ?? testimonials[1];
 
 /**
  * Every service we sell, each shown as the thing it produces rather than an icon: a site, a search result, an
@@ -33,7 +33,7 @@ export default function Services() {
       <div className="wrap">
         <SectionHead
           lead="What we do"
-          title="Every channel your buyers use, under one roof."
+          title="One digital marketing agency in Dubai for every channel your buyers use."
           actions={
             <>
               <PlanButton source="services">Plan my marketing</PlanButton>
@@ -70,7 +70,7 @@ export default function Services() {
             className="lg:col-span-5"
             title="Search engine optimisation"
             href="/services/search-engine-optimization"
-            desc="Rank for the searches buyers make before they call an agent."
+            desc="Rank for the searches buyers make before they call an agent, such as off-plan apartments in Dubai Marina."
           >
             <div className="absolute inset-x-6 top-8 space-y-3">
               <SearchCard
@@ -87,7 +87,7 @@ export default function Services() {
             className="lg:col-span-4"
             title="Performance marketing"
             href="/services/performance-marketing"
-            desc="Google, Meta, TikTok and LinkedIn campaigns optimised for cost per qualified lead."
+            desc="Google, Meta, TikTok and LinkedIn campaigns optimised for cost per qualified lead, not clicks."
           >
             <div className="absolute left-1/2 top-8 w-[52%] -translate-x-1/2">
               <PhoneAd

@@ -17,9 +17,9 @@ import { BrowserFrame, LeadToast, PhoneAd, SearchCard } from "./mocks";
 import { heroCreatives, sites } from "./content";
 
 const lines = [
-  "Ads, SEO, websites",
-  "and social media",
-  "that sell Dubai",
+  "The digital marketing",
+  "agency in Dubai",
+  "that sells",
   "property.",
 ];
 
@@ -99,9 +99,10 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-[46ch] text-lg leading-relaxed text-[var(--muted)]"
           >
-            The full-service marketing team behind developers, brokerages and
-            growing UAE businesses, from the first creative to the booked
-            viewing.
+            Bigwig Media Digital is a full-service digital marketing agency in
+            Dubai. Our team runs ads, SEO, websites, and social media for
+            developers, brokerages, and growing UAE businesses, from the first
+            creative to the booked viewing.
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
             <PlanButton source="hero">Get my free growth plan</PlanButton>

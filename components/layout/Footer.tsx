@@ -24,7 +24,7 @@
 //   { name: "Blog", path: "/blogs" },
 //   { name: "FAQ", path: "/faq" },
 //   { name: "Contact", path: "/contact" },
-//   { name: "Services in Dubai", path: "/v3/digital-marketing-agency-dubai-uae" },
+//   { name: "Services in Dubai", path: "/digital-marketing-agency-dubai-uae" },
 //   { name: "Services in Bhopal", path: "/digital-marketing-agency-bhopal" },
 //   { name: "Services in Goa", path: "/v2/digital-marketing-agency-goa" },
 //   // { name: "Services in Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },
@@ -222,6 +222,15 @@ import {
 } from "../ui";
 
 const HEADLINE = "Ready to grow your brand online?";
+const SUBLINE = "Tell us your goals and we’ll come back with a plan built around them.";
+
+// Pages with their own closing banner copy
+const CTA_COPY: Record<string, { headline: string; subline: string }> = {
+  "/digital-marketing-agency-dubai-uae": {
+    headline: "Ready to grow with a digital marketing agency in Dubai?",
+    subline: "Tell us your goals, and we will come back with a plan built around them.",
+  },
+};
 
 // Core company links
 const companyLinks = [
@@ -238,7 +247,7 @@ const branchLinks = [
   { name: "Delhi, HQ", path: "/contact" },
   { name: "Bhopal", path: "/digital-marketing-agency-bhopal" },
   { name: "Goa", path: "/digital-marketing-agency-goa" },
-    { name: "Dubai, UAE", path: "/v3/digital-marketing-agency-dubai-uae" },
+    { name: "Dubai, UAE", path: "/digital-marketing-agency-dubai-uae" },
 
   // { name: "Ahmedabad", path: "/digital-marketing-agency-ahmedabad" },
 ];
@@ -296,6 +305,9 @@ export default function Footer() {
   const pathname = usePathname();
   const { whatsapp } = contactFor(pathname);
   if (isLanding(pathname)) return null;
+  const custom = CTA_COPY[pathname];
+  const headline = custom?.headline ?? HEADLINE;
+  const subline = custom?.subline ?? SUBLINE;
 
   return (
     <footer className="mt-24 px-2 md:mt-32 md:px-3">
@@ -308,9 +320,13 @@ export default function Footer() {
             className="grid gap-10 border-b border-white/10 py-16 md:py-24 lg:grid-cols-12 lg:items-end"
           >
             <div className="lg:col-span-8">
-              <p className="text-[2.6rem] font-semibold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-[5.5rem]">
-                <span className="sr-only">{HEADLINE}</span>
-                {HEADLINE.split(" ").map((word, i) => (
+              <p
+                className={`font-semibold leading-[0.98] tracking-[-0.04em] ${
+                  custom ? "text-4xl sm:text-5xl lg:text-[4.25rem]" : "text-[2.6rem] sm:text-6xl lg:text-[5.5rem]"
+                }`}
+              >
+                <span className="sr-only">{headline}</span>
+                {headline.split(" ").map((word, i) => (
                   <span key={i} aria-hidden className="-mb-[0.14em] inline-block overflow-hidden pb-[0.14em] align-top">
                     <motion.span variants={maskUp} className="inline-block">
                       {word}&nbsp;
@@ -319,7 +335,7 @@ export default function Footer() {
                 ))}
               </p>
               <motion.p variants={fadeUp} className="mt-5 max-w-xl text-lg text-white/65">
-                Tell us your goals and we’ll come back with a plan built around them.
+                {subline}
               </motion.p>
             </div>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">

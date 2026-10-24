@@ -1,22 +1,29 @@
 import type { Metadata } from "next";
-import DubaiApproach from "../../../components/dubai/DubaiApproach";
-import DubaiHero from "../../../components/dubai/DubaiHero";
-import DubaiIndustries from "../../../components/dubai/DubaiIndustries";
-import DubaiIntro from "../../../components/dubai/DubaiIntro";
-import DubaiLocation from "../../../components/dubai/DubaiLocation";
-import DubaiServices from "../../../components/dubai/DubaiServices";
-import ClientStrip from "../../../components/ui/ClientStrip";
-import { dubaiClients } from "@/data/clients";
+import BuyerMarkets from "../../../components/dubai-v3/BuyerMarkets";
+import Faq from "../../../components/dubai-v3/Faq";
+import FirstMonth from "../../../components/dubai-v3/FirstMonth";
+import Hero from "../../../components/dubai-v3/Hero";
+import OwnLeads from "../../../components/dubai-v3/OwnLeads";
+import PlanBar from "../../../components/dubai-v3/PlanBar";
+import PlanSection from "../../../components/dubai-v3/PlanSection";
+import { PlannerProvider } from "../../../components/dubai-v3/Planner";
+import Playbooks from "../../../components/dubai-v3/Playbooks";
+import Reviews from "../../../components/dubai-v3/Reviews";
+import Sectors from "../../../components/dubai-v3/Sectors";
+import Services from "../../../components/dubai-v3/Services";
+import Work from "../../../components/dubai-v3/Work";
 
-const title = "Digital Marketing Agency in Dubai UAE | Bigwig Media Digital";
+// A light, single-goal lead page: every section leads to the growth-plan planner.
+const title =
+  "Digital Marketing Agency in Dubai | Bigwig Media Digital";
 const description =
-  "Bigwig Media Digital, a Digital Marketing Agency in Dubai UAE. SEO, SMM, PPC & Web Development to grow your business in UAE. Contact Us!";
+  "Drive more leads with a digital marketing agency in Dubai. Improve brand visibility through SEO, paid advertising, and social media strategies.";
 const url = "https://www.bigwigmediadigital.com/digital-marketing-agency-dubai-uae";
 
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: url },
+  alternates: { canonical: url, languages: { "en-ae": url } },
   openGraph: {
     title,
     description,
@@ -34,16 +41,31 @@ export const metadata: Metadata = {
 
 export default function DubaiPage() {
   return (
-    <main>
-      <DubaiHero />
-      <ClientStrip clients={dubaiClients} />
-      <DubaiIntro />
-      {/* again right under "why we're trusted" so the logos read as proof; the margin matches the panels' side gutter */}
-      <ClientStrip clients={dubaiClients} className="mb-2 md:mb-3" />
-      <DubaiServices />
-      <DubaiApproach />
-      <DubaiIndustries />
-      <DubaiLocation />
-    </main>
+    <PlannerProvider>
+      <main>
+        <Hero />
+        <PlanSection
+          id="plan"
+          sectionId="plan"
+          title="Get a growth plan built for your business."
+        />
+        <Services />
+        <Work />
+        <OwnLeads />
+        <Playbooks />
+        <BuyerMarkets />
+        <Sectors />
+        <FirstMonth />
+        <Reviews />
+        <Faq />
+        <PlanSection
+          id="final"
+          sectionId="contact"
+          title="Ready when you are."
+          className="pb-3 md:pb-4"
+        />
+      </main>
+      <PlanBar />
+    </PlannerProvider>
   );
 }

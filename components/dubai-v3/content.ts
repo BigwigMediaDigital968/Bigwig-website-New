@@ -256,7 +256,7 @@ export const playbooks: Playbook[] = [
     id: "off-plan",
     tab: "Off-plan launches",
     title: "Sell out the launch before the hoarding goes up.",
-    desc: "A launch plan that builds a waitlist, fills the launch event and keeps enquiries coming through construction.",
+    desc: "A launch plan that builds a waitlist, fills the launch event, and keeps enquiries coming through construction. As a digital marketing agency in Dubai focused on property, we start from the sale, not the channel.",
     points: [
       "Project page with payment plan, floor plans and brochure download",
       "Campaigns in the buyer markets that matter for your project",
@@ -270,13 +270,13 @@ export const playbooks: Playbook[] = [
   {
     id: "brokerage",
     tab: "Brokerages",
-    title: "Your own buyers, not the portal’s.",
-    desc: "Lead campaigns and search rankings that send buyers and sellers straight to your agents.",
+    title: "Be the agent buyers find first.",
+    desc: "Our digital marketing agency in Dubai pairs local search, paid campaigns and quick replies to win valuation requests and keep your listings pipeline full.",
     points: [
-      "Listing and area pages that rank for searches like “apartments in Dubai Marina”",
-      "Seller and buyer lead campaigns on Google and Meta",
-      "Agent personal brands on Instagram, TikTok and LinkedIn",
-      "Google Business Profile and review growth",
+      "Local SEO for the community and project searches buyers make",
+      "Seller campaigns that bring in valuation requests",
+      "Buyer campaigns matched to each market and platform",
+      "Every enquiry routed to the right agent on WhatsApp",
     ],
     cta: "Grow my brokerage",
     img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80",
@@ -285,13 +285,13 @@ export const playbooks: Playbook[] = [
   {
     id: "developer",
     tab: "Developer brands",
-    title: "A name buyers trust before they see the price.",
-    desc: "Brand, content and search that make every future launch easier to sell.",
+    title: "Build demand across every project.",
+    desc: "One brand, many launches. Our digital marketing agency in Dubai keeps your name working between projects so each new release starts with an audience.",
     points: [
-      "Brand website that showcases every project in one place",
-      "Long-term SEO and content for investor searches",
-      "Video, photography and social content between launches",
-      "Reputation management across Google and social",
+      "A brand site that presents every project in one place",
+      "Search and social campaigns that run between launches",
+      "Video and creative systems you can reuse for each release",
+      "Investor and buyer newsletters that keep enquiries warm",
     ],
     cta: "Build my brand",
     img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1400&q=80",
@@ -330,7 +330,7 @@ export const sectors = [
   {
     id: "other",
     name: "Something else?",
-    desc: "Tell us what you sell and we’ll plan it.",
+    desc: "Tell us what you sell, and we’ll plan it.",
   },
 ];
 
@@ -340,22 +340,22 @@ export const firstMonth = [
   {
     when: "Day 1",
     title: "Strategy call",
-    desc: "We learn your projects, buyers, budget and what has and hasn’t worked.",
+    desc: "We learn about your projects, buyers, budget, and what has and hasn’t worked.",
   },
   {
     when: "Week 1",
     title: "Audit and plan",
-    desc: "Competitor, keyword and audience research turned into a written plan.",
+    desc: "Competitor, keyword, and audience research turned into a written plan.",
   },
   {
     when: "Week 2",
     title: "Launch",
-    desc: "Pages, tracking and campaigns go live, with WhatsApp lead alerts set up.",
+    desc: "Pages, tracking, and campaigns go live, with WhatsApp lead alerts set up.",
   },
   {
     when: "Day 30",
     title: "First report",
-    desc: "Leads, cost per lead and what we’ll change next month, in plain numbers.",
+    desc: "Leads, cost per lead, and what we’ll change next month, in plain numbers.",
   },
 ];
 
@@ -363,29 +363,29 @@ export const firstMonth = [
 
 export const faqs = [
   {
-    q: "How much does digital marketing cost in Dubai?",
-    a: "It depends on how many channels you need and how much you want to spend on ads. Most plans combine a monthly management fee with an ad budget paid directly to Google or Meta. Tell us your budget in the planner and we’ll build the plan around it.",
+    q: "How much does a digital marketing agency in Dubai cost?",
+    a: "It depends on how many channels you need and how much you spend on ads. Dubai agencies commonly charge a monthly retainer of roughly $2,000 to $12,000 or more, and many price paid media management at 10 to 20 percent of ad spend. The ad budget itself is paid directly to Google or Meta. Tell us your budget in the planner and our digital marketing agency in Dubai will build the plan around it.",
   },
   {
-    q: "How soon will we start getting leads?",
+    q: "How soon will a digital marketing agency in Dubai get us leads?",
     a: "Paid campaigns usually start bringing in enquiries within the first weeks after launch. SEO takes longer, typically three to six months to build strong rankings, but those leads keep coming without paying per click.",
   },
   {
-    q: "Can you reach buyers outside the UAE?",
-    a: "Yes. We plan campaigns by buyer market, so targeting, creative and timing match where your buyers actually live, whether that’s India, the UK, Europe or the GCC.",
+    q: "Can your digital marketing agency in Dubai reach buyers outside the UAE?",
+    a: "Yes. We plan campaigns by buyer market, so targeting, creative, and timing match where your buyers actually live, whether that is India, the UK, Europe, or the GCC.",
   },
   {
     q: "Do you only work with real estate?",
-    a: "Property is our main focus in Dubai, but we run the same lead-focused approach for hospitality, clinics, retail, education and professional services.",
+    a: "Property is our main focus as a digital marketing agency in Dubai, but we run the same lead-focused approach for hospitality, clinics, retail, education and professional services.",
   },
   {
     q: "How do leads reach our team?",
-    a: "We can send every enquiry to WhatsApp, email or your CRM the moment it arrives, so your team can reply while the buyer is still interested.",
+    a: "Our digital marketing agency in Dubai can send every enquiry to WhatsApp, email or your CRM the moment it arrives, so your team can reply while the buyer is still interested.",
   },
 ];
 
 /** Real Google reviews from the site's testimonial data, picked for lead generation, web and SEO results. */
-const PICK = ["Manjot Singh", "Chetan Pandey", "Kashvi Chhabra"];
+const PICK = ["Manjot Singh", "Amit Paal Siingh"];
 export const reviews = PICK.map((n) =>
   testimonials.find((t) => t.name === n),
 ).filter((t): t is (typeof testimonials)[number] => Boolean(t));

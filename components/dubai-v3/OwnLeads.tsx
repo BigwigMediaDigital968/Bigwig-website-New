@@ -28,7 +28,8 @@ export default function OwnLeads() {
           className="mt-14 w-full border-collapse text-left md:mt-16"
         >
           <caption className="sr-only">
-            Portal-only enquiries compared with your own lead engine
+            Portal-only enquiries compared with a lead engine built by a
+            digital marketing agency in Dubai
           </caption>
           <thead className="hidden md:table-header-group">
             <tr className="text-sm text-[var(--muted)]">

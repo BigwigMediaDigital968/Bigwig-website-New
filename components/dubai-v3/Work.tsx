@@ -21,7 +21,7 @@ export default function Work() {
         <div className="wrap">
           <SectionHead
             lead="Selected work"
-            title="Real websites and creative from our studio."
+            title="Real websites and creative from a digital marketing agency in Dubai."
             actions={<PlanButton source="work">Get work like this</PlanButton>}
           />
 

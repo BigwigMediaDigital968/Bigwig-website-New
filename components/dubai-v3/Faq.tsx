@@ -17,7 +17,7 @@ export default function Faq() {
           <SectionHead lead="Questions" title="Before you ask." />
           <div className="mt-8 rounded-[24px] bg-[var(--surface)] p-7 ring-1 ring-[var(--line)]">
             <p className="text-xl font-semibold tracking-tight">
-              Still deciding?
+              Still deciding on a digital marketing agency in Dubai?
             </p>
             <p className="mt-1.5 text-sm leading-relaxed text-[var(--muted)]">
               The plan is free, and you’ll get real numbers for your business,

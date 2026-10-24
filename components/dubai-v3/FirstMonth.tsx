@@ -12,7 +12,7 @@ export default function FirstMonth() {
         <div className="wrap">
           <SectionHead
             lead="After you send your plan"
-            title="Your first 30 days with us."
+            title="Your first 30 days with a digital marketing agency in Dubai."
           />
 
           <motion.ol

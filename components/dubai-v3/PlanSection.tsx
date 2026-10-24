@@ -56,8 +56,8 @@ export default function PlanSection({
               variants={fadeUp}
               className="mt-5 max-w-md text-lg leading-relaxed text-[var(--muted)]"
             >
-              Four quick questions, about two minutes. Our Dubai team sends
-              back:
+              Four quick questions, about two minutes. Our digital marketing
+              agency in Dubai sends back:
             </motion.p>
             <motion.ul variants={fadeUp} className="mt-6 space-y-3.5">
               {youGet.map((t) => (
