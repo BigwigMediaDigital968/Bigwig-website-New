@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import heroImg from "../../../../Assets/Services hero/affiliate_marketing.jpg";
-import introImg from "../../../../Assets/services/12.jpg";
+import introImg from "../../../../Assets/services/affiliate.png";
 import ServiceHero from "../../../../components/service/ServiceHero";
 import {
   OtherServices,
@@ -23,7 +23,7 @@ const PATH = "/services/affiliate-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
 const title = "Affiliate Marketing Services in Delhi | Bigwig Media Digital";
 const description =
-  "Performance-based Affiliate Marketing Services in Delhi. Build affiliate networks that drive consistent sales & revenue. Start Growing Today!";
+  "Looking for affiliate marketing services in Delhi? Bigwig Media Digital helps businesses manage affiliate campaigns, recruit partners, track performance, and grow sales.";
 
 export const metadata: Metadata = {
   title,
@@ -47,180 +47,180 @@ export const metadata: Metadata = {
 // Photos from Unsplash (images.unsplash.com is allowed in next.config)
 
 const approach = [
-  "Build strong affiliate relationships",
-  "Bring qualified traffic",
-  "Convert leads into measurable revenue",
-  "Optimize campaigns continuously",
+  "Find affiliate partners relevant to your target audience.",
+  "Set clear campaign goals and commission terms.",
+  "Track agreed actions, such as leads or sales.",
+  "Review performance and improve campaigns over time.",
 ];
 
 const whyChoose: ServiceItem[] = [
   {
-    title: "Industry Expertise & Trusted Affiliate Network",
-    desc: "We work with a strong network of high-quality publishers, influencers, and performance marketers across India. This ensures your brand is promoted through trusted, relevant, and result-oriented channels, making us a preferred affiliate marketing agency in Delhi for high-growth brands.",
+    title: "Relevant Affiliate Partner Selection",
+    desc: "The right partners can help your brand reach people who are more likely to be interested in your products or services. We help identify suitable affiliate opportunities based on your industry, audience, campaign goals, and programme requirements.",
     image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Two business partners shaking hands",
+    imageAlt: "Marketing team planning affiliate partnerships",
   },
   {
-    title: "Complete End-to-End Affiliate Management",
-    desc: "From strategy creation to onboarding affiliates, tracking performance, managing payouts, and optimizing results, our affiliate marketing company in Delhi handles everything so you can focus on scaling your business.",
+    title: "Affiliate Programme Management",
+    desc: "An affiliate programme needs clear goals, partner communication, campaign rules, and regular monitoring. We help manage the relevant programme activities so your team can focus on other areas of your business.",
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Team planning a campaign at a whiteboard",
   },
   {
-    title: "Data-Driven Performance Optimization",
-    desc: "We use advanced affiliate tracking tools and analytics to identify top-performing partners, eliminate low-quality traffic, and maximize ROI. Our data-driven approach ensures you get the most from your affiliate marketing services in Delhi.",
+    title: "Performance Tracking and Reporting",
+    desc: "Tracking helps businesses understand how affiliate campaigns perform. Depending on your setup, reporting can include clicks, leads, sales, conversion rates, and partner-level results.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Analytics dashboard on a laptop screen",
+    imageAlt: "Affiliate campaign performance analytics",
   },
   {
-    title: "Transparent, Performance-Based Growth",
-    desc: "With affiliate marketing, you only pay for actual results: clicks, leads, or sales. This makes our affiliate marketing in Delhi extremely cost-effective and risk-free.",
+    title: "Clear Commission Structures",
+    desc: "Commission terms should be clear to both businesses and affiliate partners. We help plan commission structures around your campaign goals, product margins, and agreed conversion actions.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Customer paying by phone at a shop counter",
+    imageAlt: "Affiliate commission planning and reporting",
   },
 ];
 
 const services: ServiceItem[] = [
   {
-    title: "Campaign Planning & Strategy Development",
-    desc: "We design customized affiliate strategies based on your industry, goals, and customer behavior. Each campaign is tailored to bring high-quality traffic and maximize conversions.",
+    title: "Affiliate Campaign Planning and Strategy",
+    desc: "We help define your campaign goals, target audience, suitable commission model, and key performance indicators. This creates a clear starting point for your affiliate programme.",
   },
   {
-    title: "Affiliate Recruitment & Partner Selection",
-    desc: "Our affiliate marketing agency in Delhi connects you with vetted affiliates who align with your brand’s audience. We carefully onboard partners who can bring real business value.",
+    title: "Affiliate Recruitment and Partner Selection",
+    desc: "We help identify potential affiliate partners whose content, audience, and promotional methods fit your brand. Partner selection should consider relevance, quality, and alignment with your programme rules.",
   },
   {
-    title: "Affiliate Training & Support",
-    desc: "We provide marketing materials, creatives, guidelines, and continuous support to affiliates. This ensures they can promote your brand effectively.",
+    title: "Affiliate Training and Support",
+    desc: "Affiliate partners need clear information about your products, brand guidelines, approved promotional methods, and campaign terms. We help prepare relevant materials and support communication where included in the agreed scope.",
   },
   {
-    title: "Tracking, Analytics & Compliance Management",
-    desc: "Our advanced tracking systems monitor clicks, leads, sales, conversions, and ROI. We also implement fraud-prevention measures to protect your brand.",
+    title: "Affiliate Tracking, Analytics and Compliance",
+    desc: "Tracking helps connect affiliate activity with agreed actions, such as leads or sales. We help review available campaign data, identify performance patterns, and support compliance with programme rules.",
   },
   {
-    title: "Commission Structuring & Payout Management",
-    desc: "We create fair, motivating commission models that drive high performance, and manage payments smoothly to keep affiliates engaged and productive.",
+    title: "Commission Planning and Payout Coordination",
+    desc: "We help plan commission terms based on campaign objectives, product margins, and approved actions. Payment schedules, validation rules, and payout responsibilities should be agreed upon before the programme launches.",
   },
 ];
 
 const howItWorks: ServiceStep[] = [
   {
-    title: "Understanding Your Business Goals",
-    desc: "We analyze your industry, competitors, target audience, and business objectives to build a strong affiliate marketing blueprint.",
+    title: "Understand Your Business Goals",
+    desc: "We review your products or services, target customers, business goals, and campaign requirements to establish a suitable affiliate marketing plan.",
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Strategy meeting around a conference table",
   },
   {
-    title: "Identifying High-Value Affiliates",
-    desc: "Our affiliate marketing company in Delhi connects you with niche-specific affiliates who can bring qualified traffic and genuine conversions.",
+    title: "Identify Suitable Affiliate Partners",
+    desc: "We look for potential partners whose audience, content, and promotional methods align with your brand and campaign objectives.",
     image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Social media apps on a phone screen",
   },
   {
-    title: "Creating Campaign Assets",
+    title: "Set Up Campaigns and Promotional Materials",
     desc: (
       <>
-        Banners, landing pages, coupon codes, and creatives for every promotion, with high-converting landing pages
-        built by our{" "}
+        We help organise campaign terms, approved promotional materials, tracking requirements, and relevant landing
+        pages.{" "}
         <Link href="/services/website-development-company-in-delhi" className={inlineLink}>
-          Website Development
+          Website development
         </Link>{" "}
-        team so affiliate traffic turns into real leads and sales.
+        work, if needed, should be agreed upon separately or included in the confirmed project scope.
       </>
     ),
     image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Sale banner with 50% off and gift boxes",
   },
   {
-    title: "Continuous Optimization",
-    desc: "We measure every affiliate’s performance and optimize partnerships, creatives, and promotions for maximum profitability.",
+    title: "Track Campaign Performance",
+    desc: "We review available campaign data to understand clicks, leads, sales, conversions, and partner activity, depending on the tracking setup.",
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Team discussing results around laptops",
+    imageAlt: "Team reviewing affiliate campaign results",
   },
   {
-    title: "ROI Reporting & Insights",
-    desc: "Transparent reports on sales, conversions, revenue generated, top affiliates, and campaign improvements.",
+    title: "Review Results and Improve Campaigns",
+    desc: "We use performance reports to identify opportunities to improve partner selection, promotional materials, campaign terms, or conversion paths.",
     image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Rising growth chart on paper",
   },
 ];
 
 const industries = [
-  "E-commerce & Retail",
-  "Education & EdTech",
-  "Healthcare & Wellness",
-  "Finance & Insurance",
+  "Ecommerce and Retail",
+  "Education and EdTech",
+  "Healthcare and Wellness",
+  "Finance and Insurance",
   "Real Estate",
   "Automobile",
-  "SaaS & Tech Companies",
-  "Travel & Hospitality",
-  "Lifestyle & Fashion",
+  "SaaS and Technology",
+  "Travel and Hospitality",
+  "Lifestyle and Fashion",
   "B2B Services",
 ];
 
 const preferred = [
   {
-    title: "Proven Track Record",
-    desc: "We have helped brands across India achieve high-performance affiliate results with consistent ROI improvements.",
+    title: "A Structured Campaign Approach",
+    desc: "We focus on campaign planning, partner relevance, clear programme terms, and performance reviews to help businesses manage affiliate marketing more effectively.",
   },
   {
-    title: "Expert Affiliate Managers",
-    desc: "Our team deeply understands affiliate strategies, tools, and partner psychology, making us a top affiliate marketing company in Delhi.",
+    title: "Support Across Campaign Activities",
+    desc: "From campaign planning to partner communication and performance reviews, we help coordinate relevant affiliate marketing activities based on the agreed scope of work.",
   },
   {
-    title: "Strong Communication & Collaboration",
-    desc: "We work closely with your internal team and affiliates to ensure marketing goals are met with precision.",
+    title: "Communication and Collaboration",
+    desc: "Affiliate programmes often involve business teams and external partners. Clear communication helps keep campaign goals, promotional guidelines, and performance expectations aligned.",
   },
 ];
 
 const faqs: ServiceFaqItem[] = [
   {
-    q: "What are the advantages of affiliate marketing?",
-    a: "Affiliate marketing brings higher traffic, increased brand visibility, better conversions, cost-effective growth, and performance-based sales. Our affiliate marketing services in Delhi ensure you pay only for real results.",
+    q: "How Much Do Affiliate Marketing Services Cost in India?",
+    a: "The cost of affiliate marketing services depends on your campaign goals, programme size, partner recruitment needs, tracking requirements, and management scope. Some programmes use a management fee, while others combine service fees with affiliate commissions. Contact our team to discuss the requirements and costs for your business.",
   },
   {
-    q: "Is affiliate marketing expensive?",
-    a: "No. Affiliate marketing is one of the most budget-friendly digital marketing methods because you pay only when affiliates deliver real sales or leads. This makes affiliate marketing in Delhi highly profitable for businesses of all sizes.",
+    q: "How Do I Start My Own Affiliate Program?",
+    a: "Start by defining your business goals, choosing the products or services to promote, and deciding how affiliate partners will be rewarded. Next, set programme rules, select a tracking method, recruit suitable partners, and review campaign results. An affiliate marketing agency can help coordinate these activities.",
   },
   {
-    q: "How do you ensure high-quality affiliates?",
-    a: "We vet affiliates based on niche relevance, traffic quality, content authenticity, and performance history. As a trusted affiliate marketing agency in Delhi, we match you only with affiliates who can drive genuine, high-converting traffic.",
+    q: "How Can I Find Affiliates to Sell My Products?",
+    a: "You can find potential affiliates through relevant websites, publishers, content creators, industry communities, and affiliate networks. Look for partners whose audience and content fit your products. Review their promotional methods and audience relevance before inviting them to join your programme.",
   },
   {
-    q: "How do you track affiliate performance?",
-    a: "We use industry-grade tracking tools to monitor clicks, conversions, attribution, payouts, and fraud detection. Our affiliate marketing company in Delhi provides real-time dashboards and transparent insights.",
+    q: "How Does Affiliate Tracking Work?",
+    a: "Affiliate tracking connects partner activity with actions such as sales or leads. Depending on the setup, tracking may use unique affiliate links, promotional codes, or other attribution methods. Businesses can use the resulting data to review partner performance and calculate eligible commissions under the agreed programme rules.",
   },
   {
-    q: "How do I find affiliates for my business?",
-    a: "We recruit affiliates from our verified network, niche publishers, influencers, bloggers, and ad partners. Our affiliate marketing services in Delhi include complete affiliate onboarding and management.",
+    q: "What Are CPA, CPL, and CPS in Affiliate Marketing?",
+    a: "CPA stands for Cost Per Action, CPL stands for Cost Per Lead, and CPS stands for Cost Per Sale. CPA rewards a defined action, CPL focuses on generating leads, and CPS is based on completed sales. The appropriate model depends on your business goals and programme terms.",
   },
   {
-    q: "What industries do you specialize in?",
-    a: "We offer affiliate marketing in Delhi for e-commerce, finance, health, education, real estate, SaaS, lifestyle, B2B, travel, and more. Each industry receives a tailored affiliate strategy.",
+    q: "What Is a Good Commission Rate for Affiliates?",
+    a: "A suitable commission rate depends on your product margins, selling price, customer value, industry, and campaign goals. The rate should give partners a reason to promote your business while keeping the programme financially sustainable. Review performance and profitability before changing commission terms.",
   },
   {
-    q: "What is an affiliate network?",
-    a: "An affiliate network is a platform that connects businesses with affiliates, manages tracking, payouts, and campaign performance. Many brands prefer working through an affiliate marketing agency in Delhi to manage these networks efficiently.",
+    q: "How Can a Business Prevent Affiliate Marketing Fraud?",
+    a: "Businesses can reduce fraud risks by screening partners, setting clear programme rules, reviewing unusual traffic or conversion patterns, and validating actions before approving commissions. Tracking and regular monitoring can help identify suspicious activity, although no system can guarantee complete fraud prevention.",
   },
   {
-    q: "How do I become an affiliate marketer?",
-    a: "You join affiliate programs, promote products using your links, and earn commissions for each successful sale or lead. We also help individuals and creators join programs through our affiliate marketing company in Delhi.",
+    q: "Is Affiliate Marketing Worth It for Businesses in India?",
+    a: "Affiliate marketing can be useful for businesses that want to reach relevant audiences and generate sales or leads through partners. Its suitability depends on product demand, profit margins, commission costs, partner quality, and conversion rates. Businesses should measure profitability and campaign performance rather than relying only on traffic.",
   },
   {
-    q: "How much can I earn through affiliate marketing?",
-    a: "Earnings depend on your niche, traffic, content quality, audience trust, and commission structure. High-performing affiliates partnering through our affiliate marketing services in Delhi can earn consistently.",
+    q: "How Do You Choose the Right Affiliates for a Brand?",
+    a: "Choose affiliates whose audience, content, and promotional methods match your business. Consider audience relevance, content quality, brand fit, and the partner's ability to reach potential customers. Clear promotional guidelines and regular performance reviews can help maintain a suitable affiliate programme.",
   },
   {
-    q: "Is affiliate marketing safe?",
-    a: "Yes. With proper tracking, fraud detection, and compliance measures, affiliate marketing is secure. Our affiliate marketing agency in Delhi ensures your campaigns follow ethical practices and brand safety rules.",
+    q: "How Do You Measure Affiliate Marketing Campaign Performance?",
+    a: "Campaign performance can be measured through relevant metrics such as clicks, leads, sales, conversion rate, commission costs, and revenue attributed to affiliates. The right metrics depend on your campaign goals. Reviewing these measures helps businesses understand which partners and activities are contributing to results.",
   },
   {
-    q: "Can affiliate marketing work for any business?",
-    a: "Yes. Whether you’re small, mid-sized, or enterprise-level, affiliate marketing can scale your traffic and revenue. Our affiliate marketing company in Delhi customizes strategies for every business model.",
+    q: "What Is the Difference Between Affiliate Marketing and Influencer Marketing?",
+    a: "Affiliate marketing usually rewards partners for agreed actions, such as sales or leads. Influencer marketing often involves paying creators to produce content or promote a brand, although payment can also depend on performance. Both approaches can overlap, and the right option depends on your campaign goals and audience.",
   },
   {
-    q: "What are the best practices for successful affiliate marketing?",
-    a: "Use quality affiliates, strong creatives, optimized landing pages, transparent communication, and continuous performance tracking. Our affiliate marketing services in Delhi implement all best practices to ensure maximum ROI.",
+    q: "Is Affiliate Marketing Suitable for Small Businesses and Ecommerce Brands?",
+    a: "Affiliate marketing may suit small businesses and ecommerce brands when their products have demand, their margins support commissions, and suitable partners can reach relevant customers. Start with clear goals and manageable programme terms, then review the results before expanding.",
   },
 ];
 
@@ -240,13 +240,21 @@ export default function AffiliateMarketingPage() {
         lead="Affiliate marketing"
         title="Affiliate Marketing Services in Delhi"
         intro={
-          <p>
-            <span className="text-white">A performance-driven way to scale your business.</span> Our affiliate
-            marketing services in Delhi help you grow faster, reduce marketing risk, and drive high-intent sales through
-            trusted partners, and you only pay for real results.
-          </p>
+          <div className="space-y-4">
+            <p>
+              <span className="text-white">
+                Grow your business with affiliate marketing services in Delhi from Bigwig Media Digital.
+              </span>{" "}
+              We help businesses plan affiliate campaigns, find relevant partners, track campaign performance, and
+              improve sales opportunities.
+            </p>
+            <p>
+              Our approach focuses on the right partners, clear commission structures, useful reporting, and continuous
+              campaign improvement.
+            </p>
+          </div>
         }
-        cta="Get started today"
+        cta="Get Started Today"
         whatsappMessage="Hi BigWig Media Digital! I'm interested in your Affiliate Marketing services and would like to discuss more."
         formSource="affiliate-hero"
         formServices={["Affiliate Marketing"]}
@@ -254,21 +262,25 @@ export default function AffiliateMarketingPage() {
 
       <ServiceIntro
         lead="Affiliate marketing company in Delhi"
-        title="Leading Affiliate Marketing Company in Delhi to Scale Your Brand Sustainably"
+        title="Affiliate Marketing Company in Delhi for Business Growth"
         image={introImg}
-        imageAlt="Best Affiliate Marketing Company in Delhi"
+        imageAlt="Affiliate Marketing Company in Delhi for Business Growth"
         body={
           <>
             <p>
-              Affiliate marketing is one of the most cost-effective growth channels, but only with proper strategy,
-              vetted affiliates, and performance monitoring. It also depends on a fast, conversion-optimized website,
-              which is why our affiliate strategies are backed by professional{" "}
-              <Link href="/services/website-development-company-in-delhi" className={inlineLink}>
-                Website Development Services
-              </Link>
-              . We help brands build profitable affiliate ecosystems, minimize fraud, and maximize genuine conversions.
+              Affiliate marketing helps businesses promote their products or services through partners who may earn a
+              commission for agreed results, such as sales or qualified leads.
             </p>
-            <p className="text-[var(--ink)]">Our approach is simple:</p>
+            <p>
+              At Bigwig Media Digital, we help businesses plan and manage affiliate campaigns based on their goals,
+              target audience, products, and budget. Our work can include affiliate partner selection, campaign setup,
+              commission planning, performance tracking, and reporting.
+            </p>
+            <p>
+              We focus on building an affiliate programme that fits your business rather than using the same strategy
+              for every brand.
+            </p>
+            <p className="text-[var(--ink)]">Our approach focuses on four key areas:</p>
             <ul className="grid gap-3 sm:grid-cols-2">
               {approach.map((a) => (
                 <li key={a} className="flex gap-3">
@@ -278,8 +290,8 @@ export default function AffiliateMarketingPage() {
               ))}
             </ul>
             <p>
-              Whether you’re a startup, e-commerce store, SaaS platform, educational brand, or enterprise, your growth
-              becomes predictable with our structured affiliate marketing services in Delhi.
+              Whether you run an ecommerce store, a SaaS business, an educational platform, or another type of business,
+              we can help you explore an affiliate marketing strategy that fits your needs.
             </p>
           </>
         }
@@ -290,7 +302,7 @@ export default function AffiliateMarketingPage() {
         lead="Why Bigwig"
         title="Why Choose Our Affiliate Marketing Agency in Delhi?"
         items={whyChoose}
-        cta="Get started today"
+        cta="Get Started Today"
         source="affiliate-why-us"
       />
 
@@ -298,45 +310,62 @@ export default function AffiliateMarketingPage() {
         id="affiliate-services"
         lead="What we offer"
         title="Our Affiliate Marketing Services in Delhi"
-        intro="Complete affiliate marketing solutions that scale conversions, strengthen partnerships, and maximize ROI, with every part of your affiliate ecosystem, from planning to payouts, professionally managed."
+        intro="We help businesses plan, launch, and manage affiliate marketing campaigns according to their goals. Our services can cover partner recruitment, campaign management, tracking, commission planning, and performance reviews."
         items={services}
-        cta="Plan your affiliate program"
+        cta="Plan Your Affiliate Program"
         source="affiliate-services"
         promo={{
           image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1000&q=80",
           alt: "Young plant growing from a pile of coins",
-          text: "Pay only for real results: clicks, leads, or sales.",
+          text: "Build a clearer affiliate programme with suitable partners, agreed commission terms, and performance reporting that supports better decisions.",
         }}
       />
 
       <ServiceSteps
         id="affiliate-process"
-        heading="How Our Affiliate Marketing in Delhi Works"
-        lead="A step-by-step process for qualified traffic, consistent conversions, and measurable ROI."
-        rest="Here’s how we build performance-driven affiliate systems that scale smoothly and profitably."
+        heading="How Our Affiliate Marketing Process Works"
+        lead="Every business has different goals."
+        rest="Our process starts with understanding your requirements and then focuses on suitable partners, clear campaign setup, tracking, and performance reviews."
         steps={howItWorks}
       />
 
       <ServicePair
-        cta="Get started today"
+        cta="Get Started Today"
         source="affiliate-benefits"
         panels={[
           {
             title: "Benefits of Hiring an Affiliate Marketing Company in Delhi",
+            intro: "Affiliate marketing can support business growth when the programme is planned and managed carefully.",
             image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
             imageAlt: "Two colleagues celebrating with a high five at their desk",
             items: [
-              "Increased sales & revenue through targeted partner promotions",
-              "Higher brand visibility with strategic affiliate placements",
-              "Expanded audience reach across Delhi & NCR",
-              "Cost-effective marketing with performance-based payouts",
-              "Strong brand credibility from established affiliate endorsements",
-              "Boosted website traffic from high-intent visitors",
-              "Better conversions with targeted affiliate audiences",
-              "Low-risk, high-reward growth model",
+              {
+                title: "Reach Relevant Audiences",
+                desc: "Work with partners whose audiences match your target customers.",
+              },
+              {
+                title: "Support Sales and Lead Generation",
+                desc: "Use affiliate campaigns to promote products or services and encourage agreed customer actions.",
+              },
+              {
+                title: "Expand Your Partner Network",
+                desc: "Build relationships with publishers, content creators, and other suitable promotional partners.",
+              },
+              {
+                title: "Measure Campaign Performance",
+                desc: "Review clicks, leads, sales, commissions, and other relevant metrics.",
+              },
+              {
+                title: "Plan Marketing Costs",
+                desc: "Choose commission terms that fit your business model and campaign goals.",
+              },
+              {
+                title: "Improve Campaign Decisions",
+                desc: "Use performance data to identify stronger partners and areas that need improvement.",
+              },
             ],
             outro:
-              "These advantages are why many brands trust an expert affiliate marketing agency in Delhi instead of running campaigns manually.",
+              "Affiliate marketing outcomes depend on factors such as product demand, partner quality, commission structure, tracking, and website conversion performance.",
           },
           {
             title: "Key Features of Our Affiliate Marketing Services in Delhi",
@@ -344,16 +373,16 @@ export default function AffiliateMarketingPage() {
             imageAlt: "Two women reviewing data on laptops in a server room",
             items: [
               {
-                title: "Data & insights for smarter decisions",
-                desc: "Data-backed insights on affiliate performance, customer behavior, sales trends, and traffic quality.",
+                title: "Data-Informed Campaign Decisions",
+                desc: "Use available campaign data to review partner performance, traffic quality, leads, sales, and conversion trends. These insights can help guide future campaign decisions.",
               },
               {
-                title: "Flexible strategies tailored to your business",
-                desc: "Whether you want to scale aggressively or grow steadily, our affiliate marketing services in Delhi can be fully customized.",
+                title: "Strategies Based on Your Business Goals",
+                desc: "Affiliate campaigns should reflect your products, audience, industry, budget, and growth objectives. We tailor the proposed approach to your requirements and agreed scope.",
               },
               {
-                title: "Full transparency & real-time reporting",
-                desc: "Complete visibility into clicks, conversions, partner performance, and payouts.",
+                title: "Clear Performance Reporting",
+                desc: "Understand how your affiliate programme is performing through relevant reports on partner activity, conversions, commissions, and campaign results, depending on the available tracking setup.",
               },
             ],
           },
@@ -362,7 +391,7 @@ export default function AffiliateMarketingPage() {
 
       <ServiceArticle
         lead="Why us"
-        title="Why We Are the Most Preferred Affiliate Marketing Agency in Delhi"
+        title="Why Work with Bigwig Media Digital?"
         cta="Talk to our affiliate team"
         source="affiliate-preferred"
         image={{ src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80", alt: "Affiliate manager presenting to a team" }}
@@ -376,9 +405,21 @@ export default function AffiliateMarketingPage() {
                 </li>
               ))}
             </ul>
-            <h3 className="pt-3 text-xl font-semibold tracking-tight text-[var(--ink)]">
-              Industries we serve across Delhi & NCR
-            </h3>
+          </>
+        }
+      />
+
+      <ServiceArticle
+        lead="Industries"
+        title="Industries We Serve Across Delhi and NCR"
+        cta="Discuss your industry"
+        source="affiliate-industries"
+        body={
+          <>
+            <p>
+              We work with businesses across different sectors. Affiliate marketing suitability depends on the product,
+              audience, profit margins, campaign goals, and available partners.
+            </p>
             <ul className="flex flex-wrap gap-2">
               {industries.map((ind) => (
                 <li
@@ -394,10 +435,10 @@ export default function AffiliateMarketingPage() {
       />
 
       <ServiceStatement
-        heading="Ready to Grow with Performance-Driven Affiliate Marketing in Delhi?"
-        lead="If you’re ready to scale your sales, increase your visibility, and achieve predictable growth, our affiliate marketing services in Delhi are designed to deliver results."
-        rest="Get in touch today for a customized strategy tailored to your business goals."
-        cta="Get started today"
+        heading="Ready to Grow with Affiliate Marketing in Delhi?"
+        lead="Looking to launch an affiliate programme or improve an existing campaign? Bigwig Media Digital can help you explore an approach based on your business goals, target audience, and budget."
+        rest="Contact our team to discuss your requirements and the affiliate marketing services that may suit your business."
+        cta="Get Started Today"
         source="affiliate-cta"
         photos={[
           { src: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80", alt: "Shopper paying online with a card and laptop" },
