@@ -21,6 +21,28 @@ const drawerItem: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
+// Menu order of the service links; anything not listed follows in its original order
+const SERVICE_ORDER = [
+  "/services/website-development-company-in-delhi",
+  "/services/search-engine-optimization",
+  "/services/social-media-optimization",
+  "/services/performance-marketing",
+  "/services/online-reputation-management",
+  "/services/influencer-marketing",
+  "/services/email-marketing",
+  "/services/graphic-designing",
+  "/services/affiliate-marketing",
+];
+const rank = (slug: string) => {
+  const i = SERVICE_ORDER.indexOf(slug);
+  return i === -1 ? SERVICE_ORDER.length : i;
+};
+const menuServices = [...services]
+  .map((s) =>
+    s.slug === "/services/social-media-optimization" ? { ...s, title: "Social Media Management" } : s,
+  )
+  .sort((a, b) => rank(a.slug) - rank(b.slug));
+
 const links = [
   { title: "Clients", slug: "/clients" },
   { title: "About", slug: "/about" },
@@ -217,12 +239,12 @@ export default function Nav() {
               </a>
             </div>
             <motion.ul
-              className="grid grid-cols-2 content-start gap-x-6"
+              className="grid grid-flow-col grid-cols-2 grid-rows-5 content-start gap-x-6"
               initial="hidden"
               animate="show"
               variants={stagger(0.03, 0.05)}
             >
-              {services.map((s) => (
+              {menuServices.map((s) => (
                 <motion.li key={s.slug} variants={itemIn} className="border-b border-[var(--line)]">
                   <Link
                     href={s.slug}
@@ -284,12 +306,12 @@ export default function Nav() {
               Services
             </motion.p>
             <motion.ul
-              className="mt-2 grid grid-cols-1 gap-x-6 sm:grid-cols-2"
+              className="mt-2 grid grid-cols-1 gap-x-6 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-5"
               initial="hidden"
               animate={drawerOpen ? "show" : "hidden"}
               variants={stagger(0.03, 0.4)}
             >
-              {services.map((s) => (
+              {menuServices.map((s) => (
                 <motion.li key={s.slug} variants={itemIn}>
                   <Link href={s.slug} onClick={() => setDrawerOpen(false)} className={`block py-2 text-white/75 hover:text-white ${ring}`}>
                     {s.title}

@@ -77,7 +77,7 @@ export default function RootLayout({
                 "https://x.com/bigwig_digital",
                 "https://www.instagram.com/bigwig.media.digital",
                 "https://www.youtube.com/@BigwigMediaDigital",
-                "https://www.linkedin.com/company/bigwig-media-digital/",
+                "https://in.linkedin.com/company/bigwig-media-digital",
                 "https://in.pinterest.com/bigwigmediadigital/",
               ],
               // Explicitly nested references to child branch locations

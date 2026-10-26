@@ -38,7 +38,7 @@ const socialLinks = [
   },
   {
     platform: "linkedin",
-    url: "https://www.linkedin.com/company/bigwig-digital/",
+    url: "https://in.linkedin.com/company/bigwig-media-digital",
   },
 ] as const;
 

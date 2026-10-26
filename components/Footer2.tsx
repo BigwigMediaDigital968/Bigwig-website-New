@@ -165,7 +165,7 @@ function Footer2() {
                 },
                 {
                   icon: faLinkedin,
-                  href: "https://www.linkedin.com/company/106698073/admin/dashboard/",
+                  href: "https://in.linkedin.com/company/bigwig-media-digital",
                 },
               ].map((social, index) => (
                 <a

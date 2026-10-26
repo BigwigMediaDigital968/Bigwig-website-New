@@ -165,7 +165,7 @@ const SOCIALS = [
   {
     name: "LinkedIn",
     icon: faLinkedinIn,
-    href: "https://www.linkedin.com/company/bigwig-media-digital/",
+    href: "https://in.linkedin.com/company/bigwig-media-digital",
     open: "-translate-y-[75px]",
     tone: "text-white",
     bg: "#173e62",

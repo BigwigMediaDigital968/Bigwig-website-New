@@ -58,7 +58,7 @@
 //   { icon: faInstagram, label: "Instagram", href: "https://www.instagram.com/bigwig.media.digital?igsh=ODhpeTJzcDRpa25q" },
 //   { icon: faYoutube, label: "YouTube", href: "https://www.youtube.com/@BigwigMediaDigital" },
 //   { icon: faXTwitter, label: "X", href: "https://x.com/bigwig_digital" },
-//   { icon: faLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/106698073/admin/dashboard/" },
+//   { icon: faLinkedin, label: "LinkedIn", href: "https://in.linkedin.com/company/bigwig-media-digital" },
 //   { icon: faPinterest, label: "Pinterest", href: "https://in.pinterest.com/bigwigmediadigital/" },
 // ];
 
@@ -255,7 +255,7 @@ const branchLinks = [
 const serviceLinks = [
   { name: "Website Design & Development", path: "/services/website-development-company-in-delhi" },
   { name: "Search Engine Optimization", path: "/services/search-engine-optimization" },
-  // { name: "Social Media Management", path: "/services/social-media-marketing" },
+  { name: "Social Media Management", path: "/services/social-media-optimization" },
   { name: "Performance Marketing", path: "/services/performance-marketing" },
   { name: "ORM Services", path: "/services/online-reputation-management" },
   { name: "Influencer Marketing", path: "/services/influencer-marketing" },
@@ -263,12 +263,11 @@ const serviceLinks = [
   { name: "Graphic Design & Video", path: "/services/graphic-designing" },
   { name: "Affiliate Marketing", path: "/services/affiliate-marketing" },
   { name: "Content Marketing", path: "/services/content-marketing" },
-  { name: "Social Media Optimization", path: "/services/social-media-optimization" },
 ];
 
 // `path` only where an industry page exists
 const industries: { name: string; path?: string }[] = [
-  { name: "Real Estate", path: "/industry/real-estate" },
+  { name: "Real Estate" },
   { name: "Beauty" },
   { name: "Education" },
   { name: "Finance/Lending" },
@@ -289,7 +288,7 @@ const socials = [
   { icon: faInstagram, label: "Instagram", href: "https://www.instagram.com/bigwig.media.digital?igsh=ODhpeTJzcDRpa25q" },
   { icon: faYoutube, label: "YouTube", href: "https://www.youtube.com/@BigwigMediaDigital" },
   { icon: faXTwitter, label: "X", href: "https://x.com/bigwig_digital" },
-  { icon: faLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/106698073/admin/dashboard/" },
+  { icon: faLinkedin, label: "LinkedIn", href: "https://in.linkedin.com/company/bigwig-media-digital" },
   { icon: faPinterest, label: "Pinterest", href: "https://in.pinterest.com/bigwigmediadigital/" },
 ];
 

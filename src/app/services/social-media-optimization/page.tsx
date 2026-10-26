@@ -257,7 +257,7 @@ const serviceSchema = {
     sameAs: [
       "https://www.facebook.com/bigwigmediadigital",
       "https://www.instagram.com/bigwigmediadigital",
-      "https://www.linkedin.com/company/bigwigmediadigital",
+      "https://in.linkedin.com/company/bigwig-media-digital",
       "https://twitter.com/bigwigmediadigital",
       "https://www.youtube.com/@bigwigmediadigital",
     ],
