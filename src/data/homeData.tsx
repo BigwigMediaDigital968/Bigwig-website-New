@@ -38,6 +38,11 @@ export const services = [
       </>
     ),
   },
+  {
+    title: "Social Media Management",
+    slug: "/services/social-media-optimization",
+    desc: "Optimize your social profiles to improve discoverability, engagement, and brand consistency across platforms.",
+  },
   // {
   //   title: "Social Media Management (SMM)",
   //   slug: "/services/social-media-marketing",
@@ -103,11 +108,6 @@ export const services = [
     title: "Content Marketing",
     slug: "/services/content-marketing",
     desc: "We create SEO-optimized blogs, landing pages, and brand storytelling content that strengthens authority and supports long-term digital growth.",
-  },
-  {
-    title: "Social Media Optimization (SMO)",
-    slug: "/services/social-media-optimization",
-    desc: "Optimize your social profiles to improve discoverability, engagement, and brand consistency across platforms.",
   },
 
 

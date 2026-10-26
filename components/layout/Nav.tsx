@@ -37,11 +37,7 @@ const rank = (slug: string) => {
   const i = SERVICE_ORDER.indexOf(slug);
   return i === -1 ? SERVICE_ORDER.length : i;
 };
-const menuServices = [...services]
-  .map((s) =>
-    s.slug === "/services/social-media-optimization" ? { ...s, title: "Social Media Management" } : s,
-  )
-  .sort((a, b) => rank(a.slug) - rank(b.slug));
+const menuServices = [...services].sort((a, b) => rank(a.slug) - rank(b.slug));
 
 const links = [
   { title: "Clients", slug: "/clients" },
