@@ -52,7 +52,6 @@ export const clients: Client[] = [
     industry: "Healthcare",
   },
   
-   
 
   // D2C
   {
