@@ -17,6 +17,15 @@ export interface Client {
 
 export const clients: Client[] = [
   // Healthcare
+   {
+    name: "Dr. Manish Aggarwal",
+    square: "white",
+    tile: "/clients-logo/drmanishaggarwal.png",
+    img: "/clients-logo/trimmed/drmanishaggarwal.png",
+    aspect: 1.93,
+    link: "https://www.drmanishaggarwal.com/",
+    industry: "Healthcare",
+  },
   {
     name: "Dr. Himanshu Verma",
     square: "navy",
@@ -28,10 +37,9 @@ export const clients: Client[] = [
   {
     name: "Dr. Manish Aggarwal",
     square: "white",
-    tile: "/clients-logo/drmanishaggarwal.png",
-    img: "/clients-logo/trimmed/drmanishaggarwal.png",
+    tile: "/clients-logo/msmc.png",
+    img: "/clients-logo/trimmed/msmc.png",
     aspect: 1.93,
-    link: "https://www.drmanishaggarwal.com/",
     industry: "Healthcare",
   },
   {
@@ -44,14 +52,7 @@ export const clients: Client[] = [
     industry: "Healthcare",
   },
   
-    {
-    name: "Dr. Manish Aggarwal",
-    square: "white",
-    tile: "/clients-logo/msmc.png",
-    img: "/clients-logo/trimmed/msmc.png",
-    aspect: 1.93,
-    industry: "Healthcare",
-  },
+   
 
   // D2C
   {
