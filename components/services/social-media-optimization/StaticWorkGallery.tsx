@@ -4,23 +4,18 @@ import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import { PillLead, SectionHead, fadeUp, inView, stagger } from "../../ui";
 
-// Placeholder photos from Unsplash, cropped to the post shape. Swap for real static posts
-// (e.g. Assets/gallery/*) when they're ready; local imports also get a blur placeholder.
-const galleryPhoto =(id: string, tall = false) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1200&h=${tall ? 1500 : 1200}&q=80`;
-
 export type GalleryPost = { image: StaticImageData | string; alt: string };
 
 /** two 4:5 portraits, then four squares */
 export type GalleryPosts = [GalleryPost, GalleryPost, GalleryPost, GalleryPost, GalleryPost, GalleryPost];
 
 const smoPosts: GalleryPosts = [
-  { image: galleryPhoto("1658863025658-4a259cc68fc9", true), alt: "Printed design samples and brochures" },
-  { image: galleryPhoto("1596526131083-e8c633c948d2", true), alt: "Apps on a phone home screen" },
-  { image: galleryPhoto("1547658719-da2b51169166"), alt: "Desk with a design on screen and tablet" },
-  { image: galleryPhoto("1522542550221-31fd19575a2d"), alt: "Watercolour layout sketches" },
-  { image: galleryPhoto("1600132806608-231446b2e7af"), alt: "Hand-drawn layout sketch on paper" },
-  { image: galleryPhoto("1602016736566-7ed6a58894bd"), alt: "Designer working on a laptop" },
+  { image: "/assets/graphic/8.jpg", alt: "Social media post designed by BigWig" },
+  { image: "/assets/graphic/9.jpg", alt: "Social media post designed by BigWig" },
+  { image: "/assets/graphic/13.jpg", alt: "Social media post designed by BigWig" },
+  { image: "/assets/graphic/14.jpg", alt: "Social media post designed by BigWig" },
+  { image: "/assets/graphic/10.jpg", alt: "Social media post designed by BigWig" },
+  { image: "/assets/graphic/12.jpg", alt: "Social media post designed by BigWig" },
 ];
 
 // desktop placement by position: portraits on the outer columns, squares 2×2 in the middle

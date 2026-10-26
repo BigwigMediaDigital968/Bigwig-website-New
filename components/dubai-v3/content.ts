@@ -65,31 +65,37 @@ export const sites: Site[] = [
   },
 ];
 
-export type Creative = { src: StaticImageData; alt: string };
+export type Creative = { src: StaticImageData | string; alt: string };
 
 /** Ad creatives and social posts made by the design team. */
 export const creatives: Creative[] = [
   {
-    src: cgiDonut,
-    alt: "Ad creative: a giant glazed doughnut kiosk on a city street",
+    src: "/assets/graphic/1.jpg",
+    alt: "Creative digital marketing poster featuring a relaxed golden retriever on a yellow background with branding and marketing elements",
   },
   {
-    src: cgiInstagram,
-    alt: "Ad creative: a building shaped like the Instagram logo",
+    src: "/assets/graphic/2.jpg",
+    alt: "Luxury jewellery promotional design showcasing an emerald green necklace display and limited edition collection",
   },
   {
-    src: cgiCoffee,
-    alt: "Ad creative: a coffee cup the size of a café on a cobbled square",
+    src: "/assets/graphic/3.jpg",
+    alt: "Luxury jewellery brand creatives featuring gold rings, artisan craftsmanship, premium packaging, and elegant product photography",
   },
   {
-    src: cgiChefs,
-    alt: "Ad creative: miniature chefs making latte art in a giant cup",
+    src: "/assets/graphic/4.jpg",
+    alt: "Digital marketing agency promotional poster featuring a woman holding a newspaper with a best digital marketing agency headline",
   },
-  { src: cgiMeta, alt: "Ad creative: a character flying with a drone" },
-  { src: cgiBerries, alt: "Product shot: berries bursting over a meringue" },
-  { src: cgiShake, alt: "Product shot: a strawberry milkshake splash" },
-  { src: postServices, alt: "Social post listing services in bold type" },
-  { src: postViral, alt: "Social post: we can make your brand go viral" },
+  {
+    src: "/assets/graphic/5.jpg",
+    alt: "Premium jewellery catalogue design featuring a model wearing a necklace alongside elegant jewellery product layouts",
+  },
+  {
+    src: "/assets/graphic/6.jpg",
+    alt: "Luxury jewellery promotional artwork featuring diamond rings and earrings arranged on a rich burgundy textured background",
+  },
+  { src: "/assets/graphic/7.jpg", alt: "Product shot: a strawberry milkshake splash" },
+  { src: "/assets/graphic/11.jpg", alt: "Social post listing services in bold type" },
+  { src: "/assets/graphic/17.jpg", alt: "Social post: we can make your brand go viral" },
 ];
 
 export const heroCreatives = {
