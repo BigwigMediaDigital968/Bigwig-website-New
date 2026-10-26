@@ -122,12 +122,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/services/social-media-marketing`,
-      lastModified: new Date("2025-08-14"),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/services/performance-marketing`,
       lastModified: new Date("2025-08-14"),
       changeFrequency: "weekly",
