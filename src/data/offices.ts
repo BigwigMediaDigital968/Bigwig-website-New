@@ -18,17 +18,9 @@ export const headOffice: Office & { mapEmbed: string } = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.322121979646!2d77.19070767529064!3d28.673932275642237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03586419b693%3A0x627bb399c7e86209!2sBigwig%20Media%20Digital%20-%20Digital%20Marketing%20Company!5e1!3m2!1sen!2in!4v1763114888587!5m2!1sen!2in",
 };
 
-// TODO: DUMMY addresses for Ahmedabad and Dubai ("Sample Tower"). Replace them with the real street addresses, and
+// TODO: DUMMY address for Dubai ("Sample Tower"). Replace them with the real street addresses, and
 // the directions links with each office's Google Maps listing, before this goes live.
 export const branches: Office[] = [
-  // {
-  //   city: "Ahmedabad",
-  //   label: "Branch",
-  //   address: "Office 000, Sample Tower, SG Highway, Ahmedabad, Gujarat 380054",
-  //   phoneDisplay: "+91 96858 92813",
-  //   phoneHref: "tel:+919685892813",
-  //   mapUrl: "https://www.google.com/maps/search/?api=1&query=Bigwig+Media+Digital+Ahmedabad",
-  // },
   {
     city: "Bhopal",
     label: "Branch",

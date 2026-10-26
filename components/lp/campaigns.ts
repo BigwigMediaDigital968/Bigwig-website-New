@@ -43,25 +43,4 @@ export const campaigns: Record<string, Campaign> = {
     services: ["Performance Marketing", "SEO"],
     whatsappMessage: "Hi BigWig Media Digital! I'd like a free growth plan for my business.",
   },
-  ahmedabad: {
-    slug: "ahmedabad",
-    title: "Free growth plan for Ahmedabad businesses",
-    headline: "More enquiries for your Ahmedabad business.",
-    sub: "Google Ads, Meta ads and Google Maps, run by our team in Ahmedabad. Get a free written plan.",
-    points: [
-      "A call back within one working day",
-      "A written plan: channels, budget and what to expect",
-      "No lock-in. Ad accounts stay in your name",
-    ],
-    businesses: [
-      "Manufacturer or exporter",
-      "Real estate",
-      "Clinic or hospital",
-      "School or coaching",
-      "Shop, showroom or restaurant",
-      "Online brand",
-    ],
-    services: ["Performance Marketing", "SEO"],
-    whatsappMessage: "Hi BigWig Media Digital! I'd like a free growth plan for my business in Ahmedabad.",
-  },
 };

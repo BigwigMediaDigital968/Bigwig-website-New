@@ -1,5 +1,5 @@
 /**
- * The services list for the India city pages (Ahmedabad, Bhopal, Goa), shown in the shared ServicesAccordion.
+ * The services list for the India city pages (Bhopal, Goa), shown in the shared ServicesAccordion.
  * Each links to its main service page; bullets are what's included.
  */
 export type ServiceItem = { title: string; desc: string; href: string; bullets: string[] };
