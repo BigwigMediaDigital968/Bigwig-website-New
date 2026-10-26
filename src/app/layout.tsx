@@ -57,10 +57,12 @@ export default function RootLayout({
           hrefLang="x-default"
         />
 
-        <meta
+        {/* <meta
           name="google-site-verification"
           content="CQRj6Bls-OQCYgV4ne5XEQJ8-6KlU7L2JfhusyIuiwM"
-        />
+        /> */}
+
+        <meta name="google-site-verification" content="ZtYNCkD4MajXOwctyMG4nDCbFb7g9afNcfDz4quYpIU" />
 
         {/* JSON-LD Organization Schema */}
         <script

@@ -92,6 +92,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
 
+    /* ========= LOCATION PAGES ========= */
+
+    {
+      url: `${baseUrl}/digital-marketing-agency-bhopal`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/digital-marketing-agency-goa`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/digital-marketing-agency-dubai-uae`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+
     /* ========= SERVICES ========= */
 
     {
