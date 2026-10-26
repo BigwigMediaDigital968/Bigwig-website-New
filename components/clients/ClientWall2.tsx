@@ -18,23 +18,10 @@ const INDUSTRY_ORDER = [
   "Others"
 ];
 
-// Helper to alternate white/navy tiles within each industry section
-function formatCheckerboard(industryClients: Client[]): Client[] {
-  const whites = industryClients.filter((c) => c.square === "white");
-  const navies = industryClients.filter((c) => c.square === "navy");
-  const result: Client[] = [];
-  
-  for (let i = 0; i < Math.max(whites.length, navies.length); i++) {
-    if (whites[i]) result.push(whites[i]);
-    if (navies[i]) result.push(navies[i]);
-  }
-  return result;
-}
-
 export default function ClientWall2() {
   const groupedClients = INDUSTRY_ORDER.map((industry) => ({
     name: industry,
-    items: formatCheckerboard(clients.filter((c) => c.industry === industry)),
+    items: clients.filter((c) => c.industry === industry),
   })).filter((group) => group.items.length > 0);
 
   return (
@@ -93,7 +80,7 @@ export default function ClientWall2() {
   );
 }
 
-{/* Grid view for sections with 5 or fewer items */}
+{/* Grid view for sections with 5 or fewer items; tiles keep the order from data/clients */}
 function GridSection({ items }: { items: Client[] }) {
   return (
     <div className="w-fit max-w-full overflow-hidden bg-[var(--line)]">
@@ -103,9 +90,9 @@ function GridSection({ items }: { items: Client[] }) {
         aria-label="Client logos"
         className="flex flex-wrap gap-px"
       >
-        {items.map((c) => (
+        {items.map((c, i) => (
           <motion.li
-            key={c.name}
+            key={`${c.name}-${i}`}
             variants={scaleIn}
             className={`w-[220px] flex-none sm:w-[260px] md:w-[300px] ${c.square === "navy" ? "bg-[var(--ink)]" : "bg-[var(--surface)]"}`}
           >

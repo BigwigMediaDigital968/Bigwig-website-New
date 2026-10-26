@@ -19,35 +19,44 @@ export const clients: Client[] = [
   // Healthcare
   {
     name: "Dr. Himanshu Verma",
-    square: "white",
+    square: "navy",
     tile: "/clients-logo/dr.himanshu1.png",
     img: "https://res.cloudinary.com/dyum0r6gf/image/upload/v1769074730/logo-removebg-preview_ti521v.webp",
     link: "https://www.drhimanshuverma.com/",
     industry: "Healthcare",
   },
   {
-    name: "AVF Care Workshop",
+    name: "Dr. Manish Aggarwal",
     square: "white",
+    tile: "/clients-logo/drmanishaggarwal.png",
+    img: "/clients-logo/trimmed/drmanishaggarwal.png",
+    aspect: 1.93,
+    link: "https://www.drmanishaggarwal.com/",
+    industry: "Healthcare",
+  },
+  {
+    name: "AVF Care Workshop",
+    square: "navy",
     tile: "/clients-logo/avfcareworkshop.png",
     img: "/clients-logo/trimmed/avfcareworkshop.png",
     aspect: 1.93,
     link: "https://avfcareworkshop.com/",
     industry: "Healthcare",
   },
-  {
+  
+    {
     name: "Dr. Manish Aggarwal",
     square: "white",
-    tile: "/clients-logo/avfcareworkshop.png",
-    img: "/clients-logo/trimmed/avfcareworkshop.png",
+    tile: "/clients-logo/msmc.png",
+    img: "/clients-logo/trimmed/msmc.png",
     aspect: 1.93,
-    link: "https://www.drmanishaggarwal.com/",
     industry: "Healthcare",
   },
 
   // D2C
   {
     name: "Rehnoor Jewels",
-    square: "white",
+    square: "navy",
     tile: "/clients-logo/rehnoorjewels.png",
     img: "/clients-logo/trimmed/rehnoorjewels.png",
     aspect: 1.8,
@@ -57,22 +66,39 @@ export const clients: Client[] = [
   {
     name: "Velaro India",
     square: "white",
-    tile: "",
-    img: "",
+    tile: "/clients-logo/velaroindia.png",
+    img: "/clients-logo/trimmed/velaroindia.png",
     aspect: 1.75,
     link: "https://www.velaroindia.com",
     industry: "D2C",
   },
   {
-    name: "Pearls India",
-    square: "white",
-    tile: "",
-    img: "",
-    aspect: 1.75,
-    link: "https://pearlsindia.co.in/",
+    name: "Artitude",
+    square: "navy",
+    tile: "/clients-logo/artitude.png",
+    img: "/clients-logo/trimmed/artitude.png",
+    aspect: 1.8,
+    link: "https://artitudeco.com/",
     industry: "D2C",
   },
-
+  // {
+  //   name: "Pearls India",
+  //   square: "white",
+  //   tile: "",
+  //   img: "",
+  //   aspect: 1.75,
+  //   link: "https://pearlsindia.co.in/",
+  //   industry: "D2C",
+  // },
+  {
+    name: "Bajaj Chemicals",
+    square: "white",
+    tile: "/clients-logo/bajajchemicals.png",
+    img: "/clients-logo/trimmed/bajajchemicals.png",
+    aspect: 1.75,
+    link: "https://www.bajajchemicals.co/",
+    industry: "D2C",
+  },
 
   // Real Estate
   {
@@ -94,6 +120,15 @@ export const clients: Client[] = [
     industry: "Real Estate",
   },
   {
+    name: "Khalsa Property Dealers",
+    square: "white",
+    tile: "/clients-logo/kpd.png",
+    img: "/clients-logo/trimmed/kpd.png",
+    aspect: 4.23,
+    link: "https://www.khalsapropertydealers.com/",
+    industry: "Real Estate",
+  },
+  {
     name: "Granth Dream Homes",
     square: "navy",
     tile: "/clients-logo/granthdreamhomes.png",
@@ -109,6 +144,7 @@ export const clients: Client[] = [
     link: "https://www.mondusproperties.ae/",
     industry: "Real Estate",
   },
+  
   {
     name: "Riverfront",
     square: "navy",
@@ -136,9 +172,19 @@ export const clients: Client[] = [
     link: "https://www.crownpointestates.com/",
     industry: "Real Estate",
   },
+  
+  {
+    name: "Brick&Bolt",
+    square: "white",
+    tile: "/clients-logo/bnb.png",
+    img: "/clients-logo/trimmed/bnb.png",
+    aspect: 1.12,
+    link: "https://www.bricknbolt.com/",
+    industry: "Real Estate",
+  },
   {
     name: "Homes and Land Goa",
-    square: "white",
+    square: "navy",
     tile: "/clients-logo/homesandlandgoa.png",
     img: "/clients-logo/trimmed/homesandlandgoa.png",
     aspect: 1.12,
