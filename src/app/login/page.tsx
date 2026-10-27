@@ -4,8 +4,6 @@ import Swal from "sweetalert2";
 
 import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Nav from "../../../components/layout/Nav";
-import Footer from "../../../components/layout/Footer";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -25,85 +23,109 @@ const Login: React.FC = () => {
     }
   };
 
+  const inputClass =
+    "w-full rounded-xl border border-[var(--line-strong)] bg-white px-4 py-3 text-base text-[var(--ink)] placeholder:text-[var(--muted)]/60 transition-[border-color,box-shadow] duration-200 focus:border-[var(--link)] focus:outline-none focus:ring-4 focus:ring-[var(--teal)]/25";
+
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#f1f5f9] to-[#e2e8f0]">
-      <Nav />
-
-      <div className="flex flex-1">
-        {/* Left Image */}
-        <div className="w-1/2 hidden md:block">
-          <img
-            src="https://img.freepik.com/premium-photo/happy-freelancer-working-with-computer-home-illustration_979520-23760.jpg"
-            alt="Login"
-            className="h-full w-full object-cover"
-          />
+    <div className="grid min-h-screen bg-[var(--paper)] lg:grid-cols-2">
+      {/* Brand panel */}
+      <aside className="relative hidden flex-col justify-between overflow-hidden bg-[var(--night)] p-12 text-white lg:flex">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[var(--teal)]/20 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-[var(--link)]/30 blur-3xl"
+        />
+        <p className="relative text-sm font-semibold uppercase tracking-[0.2em] text-[var(--cyan)]">
+          BigWig Digital
+        </p>
+        <div className="relative max-w-md">
+          <h1 className="text-4xl font-semibold leading-tight">
+            Run the site from one place.
+          </h1>
+          <p className="mt-4 text-base leading-relaxed text-white/70">
+            Manage blogs, jobs, applications, leads and offers from the admin
+            panel.
+          </p>
         </div>
+        <p className="relative text-sm text-white/50">
+          © {new Date().getFullYear()} BigWig Media Digital
+        </p>
+      </aside>
 
-        {/* Right Form */}
-        <div className="w-full md:w-1/2 flex items-center justify-center p-8">
-          <div className="w-full max-w-md">
-            <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-10">
-              Admin Login
-            </h2>
+      {/* Form */}
+      <main className="flex items-center justify-center px-6 py-12">
+        <div className="w-full max-w-sm">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--link)] lg:hidden">
+            BigWig Digital
+          </p>
+          <h2 className="text-3xl font-semibold text-[var(--ink)]">
+            Admin login
+          </h2>
+          <p className="mt-2 text-[var(--muted)]">
+            Sign in to continue to the dashboard.
+          </p>
 
-            <form onSubmit={handleLogin} className="space-y-10">
-              {/* Email Field */}
-              <div className="relative group">
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer text-lg text-gray-800"
-                  placeholder=" "
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <label
-                  htmlFor="email"
-                  className="absolute left-0 top-0 text-gray-500 text-sm transform -translate-y-6 scale-90 origin-left transition-all peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-translate-y-6 peer-focus:scale-90 peer-focus:text-blue-600"
-                >
-                  Email Address
-                </label>
-              </div>
+          <form onSubmit={handleLogin} className="mt-8 space-y-5">
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-1.5 block text-sm font-medium text-[var(--ink-2)]"
+              >
+                Email address
+              </label>
+              <input
+                type="email"
+                id="email"
+                autoComplete="username"
+                className={inputClass}
+                placeholder="you@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
 
-              {/* Password Field */}
-              <div className="relative group">
+            <div>
+              <label
+                htmlFor="password"
+                className="mb-1.5 block text-sm font-medium text-[var(--ink-2)]"
+              >
+                Password
+              </label>
+              <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
-                  className="w-full bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer text-lg text-gray-800 pr-10"
-                  placeholder=" "
+                  autoComplete="current-password"
+                  className={`${inputClass} pr-12`}
+                  placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <label
-                  htmlFor="password"
-                  className="absolute left-0 top-0 text-gray-500 text-sm transform -translate-y-6 scale-90 origin-left transition-all peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-translate-y-6 peer-focus:scale-90 peer-focus:text-blue-600"
-                >
-                  Password
-                </label>
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-0 top-1 text-gray-500 hover:text-blue-600"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  className="absolute right-1 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--muted)] transition-colors hover:text-[var(--link)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--teal)]/25"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
+            </div>
 
-              <button
-                type="submit"
-                className="w-full mt-6 bg-blue-600 text-white py-3 rounded-full hover:bg-blue-700 transition-all font-semibold shadow-lg"
-              >
-                Login
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-[var(--ink)] py-3 text-base font-semibold text-white transition-[background-color,transform] duration-200 hover:bg-[var(--ink-2)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--teal)]/40"
+            >
+              Log in
+            </button>
+          </form>
         </div>
-      </div>
-
-      <Footer />
+      </main>
     </div>
   );
 };

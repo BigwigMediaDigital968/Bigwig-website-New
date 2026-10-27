@@ -9,6 +9,7 @@ import {
   ClipboardList,
   ExternalLink,
   LayoutDashboard,
+  LogOut,
   Menu,
   NotebookPen,
   Tag,
@@ -69,15 +70,29 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     </nav>
   );
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("login");
+    router.push("/login");
+  };
+
   const footer = (
-    <Link
-      href="/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/55 transition hover:bg-white/[0.06] hover:text-white"
-    >
-      <ExternalLink size={16} /> View website
-    </Link>
+    <div className="flex flex-col gap-1">
+      <Link
+        href="/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/55 transition hover:bg-white/[0.06] hover:text-white"
+      >
+        <ExternalLink size={16} /> View website
+      </Link>
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/55 transition hover:bg-red-500/10 hover:text-red-300"
+      >
+        <LogOut size={16} /> Log out
+      </button>
+    </div>
   );
 
   return (

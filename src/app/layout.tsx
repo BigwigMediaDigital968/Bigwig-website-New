@@ -8,6 +8,7 @@ import { LeadPopupProvider } from "../../components/LeadPopup";
 import MotionRoot from "../../components/layout/MotionRoot";
 import Nav from "../../components/layout/Nav";
 import Footer from "../../components/layout/Footer";
+import SiteChrome from "../../components/layout/SiteChrome";
 
 const sans = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -204,11 +205,15 @@ export default function RootLayout({
       <body>
         <MotionRoot>
           <LeadPopupProvider>
-            <Nav />
+            <SiteChrome>
+              <Nav />
+            </SiteChrome>
             {children}
-            <Footer />
-            {/* inside the provider: the mobile dock's "free quote" opens the lead popup */}
-            <FloatingButton />
+            <SiteChrome>
+              <Footer />
+              {/* inside the provider: the mobile dock's "free quote" opens the lead popup */}
+              <FloatingButton />
+            </SiteChrome>
           </LeadPopupProvider>
         </MotionRoot>
 
