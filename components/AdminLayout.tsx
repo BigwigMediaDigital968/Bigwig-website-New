@@ -88,7 +88,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       <button
         type="button"
         onClick={handleLogout}
-        className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/55 transition hover:bg-red-500/10 hover:text-red-300"
+        className="flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/55 transition hover:bg-red-500/10 hover:text-red-300"
       >
         <LogOut size={16} /> Log out
       </button>
