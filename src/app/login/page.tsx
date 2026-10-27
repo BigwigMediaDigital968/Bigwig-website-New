@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -38,9 +39,10 @@ const Login: React.FC = () => {
           aria-hidden
           className="pointer-events-none absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-[var(--link)]/30 blur-3xl"
         />
-        <p className="relative text-sm font-semibold uppercase tracking-[0.2em] text-[var(--cyan)]">
-          BigWig Digital
-        </p>
+        <div className="relative flex items-center gap-3">
+          <Image src="/Bigwig_logo_icon.png" alt="" width={791} height={909} className="h-14 w-auto" priority />
+          <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={791} height={909} className="h-10 w-auto" priority />
+        </div>
         <div className="relative max-w-md">
           <h1 className="text-4xl font-semibold leading-tight">
             Run the site from one place.
@@ -58,9 +60,14 @@ const Login: React.FC = () => {
       {/* Form */}
       <main className="flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--link)] lg:hidden">
-            BigWig Digital
-          </p>
+          <Image
+            src="/Bigwig_logo.png"
+            alt="BigWig Media Digital"
+            width={791}
+            height={909}
+            className="mb-6 h-12 w-auto lg:hidden"
+            priority
+          />
           <h2 className="text-3xl font-semibold text-[var(--ink)]">
             Admin login
           </h2>
