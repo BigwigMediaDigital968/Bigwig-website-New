@@ -38,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/our-works`,
+      url: `${baseUrl}/portfolio`,
       lastModified: new Date("2025-08-14"),
       changeFrequency: "monthly",
       priority: 0.8,

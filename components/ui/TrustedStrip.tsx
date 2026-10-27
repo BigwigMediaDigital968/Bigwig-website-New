@@ -42,7 +42,7 @@ export default function TrustedStrip({
 }) {
   return (
     <div
-      className={`flex flex-col gap-4 md:flex-row md:items-center md:gap-10 ${bordered ? "border-t border-[var(--line)] pt-7" : ""} ${className}`}
+      className={`max-w-6xl mx-auto flex flex-col gap-4 md:flex-row md:items-center md:gap-10 ${bordered ? "border-t border-[var(--line)] pt-7" : ""} ${className}`}
     >
       <p className="flex-none text-sm font-medium text-[var(--muted)]">{label}</p>
       <div className="marquee-mask min-w-0 flex-1 overflow-hidden motion-reduce:overflow-x-auto">

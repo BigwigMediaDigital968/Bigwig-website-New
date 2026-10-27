@@ -11,7 +11,7 @@ export default function Faq() {
 
   return (
     <section className="px-2 md:px-3">
-      <div className="rounded-[32px] bg-[var(--surface)] py-20 md:py-28">
+      <div className="rounded-[32px] bg-[var(--surface)] py-18">
         <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <motion.div {...inView} variants={stagger(0.1)} className="lg:sticky lg:top-28">

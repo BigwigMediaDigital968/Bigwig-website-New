@@ -70,7 +70,7 @@ export default function Steps() {
 
   return (
     <motion.section
-      className="py-24 md:py-32"
+      className="py-18"
       initial={reduce ? "show" : "hidden"}
       whileInView="show"
       // fires as soon as the top of the section is on screen

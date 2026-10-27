@@ -120,7 +120,7 @@ export default function AboutHero() {
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
             <PillLead source="about-hero">Get a free strategy session</PillLead>
-            <PillLink href="/our-works">View our work</PillLink>
+            <PillLink href="/portfolio">View our work</PillLink>
           </motion.div>
           <motion.dl variants={stagger(0.08)} className="mt-10 md:mt-14 grid grid-cols-2 border-t border-[var(--line)] lg:col-span-7">
             {facts.map((f, i) => (

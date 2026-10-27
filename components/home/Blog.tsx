@@ -43,7 +43,7 @@ export default function Blog() {
   const [featured, ...rest] = blogs;
 
   return (
-    <section className="border-t border-[var(--line)] py-24 md:py-32">
+    <section className="border-t border-[var(--line)] py-18">
       <div className="wrap">
         <SectionHead
           lead="Our blog"

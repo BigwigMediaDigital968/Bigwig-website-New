@@ -6,7 +6,7 @@ import { EASE, PillLead, SectionHead, fadeUp, inView, scaleIn, stagger, wipeUp }
 
 export default function CaseStudies() {
   return (
-    <section className="border-t border-[var(--line)] py-24 md:py-32">
+    <section className="border-t border-[var(--line)] py-18">
       <div className="wrap">
         <SectionHead
           lead="Why businesses trust our digital marketing agency in Delhi"

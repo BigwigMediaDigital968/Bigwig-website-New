@@ -55,7 +55,7 @@ export default function Testimonials({
   const current = items[active];
 
   return (
-    <section className="py-24 md:py-32" aria-roledescription="carousel" aria-label="Client testimonials">
+    <section className="py-18" aria-roledescription="carousel" aria-label="Client testimonials">
       <div
         className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16"
         onMouseEnter={() => setPaused(true)}

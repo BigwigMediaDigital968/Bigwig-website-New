@@ -9,7 +9,7 @@ import { PillLead, PillLink, SectionHead, fadeUp, inView, stagger } from "../ui"
 export default function Services() {
   return (
     <section className="px-2 md:px-3">
-      <div className="rounded-[32px] bg-[var(--surface)] py-20 md:py-28">
+      <div className="rounded-[32px] bg-[var(--surface)] py-20">
         <div className="wrap">
           <SectionHead
             lead="Transforming brands with modern digital solutions"

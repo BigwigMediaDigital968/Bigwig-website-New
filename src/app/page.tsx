@@ -14,6 +14,7 @@ import Blogs from "../../components/home/Blog";
 import FAQ from "../../components/home/Faq";
 import Footer from "../../components/layout/Footer";
 import { faqs } from "@/data/homeData";
+import CTAStrip from "../../components/CTAStrip";
 
 export const metadata: Metadata = {
   title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",

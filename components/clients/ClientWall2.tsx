@@ -52,7 +52,7 @@ export default function ClientWall2() {
             </motion.div>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
               <PillLead source="clients-hero">Get a free strategy session</PillLead>
-              <PillLink href="/our-works">View our work</PillLink>
+              <PillLink href="/portfolio">View our work</PillLink>
             </motion.div>
           </div>
         </motion.div>

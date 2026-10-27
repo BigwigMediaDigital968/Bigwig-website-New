@@ -40,7 +40,7 @@ function Counter({ to }: { to: number }) {
 
 export default function About() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-14">
       <div className="wrap">
         <motion.div {...inView} variants={stagger(0.12)}>
           <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--link)]">
@@ -97,7 +97,7 @@ export default function About() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <PillLead source="about-section">Book a Free Consultation</PillLead>
-              <PillLink href="/our-works">View Our Work</PillLink>
+              <PillLink href="/portfolio">View Our Work</PillLink>
             </div>
 
             <motion.dl
