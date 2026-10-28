@@ -1,33 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
-
-// --- Types & Constants ---
-const TABS = ["Industries", "Services", "Country"] as const;
-type Tab = (typeof TABS)[number];
-
-const FILTERS: Record<Tab, string[]> = {
-  Industries: [
-    "Show All",
-    "eCommerce",
-    "Healthcare",
-    "FinTech",
-    "Astrology",
-    "Real Estate",
-    "FoodTech",
-  ],
-  Services: [
-    "Show All",
-    "UI/UX Design",
-    "Web Development",
-    "SEO",
-    "Social Media",
-    "Digital Marketing",
-  ],
-  Country: ["Show All", "India", "UAE", "USA", "UK", "Europe"],
-};
 
 const portfolioItems = [
   {
@@ -79,7 +54,7 @@ const portfolioItems = [
   {
     id: 3,
     brand: "Global Technologies India",
-    industry: "Industrial Automation & Engineering",
+    industry: "Engineering",
     service: "Corporate Website & Lead Generation",
     country: "India",
     title:
@@ -243,30 +218,18 @@ const portfolioItems = [
   },
 ];
 
+
+// Website showcase only: SEO / marketing case studies stay in the data but aren't shown here
+const websiteItems = portfolioItems.filter((item) => /web/i.test(item.service));
+
+const TABS = [
+  "All",
+  ...Array.from(new Set(websiteItems.map((item) => item.industry))),
+];
+
 // --- Sub-components ---
 
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          obs.disconnect();
-        }
-      },
-      { threshold },
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
-
-function AutoScrollImage({ src, inView }: { src: string; inView: boolean }) {
+function AutoScrollImage({ src, active }: { src: string; active: boolean }) {
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollDistance, setScrollDistance] = useState(0);
@@ -297,32 +260,22 @@ function AutoScrollImage({ src, inView }: { src: string; inView: boolean }) {
   }, [src]);
 
   const animationDuration =
-    scrollDistance > 0 ? Math.max(8, scrollDistance / 50) : 0;
+    scrollDistance > 0 ? Math.max(6, scrollDistance / 60) : 0;
 
   return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 pt-10 overflow-hidden rounded-r-none lg:rounded-r-[2rem]"
-    >
-      {scrollDistance > 0 && (
-        <style>{`
-          @keyframes continuousYoyoScroll {
-            0%, 10% { transform: translateY(0); }
-            50% { transform: translateY(calc(-1px * var(--scroll-dist))); }
-            90%, 100% { transform: translateY(0); }
-          }
-          .animate-yoyo-scroll {
-            animation: continuousYoyoScroll ${animationDuration}s ease-in-out infinite;
-          }
-        `}</style>
-      )}
-
+    <div ref={containerRef} className="absolute inset-0 pt-9 overflow-hidden">
       <img
         ref={imgRef}
         src={src}
-        style={{ "--scroll-dist": scrollDistance } as React.CSSProperties}
-        className={`w-full object-cover vertical-align-top transition-transform ${
-          inView && scrollDistance > 0 ? "animate-yoyo-scroll" : ""
+        draggable={false}
+        style={
+          {
+            "--scroll-dist": scrollDistance,
+            animationDuration: `${animationDuration}s`,
+          } as React.CSSProperties
+        }
+        className={`w-full object-cover vertical-align-top ${
+          active && scrollDistance > 0 ? "animate-yoyo-scroll" : ""
         }`}
         alt="Portfolio Preview"
       />
@@ -332,57 +285,44 @@ function AutoScrollImage({ src, inView }: { src: string; inView: boolean }) {
 
 function PortfolioCard({
   item,
-  index,
+  active,
 }: {
   item: (typeof portfolioItems)[0];
-  index: number;
+  active: boolean;
 }) {
-  const { ref, inView } = useInView(0.1);
-  const isEven = index % 2 === 0;
-
   return (
-    <div
-      ref={ref}
-      className={`
-        relative grid grid-cols-1 lg:grid-cols-5 items-stretch rounded-[2rem] border border-white/10 overflow-hidden
-        transition-all duration-1000 ease-out bg-[#050b18]/60 backdrop-blur-xl
-        ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}
-      `}
-    >
+    <div className="h-full lg:h-[75vh] lg:min-h-[540px] grid grid-cols-1 lg:grid-cols-5 items-stretch rounded-[2rem] border border-slate-200 overflow-hidden bg-white shadow-sm">
       {/* --- Left Side: Content Box (Spans 3 Columns) --- */}
-      <div
-        className={`w-full lg:col-span-3 p-8 md:p-12 xl:p-16 flex flex-col justify-between z-10 ${
-          !isEven
-            ? "lg:order-2 border-l lg:border-white/10"
-            : "border-r lg:border-white/10"
-        }`}
-      >
+      <div className="w-full lg:col-span-3 p-8 md:p-10 xl:p-12 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-slate-200">
         <div>
           {/* Brand & Tagline Header Row */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 border border-white/20">
+          <div className="flex flex-wrap items-center gap-4 mb-5">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 border border-slate-200">
               <div
                 className="w-5 h-5 rounded-full border-4"
                 style={{ borderColor: item.accentColor }}
               />
             </div>
-            <h4 className="text-xl font-bold tracking-tighter text-white uppercase">
+            <h4 className="text-xl font-bold tracking-tighter text-slate-900 uppercase">
               {item.brand}
             </h4>
+            <span className="px-3 py-1 rounded-full border border-slate-200 bg-slate-50 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+              {item.tag}
+            </span>
           </div>
 
-          <p className="text-lg md:text-xl text-slate-300 font-medium mb-10 max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-600 font-medium mb-6 max-w-2xl leading-relaxed">
             {item.tagline}
           </p>
 
-          {/* Core Metrics Array */}
-          <div className="flex flex-nowrap items-center gap-8 md:gap-14 mb-10 py-6 border-y border-white/5">
+          {/* Core Metrics Array: always one row */}
+          <div className="grid grid-cols-3 gap-4 md:gap-8 mb-6 py-5 border-y border-slate-200">
             {item.stats.map((stat, i) => (
-              <div key={i} className="flex flex-col gap-1">
-                <span className="text-3xl md:text-4xl font-bold text-white">
+              <div key={i} className="flex flex-col gap-1 min-w-0">
+                <span className="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900">
                   {stat.value}
                 </span>
-                <span className="text-[11px] uppercase tracking-widest text-slate-500 font-bold">
+                <span className="text-[9px] md:text-[10px] xl:text-[11px] uppercase tracking-wider xl:tracking-widest text-slate-500 font-bold leading-snug">
                   {stat.label}
                 </span>
               </div>
@@ -390,8 +330,8 @@ function PortfolioCard({
           </div>
 
           {/* Testimonial Quote Block */}
-          <div className="relative pl-6 mb-10 border-l-2 border-blue-500/50 italic">
-            <p className="text-slate-400 text-sm md:text-base mb-2">
+          <div className="relative pl-6 border-l-2 border-blue-500/50 italic">
+            <p className="text-slate-600 text-sm md:text-base mb-2 lg:line-clamp-3">
               "{item.testimonial}"
             </p>
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
@@ -401,10 +341,10 @@ function PortfolioCard({
         </div>
 
         {/* CTA Case Study Link Trigger */}
-        <div className="pt-4">
+        <div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-500 hover:text-white transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-600 transition-all duration-300 group"
           >
             Request A Case Study Demo
             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -413,119 +353,261 @@ function PortfolioCard({
       </div>
 
       {/* --- Right Side: Visual Device Interface (Spans 2 Columns) --- */}
-      <div
-        className={`w-full lg:col-span-2 relative min-h-[450px] lg:min-h-full bg-slate-950 overflow-hidden ${
-          !isEven ? "lg:order-1" : ""
-        }`}
-      >
+      <div className="w-full lg:col-span-2 relative min-h-[450px] lg:min-h-0 bg-slate-100 overflow-hidden">
         {/* Absolute Window Header Frame Top-bar */}
-        <div className="absolute top-0 left-0 right-0 h-10 bg-slate-950/90 backdrop-blur-md flex items-center px-4 z-20 border-b border-white/5">
+        <div className="absolute top-0 left-0 right-0 h-10 bg-slate-100/95 backdrop-blur-md flex items-center px-4 z-20 border-b border-slate-200">
           <div className="flex gap-1.5 mr-4">
-            <div className="w-2 h-2 rounded-full bg-red-500/50" />
-            <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
-            <div className="w-2 h-2 rounded-full bg-green-500/50" />
+            <div className="w-2 h-2 rounded-full bg-red-400" />
+            <div className="w-2 h-2 rounded-full bg-yellow-400" />
+            <div className="w-2 h-2 rounded-full bg-green-400" />
           </div>
-          <div className="text-[10px] text-slate-500 font-mono truncate">
-            {item.url}
-          </div>
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${item.brand} website`}
+            className="flex-1 min-w-0 flex items-center gap-1.5 text-[10px] text-slate-500 font-mono hover:text-blue-600 transition-colors"
+          >
+            <span className="truncate">{item.url}</span>
+            <ExternalLink className="w-3 h-3 shrink-0" />
+          </a>
         </div>
 
-        {/* Full-height viewport-aware scroll image viewport engine */}
-        <AutoScrollImage src={item.image} inView={inView} />
-
-        {/* Blended bottom mask shadow gradient for small display breakpoints */}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#050b18] via-transparent to-transparent lg:hidden" />
+        <AutoScrollImage src={item.image} active={active} />
       </div>
     </div>
   );
 }
 
 export default function PortfolioGrid() {
-  const [activeTab, setActiveTab] = useState<Tab>("Industries");
-  const [activeFilter, setActiveFilter] = useState("Show All");
+  const [activeTab, setActiveTab] = useState("All");
+  const [progress, setProgress] = useState({ left: 0, width: 100 });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, moved: false, startX: 0, startScroll: 0 });
 
-  const handleTabChange = (tab: Tab) => {
-    setActiveTab(tab);
-    setActiveFilter("Show All");
+  const items =
+    activeTab === "All"
+      ? websiteItems
+      : websiteItems.filter((item) => item.industry === activeTab);
+
+  const updateProgress = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const { scrollLeft, clientWidth, scrollWidth } = el;
+    const card = el.firstElementChild as HTMLElement | null;
+    if (card) {
+      const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+      setActiveIndex(Math.round(scrollLeft / (card.offsetWidth + gap)));
+    }
+    setProgress({
+      left: (scrollLeft / scrollWidth) * 100,
+      width: Math.min(100, (clientWidth / scrollWidth) * 100),
+    });
+  }, []);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollLeft = 0;
+    updateProgress();
+    el.addEventListener("scroll", updateProgress, { passive: true });
+    const observer = new ResizeObserver(updateProgress);
+    observer.observe(el);
+    return () => {
+      el.removeEventListener("scroll", updateProgress);
+      observer.disconnect();
+    };
+  }, [activeTab, updateProgress]);
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = trackRef.current;
+    const card = el?.firstElementChild as HTMLElement | null;
+    if (!el || !card) return;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    el.scrollBy({
+      left: direction * (card.offsetWidth + gap),
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
   };
 
-  const filteredItems = portfolioItems.filter((item) => {
-    if (activeFilter === "Show All") return true;
+  // Mouse drag-to-scroll; touch already swipes natively through scroll-snap
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    const el = trackRef.current;
+    if (!el) return;
+    drag.current = {
+      active: true,
+      moved: false,
+      startX: e.clientX,
+      startScroll: el.scrollLeft,
+    };
+  };
 
-    let targetValue = "";
-    if (activeTab === "Industries") targetValue = item.industry;
-    if (activeTab === "Services") targetValue = item.service;
-    if (activeTab === "Country") targetValue = item.country;
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!drag.current.active || !el) return;
+    const delta = e.clientX - drag.current.startX;
+    if (!drag.current.moved && Math.abs(delta) > 5) {
+      drag.current.moved = true;
+      el.style.scrollSnapType = "none";
+      el.style.cursor = "grabbing";
+    }
+    if (drag.current.moved) el.scrollLeft = drag.current.startScroll - delta;
+  };
 
-    return targetValue === activeFilter;
-  });
+  const endDrag = () => {
+    const el = trackRef.current;
+    if (!drag.current.active || !el) return;
+    drag.current.active = false;
+    el.style.scrollSnapType = "";
+    el.style.cursor = "";
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight") scrollByCard(1);
+    if (e.key === "ArrowLeft") scrollByCard(-1);
+  };
+
+  const atStart = progress.left <= 0.5;
+  const atEnd = progress.left + progress.width >= 99.5;
+  const hasOverflow = progress.width < 99.5;
 
   return (
-    <section className="bg-[#020617] text-white py-32 px-4 md:px-8 relative overflow-hidden">
+    <section className="bg-slate-50 text-slate-900 py-24 md:py-32 px-4 md:px-8 relative overflow-hidden">
+      <style>{`
+        @keyframes continuousYoyoScroll {
+          0%, 10% { transform: translateY(0); }
+          50% { transform: translateY(calc(-1px * var(--scroll-dist))); }
+          90%, 100% { transform: translateY(0); }
+        }
+        .animate-yoyo-scroll {
+          animation: continuousYoyoScroll 8s ease-in-out infinite;
+        }
+        .portfolio-track { scrollbar-width: none; }
+        .portfolio-track::-webkit-scrollbar { display: none; }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-yoyo-scroll { animation: none; }
+        }
+      `}</style>
+
       {/* Background Radial Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-300/30 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative">
-        <header className="mb-24">
+        <header className="mb-10">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-12 h-[2px] bg-blue-600" />
-            <span className="text-blue-500 text-sm font-bold uppercase tracking-[0.3em]">
-              Success Stories
+            <span className="text-blue-600 text-sm font-bold uppercase tracking-[0.3em]">
+              Website Showcase
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl mb-8 font-bold">
             Our{" "}
-            <span className="text-transparent bg-clip-text pe-2 bg-gradient-to-r from-white to-slate-500">
+            <span className="text-transparent bg-clip-text pe-2 bg-gradient-to-r from-slate-900 to-slate-500">
               Portfolio
             </span>
           </h2>
 
-          {/* Filter System Layout */}
-          <div className="space-y-6">
-            <div className="flex gap-8 border-b border-white/5">
-              {TABS.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => handleTabChange(tab)}
-                  className={`pb-4 text-xs font-bold uppercase tracking-widest relative transition-all cursor-pointer ${
-                    activeTab === tab
-                      ? "text-white"
-                      : "text-slate-500 hover:text-slate-300"
-                  }`}
-                >
-                  {tab}
-                  {activeTab === tab && (
-                    <span className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-blue-600" />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {FILTERS[activeTab].map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest border transition-all cursor-pointer ${
-                    activeFilter === filter
-                      ? "bg-blue-600 border-blue-600 text-white"
-                      : "border-white/10 text-slate-400 hover:border-white/30"
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
+          {/* Industry Tabs */}
+          <div
+            role="tablist"
+            aria-label="Portfolio industries"
+            className="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-2 border-b border-slate-200"
+          >
+            {TABS.map((tab) => (
+              <button
+                key={tab}
+                role="tab"
+                aria-selected={activeTab === tab}
+                onClick={() => setActiveTab(tab)}
+                className={`pb-4 text-xs font-bold uppercase tracking-widest relative transition-all cursor-pointer whitespace-nowrap ${
+                  activeTab === tab
+                    ? "text-slate-900"
+                    : "text-slate-500 hover:text-slate-700"
+                }`}
+              >
+                {tab}
+                {activeTab === tab && (
+                  <span className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-blue-600" />
+                )}
+              </button>
+            ))}
           </div>
         </header>
 
-        {/* Main Grid Render Loop */}
-        <div className="flex flex-col gap-20">
-          {filteredItems.map((item, index) => (
-            <PortfolioCard key={item.id} item={item} index={index} />
+        {/* Swipeable card track */}
+        <div
+          ref={trackRef}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Website portfolio"
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+          onPointerCancel={endDrag}
+          onClickCapture={(e) => {
+            // a drag shouldn't count as a click on a card link
+            if (drag.current.moved) {
+              e.preventDefault();
+              e.stopPropagation();
+              drag.current.moved = false;
+            }
+          }}
+          className={`portfolio-track flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 -mb-2 select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600 rounded-3xl ${
+            hasOverflow ? "cursor-grab" : ""
+          }`}
+        >
+          {items.map((item, i) => (
+            <div
+              key={item.id}
+              className="shrink-0 snap-start w-[92%] md:w-[94%]"
+            >
+              <PortfolioCard item={item} active={i === activeIndex} />
+            </div>
           ))}
         </div>
+
+        {hasOverflow && (
+          <div className="mt-6 flex items-center gap-6">
+            {/* Scroll progress */}
+            <div
+              className="relative h-1 flex-1 rounded-full bg-slate-200 overflow-hidden"
+              aria-hidden="true"
+            >
+              <div
+                className="absolute inset-y-0 rounded-full bg-blue-600 transition-[left,width] duration-200"
+                style={{ left: `${progress.left}%`, width: `${progress.width}%` }}
+              />
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => scrollByCard(-1)}
+                disabled={atStart}
+                aria-label="Previous projects"
+                className="w-12 h-12 rounded-full border border-slate-300 bg-white text-slate-800 flex items-center justify-center hover:border-slate-900 hover:shadow-md transition-all active:scale-95 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollByCard(1)}
+                disabled={atEnd}
+                aria-label="Next projects"
+                className="w-12 h-12 rounded-full border border-slate-300 bg-white text-slate-800 flex items-center justify-center hover:border-slate-900 hover:shadow-md transition-all active:scale-95 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
+              >
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -48,7 +48,7 @@ const SERVICE_TABS: ServiceTab[] = [
     image: "/website/website-intro.png",
     insetImage: "/ethical-infrastructures-showcase.png",
     floatingStat: { value: "100+", label: "Websites Launched" },
-    accentColor: "#38BDF8",
+    accentColor: "#0284C7",
     href: "/services/website-development-company-in-delhi",
   },
   {
@@ -66,7 +66,7 @@ const SERVICE_TABS: ServiceTab[] = [
     image: "/home/lead-growth.png",
     insetImage: "/home/ecom-growth.png",
     floatingStat: { value: "3X", label: "Avg. Lead Growth" },
-    accentColor: "#22D3EE",
+    accentColor: "#0891B2",
     href: "/services/performance-marketing",
   },
   {
@@ -90,7 +90,7 @@ const SERVICE_TABS: ServiceTab[] = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     insetImage: "/pearls-india-showcase.png",
     floatingStat: { value: "500+", label: "Page-1 Keywords" },
-    accentColor: "#60A5FA",
+    accentColor: "#2563EB",
     href: "/services/search-engine-optimization",
   },
   {
@@ -113,7 +113,7 @@ const SERVICE_TABS: ServiceTab[] = [
     image: "/home/social-growth.png",
     insetImage: "/smm-hero.png",
     floatingStat: { value: "10K+", label: "Monthly Engagements" },
-    accentColor: "#A78BFA",
+    accentColor: "#7C3AED",
     href: "/services/social-media-optimization",
   },
 ];
@@ -125,17 +125,17 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
     <div className="relative w-full min-h-[380px] md:min-h-[460px]">
       {/* Accent glow behind the visual */}
       <div
-        className="absolute inset-10 rounded-full blur-[90px] opacity-30 pointer-events-none"
+        className="absolute inset-10 rounded-full blur-[90px] opacity-20 pointer-events-none"
         style={{ backgroundColor: tab.accentColor }}
       />
 
       {/* Main browser-framed image */}
-      <div className="absolute top-0 right-0 w-[88%] rounded-[1.5rem] border border-white/10 bg-slate-950 overflow-hidden shadow-2xl shadow-black/50">
-        <div className="h-9 bg-slate-950/90 flex items-center px-4 border-b border-white/5">
+      <div className="absolute top-0 right-0 w-[88%] rounded-[1.5rem] border border-slate-200 bg-white overflow-hidden shadow-xl shadow-slate-300/50">
+        <div className="h-9 bg-slate-100 flex items-center px-4 border-b border-slate-200">
           <div className="flex gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-red-500/50" />
-            <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
-            <div className="w-2 h-2 rounded-full bg-green-500/50" />
+            <div className="w-2 h-2 rounded-full bg-red-400" />
+            <div className="w-2 h-2 rounded-full bg-yellow-400" />
+            <div className="w-2 h-2 rounded-full bg-green-400" />
           </div>
         </div>
         <img
@@ -146,7 +146,7 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
       </div>
 
       {/* Inset secondary image */}
-      <div className="absolute bottom-0 left-0 w-[52%] rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-black/60 bg-slate-900">
+      <div className="absolute bottom-0 left-0 w-[52%] rounded-2xl border-4 border-white overflow-hidden shadow-xl shadow-slate-400/40 bg-white">
         <img
           src={tab.insetImage}
           alt=""
@@ -156,14 +156,14 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
       </div>
 
       {/* Floating stat card */}
-      <div className="absolute bottom-6 right-2 md:right-6 px-5 py-4 rounded-2xl border border-white/10 bg-[#050b18]/80 backdrop-blur-xl">
+      <div className="absolute bottom-6 right-2 md:right-6 px-5 py-4 rounded-2xl border border-slate-200 bg-white/90 shadow-lg shadow-slate-300/50 backdrop-blur-xl">
         <span
           className="block text-2xl md:text-3xl font-bold"
           style={{ color: tab.accentColor }}
         >
           {tab.floatingStat.value}
         </span>
-        <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+        <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
           {tab.floatingStat.label}
         </span>
       </div>
@@ -177,21 +177,21 @@ export default function ServiceIntroTabs() {
     SERVICE_TABS.find((tab) => tab.key === activeKey) ?? SERVICE_TABS[0];
 
   return (
-    <section className="bg-[#020617] text-white pt-32 pb-8 px-4 md:px-8 relative overflow-hidden">
+    <section className="bg-slate-50 text-slate-900 pt-32 pb-24 px-4 md:px-8 relative overflow-hidden">
       {/* Background Radial Glow Effects */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-cyan-300/30 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative">
         <header className="mb-10">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-12 h-[2px] bg-blue-600" />
-            <span className="text-blue-500 text-sm font-bold uppercase tracking-[0.3em]">
+            <span className="text-blue-600 text-sm font-bold uppercase tracking-[0.3em]">
               What We Do
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl mb-8 font-bold">
             Our{" "}
-            <span className="text-transparent bg-clip-text pe-2 bg-gradient-to-r from-white to-slate-500">
+            <span className="text-transparent bg-clip-text pe-2 bg-gradient-to-r from-slate-900 to-slate-500">
               Expertise
             </span>
           </h2>
@@ -200,7 +200,7 @@ export default function ServiceIntroTabs() {
           <div
             role="tablist"
             aria-label="Our expertise"
-            className="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-2 border-b border-white/5"
+            className="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-2 border-b border-slate-200"
           >
             {SERVICE_TABS.map((tab) => (
               <button
@@ -212,8 +212,8 @@ export default function ServiceIntroTabs() {
                 onClick={() => setActiveKey(tab.key)}
                 className={`pb-4 text-xs font-bold uppercase tracking-widest relative transition-all cursor-pointer whitespace-nowrap ${
                   activeKey === tab.key
-                    ? "text-white"
-                    : "text-slate-500 hover:text-slate-300"
+                    ? "text-slate-900"
+                    : "text-slate-500 hover:text-slate-700"
                 }`}
               >
                 {tab.label}
@@ -231,7 +231,7 @@ export default function ServiceIntroTabs() {
           role="tabpanel"
           id={`expertise-panel-${activeTab.key}`}
           aria-labelledby={`expertise-tab-${activeTab.key}`}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center rounded-[2rem] border border-white/10 bg-[#050b18]/60 backdrop-blur-xl p-8 md:p-12 xl:p-16 animate-[expertiseFadeIn_0.5s_ease-out]"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/60 p-8 md:p-12 xl:p-16 animate-[expertiseFadeIn_0.5s_ease-out]"
         >
           <style>{`
             @keyframes expertiseFadeIn {
@@ -246,7 +246,7 @@ export default function ServiceIntroTabs() {
           {/* --- Left Side: Content --- */}
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 border border-white/20">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 border border-slate-200">
                 <activeTab.icon
                   className="w-5 h-5"
                   style={{ color: activeTab.accentColor }}
@@ -268,7 +268,7 @@ export default function ServiceIntroTabs() {
               {activeTab.paragraphs.map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-slate-300 text-base md:text-lg leading-relaxed"
+                  className="text-slate-600 text-base md:text-lg leading-relaxed"
                 >
                   {paragraph}
                 </p>
@@ -279,7 +279,7 @@ export default function ServiceIntroTabs() {
               {activeTab.highlights.map((highlight) => (
                 <span
                   key={highlight}
-                  className="px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/10 text-slate-400"
+                  className="px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest border border-slate-200 bg-slate-50 text-slate-600"
                 >
                   {highlight}
                 </span>
@@ -289,7 +289,7 @@ export default function ServiceIntroTabs() {
             <div className="flex flex-wrap items-center gap-6">
               <Link
                 href={activeTab.href}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-500 hover:text-white transition-all duration-300 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-600 transition-all duration-300 group"
               >
                 Explore Now
                 <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

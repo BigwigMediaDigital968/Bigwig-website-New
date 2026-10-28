@@ -5,9 +5,9 @@ import { ChevronRight } from "lucide-react";
 export default function PortfolioCTA() {
   return (
     <>
-      <section className="relative py-24 px-6 overflow-hidden bg-[#011c40]">
+      <section className="relative py-24 px-6 overflow-hidden bg-white">
         {/* Background Decorative Lines (similar to image 09df02) */}
-        <div className="absolute inset-0 opacity-40">
+        <div className="absolute inset-0 opacity-30">
           <svg
             className="w-full h-full"
             viewBox="0 0 1440 800"

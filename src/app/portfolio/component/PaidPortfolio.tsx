@@ -58,7 +58,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A fundraising campaign hosted on the Classy platform designed to support Eldearly’s mission, allowing supporters to donate securely toward impactful social causes that help underserved communities.",
     media: {
-      image: "image_70529f.jpg",
+      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 33,
@@ -140,7 +140,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A philanthropic organisation focused on improving health, education, and welfare outcomes for vulnerable populations.",
     media: {
-      image: "image_6fe242.png",
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 52,
@@ -222,7 +222,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A non-profit organization dedicated to providing free shelter, food, medical care, and dignity to abandoned and destitute elderly individuals through its old age homes in Delhi NCR and Uttar Pradesh.",
     media: {
-      image: "image_6fe208.jpg",
+      image: "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 51,
@@ -304,7 +304,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A kids-focused ecommerce and lifestyle brand offering products designed for children and parents.",
     media: {
-      image: "image_6fdf3f.png",
+      image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 175,
@@ -386,7 +386,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Creative Packers offers professional packing and moving solutions, helping individuals and businesses relocate safely with tailored packing services and logistics support.",
     media: {
-      image: "image_6fdf18.jpg",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 32,
@@ -459,7 +459,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Rashi Jain Jyotish delivers astrological guidance and horoscope services, blending traditional Vedic astrology with personalized consultation offerings for life insights.",
     media: {
-      image: "image_6fde9f.jpg",
+      image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 24,
@@ -532,7 +532,7 @@ const portfolioData: ProjectData[] = [
     description:
       "OFY Clinics is a healthcare service provider that connects patients with clinical care solutions, focusing on accessible treatments and patient-centric medical support.",
     media: {
-      image: "image_6fde61.png",
+      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 27,
@@ -614,7 +614,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Quackapo is a homegrown entertainment & lifestyle brand that sells playful products like the Road Trip card game, combining fun and social engagement for families and friends.",
     media: {
-      image: "image_6fdb9a.png",
+      image: "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 14,
@@ -678,7 +678,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Gangasagar.in promotes pilgrimage and spiritual tourism to the Gangasagar region, highlighting its cultural significance and providing information on events, accommodations, and travel.",
     media: {
-      image: "image_6fdb75.jpg",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 52,
@@ -742,7 +742,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Sukham Hospital, part of Uttarakhand Ayurved, operates as a cancer and surgical care centre, providing integrative medical treatments and patient support in specialized health services.",
     media: {
-      image: "image_6fdb1f.png",
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
     },
     performanceMetrics: {
       totalCampaigns: 9,
@@ -809,11 +809,41 @@ const portfolioData: ProjectData[] = [
   },
 ];
 
+function CategoryPill({
+  label,
+  active,
+  onSelect,
+}: {
+  label: string;
+  active: boolean;
+  onSelect: (el: HTMLButtonElement) => void;
+}) {
+  return (
+    <button
+      onClick={(e) => onSelect(e.currentTarget)}
+      className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-300 shrink-0 cursor-pointer border ${
+        active
+          ? "bg-[#0b1220] text-white border-[#0b1220] shadow-md"
+          : "bg-white text-gray-700 border-gray-300 hover:border-gray-400"
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
+
 export default function PaidPortfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [campaignSearch, setCampaignSearch] = useState("");
+  const pillsRef = React.useRef<HTMLDivElement>(null);
+  const pillsDrag = React.useRef({
+    active: false,
+    moved: false,
+    startX: 0,
+    startScroll: 0,
+  });
 
   const categories = useMemo(() => {
     const cats = ["All"];
@@ -869,32 +899,78 @@ export default function PaidPortfolio() {
           </p>
         </div>
 
-        {/* Category Pill Filters */}
-        <div className="flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto pb-4 scrollbar-none px-2">
-          {categories.map((cat) => {
-            const isActive = selectedCategory === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => {
-                  setSelectedCategory(cat);
-                  setActiveIndex(0);
-                }}
-                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 shrink-0 cursor-pointer border ${
-                  isActive
-                    ? "bg-[#0b1220] text-white border-[#0b1220] shadow-md"
-                    : "bg-white text-gray-700 border-gray-300 hover:border-gray-400"
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
+        {/* Category Pill Filters: "All" stays pinned, the rest scroll with faded edges and no scrollbar */}
+        <div className="flex items-center justify-center gap-2.5 px-2">
+          <CategoryPill
+            label={categories[0]}
+            active={selectedCategory === categories[0]}
+            onSelect={() => {
+              setSelectedCategory(categories[0]);
+              setActiveIndex(0);
+            }}
+          />
+
+          <div
+            ref={pillsRef}
+            onPointerDown={(e) => {
+              if (e.pointerType !== "mouse" || !pillsRef.current) return;
+              pillsDrag.current = {
+                active: true,
+                moved: false,
+                startX: e.clientX,
+                startScroll: pillsRef.current.scrollLeft,
+              };
+            }}
+            onPointerMove={(e) => {
+              const el = pillsRef.current;
+              if (!pillsDrag.current.active || !el) return;
+              const delta = e.clientX - pillsDrag.current.startX;
+              if (Math.abs(delta) > 5) pillsDrag.current.moved = true;
+              if (pillsDrag.current.moved)
+                el.scrollLeft = pillsDrag.current.startScroll - delta;
+            }}
+            onPointerUp={() => (pillsDrag.current.active = false)}
+            onPointerLeave={() => (pillsDrag.current.active = false)}
+            onClickCapture={(e) => {
+              // a drag shouldn't count as a pill click
+              if (pillsDrag.current.moved) {
+                e.preventDefault();
+                e.stopPropagation();
+                pillsDrag.current.moved = false;
+              }
+            }}
+            className="min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-6 py-1"
+            style={{
+              maskImage:
+                "linear-gradient(to right, transparent, black 24px, black calc(100% - 40px), transparent)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent, black 24px, black calc(100% - 40px), transparent)",
+            }}
+          >
+            <div className="flex w-max items-center gap-2.5">
+              {categories.slice(1).map((cat) => (
+                <CategoryPill
+                  key={cat}
+                  label={cat}
+                  active={selectedCategory === cat}
+                  onSelect={(el) => {
+                    el.scrollIntoView({
+                      behavior: "smooth",
+                      inline: "center",
+                      block: "nearest",
+                    });
+                    setSelectedCategory(cat);
+                    setActiveIndex(0);
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* 3D Stacked Card Carousel */}
         {filteredData.length > 0 && activeItem && (
-          <div className="relative py-8 sm:py-12 overflow-hidden">
+          <div className="relative py-8 sm:py-12 pt-4 sm:pt-4 overflow-hidden">
             <div className="relative h-[380px] sm:h-[480px] md:h-[520px] flex items-center justify-center">
               {filteredData.map((item, index) => {
                 let offset = index - activeIndex;
