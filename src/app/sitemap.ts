@@ -157,12 +157,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/services/ai-cgi-marketing`,
-      lastModified: new Date("2025-08-14"),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
+    // {
+    //   url: `${baseUrl}/services/ai-cgi-marketing`,
+    //   lastModified: new Date("2025-08-14"),
+    //   changeFrequency: "weekly",
+    //   priority: 0.9,
+    // },
     {
       url: `${baseUrl}/services/landing-page-optimization`,
       lastModified: new Date("2025-08-14"),

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.bigwigmediadigital.com/og-bigwig.png",
+        url: "/og-images/seo.jpg",
       },
     ],
   },
@@ -278,13 +278,7 @@ export default function SeoPage() {
             </p>
             <p>
               Bigwig Media Digital provides SEO services in Delhi NCR to help businesses improve their search
-              visibility, attract relevant visitors, and turn website traffic into meaningful enquiries. Our approach
-              combines keyword research, useful content, technical improvements, and performance tracking to support
-              long-term organic growth.
-            </p>
-            <p>
-              Whether you run a local business, an ecommerce store, or a growing company, we build SEO strategies
-              around your goals, audience, and competition.
+              visibility, attract relevant visitors, and turn website traffic into meaningful enquiries.
             </p>
           </div>
         }

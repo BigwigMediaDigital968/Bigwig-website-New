@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.bigwigmediadigital.com/og-bigwig.png",
+        url: "/og-images/content.jpg",
       },
     ],
   },

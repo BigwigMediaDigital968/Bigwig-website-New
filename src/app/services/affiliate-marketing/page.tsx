@@ -32,13 +32,13 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: URL,
+    url: "URL",
     siteName: "Bigwig Media Digital",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://www.bigwigmediadigital.com/og-bigwig.png",
+        url: "/og-images/affiliate.jpg",
       },
     ],
   },
