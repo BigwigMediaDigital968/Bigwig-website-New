@@ -52,6 +52,7 @@ const ring =
 // Pages whose hero is a full-screen photo/video the nav floats over
 const OVERLAY_PATHS = [
   "/",
+  "/portfolio",
   "/digital-marketing-agency-dubai-uae/seo-services-in-dubai-uae",
   "/services/search-engine-optimization",
   // "/services/social-media-marketing",

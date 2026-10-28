@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { ChevronRight, Star, Users, ArrowUpRight, Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { ChevronRight, Star, Users } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
 const PortifolioHero = () => {
   const [scrolled, setScrolled] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -14,189 +16,203 @@ const PortifolioHero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <div className="min-h-screen bg-[#011c40] text-white font-sans selection:bg-[#4e6cba] selection:text-white overflow-x-hidden">
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden bg-[#011c40]">
-        {/* Background Video Layer */}
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-60"
-          >
-            <source src="portfolio-hero.mp4" type="video/mp4" />
-          </video>
-          {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#011c40]/80 via-transparent to-[#011c40] z-10" />
-        </div>
+  // Parallax video background matching ServiceHero scroll dynamics
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
-        {/* Hero Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
+  return (
+    <section
+      ref={sectionRef}
+      className="relative isolate flex overflow-hidden bg-[#011c40] text-white lg:h-[100svh] lg:min-h-[700px] lg:max-h-[980px] lg:items-center"
+    >
+      {/* Background Video Layer with Parallax */}
+      <motion.div
+        aria-hidden
+        className="absolute inset-0 -z-20"
+        style={reduce ? undefined : { scale: videoScale, y: videoY }}
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover opacity-50"
+        >
+          <source src="portfolio-hero.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
+
+      {/* Navy gradient washes matching ServiceHero overlay */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(1,28,64,0.82)_0%,rgba(1,28,64,0.92)_100%)] lg:bg-[linear-gradient(100deg,rgba(1,28,64,0.94)_0%,rgba(1,28,64,0.78)_45%,rgba(2,56,89,0.4)_100%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(1,28,64,0.6),transparent_40%)]"
+      />
+
+      {/* Main Content Area - exact padding specs matching ServiceHero (pt-28 md:pt-32 lg:pt-24) */}
+      <div className="wrap grid w-full gap-8 pb-12 pt-28 md:pt-32 lg:pb-10">
+        <div className="mx-auto max-w-7xl px-4 text-center w-full">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 text-white">
-              50+ Digital Products Built for the <br />
-              <span className="italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#ccdaff] to-[#a7ebf2]">
-                World's Leading Enterprises.
+            {/* Eyebrow / Lead */}
+            <p className="text-[0.95rem] font-medium text-[#a7ebf2] tracking-wide mb-2">
+              PORTFOLIO SHOWCASE
+            </p>
+
+            {/* Main Title matching ServiceHero typography scaling */}
+            <h1 className="mx-auto max-w-4xl text-[2.3rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(2.5rem,3.2vw,3rem)] text-white">
+              50+ Digital Products Built for the{" "}
+              <span className="block italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#ccdaff] via-[#a7ebf2] to-[#ffffff]">
+                World&apos;s Leading Enterprises.
               </span>
             </h1>
 
-            <p className="text-sm md:text-lg font-medium text-gray-300 max-w-3xl mx-auto mb-10">
+            {/* Intro Copy */}
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
               Explore how BigWig Media Digital Engineers Digital Solutions that
               move Markets across 20+ Industries.
             </p>
 
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 w-fit mx-auto
-             bg-white text-[#011c40]
-             px-8 py-3.5 rounded-full
-             font-bold text-sm
-             transition-all duration-300 ease-out
-             shadow-lg hover:shadow-2xl
-             hover:bg-[#a7ebf2]
-             hover:scale-105 active:scale-95
-             relative overflow-hidden"
-            >
-              {/* Animated Shine Layer */}
-              <span
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent 
-                   translate-x-[-120%] group-hover:translate-x-[120%] 
-                   transition-transform duration-700 ease-in-out"
-              />
+            {/* CTA Button */}
+            <div className="mt-7 flex justify-center">
+              <Link
+                href="/contact"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-7 py-3 text-sm font-bold text-[#011c40] shadow-md transition-all duration-300 ease-out hover:bg-[#a7ebf2] hover:shadow-xl hover:scale-105 active:scale-95"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-120%] transition-transform duration-700 ease-in-out group-hover:translate-x-[120%]" />
 
-              <span className="relative z-10 flex items-center gap-2">
-                Book a Portfolio Demo
-                <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </Link>
+                <span className="relative z-10 flex items-center gap-2">
+                  Book a Portfolio Demo
+                  <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </div>
           </motion.div>
 
-          {/* Stats Grid - Matching the image precisely */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-20 max-w-6xl mx-auto items-end">
-            {/* 2. White Stat Box */}
+          {/* Stats Grid */}
+          <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-4 items-end md:mt-14 md:grid-cols-12">
+            {/* 50+ Stat */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col justify-center rounded-[20px] bg-white p-5 text-left shadow-xl md:col-span-2"
+            >
+              <h3 className="text-3xl font-bold text-[#4e6cba] md:text-4xl">50+</h3>
+              <p className="mt-1 text-xs font-bold leading-snug text-[#011c40]">
+                Digital Solutions <br /> Developed
+              </p>
+            </motion.div>
+
+            {/* Rating Stat */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="md:col-span-2 bg-white rounded-[32px] p-8 flex flex-col justify-center text-left"
-            >
-              <h3 className="text-4xl font-bold text-[#4e6cba] mb-1">50+</h3>
-              <p className="text-[#011c40] text-xs font-bold leading-tight">
-                Digital Solutions <br />
-                Developed
-              </p>
-            </motion.div>
-
-            {/* 3. Rating Box */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="md:col-span-2 bg-[#023859]/80 backdrop-blur-md border border-white/10 rounded-[32px] p-6 flex flex-col justify-between"
+              className="flex h-full min-h-[125px] flex-col justify-between rounded-[20px] border border-white/15 bg-[#023859]/70 p-4 backdrop-blur-md md:col-span-2"
             >
               <div className="flex items-center gap-1.5">
-                <Star className="w-4 h-4 fill-white text-white" />
-                <span className="text-xl font-semibold italic text-white">
+                <Star className="h-4 w-4 fill-white text-white" />
+                <span className="text-lg font-semibold italic text-white">
                   4.9 / 5.0
                 </span>
               </div>
-              <div className="mt-auto">
-                <p className="text-gray-400 text-[10px] uppercase tracking-widest mb-3">
-                  Client-Verified <br />
-                  Platforms
+              <div className="mt-auto text-left">
+                <p className="text-[10px] font-semibold uppercase leading-tight tracking-wider text-white/70">
+                  Client-Verified <br /> Platforms
                 </p>
-                {/* <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center bg-transparent">
-                  <span className="text-white font-bold text-lg leading-none">
-                    C
-                  </span>
-                </div> */}
               </div>
             </motion.div>
 
-            {/* 1. Left Image Card */}
+            {/* Center Image Feature Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="md:col-span-4 relative h-[280px] rounded-[40px] overflow-hidden shadow-2xl group"
+              transition={{ delay: 0.1 }}
+              className="group relative h-[180px] overflow-hidden rounded-[20px] shadow-2xl md:col-span-4 md:h-[200px]"
             >
               <img
                 src="/portfolio-hero-image-1.png"
-                className="w-full h-full object-cover"
-                alt="Team"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                alt="Digital Growth Team"
               />
-              <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2">
-                <div className="w-4 h-4 bg-[#4e6cba] rounded-full flex items-center justify-center">
-                  <Users className="w-2 h-2 text-white" />
+              <div className="absolute top-3 left-3 flex items-center gap-2 rounded-full bg-white/95 px-3 py-1 shadow-sm backdrop-blur-md">
+                <div className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[#4e6cba]">
+                  <Users className="h-2 w-2 text-white" />
                 </div>
-                <span className="text-black text-[10px] font-bold uppercase tracking-wider">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-black">
                   Digital Growth
                 </span>
               </div>
             </motion.div>
 
-            {/* 4. Industries Bar Chart Box */}
+            {/* 20+ Industries Stat */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="md:col-span-2 bg-[#023859]/80 backdrop-blur-md border border-white/10 rounded-[32px] p-6 flex flex-col justify-between"
+              transition={{ delay: 0.4 }}
+              className="flex h-full min-h-[125px] flex-col justify-between rounded-[20px] border border-white/15 bg-[#023859]/70 p-4 backdrop-blur-md md:col-span-2"
             >
               <div className="text-left">
-                <h3 className="text-3xl font-bold text-white">20+</h3>
-                <p className="text-gray-400 text-[10px] mt-1">
+                <h3 className="text-2xl font-bold text-white md:text-3xl">20+</h3>
+                <p className="mt-0.5 text-[10px] font-medium text-white/70">
                   Industries Served
                 </p>
               </div>
-              <div className="flex items-end justify-end gap-1.5 h-16 pt-4">
-                <div className="w-2.5 bg-gray-600/50 h-[30%] rounded-full" />
-                <div className="w-2.5 bg-gray-600/50 h-[50%] rounded-full" />
-                <div className="w-2.5 bg-[#4e6cba] h-[80%] rounded-full" />
-                <div className="w-2.5 bg-[#4e6cba] h-[100%] rounded-full" />
+              <div className="flex h-9 items-end justify-end gap-1.5 pt-2">
+                <div className="h-[30%] w-2 rounded-full bg-white/30" />
+                <div className="h-[50%] w-2 rounded-full bg-white/30" />
+                <div className="h-[80%] w-2 rounded-full bg-[#4e6cba]" />
+                <div className="h-[100%] w-2 rounded-full bg-[#a7ebf2]" />
               </div>
             </motion.div>
 
-            {/* 5. Faster Box */}
+            {/* 80% Faster Metric Box */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-              className="md:col-span-2 bg-white rounded-[32px] p-6 flex flex-col justify-between relative overflow-hidden group shadow-xl"
+              transition={{ delay: 0.5 }}
+              className="group relative flex h-full min-h-[125px] flex-col justify-between overflow-hidden rounded-[20px] bg-white p-4 shadow-xl md:col-span-2"
             >
-              <div className="text-left z-10">
-                <h4 className="text-[#011c40] font-bold text-xl mb-1">
+              <div className="z-10 text-left">
+                <h4 className="mb-0.5 text-xl font-bold text-[#011c40]">
                   80% Faster
                 </h4>
-                <p className="text-gray-500 text-[9px] font-medium uppercase leading-tight">
+                <p className="text-[9px] font-medium uppercase leading-tight text-gray-500">
                   Time-to-Market Powered by AI
                 </p>
               </div>
-              {/* Visual Decoration Slinky */}
-              <div className="absolute right-[-15px] bottom-[-15px] flex flex-col items-center">
+
+              {/* Decorative Slinky Rings */}
+              <div className="absolute right-[-10px] bottom-[-10px] flex flex-col items-center">
                 {[...Array(5)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-14 h-14 rounded-full border-[5px] border-[#023859]"
+                    className="h-11 w-11 rounded-full border-[4px] border-[#023859]"
                     style={{
-                      marginTop: "-40px",
+                      marginTop: "-32px",
                       opacity: 0.8 - i * 0.15,
                       transform: `translateX(${i * 4}px)`,
                     }}
                   />
                 ))}
-                <div className="absolute -left-2 top-0 w-3 h-3 bg-[#4e6cba] rounded-full animate-pulse" />
+                <div className="absolute -left-1 top-0 h-2.5 w-2.5 animate-pulse rounded-full bg-[#4e6cba]" />
               </div>
             </motion.div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
