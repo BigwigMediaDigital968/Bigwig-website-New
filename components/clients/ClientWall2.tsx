@@ -15,14 +15,20 @@ const INDUSTRY_ORDER = [
   "Forex & Trading",
   "Logistics",
   "Engineering",
-  "Others"
+  "Hospitality"
 ];
 
 export default function ClientWall2() {
+  // Largest industries first; ties keep INDUSTRY_ORDER since sort is stable
   const groupedClients = INDUSTRY_ORDER.map((industry) => ({
     name: industry,
     items: clients.filter((c) => c.industry === industry),
-  })).filter((group) => group.items.length > 0);
+  }))
+    .filter((group) => group.items.length > 0)
+    .sort((a, b) => b.items.length - a.items.length);
+  const multiGroups = groupedClients.filter((group) => group.items.length > 1);
+  // Single-client industries share one row so their lone tiles don't leave empty space
+  const singleGroups = groupedClients.filter((group) => group.items.length === 1);
 
   return (
     <>
@@ -60,7 +66,7 @@ export default function ClientWall2() {
 
       {/* ---------- Industry Sections ---------- */}
       <div className="wrap space-y-16 pb-20">
-        {groupedClients.map((group) => (
+        {multiGroups.map((group) => (
           <section key={group.name} className="mx-auto max-w-[1600px]">
             <div className="mb-6 flex items-center justify-between px-4">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--ink)]">
@@ -75,6 +81,19 @@ export default function ClientWall2() {
             )}
           </section>
         ))}
+
+        {singleGroups.length > 0 && (
+          <div className="mx-auto flex max-w-[1600px] flex-wrap gap-x-px gap-y-10">
+            {singleGroups.map((group) => (
+              <section key={group.name}>
+                <h2 className="mb-6 px-4 text-2xl md:text-3xl font-semibold tracking-tight text-[var(--ink)]">
+                  {group.name}
+                </h2>
+                <GridSection items={group.items} />
+              </section>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

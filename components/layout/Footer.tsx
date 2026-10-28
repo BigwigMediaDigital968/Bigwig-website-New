@@ -84,7 +84,7 @@ const industries: { name: string; path?: string }[] = [
 const legalLinks = [
   { name: "Terms & Conditions", path: "/terms-and-condition" },
   { name: "Privacy Policy", path: "/privacy-policy" },
-  { name: "Sitemap", path: "/sitemap.xml" },
+  { name: "Sitemap", path: "/sitemap.html" },
 ];
 
 const socials = [
@@ -229,7 +229,7 @@ export default function Footer() {
 
             {/* Column 4: Industries */}
             <motion.div variants={fadeUp} className="col-span-1 lg:col-span-2">
-              <Heading>Industries</Heading>
+              <Heading>Industries We Cover</Heading>
               <ul className="space-y-2.5 text-sm text-white/65">
                 {industries.map((i) => (
                   <li key={i.name}>

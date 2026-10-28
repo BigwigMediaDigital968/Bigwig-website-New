@@ -42,13 +42,13 @@ export const serviceCards: ServiceCard[] = [
     href: "/services/social-media-optimization",
     icon: smo,
   },
-  {
-    title: "Social Media Marketing",
-    tagline: "Turn your followers into loyal customers.",
-    desc: "We run targeted campaigns, boost engagement, and build a strong brand presence across all social platforms.",
-    href: "/services/social-media-marketing",
-    icon: smm,
-  },
+  // {
+  //   title: "Social Media Marketing",
+  //   tagline: "Turn your followers into loyal customers.",
+  //   desc: "We run targeted campaigns, boost engagement, and build a strong brand presence across all social platforms.",
+  //   href: "/services/social-media-marketing",
+  //   icon: smm,
+  // },
   {
     title: "Performance Marketing",
     tagline: "Pay for results, not just clicks!",

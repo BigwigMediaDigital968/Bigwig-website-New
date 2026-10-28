@@ -259,7 +259,7 @@ export const clients: Client[] = [
     img: "/clients-logo/trimmed/stellarbinge.png",
     aspect: 1.75,
     link: "https://www.stellarbinge.com",
-    industry: "Others",
+    industry: "Hospitality",
   },
   {
     name: "The Stellar Gymkhana",
@@ -268,7 +268,7 @@ export const clients: Client[] = [
     img: "/clients-logo/trimmed/thestellargymkhana.png",
     aspect: 2.51,
     link: "https://stellargym.co.in/",
-    industry: "Others",
+    industry: "Hospitality",
   },
 ];
 
