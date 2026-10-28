@@ -99,6 +99,24 @@ export const clients: Client[] = [
     link: "https://www.bajajchemicals.co/",
     industry: "D2C",
   },
+  {
+    name: "Velvetor",
+    square: "navy",
+    tile: "/clients-logo/velvetor.png",
+    img: "/clients-logo/trimmed/velvetor.png",
+    aspect: 1.75,
+    link: "https://www.velvetorperfumes.com/",
+    industry: "D2C",
+  },
+  {
+    name: "Hocco Ice Cream",
+    square: "white",
+    tile: "/clients-logo/hocco.png",
+    img: "/clients-logo/trimmed/hocco.png",
+    aspect: 1.75,
+    link: "https://www.hocco.in/",
+    industry: "D2C",
+  },
 
   // Real Estate
   {
