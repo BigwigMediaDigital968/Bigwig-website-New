@@ -356,8 +356,8 @@ export default function SEOPortfolio() {
     seoProjectsData.find((p) => p.id === selectedProjectId) || seoProjectsData[0];
 
   return (
-    <section className="relative min-h-screen bg-gray-50/70 text-gray-900 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-10">
+    <section className="relative overflow-hidden text-gray-900 py-14 md:py-16 px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto space-y-8 md:space-y-10">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#023859] text-xs font-bold tracking-wider uppercase">
@@ -383,7 +383,7 @@ export default function SEOPortfolio() {
             </p>
 
             {/* Scrollable list with scrollbars hidden across Chrome, Safari, Firefox & Edge */}
-            <div className="space-y-1.5 max-h-[calc(100vh-260px)] min-h-[380px] overflow-y-auto pr-1 pb-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="space-y-1.5 max-h-[280px] lg:max-h-[calc(100vh-260px)] lg:min-h-[380px] overflow-y-auto pr-1 pb-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {seoProjectsData.map((project) => {
                 const isSelected = project.id === activeProject.id;
                 return (
@@ -440,7 +440,7 @@ export default function SEOPortfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#023859] text-white rounded-xl p-6 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden border border-[#011c40] space-y-8"
+                className="bg-[#023859] text-white rounded-xl p-4 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden border border-[#011c40] space-y-8"
               >
                 {/* Background Ambient Glow */}
                 <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-400/10 rounded-full blur-[100px] pointer-events-none" />
@@ -451,7 +451,7 @@ export default function SEOPortfolio() {
                     <span className="px-3 py-1 rounded-full bg-white/10 text-cyan-200 text-xs font-semibold tracking-wider uppercase border border-white/15">
                       {activeProject.category}
                     </span>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mt-3">
+                    <h2 className="text-xl sm:text-3xl md:text-4xl font-medium text-white mt-3">
                       {activeProject.title}
                     </h2>
                     <p className="text-sm text-cyan-100/80 mt-1 font-medium">

@@ -883,8 +883,8 @@ export default function PaidPortfolio() {
   }, [activeItem, campaignSearch]);
 
   return (
-    <section className="min-h-screen bg-white text-gray-900 py-8 px-4 sm:px-6 lg:px-8 selection:bg-gray-900 selection:text-white">
-      <div className="max-w-8xl mx-auto space-y-10">
+    <section className="relative overflow-hidden text-gray-900 py-12 md:py-16 px-4 sm:px-6 lg:px-8 selection:bg-gray-900 selection:text-white">
+      <div className="relative max-w-8xl mx-auto space-y-8 md:space-y-10">
         {/* Header Section */}
         <div className="text-center space-y-3">
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
@@ -971,7 +971,7 @@ export default function PaidPortfolio() {
         {/* 3D Stacked Card Carousel */}
         {filteredData.length > 0 && activeItem && (
           <div className="relative py-8 sm:py-12 pt-4 sm:pt-4 overflow-hidden">
-            <div className="relative h-[380px] sm:h-[480px] md:h-[520px] flex items-center justify-center">
+            <div className="relative h-[400px] sm:h-[480px] md:h-[520px] flex items-center justify-center">
               {filteredData.map((item, index) => {
                 let offset = index - activeIndex;
                 if (offset < -1) offset += filteredData.length;
@@ -997,7 +997,7 @@ export default function PaidPortfolio() {
                     }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     onClick={() => setActiveIndex(index)}
-                    className={`absolute w-[480px] sm:w-[580px] md:w-[820px] h-[360px] sm:h-[450px] md:h-[490px] rounded-[12px] overflow-hidden shadow-2xl cursor-pointer bg-gray-900 group ${
+                    className={`absolute w-[82vw] sm:w-[580px] md:w-[820px] max-w-[820px] h-[380px] sm:h-[450px] md:h-[490px] rounded-[12px] overflow-hidden shadow-2xl cursor-pointer bg-gray-900 group ${
                       isCenter ? "shadow-2xl ring-1 ring-black/10" : ""
                     }`}
                   >
@@ -1013,7 +1013,7 @@ export default function PaidPortfolio() {
                     <div className="absolute inset-0 bg-gradient-to-b from-[#011c40]/60 via-[#011c40]/10 to-transparent" />
 
                     {/* Card Content Overlay */}
-                    <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-between text-white">
+                    <div className="absolute inset-0 p-4 sm:p-8 flex flex-col justify-between text-white">
                       <div className="flex items-center justify-between">
                         <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold tracking-wider uppercase text-white border border-white/20">
                           {item.category}
@@ -1124,7 +1124,7 @@ export default function PaidPortfolio() {
               className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] z-10 border border-gray-100"
             >
               {/* Modal Header */}
-              <div className="p-6 border-b border-gray-100 flex items-center justify-between gap-4">
+              <div className="p-4 sm:p-6 border-b border-gray-100 flex items-center justify-between gap-4">
                 <div>
                   <span className="text-xs text-gray-500 font-semibold uppercase tracking-wider">
                     {activeItem.category}
@@ -1143,7 +1143,7 @@ export default function PaidPortfolio() {
               </div>
 
               {/* Search Bar */}
-              <div className="px-6 py-3 border-b border-gray-100 bg-gray-50 flex items-center gap-3">
+              <div className="px-4 sm:px-6 py-3 border-b border-gray-100 bg-gray-50 flex items-center gap-3">
                 <Search className="w-4 h-4 text-gray-400" />
                 <input
                   type="text"
@@ -1155,8 +1155,8 @@ export default function PaidPortfolio() {
               </div>
 
               {/* Table Data */}
-              <div className="p-6 overflow-y-auto flex-1">
-                <table className="w-full text-left text-xs border-collapse">
+              <div className="p-4 sm:p-6 overflow-auto flex-1">
+                <table className="w-full min-w-[560px] text-left text-xs border-collapse">
                   <thead>
                     <tr className="border-b border-gray-200 text-gray-500 font-semibold uppercase tracking-wider">
                       <th className="py-3 px-3">Ad Set Name</th>

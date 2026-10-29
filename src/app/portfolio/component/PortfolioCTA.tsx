@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 export default function PortfolioCTA() {
   return (
     <>
-      <section className="relative py-24 px-6 overflow-hidden bg-white">
+      <section className="relative py-14 md:py-24 px-4 sm:px-6 overflow-hidden">
         {/* Background Decorative Lines (similar to image 09df02) */}
         <div className="absolute inset-0 opacity-30">
           <svg
@@ -61,13 +61,13 @@ export default function PortfolioCTA() {
           className="relative z-10 max-w-6xl mx-auto"
         >
           <div className="relative rounded-[40px] overflow-hidden p-1 bg-gradient-to-br from-white/20 to-transparent">
-            <div className="bg-gradient-to-br from-[#1e4ccf]/90 via-[#4e6cba]/80 to-[#a834d9]/70 backdrop-blur-2xl rounded-[39px] py-16 px-8 md:px-16 text-center shadow-2xl border border-white/10">
+            <div className="bg-gradient-to-br from-[#1e4ccf]/90 via-[#4e6cba]/80 to-[#a834d9]/70 backdrop-blur-2xl rounded-[39px] py-12 md:py-16 px-5 sm:px-8 md:px-16 text-center shadow-2xl border border-white/10">
               {/* Animated Swirl Overlay (simulating the purple/blue waves) */}
               <div className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-50 mix-blend-overlay">
                 <div className="absolute -top-1/2 -right-1/4 w-[100%] h-[200%] bg-gradient-to-br from-transparent via-[#d10b0b]/30 to-transparent rotate-45 blur-3xl animate-pulse" />
               </div>
 
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
                 Every Solution We Ship Is Tied to a Business Outcome, Not a
                 Deliverable!
               </h2>

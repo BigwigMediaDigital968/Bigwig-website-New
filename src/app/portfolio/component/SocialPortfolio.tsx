@@ -301,8 +301,8 @@ export default function SocialPortfolio() {
   };
 
   return (
-    <section className="relative w-full bg-[#f8f8fa] text-slate-900 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-8xl mx-auto space-y-8 text-center">
+    <section className="relative w-full text-slate-900 py-14 md:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="relative max-w-8xl mx-auto space-y-8 text-center">
         {/* Header Section matching design reference */}
         <div className="space-y-2">
           <p className="text-xs font-semibold text-[#f26522] tracking-wider uppercase">
@@ -318,7 +318,7 @@ export default function SocialPortfolio() {
           <div className="pt-2">
             <button
               onClick={() => setSelectedItem(socialPortfolioItems[activeCenterIndex])}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f8f8fa] border border-slate-300 text-xs font-bold text-slate-800 shadow-sm hover:border-slate-800 hover:bg-slate-900 hover:text-white transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-slate-300 text-xs font-bold text-slate-800 shadow-sm hover:border-slate-800 hover:bg-slate-900 hover:text-white transition-all cursor-pointer group"
             >
               <span>See more Projects</span>
               <div className="w-5 h-5 rounded-full bg-[#f26522] text-white flex items-center justify-center transition-transform group-hover:translate-x-1">
@@ -410,12 +410,12 @@ export default function SocialPortfolio() {
 
         {/* Mobile View: Simple Touch-Friendly Slider */}
         <div className="block md:hidden my-6">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 px-4 scrollbar-none">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {socialPortfolioItems.map((item) => (
               <div
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
-                className="snap-center shrink-0 w-[240px] h-[330px] rounded-[24px] overflow-hidden shadow-lg relative bg-slate-900 border border-slate-200"
+                className="snap-center shrink-0 w-[72vw] max-w-[260px] h-[340px] rounded-[24px] overflow-hidden shadow-lg relative bg-slate-900 border border-slate-200"
               >
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

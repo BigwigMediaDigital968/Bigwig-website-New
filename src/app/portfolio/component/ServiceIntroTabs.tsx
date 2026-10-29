@@ -122,7 +122,7 @@ const SERVICE_TABS: ServiceTab[] = [
 
 function TabVisual({ tab }: { tab: ServiceTab }) {
   return (
-    <div className="relative w-full min-h-[380px] md:min-h-[460px]">
+    <div className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[460px]">
       {/* Accent glow behind the visual */}
       <div
         className="absolute inset-10 rounded-full blur-[90px] opacity-20 pointer-events-none"
@@ -141,7 +141,7 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
         <img
           src={tab.image}
           alt={`${tab.subheading} illustration`}
-          className="w-full h-[260px] md:h-[320px] object-cover"
+          className="w-full h-[220px] sm:h-[260px] md:h-[320px] object-cover"
         />
       </div>
 
@@ -151,12 +151,12 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
           src={tab.insetImage}
           alt=""
           aria-hidden="true"
-          className="w-full h-[140px] md:h-[170px] object-cover object-top"
+          className="w-full h-[100px] sm:h-[140px] md:h-[170px] object-cover object-top"
         />
       </div>
 
       {/* Floating stat card */}
-      <div className="absolute bottom-6 right-2 md:right-6 px-5 py-4 rounded-2xl border border-slate-200 bg-white/90 shadow-lg shadow-slate-300/50 backdrop-blur-xl">
+      <div className="absolute bottom-2 sm:bottom-6 right-0 md:right-6 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border border-slate-200 bg-white/90 shadow-lg shadow-slate-300/50 backdrop-blur-xl">
         <span
           className="block text-2xl md:text-3xl font-bold"
           style={{ color: tab.accentColor }}
@@ -177,9 +177,8 @@ export default function ServiceIntroTabs() {
     SERVICE_TABS.find((tab) => tab.key === activeKey) ?? SERVICE_TABS[0];
 
   return (
-    <section className="bg-slate-50 text-slate-900 pt-32 pb-8 px-4 md:px-8 relative overflow-hidden">
+    <section className="text-slate-900 pt-20 md:pt-32 pb-8 px-4 md:px-8 relative overflow-hidden">
       {/* Background Radial Glow Effects */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-cyan-300/30 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative">
         <header className="mb-10">
@@ -200,7 +199,7 @@ export default function ServiceIntroTabs() {
           <div
             role="tablist"
             aria-label="Our expertise"
-            className="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-2 border-b border-slate-200"
+            className="flex gap-x-6 sm:gap-x-8 gap-y-2 border-b border-slate-200 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {SERVICE_TABS.map((tab) => (
               <button
@@ -231,7 +230,7 @@ export default function ServiceIntroTabs() {
           role="tabpanel"
           id={`expertise-panel-${activeTab.key}`}
           aria-labelledby={`expertise-tab-${activeTab.key}`}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/60 p-8 md:p-12 xl:p-16 animate-[expertiseFadeIn_0.5s_ease-out]"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center rounded-[1.5rem] md:rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/60 p-5 sm:p-8 md:p-12 xl:p-16 animate-[expertiseFadeIn_0.5s_ease-out]"
         >
           <style>{`
             @keyframes expertiseFadeIn {
@@ -260,7 +259,7 @@ export default function ServiceIntroTabs() {
               </span>
             </div>
 
-            <h3 className="text-2xl md:text-4xl font-bold tracking-tight uppercase mb-8">
+            <h3 className="text-xl sm:text-2xl md:text-4xl font-bold tracking-tight uppercase mb-6 md:mb-8">
               {activeTab.subheading}
             </h3>
 
@@ -289,7 +288,7 @@ export default function ServiceIntroTabs() {
             <div className="flex flex-wrap items-center gap-6">
               <Link
                 href={activeTab.href}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-600 transition-all duration-300 group"
+                className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900 text-white rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-600 transition-all duration-300 group"
               >
                 Explore Now
                 <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

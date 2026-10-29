@@ -293,7 +293,7 @@ function PortfolioCard({
   return (
     <div className="h-full lg:h-[75vh] lg:min-h-[540px] grid grid-cols-1 lg:grid-cols-5 items-stretch rounded-[1rem] border border-slate-200 overflow-hidden bg-white shadow-sm">
       {/* --- Left Side: Content Box (Spans 3 Columns) --- */}
-      <div className="w-full lg:col-span-3 p-8 md:p-10 xl:p-12 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-slate-200">
+      <div className="w-full lg:col-span-3 p-5 sm:p-8 md:p-10 xl:p-12 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-slate-200">
         <div>
           {/* Brand & Tagline Header Row */}
           <div className="flex flex-wrap items-center gap-4 mb-5">
@@ -316,10 +316,10 @@ function PortfolioCard({
           </p>
 
           {/* Core Metrics Array: always one row */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 mb-6 py-5 border-y border-slate-200">
+          <div className="grid grid-cols-3 gap-3 md:gap-8 mb-6 py-5 border-y border-slate-200">
             {item.stats.map((stat, i) => (
               <div key={i} className="flex flex-col gap-1 min-w-0">
-                <span className="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900">
+                <span className="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900">
                   {stat.value}
                 </span>
                 <span className="text-[9px] md:text-[10px] xl:text-[11px] uppercase tracking-wider xl:tracking-widest text-slate-500 font-bold leading-snug">
@@ -344,7 +344,7 @@ function PortfolioCard({
         <div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-600 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900 text-white rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-600 transition-all duration-300 group"
           >
             Request A Case Study Demo
             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -353,7 +353,7 @@ function PortfolioCard({
       </div>
 
       {/* --- Right Side: Visual Device Interface (Spans 2 Columns) --- */}
-      <div className="w-full lg:col-span-2 relative min-h-[450px] lg:min-h-0 bg-slate-100 overflow-hidden">
+      <div className="w-full lg:col-span-2 relative min-h-[360px] sm:min-h-[450px] lg:min-h-0 bg-slate-100 overflow-hidden">
         {/* Absolute Window Header Frame Top-bar */}
         <div className="absolute top-0 left-0 right-0 h-10 bg-slate-100/95 backdrop-blur-md flex items-center px-4 z-20 border-b border-slate-200">
           <div className="flex gap-1.5 mr-4">
@@ -477,7 +477,7 @@ export default function PortfolioGrid() {
   const hasOverflow = progress.width < 99.5;
 
   return (
-    <section className="bg-slate-50 text-slate-900 py-24 md:py-32 px-4 md:px-8 relative overflow-hidden">
+    <section className="text-slate-900 py-14 md:py-24 px-4 md:px-8 relative overflow-hidden">
       <style>{`
         @keyframes continuousYoyoScroll {
           0%, 10% { transform: translateY(0); }
@@ -495,8 +495,6 @@ export default function PortfolioGrid() {
       `}</style>
 
       {/* Background Radial Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-300/30 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative">
         <header className="mb-10">
@@ -517,7 +515,7 @@ export default function PortfolioGrid() {
           <div
             role="tablist"
             aria-label="Portfolio industries"
-            className="flex flex-wrap gap-x-6 sm:gap-x-8 gap-y-2 border-b border-slate-200"
+            className="flex gap-x-6 sm:gap-x-8 gap-y-2 border-b border-slate-200 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {TABS.map((tab) => (
               <button
@@ -568,7 +566,7 @@ export default function PortfolioGrid() {
           {items.map((item, i) => (
             <div
               key={item.id}
-              className="shrink-0 snap-start w-[92%] md:w-[94%]"
+              className="shrink-0 snap-start w-[94%] md:w-[94%]"
             >
               <PortfolioCard item={item} active={i === activeIndex} />
             </div>
