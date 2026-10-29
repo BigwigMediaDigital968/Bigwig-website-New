@@ -357,7 +357,7 @@ export default function SEOPortfolio() {
     seoProjectsData.find((p) => p.id === selectedProjectId) || seoProjectsData[0];
 
   return (
-    <section className="relative overflow-hidden text-gray-900 py-14 md:py-16 px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-x-clip text-gray-900 py-14 md:py-16 px-4 sm:px-6 lg:px-8">
       <div className="relative max-w-7xl mx-auto space-y-8 md:space-y-10">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto space-y-3">
@@ -378,20 +378,20 @@ export default function SEOPortfolio() {
         {/* Main Reference Layout Component */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start relative">
           {/* LEFT SIDEBAR: Sticky Fixed Vertical Project Navigation */}
-          <div className="lg:col-span-3 lg:sticky lg:top-24 bg-[#011c40] text-white rounded-xl p-4 sm:p-6 shadow-xl space-y-2 border border-[#023859] z-20 relative">
-            <p className="px-3 pb-2 text-md font-semibold uppercase tracking-wider text-cyan-300 border-b border-white/10">
+          <div className="lg:col-span-3 sticky top-16 lg:top-24 bg-[#011c40] text-white rounded-xl p-3 sm:p-4 lg:p-6 shadow-xl space-y-2 border border-[#023859] z-20">
+            <p className="hidden lg:block px-3 pb-2 text-md font-semibold uppercase tracking-wider text-cyan-300 border-b border-white/10">
               Select Case Study
             </p>
 
             {/* Scrollable list with scrollbars hidden across Chrome, Safari, Firefox & Edge */}
-            <div className="space-y-1.5 max-h-[280px] lg:max-h-[calc(100vh-260px)] lg:min-h-[380px] overflow-y-auto pr-1 pb-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-2 overflow-x-auto lg:block lg:space-y-1.5 lg:gap-0 lg:max-h-[calc(100vh-260px)] lg:min-h-[380px] lg:overflow-x-visible lg:overflow-y-auto lg:pr-1 lg:pb-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {seoProjectsData.map((project) => {
                 const isSelected = project.id === activeProject.id;
                 return (
                   <button
                     key={project.id}
                     onClick={() => setSelectedProjectId(project.id)}
-                    className={`w-full text-left p-3.5 rounded-2xl transition-all duration-300 group flex items-center justify-between cursor-pointer border ${
+                    className={`shrink-0 lg:shrink lg:w-full text-left p-2.5 lg:p-3.5 rounded-2xl transition-all duration-300 group flex items-center justify-between cursor-pointer border ${
                       isSelected
                         ? "bg-gradient-to-r from-[#023859] to-[#011c40] text-white border-cyan-400/50 shadow-md translate-x-1"
                         : "bg-transparent text-gray-300 border-transparent hover:bg-white/5 hover:text-white"
@@ -427,7 +427,7 @@ export default function SEOPortfolio() {
             </div>
 
             {/* Subtle Gradient Fade & Animated Downward Chevron Indicator */}
-            <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#011c40] via-[#011c40]/90 to-transparent rounded-b-3xl pointer-events-none flex items-end justify-center pb-2">
+            <div className="hidden lg:flex absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#011c40] via-[#011c40]/90 to-transparent rounded-b-3xl pointer-events-none items-end justify-center pb-2">
               <ChevronDown className="w-5 h-5 text-cyan-300 animate-bounce opacity-90" />
             </div>
           </div>

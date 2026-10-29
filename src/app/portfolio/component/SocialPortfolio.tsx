@@ -449,7 +449,7 @@ export default function SocialPortfolio() {
       {/* Analytics Modal Popup */}
       <AnimatePresence>
         {selectedItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pb-28 sm:p-6">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -463,14 +463,23 @@ export default function SocialPortfolio() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row z-10 border border-slate-100 max-h-[90vh]"
+              className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row z-10 border border-slate-100 max-h-full md:max-h-[90vh]"
             >
+              {/* Close button pinned to the top-right corner of the card */}
+              <button
+                onClick={() => setSelectedItem(null)}
+                aria-label="Close"
+                className="absolute top-3 right-3 z-20 p-2 rounded-full bg-white/90 text-slate-700 shadow-md backdrop-blur-md hover:bg-white hover:text-slate-900 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
               {/* Modal Left Image */}
-              <div className="md:w-1/2 relative min-h-[220px] md:min-h-full bg-slate-900">
+              <div className="md:w-1/2 relative h-[200px] shrink-0 md:h-auto md:min-h-full bg-slate-900">
                 <img
                   src={selectedItem.image}
                   alt={selectedItem.title}
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:hidden" />
                 <div className="absolute bottom-4 left-4 right-4 text-white md:hidden">
@@ -482,7 +491,7 @@ export default function SocialPortfolio() {
               </div>
 
               {/* Modal Right Content */}
-              <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6 overflow-y-auto">
+              <div className="md:w-1/2 min-h-0 p-5 sm:p-8 flex flex-col justify-between gap-6 overflow-y-auto overscroll-contain">
                 <div className="space-y-4">
                   <div className="flex items-start justify-between gap-2">
                     <div>
@@ -493,13 +502,6 @@ export default function SocialPortfolio() {
                         {selectedItem.title}
                       </h3>
                     </div>
-
-                    <button
-                      onClick={() => setSelectedItem(null)}
-                      className="p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-800 transition-colors cursor-pointer"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
                   </div>
 
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
