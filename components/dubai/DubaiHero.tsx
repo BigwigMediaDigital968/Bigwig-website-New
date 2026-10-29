@@ -74,7 +74,7 @@ export default function DubaiHero() {
           <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--cyan)]">
             Digital marketing agency in Dubai, UAE
           </motion.p>
-          <h1 className="mt-4 max-w-2xl text-[2.3rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(2.5rem,3.2vw,3rem)]">
+          <h1 className="mt-4 max-w-2xl text-[clamp(1.7rem,7.4vw,2.3rem)] font-semibold leading-[1.08] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(2.5rem,3.2vw,3rem)]">
             <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
               <motion.span variants={maskUp} className="block">
                 Transform your business with the best digital marketing agency in Dubai, UAE

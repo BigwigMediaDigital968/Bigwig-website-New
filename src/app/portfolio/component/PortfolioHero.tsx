@@ -70,7 +70,7 @@ const PortifolioHero = () => {
             </p>
 
             {/* Main Title matching ServiceHero typography scaling */}
-            <h1 className="mx-auto max-w-4xl text-[2.3rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(2.5rem,3.2vw,3rem)] text-white">
+            <h1 className="mx-auto max-w-4xl text-[clamp(1.7rem,7.4vw,2.3rem)] font-semibold leading-[1.08] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(2.5rem,3.2vw,3rem)] text-white">
               50+ Digital Products Built for the{" "}
               <span className="block italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#ccdaff] via-[#a7ebf2] to-[#ffffff]">
                 World&apos;s Leading Enterprises.

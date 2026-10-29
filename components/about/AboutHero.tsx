@@ -106,7 +106,7 @@ export default function AboutHero() {
         <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--link)]">
           About Bigwig Media Digital
         </motion.p>
-        <h1 className="mt-4 text-[clamp(2.25rem,8vw,6rem)] font-semibold leading-[0.92] tracking-[-0.05em]">
+        <h1 className="mt-4 text-[clamp(2rem,8.5vw,6rem)] font-semibold leading-[0.92] tracking-[-0.05em]">
           <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
             <motion.span variants={maskUp} className="block">
               Who we are

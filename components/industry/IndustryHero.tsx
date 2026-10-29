@@ -56,7 +56,7 @@ export default function IndustryHero({
           <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--cyan)]">
             {lead}
           </motion.p>
-          <h1 className="mt-4 max-w-2xl text-[1.9rem] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(3rem,2.6vw,2.5rem)]">
+          <h1 className="mt-4 max-w-2xl text-[clamp(1.6rem,7vw,1.9rem)] font-semibold leading-[1.08] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(3rem,2.6vw,2.5rem)]">
             <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
               <motion.span variants={maskUp} className="block">
                 {title}

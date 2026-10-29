@@ -74,7 +74,7 @@ export default function Hero() {
           >
             Digital marketing agency in Dubai
           </motion.p>
-          <h1 className="mt-4 text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-[3.25rem] lg:text-[clamp(2.6rem,3.7vw,3.6rem)]">
+          <h1 className="mt-4 text-[clamp(1.75rem,7.6vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.035em] sm:text-[3.25rem] lg:text-[clamp(2.6rem,3.7vw,3.6rem)]">
             {lines.map((l) => (
               <span
                 key={l}

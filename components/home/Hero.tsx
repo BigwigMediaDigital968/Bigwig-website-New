@@ -46,7 +46,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex h-[100svh] min-h-[640px] max-h-[980px] items-end overflow-hidden bg-[var(--ink)] text-white"
+      className="relative isolate flex min-h-[100svh] items-end md:h-[100svh] md:min-h-[640px] md:max-h-[980px] overflow-hidden bg-[var(--ink)] text-white"
     >
       <motion.video
         style={reduce ? undefined : { scale: videoScale, y: videoY }}
@@ -72,18 +72,18 @@ export default function Hero() {
         className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(1,28,64,0.7),transparent_45%)]"
       />
 
-      <div className="wrap pb-14 md:pb-20">
+      <div className="wrap pb-10 pt-28 md:pb-20 md:pt-0">
         <motion.div style={reduce ? undefined : { y: copyY, opacity: copyOpacity }}>
           <motion.p
             {...rise(0)}
-            className="inline-flex items-center gap-2.5 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-[var(--cyan)] ring-1 ring-inset ring-[var(--cyan)]/30 backdrop-blur-md"
+            className="inline-flex items-center gap-2.5 rounded-full bg-white/10 px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium text-[var(--cyan)] ring-1 ring-inset ring-[var(--cyan)]/30 backdrop-blur-md"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--cyan)]" aria-hidden />
             {heroContent.kicker}
           </motion.p>
 
           <motion.h1
-            className="mt-6 max-w-5xl text-[2.3rem] font-semibold leading-[1.02] sm:text-5xl"
+            className="mt-5 md:mt-6 max-w-5xl text-[clamp(1.8rem,7.4vw,2.5rem)] font-semibold leading-[1.08] sm:text-4xl md:text-5xl"
             initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0, y: 12 }}
             animate={{ clipPath: "inset(0 0% 0 0)", opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
@@ -91,8 +91,8 @@ export default function Hero() {
             {heroContent.title}
           </motion.h1>
 
-          <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-12">
-            <motion.p {...rise(0.45)} className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+          <div className="mt-5 md:mt-8 grid gap-6 md:gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-12">
+            <motion.p {...rise(0.45)} className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
               {heroContent.subtitle}
             </motion.p>
             <motion.div {...rise(0.6)} className="flex flex-wrap items-center gap-3">
