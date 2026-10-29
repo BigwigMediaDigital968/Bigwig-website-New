@@ -291,7 +291,7 @@ function PortfolioCard({
   active: boolean;
 }) {
   return (
-    <div className="h-full lg:h-[75vh] lg:min-h-[540px] grid grid-cols-1 lg:grid-cols-5 items-stretch rounded-[2rem] border border-slate-200 overflow-hidden bg-white shadow-sm">
+    <div className="h-full lg:h-[75vh] lg:min-h-[540px] grid grid-cols-1 lg:grid-cols-5 items-stretch rounded-[1rem] border border-slate-200 overflow-hidden bg-white shadow-sm">
       {/* --- Left Side: Content Box (Spans 3 Columns) --- */}
       <div className="w-full lg:col-span-3 p-8 md:p-10 xl:p-12 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-slate-200">
         <div>

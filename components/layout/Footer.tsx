@@ -42,6 +42,7 @@ const companyLinks = [
   { name: "About Us", path: "/about" },
   { name: "Clients", path: "/clients" },
   { name: "Careers", path: "/career" },
+  { name: "Portfolio", path: "/portfolio" },
   { name: "Blog", path: "/blogs" },
   { name: "FAQ", path: "/faq" },
   { name: "Contact", path: "/contact" },

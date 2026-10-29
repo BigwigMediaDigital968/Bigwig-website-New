@@ -58,7 +58,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A fundraising campaign hosted on the Classy platform designed to support Eldearly’s mission, allowing supporters to donate securely toward impactful social causes that help underserved communities.",
     media: {
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/eldearly-donation-campaign.png",
     },
     performanceMetrics: {
       totalCampaigns: 33,
@@ -140,7 +140,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A philanthropic organisation focused on improving health, education, and welfare outcomes for vulnerable populations.",
     media: {
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/vital-hope-foundation.png",
     },
     performanceMetrics: {
       totalCampaigns: 52,
@@ -222,7 +222,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A non-profit organization dedicated to providing free shelter, food, medical care, and dignity to abandoned and destitute elderly individuals through its old age homes in Delhi NCR and Uttar Pradesh.",
     media: {
-      image: "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/sheows.png",
     },
     performanceMetrics: {
       totalCampaigns: 51,
@@ -304,7 +304,7 @@ const portfolioData: ProjectData[] = [
     description:
       "A kids-focused ecommerce and lifestyle brand offering products designed for children and parents.",
     media: {
-      image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/popupkids.png",
     },
     performanceMetrics: {
       totalCampaigns: 175,
@@ -459,7 +459,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Rashi Jain Jyotish delivers astrological guidance and horoscope services, blending traditional Vedic astrology with personalized consultation offerings for life insights.",
     media: {
-      image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/rashi-jain-jyotish.png",
     },
     performanceMetrics: {
       totalCampaigns: 24,
@@ -532,7 +532,7 @@ const portfolioData: ProjectData[] = [
     description:
       "OFY Clinics is a healthcare service provider that connects patients with clinical care solutions, focusing on accessible treatments and patient-centric medical support.",
     media: {
-      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/ofy-clinic.png",
     },
     performanceMetrics: {
       totalCampaigns: 27,
@@ -614,7 +614,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Quackapo is a homegrown entertainment & lifestyle brand that sells playful products like the Road Trip card game, combining fun and social engagement for families and friends.",
     media: {
-      image: "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/quackapo.png",
     },
     performanceMetrics: {
       totalCampaigns: 14,
@@ -678,7 +678,7 @@ const portfolioData: ProjectData[] = [
     description:
       "Gangasagar.in promotes pilgrimage and spiritual tourism to the Gangasagar region, highlighting its cultural significance and providing information on events, accommodations, and travel.",
     media: {
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
+      image: "/portfolio/gangasagar-tourism.png",
     },
     performanceMetrics: {
       totalCampaigns: 52,
@@ -883,17 +883,17 @@ export default function PaidPortfolio() {
   }, [activeItem, campaignSearch]);
 
   return (
-    <section className="min-h-screen bg-white text-gray-900 py-16 px-4 sm:px-6 lg:px-8 font-sans selection:bg-gray-900 selection:text-white">
-      <div className="max-w-7xl mx-auto space-y-10">
+    <section className="min-h-screen bg-white text-gray-900 py-8 px-4 sm:px-6 lg:px-8 selection:bg-gray-900 selection:text-white">
+      <div className="max-w-8xl mx-auto space-y-10">
         {/* Header Section */}
         <div className="text-center space-y-3">
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-            GALLERY
+            Performance Marketing Portfolio
           </p>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900">
             Paid Media Showcase
           </h2>
-          <p className="text-sm sm:text-base text-gray-500 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto">
             See performance through our lens: live campaigns, audience reach,
             and real ROI metrics.
           </p>
@@ -997,7 +997,7 @@ export default function PaidPortfolio() {
                     }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     onClick={() => setActiveIndex(index)}
-                    className={`absolute w-[380px] sm:w-[480px] md:w-[620px] h-[360px] sm:h-[450px] md:h-[490px] rounded-[32px] overflow-hidden shadow-2xl cursor-pointer border border-white/20 bg-gray-900 group ${
+                    className={`absolute w-[480px] sm:w-[580px] md:w-[820px] h-[360px] sm:h-[450px] md:h-[490px] rounded-[12px] overflow-hidden shadow-2xl cursor-pointer bg-gray-900 group ${
                       isCenter ? "shadow-2xl ring-1 ring-black/10" : ""
                     }`}
                   >
@@ -1009,7 +1009,8 @@ export default function PaidPortfolio() {
                     />
 
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#011c40]/90 via-[#011c40]/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#011c40]/60 via-[#011c40]/10 to-transparent" />
 
                     {/* Card Content Overlay */}
                     <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-between text-white">

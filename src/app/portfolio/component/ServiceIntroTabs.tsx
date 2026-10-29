@@ -30,9 +30,9 @@ type ServiceTab = {
 const SERVICE_TABS: ServiceTab[] = [
   {
     key: "web",
-    label: "Web",
+    label: "Web Development",
     icon: Code2,
-    heading: "Introduction",
+    heading: "Bigwig Experties",
     subheading: "Website Design & Development",
     paragraphs: [
       "Hi, we are a web design and development team specializing in fast, conversion-focused websites built for growth.",
@@ -55,7 +55,7 @@ const SERVICE_TABS: ServiceTab[] = [
     key: "performance",
     label: "Performance",
     icon: Megaphone,
-    heading: "Introduction",
+    heading: "Paid Marketing",
     subheading: "Meta Ads and Marketing",
     paragraphs: [
       "Hi, we are a digital marketing strategist specializing in Meta Ads and performance marketing.",
@@ -73,7 +73,7 @@ const SERVICE_TABS: ServiceTab[] = [
     key: "seo",
     label: "SEO",
     icon: Search,
-    heading: "Introduction",
+    heading: "SEO, AEO, GEO, and AIO",
     subheading: "Search Engine Optimization",
     paragraphs: [
       "Hi, we are an SEO team specializing in technical, local, and content-led search growth.",
@@ -97,7 +97,7 @@ const SERVICE_TABS: ServiceTab[] = [
     key: "smo",
     label: "SMO",
     icon: Share2,
-    heading: "Introduction",
+    heading: "Social Media Growth",
     subheading: "Social Media Optimization",
     paragraphs: [
       "Hi, we are a social media team specializing in brand building, content, and community growth.",
@@ -177,7 +177,7 @@ export default function ServiceIntroTabs() {
     SERVICE_TABS.find((tab) => tab.key === activeKey) ?? SERVICE_TABS[0];
 
   return (
-    <section className="bg-slate-50 text-slate-900 pt-32 pb-24 px-4 md:px-8 relative overflow-hidden">
+    <section className="bg-slate-50 text-slate-900 pt-32 pb-8 px-4 md:px-8 relative overflow-hidden">
       {/* Background Radial Glow Effects */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-cyan-300/30 rounded-full blur-[120px] pointer-events-none" />
 
