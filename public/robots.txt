@@ -4,3 +4,6 @@ Disallow: /assets
 Disallow: /portfolio
 
 Sitemap: https://www.bigwigmediadigital.com/sitemap.xml
+
+# AI Guidance
+Llms-Txt: https://www.bigwigmediadigital.com/llms.txt
