@@ -122,7 +122,7 @@ const SERVICE_TABS: ServiceTab[] = [
 
 function TabVisual({ tab }: { tab: ServiceTab }) {
   return (
-    <div className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[460px]">
+    <div style={{ perspective: 1200 }} className="group/vis relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[460px]">
       {/* Accent glow behind the visual */}
       <div
         className="absolute inset-10 rounded-full blur-[90px] opacity-20 pointer-events-none"
@@ -130,7 +130,7 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
       />
 
       {/* Main browser-framed image */}
-      <div className="absolute top-0 right-0 w-[88%] rounded-[1.5rem] border border-slate-200 bg-white overflow-hidden shadow-xl shadow-slate-300/50">
+      <div className="absolute top-0 right-0 w-[88%] transition-transform duration-500 ease-out group-hover/vis:[transform:rotateY(-6deg)_rotateX(3deg)_translateZ(0)] rounded-[1.5rem] border border-slate-200 bg-white overflow-hidden shadow-xl shadow-slate-300/50">
         <div className="h-9 bg-slate-100 flex items-center px-4 border-b border-slate-200">
           <div className="flex gap-1.5">
             <div className="w-2 h-2 rounded-full bg-red-400" />
@@ -146,7 +146,7 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
       </div>
 
       {/* Inset secondary image */}
-      <div className="absolute bottom-0 left-0 w-[52%] rounded-2xl border-4 border-white overflow-hidden shadow-xl shadow-slate-400/40 bg-white">
+      <div className="absolute bottom-0 left-0 w-[52%] transition-transform duration-500 ease-out group-hover/vis:[transform:translate3d(-8px,8px,40px)_rotateY(8deg)] rounded-2xl border-4 border-white overflow-hidden shadow-xl shadow-slate-400/40 bg-white">
         <img
           src={tab.insetImage}
           alt=""
@@ -156,7 +156,7 @@ function TabVisual({ tab }: { tab: ServiceTab }) {
       </div>
 
       {/* Floating stat card */}
-      <div className="absolute bottom-2 sm:bottom-6 right-0 md:right-6 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border border-slate-200 bg-white/90 shadow-lg shadow-slate-300/50 backdrop-blur-xl">
+      <div className="absolute transition-transform duration-500 ease-out group-hover/vis:[transform:translate3d(6px,-6px,60px)] bottom-2 sm:bottom-6 right-0 md:right-6 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border border-slate-200 bg-white/90 shadow-lg shadow-slate-300/50 backdrop-blur-xl">
         <span
           className="block text-2xl md:text-3xl font-bold"
           style={{ color: tab.accentColor }}
@@ -230,12 +230,12 @@ export default function ServiceIntroTabs() {
           role="tabpanel"
           id={`expertise-panel-${activeTab.key}`}
           aria-labelledby={`expertise-tab-${activeTab.key}`}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center rounded-[1.5rem] md:rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/60 p-5 sm:p-8 md:p-12 xl:p-16 animate-[expertiseFadeIn_0.5s_ease-out]"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center rounded-[1.5rem] md:rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/60 p-5 sm:p-8 md:p-12 xl:p-16 animate-[expertiseFadeIn_0.6s_cubic-bezier(0.16,1,0.3,1)]"
         >
           <style>{`
             @keyframes expertiseFadeIn {
-              from { opacity: 0; transform: translateY(12px); }
-              to { opacity: 1; transform: translateY(0); }
+              from { opacity: 0; transform: perspective(1400px) translateY(16px) rotateX(8deg) rotateY(-6deg) scale(0.97); }
+              to { opacity: 1; transform: perspective(1400px) translateY(0) rotateX(0) rotateY(0) scale(1); }
             }
             @media (prefers-reduced-motion: reduce) {
               [role="tabpanel"] { animation: none !important; }

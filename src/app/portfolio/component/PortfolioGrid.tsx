@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import TiltCard from "./TiltCard";
 
 const portfolioItems = [
   {
@@ -564,12 +566,22 @@ export default function PortfolioGrid() {
           }`}
         >
           {items.map((item, i) => (
-            <div
+            <motion.div
               key={item.id}
-              className="shrink-0 snap-start w-[94%] md:w-[94%]"
+              initial={false}
+              animate={{
+                scale: i === activeIndex ? 1 : 0.94,
+                rotateY: i === activeIndex ? 0 : i < activeIndex ? 10 : -10,
+                opacity: i === activeIndex ? 1 : 0.75,
+              }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformPerspective: 1400 }}
+              className="shrink-0 snap-start w-[94%] md:w-[94%] py-2"
             >
-              <PortfolioCard item={item} active={i === activeIndex} />
-            </div>
+              <TiltCard max={4} hoverScale={1.01} className="h-full">
+                <PortfolioCard item={item} active={i === activeIndex} />
+              </TiltCard>
+            </motion.div>
           ))}
         </div>
 

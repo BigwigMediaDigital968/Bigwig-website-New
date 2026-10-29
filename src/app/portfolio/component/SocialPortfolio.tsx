@@ -282,7 +282,7 @@ export default function SocialPortfolio() {
     // Spherical Curve Parameters
     const translateX = offset * 115; // horizontal spacing
     const translateY = Math.pow(absOffset, 1.8) * 12; // downward curve at edges
-    const rotateY = offset * -14; // Y rotation for spherical curvature
+    const rotateY = offset * -22; // Y rotation for spherical curvature
     const rotateZ = offset * -2.5; // slight Z rotation for arch tilt
     const scale = Math.max(0.72, 1 - absOffset * 0.08); // center card larger
     const zIndex = 30 - absOffset * 2;
@@ -347,6 +347,8 @@ export default function SocialPortfolio() {
                     opacity: transform.opacity,
                     zIndex: Math.round(transform.zIndex),
                   }}
+                  whileHover={transform.isCenter ? { rotateX: -4, y: -6 } : undefined}
+                  style={{ transformPerspective: 1200, transformStyle: "preserve-3d" }}
                   transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => {
                     if (transform.isCenter) {

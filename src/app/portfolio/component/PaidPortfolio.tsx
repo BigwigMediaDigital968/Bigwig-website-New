@@ -993,9 +993,12 @@ export default function PaidPortfolio() {
                       scale: isCenter ? 1 : 0.82,
                       zIndex: isCenter ? 30 : 10,
                       opacity: isCenter ? 1 : 0.65,
-                      rotateY: isCenter ? 0 : isLeft ? 8 : -8,
+                      rotateY: isCenter ? 0 : isLeft ? 32 : -32,
+                      z: isCenter ? 0 : -140,
                     }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ transformPerspective: 1400, transformStyle: "preserve-3d" }}
+                    transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                    whileHover={isCenter ? { rotateX: -2, y: -4 } : undefined}
                     onClick={() => setActiveIndex(index)}
                     className={`absolute w-[82vw] sm:w-[580px] md:w-[820px] max-w-[820px] h-[380px] sm:h-[450px] md:h-[490px] rounded-[12px] overflow-hidden shadow-2xl cursor-pointer bg-gray-900 group ${
                       isCenter ? "shadow-2xl ring-1 ring-black/10" : ""
