@@ -248,7 +248,7 @@ export function Modal({
       <div className="bw-modal" style={{ maxWidth: width }} role="dialog" aria-modal="true" aria-label={title}>
         <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5">
           <h3 className="text-base font-semibold text-white">{title}</h3>
-          <button type="button" onClick={onClose} className="rounded p-1 text-white/60 hover:bg-white/10 hover:text-white" aria-label="Close">
+          <button type="button" onClick={onClose} className="rounded p-1 text-white/60 hover:bg-white/10 hover:text-white cursor-pointer" aria-label="Close">
             <X size={18} />
           </button>
         </div>

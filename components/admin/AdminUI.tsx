@@ -98,6 +98,7 @@ const BADGE_TONES = {
   red: "bg-red-500/15 text-red-300 border-red-500/30",
   blue: "bg-[#26658c]/30 text-[#a7ebf2] border-[#54acbf]/30",
   gray: "bg-white/10 text-white/65 border-white/15",
+  purple: "bg-purple-500/15 text-purple-300 border-purple-500/30",
 };
 
 export function Badge({ tone = "gray", children }: { tone?: keyof typeof BADGE_TONES; children: ReactNode }) {
