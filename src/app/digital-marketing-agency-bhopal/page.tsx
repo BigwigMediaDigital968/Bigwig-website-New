@@ -3,7 +3,7 @@ import BhopalPage from "../../../components/bhopal/BhopalPage";
 
 const title = "Digital Marketing Agency in Bhopal | Bigwig Media Digital";
 const description =
-  "Looking for a digital marketing company in Bhopal? Boost online visibility with SEO, social media marketing, Google Ads, and PPC services.";
+  "Looking for a digital marketing company in Bhopal? Boost online visibility with SEO, social media Optimization, Google Ads, and PPC services.";
 
 export const metadata: Metadata = {
   title,

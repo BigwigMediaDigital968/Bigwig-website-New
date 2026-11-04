@@ -7,7 +7,7 @@ export const dubaiServices = [
     href: `${BASE}/seo-services-in-dubai-uae`,
   },
   {
-    title: "Social Media Marketing (SMM)",
+    title: "Social Media Optimization (SMO)",
     desc: "Build brand awareness and drive conversions across Instagram, Facebook, LinkedIn, and TikTok.",
     href: `${BASE}/social-media-marketing-services-in-dubai-uae`,
   },

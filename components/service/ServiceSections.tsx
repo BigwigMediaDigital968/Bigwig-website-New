@@ -839,6 +839,87 @@ const fanShapes = ["aspect-square", "aspect-[3/4]", "aspect-[3/5]", "aspect-[3/4
  * Heading on the left, a two-tone paragraph, supporting copy and a CTA on the right. Add either an
  * `image` under the heading (when the right column runs long) or a fanned strip of five `photos` below.
  */
+// export function ServiceStatement({
+//   heading,
+//   lead,
+//   rest,
+//   body,
+//   cta,
+//   source,
+//   image,
+//   photos,
+// }: {
+//   heading: string;
+//   lead: string;
+//   rest?: string;
+//   body?: React.ReactNode;
+//   cta: string;
+//   source: string;
+//   /** one photo under the heading, filling the left column */
+//   image?: Photo;
+//   /** exactly five, shown as a strip below; the third is the tall centre photo */
+//   photos?: Photo[];
+// }) {
+//   return (
+//     <section className="py-14 md:py-20">
+//       <div className="wrap">
+//         <StatementHead
+//           heading={heading}
+//           lead={lead}
+//           rest={rest}
+//           aside={
+//             image && (
+//               <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[var(--ink)] lg:aspect-auto lg:min-h-[320px] lg:flex-1">
+//                 <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+//               </div>
+//             )
+//           }
+//         >
+//           {body && <div className="mt-4 space-y-4 leading-relaxed text-[var(--muted)]">{body}</div>}
+//           <div className="mt-8">
+//             <PillLead source={source}>{cta}</PillLead>
+//           </div>
+//         </StatementHead>
+
+//         {photos && (
+//           <motion.ul
+//             {...inView}
+//             variants={stagger(0.08)}
+//             className="mt-14 grid grid-cols-[1fr_1.3fr_1fr] items-center gap-2 md:mt-20 md:grid-cols-[1fr_1.15fr_1.35fr_1.15fr_1fr] md:gap-4"
+//           >
+//             {photos.slice(0, 5).map((p, i) => (
+//               <motion.li
+//                 key={i}
+//                 variants={scaleIn}
+//                 className={`relative overflow-hidden rounded-[20px] bg-[var(--ink)] md:rounded-[24px] ${fanShapes[i]} ${
+//                   i === 0 || i === 4 ? "hidden md:block" : ""
+//                 }`}
+//               >
+//                 <Image
+//                   src={p.src}
+//                   alt={p.alt}
+//                   fill
+//                   sizes={i === 2 ? "(min-width: 768px) 24vw, 40vw" : "(min-width: 768px) 18vw, 30vw"}
+//                   className="object-cover"
+//                 />
+//               </motion.li>
+//             ))}
+//           </motion.ul>
+//         )}
+//       </div>
+//     </section>
+//   );
+// }
+
+// Flexible type definition allowing images, videos, and optional links
+export type MediaItem = {
+  src?: string | any; // Next.js StaticImageData, imported video object, or URL string
+  videoSrc?: string | any; // Explicit video URL/import path if separate
+  alt: string;
+  isVideo?: boolean; // Set to true if src is a video
+  href?: string; // Optional target link
+};
+
 export function ServiceStatement({
   heading,
   lead,
@@ -855,11 +936,48 @@ export function ServiceStatement({
   body?: React.ReactNode;
   cta: string;
   source: string;
-  /** one photo under the heading, filling the left column */
-  image?: Photo;
-  /** exactly five, shown as a strip below; the third is the tall centre photo */
-  photos?: Photo[];
+  /** photo or video under the heading */
+  image?: MediaItem;
+  /** photo or video items for the gallery strip */
+  photos?: MediaItem[];
 }) {
+  // Helper renderer to handle both Image and Video elements seamlessly
+  const renderMedia = (item: MediaItem) => {
+    // Determine if asset is a video by property flag or file extension string check
+    const srcPath = typeof item.src === "string" ? item.src : item.videoSrc;
+    const isVideoAsset =
+      item.isVideo ||
+      Boolean(item.videoSrc) ||
+      (typeof srcPath === "string" && /\.(mp4|webm|ogg)$/i.test(srcPath));
+
+    if (isVideoAsset) {
+      const videoUrl = item.videoSrc || item.src;
+      const mediaUrl = typeof videoUrl === "object" ? videoUrl.default || videoUrl : videoUrl;
+
+      return (
+        <video
+          src={mediaUrl}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+          aria-label={item.alt}
+        />
+      );
+    }
+
+    return (
+      <Image
+        src={item.src}
+        alt={item.alt}
+        fill
+        sizes="(min-width: 1024px) 45vw, 100vw"
+        className="object-cover"
+      />
+    );
+  };
+
   return (
     <section className="py-14 md:py-20">
       <div className="wrap">
@@ -870,7 +988,13 @@ export function ServiceStatement({
           aside={
             image && (
               <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[var(--ink)] lg:aspect-auto lg:min-h-[320px] lg:flex-1">
-                <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+                {image.href ? (
+                  <Link href={image.href} className="block h-full w-full">
+                    {renderMedia(image)}
+                  </Link>
+                ) : (
+                  renderMedia(image)
+                )}
               </div>
             )
           }
@@ -887,23 +1011,31 @@ export function ServiceStatement({
             variants={stagger(0.08)}
             className="mt-14 grid grid-cols-[1fr_1.3fr_1fr] items-center gap-2 md:mt-20 md:grid-cols-[1fr_1.15fr_1.35fr_1.15fr_1fr] md:gap-4"
           >
-            {photos.slice(0, 5).map((p, i) => (
-              <motion.li
-                key={i}
-                variants={scaleIn}
-                className={`relative overflow-hidden rounded-[20px] bg-[var(--ink)] md:rounded-[24px] ${fanShapes[i]} ${
-                  i === 0 || i === 4 ? "hidden md:block" : ""
-                }`}
-              >
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  fill
-                  sizes={i === 2 ? "(min-width: 768px) 24vw, 40vw" : "(min-width: 768px) 18vw, 30vw"}
-                  className="object-cover"
-                />
-              </motion.li>
-            ))}
+            {photos.slice(0, 5).map((p, i) => {
+              const content = renderMedia({
+                ...p,
+                // Adjust sizing sizes for standard Next Image fallback inside the grid
+                src: p.src,
+              });
+
+              return (
+                <motion.li
+                  key={i}
+                  variants={scaleIn}
+                  className={`relative overflow-hidden rounded-[20px] bg-[var(--ink)] md:rounded-[24px] ${fanShapes[i]} ${
+                    i === 0 || i === 4 ? "hidden md:block" : ""
+                  }`}
+                >
+                  {p.href ? (
+                    <Link href={p.href} className="block h-full w-full">
+                      {content}
+                    </Link>
+                  ) : (
+                    content
+                  )}
+                </motion.li>
+              );
+            })}
           </motion.ul>
         )}
       </div>

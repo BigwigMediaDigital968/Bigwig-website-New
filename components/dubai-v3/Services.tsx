@@ -101,8 +101,8 @@ export default function Services() {
 
           <Tile
             className="lg:col-span-4"
-            title="Social media marketing"
-            href="/services/social-media-marketing"
+            title="Social media optimization (SMO)"
+            href="/services/social-media-optimization"
             desc="Content calendars, reels and community management that keep your projects in the feed."
           >
             <div

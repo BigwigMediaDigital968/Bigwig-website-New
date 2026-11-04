@@ -53,8 +53,8 @@ const performanceMarketingServices: ServiceItem[] = [
         discovery. We build audiences, test image, video, and carousel
         creatives, and allocate budgets to the ads that perform best. Explore
         our{" "}
-        <Link href="/services/social-media-marketing" className={inlineLink}>
-          Social Media Marketing
+        <Link href="/services/social-media-optimization" className={inlineLink}>
+          Social Media Optimization (SMO)
         </Link>{" "}
         services.
       </>

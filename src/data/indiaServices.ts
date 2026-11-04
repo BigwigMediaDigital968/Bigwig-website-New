@@ -9,7 +9,7 @@ export const coreServices = (): ServiceItem[] =>
   [
     "Performance Marketing",
     "Search Engine Optimization (SEO)",
-    "Social Media Marketing (SMM)",
+    "Social Media Optimization (SMO)",
     "Website Designing & Development",
     "Graphic Designing & Video Editing",
     "Online Reputation Management (ORM)",
@@ -28,9 +28,9 @@ export const indiaServices: ServiceItem[] = [
     ],
   },
   {
-    title: "Social Media Marketing (SMM)",
+    title: "Social Media Optimization (SMO)",
     desc: "Reels, posts and campaigns on Instagram, Facebook and LinkedIn that bring enquiries, not just likes.",
-    href: "/services/social-media-marketing",
+    href: "/services/social-media-optimization",
     bullets: [
       "Monthly content calendar, approved by you",
       "Reels, carousels and festive campaigns",

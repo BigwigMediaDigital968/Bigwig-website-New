@@ -108,10 +108,10 @@ const services: ServiceItem[] = [
         you only review creators who are the right fit. Our approach works
         alongside our{" "}
         <Link
-          href="/services/social-media-marketing"
+          href="/services/social-media-optimization"
           className="font-medium underline underline-offset-4 hover:opacity-75"
         >
-          social media marketing
+          social media optimization
         </Link>{" "}
         strategies to build stronger audience connections.
       </>
@@ -233,10 +233,10 @@ const workflow: ServiceStep[] = [
         target audience. Before shortlisting, we assess engagement quality,
         audience relevance, and previous brand collaborations to support your{" "}
         <Link
-          href="/services/social-media-marketing"
+          href="/services/social-media-optimization"
           className="font-medium underline underline-offset-4 hover:opacity-75"
         >
-          social media marketing
+          social media optimization
         </Link>{" "}
         goals.
       </>
@@ -625,24 +625,34 @@ export default function InfluencerMarketingPage() {
         source="influencer-cta"
         photos={[
           {
-            src: "https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=600&q=80",
-            alt: "3D Instagram icon on a dark background",
+            src: "/influencers/influencers5.mp4",
+            isVideo: true,
+            href: "https://www.instagram.com/p/Deyp8zIPB_J/",
+            alt: "influencer marketing campaign reel 5",
           },
           {
-            src: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
-            alt: "Beauty products flat lay for a product seeding post",
+            src: "/influencers/influencers2.mp4",
+            isVideo: true,
+            href: "https://www.instagram.com/p/DdJZ26qFBW-/",
+            alt: "influencer marketing campaign reel 2",
           },
           {
-            src: "https://images.unsplash.com/photo-1567446537708-ac4aa75c9c28?auto=format&fit=crop&w=900&q=80",
-            alt: "Giant winking smiley sign",
+            src: "/influencers/influencers1.mp4",
+            isVideo: true,
+            href: "https://www.instagram.com/reel/DddMkrXgLe7/",
+            alt: "influencer marketing campaign reel 1",
           },
           {
-            src: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=800&q=80",
-            alt: "3D Facebook and Messenger icons",
+            src: "/influencers/influencers3.mp4",
+            isVideo: true,
+            href: "https://www.instagram.com/p/Dc05eNtEnd9/",
+            alt: "influencer marketing campaign reel 3",
           },
           {
-            src: "https://images.unsplash.com/photo-1609921205586-7e8a57516512?auto=format&fit=crop&w=600&q=80",
-            alt: "Hand holding a phone showing an app",
+            src: "/influencers/influencers4.mp4",
+            isVideo: true,
+            href: "https://www.instagram.com/p/DaAfLowkUpN/",
+            alt: "influencer marketing campaign reel 4",
           },
         ]}
       />

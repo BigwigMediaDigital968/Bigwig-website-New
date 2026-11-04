@@ -7,7 +7,7 @@ import RecaptchaNotice from "./contact/RecaptchaNotice";
 
 const SERVICES_LIST = [
   "Search Engine Optimization",
-  "Social Media Marketing",
+  // "Social Media Marketing",
   "Performance Marketing",
   "Content Marketing",
   "Website Development",

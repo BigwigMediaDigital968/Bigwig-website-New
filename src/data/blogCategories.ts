@@ -2,7 +2,7 @@
 
 export const blogCategories = [
   "Search Engine Optimization",
-  "Social Media Marketing",
+  // "Social Media Marketing",
   "Performance Marketing",
   "Content Marketing",
   "Website Designing & Development",

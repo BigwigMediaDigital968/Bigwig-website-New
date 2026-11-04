@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description:
     "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 5+ Years | 500+ Clients. Get a Free Strategy Session!",
   keywords:
-    "digital marketing agency in Delhi, best digital marketing company Delhi, SEO company in Delhi, social media marketing agency Delhi, website development company Delhi, performance marketing agency Delhi, online marketing services Delhi",
+    "digital marketing agency in Delhi, best digital marketing company Delhi, SEO company in Delhi, social media Optimization agency Delhi, website development company Delhi, performance marketing agency Delhi, online marketing services Delhi",
   alternates: {
     canonical: "https://www.bigwigmediadigital.com/",
   },

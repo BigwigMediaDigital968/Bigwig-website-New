@@ -20,11 +20,11 @@ export default function ServicesNavigation() {
       icon: <FaSearch />,
       link: "/digital-marketing-agency-dubai-uae/seo-services-in-dubai-uae",
     },
-    {
-      title: "Social Media Marketing (SMM)",
-      icon: <FaShareAlt />,
-      link: "/digital-marketing-agency-dubai-uae/social-media-marketing-services-in-dubai-uae",
-    },
+    // {
+    //   title: "Social Media Marketing (SMM)",
+    //   icon: <FaShareAlt />,
+    //   link: "/digital-marketing-agency-dubai-uae/social-media-marketing-services-in-dubai-uae",
+    // },
     {
       title: "Performance Marketing",
       icon: <FaBullhorn />,

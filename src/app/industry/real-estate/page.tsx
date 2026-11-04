@@ -133,7 +133,7 @@ const marketingTabs = [
     benefit: "Keep your project in front of buyers through a long sales cycle.",
     items: [
       {
-        title: "Social Media Marketing",
+        title: "Social Media Optimization (SMO)",
         desc: "Project launches, walkthrough reels and community building.",
       },
       {
@@ -478,8 +478,8 @@ export default function RealEstateIndustryPage() {
             href: "/services/performance-marketing",
           },
           {
-            label: "Social media marketing",
-            href: "/services/social-media-marketing",
+            label: "Social media optimization",
+            href: "/services/social-media-optimization",
           },
           { label: "Our portfolio", href: "/portfolio" },
           {
