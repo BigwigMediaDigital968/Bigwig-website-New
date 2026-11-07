@@ -145,7 +145,9 @@ const process: ServiceItem[] = [
   },
   {
     title: "Performance Tracking & Reporting",
-    desc: "We review available metrics such as organic traffic, engagement, leads and conversions to understand performance and identify opportunities for improvement.",
+    desc: <>
+    <p>We review available metrics such as organic traffic, engagement, leads and conversions to understand performance and identify opportunities for improvement.</p>    
+    </>,
   },
 ];
 
@@ -252,7 +254,11 @@ const faqs: ServiceFaqItem[] = [
   },
   {
     q: "How Do I Choose the Best Content Marketing Agency in Delhi?",
-    a: "Look for an agency that understands your business goals, explains its strategy, provides clear deliverables and communicates how performance will be measured. Review relevant work, reporting practices and the proposed scope before choosing a content marketing agency in Delhi.",
+    a: <>
+    Look for an agency that understands your business goals, explains its strategy, provides clear deliverables and communicates how performance will be measured. Review relevant work, reporting practices and the proposed scope before choosing a content marketing agency in Delhi.
+    <br />
+    Understanding <Link href={"https://www.bigwigmediadigital.com/blogs/roi-full-form-meaning-formula-and-importance-in-marketing"} className={inlineLink}>return on investment (ROI)</Link> can also help businesses evaluate the financial effectiveness of their marketing activities.
+    </>,
   },
 ];
 

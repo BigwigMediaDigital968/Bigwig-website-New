@@ -294,6 +294,9 @@ export default function PerformanceMarketingPage() {
               marketing, cost per lead, cost per acquisition and return on ad
               spend are visible, so decisions are based on numbers.
             </p>
+            <p>
+              Understanding <a href="https://www.bigwigmediadigital.com/blogs/roi-full-form-meaning-formula-and-importance-in-marketing" className={inlineLink}> return on investment (ROI)</a> helps businesses evaluate the profitability of their marketing campaigns and make better investment decisions.
+            </p>
           </>
         }
       />

@@ -14,7 +14,7 @@ import Timeline from "../ui/Timeline";
 
 /** `image` is optional; `ServiceCarousel` shows it at the top of the card. */
 export type ServiceItem = { title: string; desc: React.ReactNode; image?: StaticImageData | string; imageAlt?: string };
-export type ServiceFaqItem = { q: string; a: string };
+export type ServiceFaqItem = { q: string; a: React.ReactNode };
 
 type CollageImage = { src: StaticImageData | string; alt: string };
 
