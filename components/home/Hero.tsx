@@ -7,7 +7,7 @@ import { PillLead, WhatsAppPill } from "../ui";
 // Same content and the same video + navy overlay as the live homepage hero
 const heroContent = {
   videoSrc: "/Bigwig-Website-Video.mp4",
-  fallbackImage: "/home-hero.png",
+  fallbackImage: "/home-hero.webp",
   kicker: "Google Partner and Meta Business Partner",
   title: (
     <>
@@ -48,6 +48,8 @@ export default function Hero() {
       ref={sectionRef}
       className="relative isolate flex min-h-[100svh] items-end md:h-[100svh] md:min-h-[640px] md:max-h-[980px] overflow-hidden bg-[var(--ink)] text-white"
     >
+      {/* the poster is the first thing painted, so fetch it at high priority (React hoists this to <head>) */}
+      <link rel="preload" as="image" href={heroContent.fallbackImage} fetchPriority="high" />
       <motion.video
         style={reduce ? undefined : { scale: videoScale, y: videoY }}
         ref={videoRef}
@@ -82,19 +84,15 @@ export default function Hero() {
             {heroContent.kicker}
           </motion.p>
 
-          <motion.h1
-            className="mt-5 md:mt-6 max-w-5xl text-[clamp(1.8rem,7.4vw,2.5rem)] font-semibold leading-[1.08] sm:text-4xl md:text-5xl"
-            initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0, y: 12 }}
-            animate={{ clipPath: "inset(0 0% 0 0)", opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.1, ease: [0.65, 0, 0.35, 1] }}
-          >
+          {/* plain h1: it is the LCP element, so it must be visible in the server HTML (no opacity/clip start state) */}
+          <h1 className="mt-5 md:mt-6 max-w-5xl text-[clamp(1.8rem,7.4vw,2.5rem)] font-semibold leading-[1.08] sm:text-4xl md:text-5xl">
             {heroContent.title}
-          </motion.h1>
+          </h1>
 
           <div className="mt-5 md:mt-8 grid gap-6 md:gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-12">
-            <motion.p {...rise(0.45)} className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
+            <p className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
               {heroContent.subtitle}
-            </motion.p>
+            </p>
             <motion.div {...rise(0.6)} className="flex flex-wrap items-center gap-3">
               <PillLead source="hero" tone="cyan">
                 {heroContent.ctaText}

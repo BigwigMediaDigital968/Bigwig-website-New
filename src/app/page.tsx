@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 
 import Nav from "../../components/layout/Nav";
 import Hero from "../../components/home/Hero";
@@ -8,13 +9,15 @@ import About from "../../components/home/About";
 import Clients from "../../components/home/Clients";
 import Steps from "../../components/home/Steps";
 import Services from "../../components/home/Services";
-import Testimonials from "../../components/home/Testimonials";
-import CaseStudies from "../../components/home/CaseStudies";
-import Blogs from "../../components/home/Blog";
-import FAQ from "../../components/home/Faq";
 import Footer from "../../components/layout/Footer";
 import { faqs } from "@/data/homeData";
 import CTAStrip from "../../components/CTAStrip";
+
+// below-the-fold sections load as separate chunks (still server-rendered)
+const Testimonials = dynamic(() => import("../../components/home/Testimonials"));
+const CaseStudies = dynamic(() => import("../../components/home/CaseStudies"));
+const Blogs = dynamic(() => import("../../components/home/Blog"));
+const FAQ = dynamic(() => import("../../components/home/Faq"));
 
 export const metadata: Metadata = {
   title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",
