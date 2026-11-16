@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import {
-  motion,
+  m as motion,
   useMotionTemplate,
   useMotionValue,
   useReducedMotion,

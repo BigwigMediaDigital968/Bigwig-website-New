@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { m as motion, useReducedMotion, type Variants } from "framer-motion";
 import { processSteps } from "@/data/homeData";
 import { PillLead, SectionHead } from "../ui";
 

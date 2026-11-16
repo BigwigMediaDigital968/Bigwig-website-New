@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { fadeUp, inView, maskUp, stagger } from "../ui";
 
 const MOTTO = "“We create super-rich experiences online!”";

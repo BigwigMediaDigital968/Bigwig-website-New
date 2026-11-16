@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { PillLead, SectionHead, fadeUp, inView, stagger } from "../../ui";
 
 export type GalleryPost = { image: StaticImageData | string; alt: string };

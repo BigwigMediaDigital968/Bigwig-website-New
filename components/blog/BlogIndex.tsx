@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import Fuse from "fuse.js";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { EASE, PillLead, fadeUp, focusRing, maskUp, stagger } from "../ui";
 import { blogCategories, categorySlug } from "@/data/blogCategories";

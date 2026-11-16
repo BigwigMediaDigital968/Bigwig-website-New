@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { branches, headOffice, type Office } from "@/data/offices";
 import { EASE_OUT, SectionHead, focusRing } from "../ui";

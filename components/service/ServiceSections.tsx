@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, m as motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { serviceCards } from "@/data/servicesData";
 import { PillLead, SectionHead, fadeUp, focusRing, inView, maskUp, scaleIn, stagger, wipeUp } from "../ui";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Search, X } from "lucide-react";
 import { faqTopics, type FaqTopic } from "@/data/faqData";
 import { fadeUp, focusRing, inView, maskUp, stagger } from "../ui";

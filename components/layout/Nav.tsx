@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { AnimatePresence, m as motion, type Variants } from "framer-motion";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { services } from "@/data/homeData";
 import { useLeadPopup } from "../LeadPopup";

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHead, fadeUp, focusRing, inView, stagger } from "../ui";
 import { usePlanner } from "./Planner";

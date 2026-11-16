@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { EASE_OUT, SectionHead } from "../ui";
 import PlanButton from "./PlanButton";
 import { buyerMarkets } from "./content";

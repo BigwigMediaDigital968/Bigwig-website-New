@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { PillLead, Reveal, fadeUp, inView, maskUp, stagger } from "../ui";
 
 export default function Story() {

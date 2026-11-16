@@ -12,7 +12,7 @@ import {
 } from "react";
 import {
   AnimatePresence,
-  motion,
+  m as motion,
   useReducedMotion,
   type Variants,
 } from "framer-motion";

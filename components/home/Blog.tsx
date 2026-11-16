@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { EASE, PillLink, Reveal, SectionHead, fadeUp, focusRing, inView, stagger, wipeUp } from "../ui";
 
 interface BlogPost {

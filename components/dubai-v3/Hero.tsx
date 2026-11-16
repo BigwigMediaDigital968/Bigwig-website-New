@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { dubaiClients } from "@/data/clients";
 import { DUBAI_WHATSAPP_HREF } from "../dubai/DubaiHero";
 import {

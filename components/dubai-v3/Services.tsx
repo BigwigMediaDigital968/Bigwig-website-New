@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, Play } from "lucide-react";
 import { testimonials } from "@/data/homeData";
 import { PillLink, SectionHead, fadeUp, focusRing, inView, stagger } from "../ui";

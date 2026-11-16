@@ -2,7 +2,7 @@
 
 // import { useRef } from "react";
 // import Image from "next/image";
-// import { motion, useScroll, useTransform } from "framer-motion";
+// import { m as motion, useScroll, useTransform } from "framer-motion";
 // import tableImg from "../../Assets/map-lying-wooden-table.jpg";
 // import { EASE, fadeUp, maskUp, stagger } from "../ui";
 
@@ -83,7 +83,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useScroll, useTransform } from "framer-motion";
 import tableImg from "../../Assets/map-lying-wooden-table.jpg";
 import { EASE, PillLead, PillLink, fadeUp, maskUp, stagger } from "../ui";
 

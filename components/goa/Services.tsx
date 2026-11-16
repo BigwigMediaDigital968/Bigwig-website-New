@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, Globe, MapPin, Play, Search, Star } from "lucide-react";
 import { fadeUp, focusRing, inView, stagger } from "../ui";
 import { moreServices, services, type Proof } from "./content";

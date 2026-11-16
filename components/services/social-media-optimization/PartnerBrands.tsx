@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { logos as allLogos } from "../../home/partnerLogos";
 import { fadeUp, inView } from "../../ui";
 

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import TiltCard from "./TiltCard";
 
 const portfolioItems = [

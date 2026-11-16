@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { PillLead, WhatsAppPill } from "../ui";
 
 // Same content and the same video + navy overlay as the live homepage hero
