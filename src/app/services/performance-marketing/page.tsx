@@ -658,7 +658,7 @@ export default function PerformanceMarketingPage() {
                   enquiries
                 </li>
                 <li>
-                  E-commerce and D2C brands that want to grow online sales
+                  E-commerce and DTC brands that want to grow online sales
                 </li>
                 <li>B2B companies that need qualified leads</li>
                 <li>

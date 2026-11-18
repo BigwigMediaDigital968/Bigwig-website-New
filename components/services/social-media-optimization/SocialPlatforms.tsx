@@ -72,7 +72,7 @@ const platforms: Platform[] = [
     image:
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
     strategy:
-      "Focused execution: search-friendly pins, organized boards, and optimized descriptions built to drive visual discovery and organic traffic, especially for retail and D2C brands. Targeting Pinterest? Get a free platform audit.",
+      "Focused execution: search-friendly pins, organized boards, and optimized descriptions built to drive visual discovery and organic traffic, especially for retail and DTC brands. Targeting Pinterest? Get a free platform audit.",
   },
   {
     id: "youtube",

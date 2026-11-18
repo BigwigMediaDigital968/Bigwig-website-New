@@ -91,17 +91,19 @@ export default function Hero() {
             {heroContent.title}
           </motion.h1>
 
-          <div className="mt-5 md:mt-8 grid gap-6 md:gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-12">
+          <div className="mt-5 grid gap-6 md:gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
             <motion.p {...rise(0.45)} className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
               {heroContent.subtitle}
             </motion.p>
-            <motion.div {...rise(0.6)} className="flex flex-wrap items-center gap-3">
+          
+          </div>
+
+            <motion.div {...rise(0.6)} className="flex flex-wrap items-center gap-3 mt-5">
               <PillLead source="hero" tone="cyan">
                 {heroContent.ctaText}
               </PillLead>
-              <WhatsAppPill dark />
+              {/* <WhatsAppPill dark /> */}
             </motion.div>
-          </div>
         </motion.div>
       </div>
     </section>

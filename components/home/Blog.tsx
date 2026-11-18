@@ -79,7 +79,7 @@ export default function Blog() {
                     src={featured.coverImage}
                     alt=""
                     loading="lazy"
-                    className="aspect-[16/10] w-full object-cover"
+                    className="aspect-[16/10] w-full object-contain"
                   />
                   </div>
                 </motion.div>
@@ -102,7 +102,7 @@ export default function Blog() {
                           src={post.coverImage}
                           alt=""
                           loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                         />
                       </div>
                       <div className="min-w-0">

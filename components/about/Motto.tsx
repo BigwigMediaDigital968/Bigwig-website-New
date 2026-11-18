@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, inView, maskUp, stagger } from "../ui";
 
-const MOTTO = "“We create super-rich experiences online!”";
+const MOTTO = "“Grand your brand with Bigwig”";
 
 export default function Motto() {
   return (
@@ -12,7 +12,7 @@ export default function Motto() {
         <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--link)]">
           We live by our motto
         </motion.p>
-        <p className="mt-5 max-w-6xl text-[clamp(2.4rem,6.5vw,6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+        <p className="mt-5 max-w-7xl text-[clamp(2.4rem,6.5vw,6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
           <span className="sr-only">{MOTTO}</span>
           {MOTTO.split(" ").map((word, i) => (
             <span key={i} aria-hidden className="-mb-[0.14em] inline-block overflow-hidden pb-[0.14em] align-top">

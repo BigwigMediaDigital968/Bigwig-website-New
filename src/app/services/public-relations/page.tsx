@@ -339,7 +339,7 @@ function PublicRelation() {
             <p className="text-gray-700 mb-4">
               Every industry speaks a different language, and we know how to
               translate your story for the media that matters. From tech
-              startups and D2C brands to education, finance, lifestyle, and
+              startups and DTC brands to education, finance, lifestyle, and
               wellness, our public relation services are designed to meet your
               industry’s unique communication needs.
             </p>

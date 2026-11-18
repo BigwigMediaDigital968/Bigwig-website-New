@@ -3,9 +3,9 @@ import Image from "next/image";
 import award1 from "../../Assets/partner/Google-Partner-Logo-Vector.svg-.png";
 
 export const logos = [
-  { name: "Google Partner", component: GoogleLogo },
+  // { name: "Google Partner", component: GoogleLogo },
   { name: "HubSpot", component: HubSpotLogo },
-  { name: "Meta Business Partner", component: MetaLogo },
+  // { name: "Meta Business Partner", component: MetaLogo },
   { name: "Microsoft Partner", component: MicrosoftLogo },
   { name: "Shopify", component: ShopifyLogo },
   { name: "Bing Ads", component: BingLogo },

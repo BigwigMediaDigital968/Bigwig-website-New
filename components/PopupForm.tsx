@@ -111,7 +111,7 @@ export default function PopupForm({ isOpen, onClose, source = "popup" }: PopupFo
                 className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_20%_100%,rgba(84,172,191,0.35),transparent_70%)]"
               />
               <div>
-                <p className="h-section max-w-[12ch] text-[2.1rem]">Let’s grow your business.</p>
+                <p className="h-section max-w-[12ch] text-[2.1rem]">Grand your brand with Bigwig.</p>
                 <ul className="mt-7 space-y-3">
                   {promises.map((p) => (
                     <li key={p} className="flex items-start gap-3 leading-snug text-white/85">

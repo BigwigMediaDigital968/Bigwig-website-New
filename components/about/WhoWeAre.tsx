@@ -7,7 +7,7 @@ import { EASE, PillLink, fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
 
 const stats = [
   { value: "5+", unit: "Years", label: "Industry Experience" },
-  { value: "25+", unit: "Industries", label: "We’ve Worked Across" },
+  { value: "9+", unit: "Industries", label: "We’ve Worked Across" },
 ];
 
 export default function WhoWeAre() {

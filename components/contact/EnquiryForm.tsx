@@ -24,9 +24,21 @@ export const SERVICES = [
   "ORM",
 ];
 
-const EMPTY = { fullName: "", email: "", country: "in", phone: "", services: [] as string[], message: "" };
+const EMPTY = {
+  fullName: "",
+  email: "",
+  country: "in",
+  phone: "",
+  services: [] as string[],
+  message: "",
+};
 
-type Errors = { fullName?: string; email?: string; phone?: string };
+type Errors = {
+  fullName?: string;
+  email?: string;
+  phone?: string;
+  services?: string;
+};
 
 const field =
   "rounded-2xl bg-[var(--paper)] px-4 text-[0.95rem] text-[var(--ink)] ring-1 ring-inset ring-[var(--line)] placeholder:text-[var(--muted)]/70 transition-shadow focus:outline-none focus:ring-2 focus:ring-[var(--link)] aria-[invalid=true]:ring-red-400";
@@ -49,24 +61,38 @@ export default function EnquiryForm({
 }) {
   // unique per form, so two forms on one page (e.g. a page form and the lead popup) don't share field ids
   const uid = useId();
-  const start = { ...EMPTY, country: defaultCountry, services: defaultServices };
+  const start = {
+    ...EMPTY,
+    country: defaultCountry,
+    services: defaultServices,
+  };
   const [form, setForm] = useState(start);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const { submitLead, loading } = useSubmitLead();
 
-  const set = <K extends keyof typeof EMPTY>(k: K, v: (typeof EMPTY)[K]) => setForm((f) => ({ ...f, [k]: v }));
+  const set = <K extends keyof typeof EMPTY>(k: K, v: (typeof EMPTY)[K]) =>
+    setForm((f) => ({ ...f, [k]: v }));
 
   const toggleService = (s: string) =>
-    set("services", form.services.includes(s) ? form.services.filter((x) => x !== s) : [...form.services, s]);
+    set(
+      "services",
+      form.services.includes(s)
+        ? form.services.filter((x) => x !== s)
+        : [...form.services, s],
+    );
 
   const validate = () => {
     const next: Errors = {};
     if (!form.fullName.trim()) next.fullName = "Please enter your name.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = "Please enter a valid email address.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      next.email = "Please enter a valid email address.";
     const digits = form.phone.replace(/\D/g, "");
-    if (digits.length < 6 || digits.length > 15) next.phone = "Please enter a valid phone number.";
+    if (digits.length < 6 || digits.length > 15)
+      next.phone = "Please enter a valid phone number.";
+    if (form.services.length === 0)
+      next.services = "Please select at least one service.";
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -94,6 +120,15 @@ export default function EnquiryForm({
   };
 
   if (submitted) {
+    const toggleService = (s: string) => {
+      const next = form.services.includes(s)
+        ? form.services.filter((x) => x !== s)
+        : [...form.services, s];
+      set("services", next);
+      if (next.length > 0 && errors.services) {
+        setErrors((prev) => ({ ...prev, services: undefined }));
+      }
+    };
     return (
       <div role="status" className="flex flex-col items-start gap-4 py-10">
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--cyan)] text-[var(--ink)]">
@@ -101,7 +136,8 @@ export default function EnquiryForm({
         </span>
         <p className="text-3xl font-semibold tracking-tight">Thank you!</p>
         <p className="max-w-md text-lg leading-relaxed text-[var(--muted)]">
-          Your message has been sent. Our team will review your details and get back to you shortly.
+          Your message has been sent. Our team will review your details and get
+          back to you shortly.
         </p>
         <button
           type="button"
@@ -115,8 +151,14 @@ export default function EnquiryForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className={compact ? "space-y-4" : "space-y-6"}>
-      <div className={`grid grid-cols-1 sm:grid-cols-2 [&>*]:min-w-0 ${compact ? "gap-4" : "gap-5"}`}>
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className={compact ? "space-y-4" : "space-y-6"}
+    >
+      <div
+        className={`grid grid-cols-1 sm:grid-cols-2 [&>*]:min-w-0 ${compact ? "gap-4" : "gap-5"}`}
+      >
         <Field id={`${uid}-name`} label="Name" error={errors.fullName}>
           <input
             id={`${uid}-name`}
@@ -161,7 +203,9 @@ export default function EnquiryForm({
                 value={form.phone}
                 onChange={(e) => set("phone", e.target.value)}
                 aria-invalid={!!errors.phone}
-                aria-describedby={errors.phone ? `${uid}-phone-error` : undefined}
+                aria-describedby={
+                  errors.phone ? `${uid}-phone-error` : undefined
+                }
                 className={`h-12 min-w-0 flex-1 ${field}`}
               />
             </div>
@@ -170,28 +214,47 @@ export default function EnquiryForm({
       </div>
 
       {compact ? (
-        <div>
-          <label htmlFor={`${uid}-services`} className="mb-1.5 block text-sm font-medium">
-            Services <span className="font-normal text-[var(--muted)]">(optional)</span>
-          </label>
+        <Field id={`${uid}-services`} label="Services" error={errors.services}>
           <ServicesSelect
             id={`${uid}-services`}
             options={SERVICES}
             value={form.services}
-            onChange={(next) => set("services", next)}
+            onChange={(next) => {
+              set("services", next);
+              if (next.length > 0 && errors.services) {
+                setErrors((prev) => ({ ...prev, services: undefined }));
+              }
+            }}
+            aria-invalid={!!errors.services}
+            aria-describedby={
+              errors.services ? `${uid}-services-error` : undefined
+            }
           />
-        </div>
+        </Field>
       ) : (
-        <fieldset>
+        <fieldset
+          aria-invalid={!!errors.services}
+          aria-describedby={
+            errors.services ? `${uid}-services-error` : undefined
+          }
+        >
           <legend className="mb-3 text-sm font-medium">
-            What can we help with? <span className="font-normal text-[var(--muted)]">(pick any)</span>
+            What can we help with?{" "}
+            <span className="font-normal text-[var(--muted)]">
+              (select at least one)
+            </span>
           </legend>
           <div className="flex flex-wrap gap-2">
             {SERVICES.map((s) => {
               const on = form.services.includes(s);
               return (
                 <label key={s} className="cursor-pointer">
-                  <input type="checkbox" checked={on} onChange={() => toggleService(s)} className="peer sr-only" />
+                  <input
+                    type="checkbox"
+                    checked={on}
+                    onChange={() => toggleService(s)}
+                    className="peer sr-only"
+                  />
                   <span
                     className={`inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-sm font-medium transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--link)] ${
                       on
@@ -199,17 +262,30 @@ export default function EnquiryForm({
                         : "bg-[var(--paper)] ring-1 ring-inset ring-[var(--line)] hover:ring-[var(--line-strong)]"
                     }`}
                   >
-                    {on && <Check className="h-3.5 w-3.5 text-[var(--cyan)]" aria-hidden />}
+                    {on && (
+                      <Check
+                        className="h-3.5 w-3.5 text-[var(--cyan)]"
+                        aria-hidden
+                      />
+                    )}
                     {s}
                   </span>
                 </label>
               );
             })}
           </div>
+          {errors.services && (
+            <p
+              id={`${uid}-services-error`}
+              className="mt-1.5 text-sm text-red-600"
+            >
+              {errors.services}
+            </p>
+          )}
         </fieldset>
       )}
 
-      <Field id={`${uid}-message`} label="Message" optional>
+      {/* <Field id={`${uid}-message`} label="Message" optional>
         <textarea
           id={`${uid}-message`}
           rows={compact ? 2 : 4}
@@ -218,10 +294,13 @@ export default function EnquiryForm({
           onChange={(e) => set("message", e.target.value)}
           className={`w-full resize-y py-3 ${field}`}
         />
-      </Field>
+      </Field> */}
 
       {status && (
-        <p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+        <p
+          role="alert"
+          className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
+        >
           {status}
         </p>
       )}
@@ -263,7 +342,9 @@ function Field({
     <div>
       <label htmlFor={id} className="mb-1.5 block text-sm font-medium">
         {label}
-        {optional && <span className="font-normal text-[var(--muted)]"> (optional)</span>}
+        {optional && (
+          <span className="font-normal text-[var(--muted)]"> (optional)</span>
+        )}
       </label>
       {children}
       {error && (

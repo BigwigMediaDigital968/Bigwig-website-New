@@ -613,7 +613,7 @@ export default function SocialMediaOptimizationPage() {
             </ul>
             <p>
               Every plan is built for your industry, goals, and audience. A real
-              estate brand in South Delhi and a D2C skincare label need very
+              estate brand in South Delhi and a DTC skincare label need very
               different strategies.
             </p>
             <p>

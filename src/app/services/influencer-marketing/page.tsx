@@ -341,7 +341,7 @@ const industries = [
   "Finance & Investment",
   "Travel & Hospitality",
   "Automotive",
-  "D2C Brands",
+  "DTC Brands",
   "SaaS & Apps",
 ];
 
