@@ -675,7 +675,7 @@ const AdminLead = () => {
             <div>
               <label className="mb-1 block text-xs font-medium text-white/70">Message</label>
               <textarea
-                rows={3}
+                rows={6}
                 value={editForm.message}
                 onChange={(e) => setEditForm({ ...editForm, message: e.target.value })}
                 className="bw-input w-full"
