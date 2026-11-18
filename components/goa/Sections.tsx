@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, MapPin, Phone, Plus } from "lucide-react";
 import { branches } from "@/data/offices";
 import { fadeUp, focusRing, inView, stagger } from "../ui";

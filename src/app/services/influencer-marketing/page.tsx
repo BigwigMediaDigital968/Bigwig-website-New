@@ -190,10 +190,13 @@ const services: ServiceItem[] = [
     desc: (
       <>
         Get clear reports covering reach, impressions, engagement, video
-        completion, clicks, conversions, audience sentiment, and ROI. We use
+        completion, clicks, conversions, audience sentiment, and <Link
+          href="https://www.bigwigmediadigital.com/blogs/roi-full-form-meaning-formula-and-importance-in-marketing"
+          className="font-medium underline underline-offset-4 hover:opacity-75"
+        >ROI</Link> . We use
         these insights to refine future campaigns and strengthen your{" "}
         <Link
-          href="/services/digital-marketing"
+          href="/"
           className="font-medium underline underline-offset-4 hover:opacity-75"
         >
           digital marketing
@@ -316,7 +319,7 @@ const workflow: ServiceStep[] = [
         what needs improvement, and how to strengthen future campaigns through
         data-driven{" "}
         <Link
-          href="/services/digital-marketing"
+          href="/"
           className="font-medium underline underline-offset-4 hover:opacity-75"
         >
           digital marketing

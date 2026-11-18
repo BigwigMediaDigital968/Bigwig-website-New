@@ -3,7 +3,7 @@
 import { useId, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, Check, Plus } from "lucide-react";
 import type { ServiceItem } from "@/data/indiaServices";
 import { PillLead, PillLink, SectionHead, WhatsAppPill, fadeUp, focusRing, inView, stagger } from ".";

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import ApplicationForm from "../ApplicationForm";
 import { PillLink, Reveal, fadeUp, focusRing, maskUp, stagger } from "../ui";

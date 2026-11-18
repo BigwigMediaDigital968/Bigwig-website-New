@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { animate, motion, useInView, useReducedMotion } from "framer-motion";
+import { animate, m as motion, useInView, useReducedMotion } from "framer-motion";
 import { EASE, PillLead, PillLink, Reveal, fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
 import TrustedStrip from "../ui/TrustedStrip";
 

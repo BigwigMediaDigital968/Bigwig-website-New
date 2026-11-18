@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import { branches } from "@/data/offices";
 import useSubmitLead from "../../hooks/useSubmitLead";

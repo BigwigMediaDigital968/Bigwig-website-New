@@ -122,7 +122,14 @@ const seoBenefits: ServiceItem[] = [
   },
   {
     title: "Support Cost-Effective Marketing",
-    desc: "SEO can continue attracting relevant visitors after individual improvements are implemented. Results require ongoing work, and the time and investment depend on your website, competition, and objectives.",
+    desc: <>
+    <p>
+      SEO can continue attracting relevant visitors after individual improvements are implemented. Results require ongoing work, and the time and investment depend on your website, competition, and objectives.
+    </p>
+    <p className="pt-1">
+      Understanding <Link href={"https://www.bigwigmediadigital.com/blogs/roi-full-form-meaning-formula-and-importance-in-marketing"} className={inlineLink}>return on investment (ROI)</Link> can help businesses evaluate the value of their SEO efforts and compare marketing investment with the results achieved.
+    </p>
+    </>,
   },
   {
     title: "Generate More Qualified Leads",

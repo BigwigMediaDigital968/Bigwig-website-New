@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { testimonials, type Testimonial } from "@/data/homeData";
 import { EASE, PillLead, Reveal, fadeUp, focusRing, inView, maskUp, stagger } from "../ui";

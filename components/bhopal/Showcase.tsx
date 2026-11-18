@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { EASE_OUT, focusRing } from "../ui";
 import { projects } from "./content";

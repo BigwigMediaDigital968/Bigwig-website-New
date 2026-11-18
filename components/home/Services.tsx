@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { services } from "@/data/homeData";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { PillLead, PillLink, SectionHead, fadeUp, inView, stagger } from "../ui";
 
 export default function Services() {

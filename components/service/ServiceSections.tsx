@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, m as motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { serviceCards } from "@/data/servicesData";
 import { PillLead, SectionHead, fadeUp, focusRing, inView, maskUp, scaleIn, stagger, wipeUp } from "../ui";
@@ -14,7 +14,7 @@ import Timeline from "../ui/Timeline";
 
 /** `image` is optional; `ServiceCarousel` shows it at the top of the card. */
 export type ServiceItem = { title: string; desc: React.ReactNode; image?: StaticImageData | string; imageAlt?: string };
-export type ServiceFaqItem = { q: string; a: string };
+export type ServiceFaqItem = { q: string; a: React.ReactNode };
 
 type CollageImage = { src: StaticImageData | string; alt: string };
 

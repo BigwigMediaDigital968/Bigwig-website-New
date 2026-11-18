@@ -1,7 +1,7 @@
 "use client";
 
 import { cases } from "@/data/homeData";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { EASE, PillLead, SectionHead, fadeUp, inView, scaleIn, stagger, wipeUp } from "../ui";
 
 export default function CaseStudies() {

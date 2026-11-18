@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { FaBehance, FaDribbble } from "react-icons/fa";
 import { SectionHead, fadeUp, focusRing, inView, stagger } from "../ui";

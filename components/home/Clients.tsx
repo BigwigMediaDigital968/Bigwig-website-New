@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useScroll, useTransform } from "framer-motion";
 import { clientLogos } from "@/data/homeData";
 import { PillLink, fadeUp, inView, maskUp, scaleIn, stagger } from "../ui";
 

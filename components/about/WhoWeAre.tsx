@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import tabletImg from "../../Assets/1759473431835.jpg";
 import { EASE, PillLink, fadeUp, inView, maskUp, stagger, wipeUp } from "../ui";
 

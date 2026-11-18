@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useScroll, useTransform } from "framer-motion";
 import { EASE, PillLink, WhatsAppPill, fadeUp, maskUp, stagger } from "../ui";
 import { CAREERS_WHATSAPP_HREF } from "./jobs";
 

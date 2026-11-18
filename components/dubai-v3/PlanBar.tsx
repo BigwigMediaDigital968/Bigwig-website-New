@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { EASE_OUT } from "../ui";
 import PlanButton from "./PlanButton";
 import { usePlanner } from "./Planner";

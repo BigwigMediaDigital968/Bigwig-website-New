@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useScroll, useTransform } from "framer-motion";
 import step1 from "../Assets/our process/Let's Talk.png";
 import step2 from "../Assets/our process/Game Plan.png";
 import step3 from "../Assets/our process/Go Live.png";

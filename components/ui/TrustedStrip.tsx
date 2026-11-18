@@ -58,6 +58,10 @@ export default function TrustedStrip({
               <img
                 src={l.src}
                 alt={copy ? "" : l.name}
+                width={Math.round(h * l.aspect)}
+                height={h}
+                loading="lazy"
+                decoding="async"
                 draggable={false}
                 style={{ "--h": `${h}px` } as React.CSSProperties}
                 // full strength at rest; a small lift on hover or keyboard focus

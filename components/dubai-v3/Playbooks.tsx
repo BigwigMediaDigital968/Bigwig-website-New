@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import { EASE_OUT, SectionHead, focusRing } from "../ui";
 import PlanButton from "./PlanButton";

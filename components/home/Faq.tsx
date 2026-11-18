@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { faqs } from "@/data/homeData";
 import { fadeUp, inView, maskUp, stagger } from "../ui";
 import { AccordionItem, AskCard } from "../ui/Accordion";

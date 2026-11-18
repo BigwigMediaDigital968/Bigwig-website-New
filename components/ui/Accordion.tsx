@@ -1,7 +1,7 @@
 "use client";
 
 import { useId } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Mail, Phone, Plus } from "lucide-react";
 import { EASE, EMAIL, PHONE_DISPLAY, PHONE_HREF, PillLead, focusRing } from ".";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m as motion, type Variants } from "framer-motion";
 import { EASE, EASE_IN_OUT } from ".";
 
 // One trigger on the list: the rule draws left to right, each step follows the line.

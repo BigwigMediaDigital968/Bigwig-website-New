@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, Check, Star } from "lucide-react";
 import { PillLead, SectionHead, WhatsAppPill, fadeUp, focusRing, inView, maskUp, stagger, whatsappHref } from "../../ui";
 import TrustedStrip from "../../ui/TrustedStrip";

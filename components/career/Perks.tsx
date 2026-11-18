@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Rocket, Sparkles, Star, TrendingUp, Users } from "lucide-react";
 import { SectionHead, fadeUp, inView, stagger } from "../ui";
 

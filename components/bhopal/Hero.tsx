@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Check, ChevronDown, MapPin, Search, Star } from "lucide-react";
 import useSubmitLead from "../../hooks/useSubmitLead";
 import { trackLeadEvent } from "../../utils/leadTracking";

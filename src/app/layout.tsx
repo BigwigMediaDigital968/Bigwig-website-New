@@ -189,18 +189,6 @@ export default function RootLayout({
             ]),
           }}
         />
-
-        <link
-          rel="stylesheet"
-          type="text/css"
-          charSet="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
       </head>
       <body>
         <MotionRoot>
@@ -217,43 +205,27 @@ export default function RootLayout({
           </LeadPopupProvider>
         </MotionRoot>
 
-        {/* Google reCAPTCHA */}
-
-        <Script
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-          strategy="afterInteractive"
-        />
-
-        {/* Google Analytics */}
+        {/*
+          Third-party tags load after the page is idle (lazyOnload) so they don't compete with the hero.
+          reCAPTCHA is not loaded here: useSubmitLead loads it on the first form interaction.
+          One gtag.js request serves both GA4 properties.
+        */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-2WEBR7ZVN9"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-2WEBR7ZVN9');
-          `}
-        </Script>
-
-        {/* Google Analytics second tag */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-MY747LMT5M"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics-2" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
             gtag('config', 'G-MY747LMT5M');
           `}
         </Script>
 
         {/* Microsoft Clarity */}
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+        <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -264,7 +236,7 @@ export default function RootLayout({
         </Script>
 
         {/* Google Tag Manager */}
-        <Script id="gtm" strategy="afterInteractive">
+        <Script id="gtm" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){
               w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
@@ -276,7 +248,7 @@ export default function RootLayout({
         </Script>
 
         {/* <!-- Meta Pixel Code --> */}
-        <script>
+        <Script id="meta-pixel" strategy="lazyOnload">
           {`!function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -287,7 +259,7 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1365940352138121');
             fbq('track', 'PageView');`}
-        </script>
+        </Script>
         <noscript><img height="1" width="1" style={{ display: "none" }}
           src="https://www.facebook.com/tr?id=1365940352138121&ev=PageView&noscript=1"
         /></noscript>

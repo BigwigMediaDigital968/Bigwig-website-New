@@ -7,6 +7,8 @@ import OurProcess from "../../../../components/OurProcess";
 import WhyBigwig from "../../../../components/WhyBigwig";
 import Footer from "../../../../components/layout/Footer";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   FaBullhorn,
   FaUserCheck,

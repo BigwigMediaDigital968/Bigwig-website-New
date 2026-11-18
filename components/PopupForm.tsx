@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { Check, Phone, X } from "lucide-react";
 import EnquiryForm from "./contact/EnquiryForm";
 import { EASE_OUT, PHONE_DISPLAY, PHONE_HREF, WhatsAppPill, focusRing } from "./ui";

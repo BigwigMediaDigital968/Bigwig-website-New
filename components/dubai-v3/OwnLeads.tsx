@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Check, Minus } from "lucide-react";
 import { SectionHead, fadeUp, inView, stagger } from "../ui";
 import PlanButton from "./PlanButton";

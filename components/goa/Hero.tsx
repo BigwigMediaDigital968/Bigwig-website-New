@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MapPin } from "lucide-react";
 import { EASE, WhatsAppPill, fadeUp, focusRing, stagger } from "../ui";
 import TrustedStrip from "../ui/TrustedStrip";

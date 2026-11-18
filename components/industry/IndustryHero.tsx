@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image, { type StaticImageData } from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { EASE, PillLink, WhatsAppPill, fadeUp, maskUp, stagger, whatsappHref } from "../ui";
 import EnquiryForm from "../contact/EnquiryForm";
 
