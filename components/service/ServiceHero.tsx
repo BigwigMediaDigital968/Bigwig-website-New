@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { m as motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { EASE, PillLink, WhatsAppPill, fadeUp, maskUp, stagger, whatsappHref } from "../ui";
+import { EASE, PillLink, WhatsAppPill, whatsappHref } from "../ui";
 import EnquiryForm from "../contact/EnquiryForm";
 
 export type HeroFact = { value: string; label: string; small?: boolean };
@@ -68,29 +68,22 @@ export default function ServiceHero({
 
       {/* top padding clears the floating nav */}
       <div className="wrap grid w-full gap-12 pb-16 pt-28 md:pt-32 lg:grid-cols-12 lg:items-center lg:gap-12 lg:pb-10 lg:pt-24">
-        <motion.div className="min-w-0 lg:col-span-7" initial="hidden" animate="show" variants={stagger(0.1, 0.2)}>
-          <motion.p variants={fadeUp} className="text-[0.95rem] font-medium text-[var(--cyan)]">
-            {lead}
-          </motion.p>
+        <div className="min-w-0 lg:col-span-7">
+          {/* Text content (the LCP) is plain server-rendered HTML: it must not wait for hydration to become visible. */}
+          <p className="text-[0.95rem] font-medium text-[var(--cyan)]">{lead}</p>
           <h1 className="mt-4 max-w-2xl text-[clamp(1.7rem,7.4vw,2.3rem)] font-semibold leading-[1.08] tracking-[-0.035em] sm:text-4xl lg:text-[clamp(2.5rem,3.2vw,3rem)]">
-            <span className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
-              <motion.span variants={maskUp} className="block">
-                {title}
-              </motion.span>
-            </span>
+            {title}
           </h1>
-          <motion.div variants={fadeUp} className="mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
-            {intro}
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">{intro}</div>
+          <div className="mt-7 flex flex-wrap gap-3">
             <PillLink href={typeof cta === "string" ? "/contact" : cta.href} tone="cyan">
               {typeof cta === "string" ? cta : cta.label}
             </PillLink>
             <WhatsAppPill href={whatsappMessage ? whatsappHref(whatsappMessage) : undefined} dark />
-          </motion.div>
+          </div>
 
           {facts && facts.length > 0 && (
-            <motion.dl variants={fadeUp} className="mt-10 grid max-w-xl grid-cols-3 border-t border-white/20">
+            <dl className="mt-10 grid max-w-xl grid-cols-3 border-t border-white/20">
               {facts.map((f, i) => (
                 <div
                   key={f.label}
@@ -102,14 +95,14 @@ export default function ServiceHero({
                   </dd>
                 </div>
               ))}
-            </motion.dl>
+            </dl>
           )}
-        </motion.div>
+        </div>
 
         <motion.div
           className="min-w-0 rounded-[12px] bg-[var(--surface)] p-6 text-[var(--ink)] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] sm:p-7 lg:col-span-5"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 40 }}
+          animate={{ y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: EASE }}
         >
           <p className="text-sm font-medium text-[var(--link)]">Send us a message</p>
