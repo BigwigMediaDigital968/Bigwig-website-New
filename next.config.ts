@@ -52,7 +52,7 @@ const nextConfig: NextConfig = {
       {
         source:
           "/blogs/social-media-marketing-agency-in-delhi-bigwig-media-digital",
-        destination: "/services/social-media-marketing",
+        destination: "/services/social-media-optimization",
         permanent: true, // ✅ 301 redirect
       },
       {

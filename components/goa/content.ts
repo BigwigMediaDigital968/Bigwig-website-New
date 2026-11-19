@@ -56,7 +56,7 @@ export const services: Service[] = [
   {
     name: "Social media",
     line: "Reels, posts and stories that make people plan their trip around you.",
-    href: "/services/social-media-marketing",
+    href: "/services/social-media-optimization",
     photo: { src: "https://images.unsplash.com/photo-1541738679621-172e4575a81d?auto=format&fit=crop&w=900&q=80", alt: "Palm trees leaning over a turquoise Goan bay" },
     proof: { kind: "reel", views: "48.2K", caption: "Sunset at the shack" },
   },

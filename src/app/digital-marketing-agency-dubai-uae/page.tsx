@@ -23,7 +23,7 @@ const url = "https://www.bigwigmediadigital.com/digital-marketing-agency-dubai-u
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: url, languages: { "en-ae": url } },
+  alternates: { canonical: url },
   openGraph: {
     title,
     description,

@@ -156,14 +156,7 @@ const services: ServiceItem[] = [
         We partner your brand with creators who genuinely connect with your
         message, not just those with large follower counts. The right alignment
         builds trust and makes recommendations feel authentic to their audience,
-        strengthening your overall{" "}
-        <Link
-          href="/services/brand-strategy"
-          className="font-medium underline underline-offset-4 hover:opacity-75"
-        >
-          brand strategy
-        </Link>
-        .
+        strengthening your overall brand strategy.
       </>
     ),
   },
@@ -213,13 +206,7 @@ const workflow: ServiceStep[] = [
     desc: (
       <>
         We review your business goals, product positioning, competitors, and
-        target customers to define a clear campaign direction. Our{" "}
-        <Link
-          href="/services/brand-strategy"
-          className="font-medium underline underline-offset-4 hover:opacity-75"
-        >
-          brand strategy
-        </Link>{" "}
+        target customers to define a clear campaign direction. Our brand strategy
         approach helps ensure every campaign reaches the right audience with the
         right message.
       </>

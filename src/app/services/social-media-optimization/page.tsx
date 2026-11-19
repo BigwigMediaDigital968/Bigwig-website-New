@@ -414,10 +414,10 @@ export default function SocialMediaOptimizationPage() {
               promotions to reach people faster. It is a separate service,
               covered on our{" "}
               <Link
-                href="/services/social-media-marketing"
+                href="/services/performance-marketing"
                 className={inlineLink}
               >
-                Social Media Marketing
+                Performance Marketing
               </Link>{" "}
               page.
             </p>

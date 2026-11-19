@@ -37,27 +37,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <head>
-        <link
-          rel="alternate"
-          href="https://www.bigwigmediadigital.com/"
-          hrefLang="en"
-        />
-        <link
-          rel="alternate"
-          href="https://www.bigwigmediadigital.com/"
-          hrefLang="en-in"
-        />
-        <link
-          rel="alternate"
-          href="https://www.bigwigmediadigital.com/uae/"
-          hrefLang="en-ae"
-        />
-        <link
-          rel="alternate"
-          href="https://www.bigwigmediadigital.com/"
-          hrefLang="x-default"
-        />
-
         {/* <meta
           name="google-site-verification"
           content="CQRj6Bls-OQCYgV4ne5XEQJ8-6KlU7L2JfhusyIuiwM"
