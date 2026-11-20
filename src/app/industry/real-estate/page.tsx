@@ -349,7 +349,7 @@ export default function RealEstateIndustryPage() {
             property consultants.
           </p>
         }
-        cta={{ label: "Get a Free Strategy Call", href: "#enquire" }}
+        cta={{ label: "Get a Free Strategy Call", href: "/contact" }}
         whatsappMessage={waMessage}
         formSource="real-estate-hero"
         formServices={["Website Development", "Performance Marketing"]}

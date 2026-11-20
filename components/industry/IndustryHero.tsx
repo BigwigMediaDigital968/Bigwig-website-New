@@ -42,7 +42,7 @@ export default function IndustryHero({
       className="relative isolate -mt-[5.5rem] flex overflow-hidden bg-[var(--ink)] text-white lg:min-h-[100svh] lg:items-center"
     >
       <motion.div aria-hidden className="absolute inset-0 -z-20" style={reduce ? undefined : { scale: imageScale, y: imageY }}>
-        <Image src={image} alt="" fill priority sizes="100vw" placeholder="blur" className="object-contain" />
+        <Image src={image} alt="" fill priority sizes="100vw" placeholder="blur" className="object-cover" />
       </motion.div>
       <div
         aria-hidden
