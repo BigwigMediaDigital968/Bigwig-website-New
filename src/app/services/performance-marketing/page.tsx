@@ -16,9 +16,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/performance-marketing";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Best ROAS-Focused Performance Marketing Services in Delhi";
+const title = "Performance Marketing Agency in Delhi | Bigwig Media Digital";
 const description =
-  "Want to get more from your ad spend? Our performance marketing services in Delhi focus on ROAS, campaign optimization and reaching the right audience to help your business grow.";
+  "Bigwig Media Digital is a performance marketing agency in Delhi. Google Ads, Meta Ads, performance SEO & lead generation.";
 
 export const metadata: Metadata = {
   title,

@@ -17,13 +17,12 @@ import {
   type ServiceItem,
   type ServiceStep,
 } from "../../../../components/service/ServiceSections";
-import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/online-reputation-management";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Best Online Reputation Management Services in Delhi";
+const title = "Online Reputation Management Company in Delhi";
 const description =
-  "Take control of your digital reputation with expert ORM services in Delhi. Track brand mentions, respond to reviews, and improve customer confidence.";
+  "Online reputation management company in Delhi. Manage reviews, remove negative content & build trust. Call for a free audit.";
 
 export const metadata: Metadata = {
   title,

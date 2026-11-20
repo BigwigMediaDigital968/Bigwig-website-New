@@ -24,9 +24,9 @@ import { inlineLink } from "../../../../components/service/inlineLink";
 
 const PATH = "/services/social-media-optimization";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
-const title = "Social Media Optimization Agency | SMO Services in Delhi";
+const title = "Best Social Media Marketing Company in Delhi";
 const description =
-  "Improve your digital presence with social media management services in Delhi. Build brand credibility and connect with your target audience.";
+  "Looking for social media services in Delhi? We offer profile optimization, content planning & management for Instagram, Facebook & LinkedIn.";
 
 export const metadata: Metadata = {
   title,

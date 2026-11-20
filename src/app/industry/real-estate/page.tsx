@@ -24,9 +24,7 @@ import {
 import {
   FeatureChecklist,
   MarketingTabs,
-  RealEstateCta,
   RealEstateStats,
-  RealEstateTrust,
   RealEstateWorkGrid,
   RelatedLinks,
   WhyGrid,
@@ -34,7 +32,7 @@ import {
 } from "../../../../components/industry/real-estate/Sections";
 import RealEstateClients from "./RealEstateClients";
 
-const PATH = "/industries/real-estate-digital-marketing-web-development";
+const PATH = "/industry/real-estate";
 const URL = `https://www.bigwigmediadigital.com${PATH}`;
 const title =
   "Real Estate Web Development & Digital Marketing Agency | Bigwig Media";
