@@ -201,7 +201,7 @@ export default function Footer() {
             {/* Column 1: Logo, Bio, Regional Branches & Socials */}
             <motion.div
               variants={fadeUp}
-              className="col-span-2 md:col-span-3 lg:col-span-3 space-y-6"
+              className="col-span-2 md:col-span-3 lg:col-span-4 space-y-6"
             >
               <div>
                 <Link
@@ -303,7 +303,7 @@ export default function Footer() {
             </motion.nav>
 
             {/* Column 4: Industries */}
-            <motion.div variants={fadeUp} className="col-span-1 lg:col-span-2">
+            {/* <motion.div variants={fadeUp} className="col-span-1 lg:col-span-2">
               <Heading>Industries We Cover</Heading>
               <ul className="space-y-2.5 text-sm text-white/65">
                 {industries.map((i) => (
@@ -318,10 +318,10 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.div> */}
 
             {/* Column 5: Contact HQ */}
-            <motion.div variants={fadeUp} className="col-span-1 lg:col-span-2">
+            <motion.div variants={fadeUp} className="col-span-1 lg:col-span-3">
               <Heading>Contact HQ</Heading>
               <address className="space-y-2.5 text-sm not-italic">
                 <a
