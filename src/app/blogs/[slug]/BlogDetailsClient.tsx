@@ -10,6 +10,7 @@ import { useLeadPopup } from "../../../../components/LeadPopup";
 import { PillLead, focusRing } from "../../../../components/ui";
 import { normalizeBlogHtml } from "../../../../utils/blogHtml";
 import { blogCategories, categorySlug } from "@/data/blogCategories";
+import Image from "next/image";
 
 /* ================= TYPES ================= */
 
@@ -46,11 +47,23 @@ interface BlogType {
 }
 
 const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+  new Date(iso).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 
 /** about 200 words a minute, at least one */
 const readingTime = (html: string) =>
-  Math.max(1, Math.round(html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length / 200));
+  Math.max(
+    1,
+    Math.round(
+      html
+        .replace(/<[^>]+>/g, " ")
+        .split(/\s+/)
+        .filter(Boolean).length / 200,
+    ),
+  );
 
 /**
  * One article, in the site's light theme like the blog listing. The article body sits on a navy reading panel:
@@ -68,7 +81,8 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
 
   useEffect(() => {
     const handle = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("[data-open-popup='true']")) openLead("blog-content");
+      if ((e.target as HTMLElement).closest("[data-open-popup='true']"))
+        openLead("blog-content");
     };
     document.addEventListener("click", handle);
     return () => document.removeEventListener("click", handle);
@@ -82,7 +96,9 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       setLoading(true);
       setError("");
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE}/viewblog`);
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE}/viewblog`,
+        );
         const list: BlogType[] = res.data;
         const found = list.find((b) => b.slug === slug);
         if (!alive) return;
@@ -93,9 +109,17 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
           // same category first, then the newest of the rest, so there are always three to read next
           const others = list
             .filter((b) => b.slug !== slug)
-            .sort((a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime());
-          const same = others.filter((b) => b.category?.toLowerCase() === found.category?.toLowerCase());
-          setRelatedBlogs([...same, ...others.filter((b) => !same.includes(b))].slice(0, 3));
+            .sort(
+              (a, b) =>
+                new Date(b.datePublished).getTime() -
+                new Date(a.datePublished).getTime(),
+            );
+          const same = others.filter(
+            (b) => b.category?.toLowerCase() === found.category?.toLowerCase(),
+          );
+          setRelatedBlogs(
+            [...same, ...others.filter((b) => !same.includes(b))].slice(0, 3),
+          );
         }
       } catch {
         if (alive) setError("failed");
@@ -109,7 +133,10 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
   }, [slug]);
 
   // Theme-safe HTML: fixes unreadable pasted colours, scopes <style> tags, migrates old Quill markup.
-  const contentHtml = useMemo(() => (blog ? normalizeBlogHtml(blog.content) : ""), [blog]);
+  const contentHtml = useMemo(
+    () => (blog ? normalizeBlogHtml(blog.content) : ""),
+    [blog],
+  );
 
   if (loading) return <ArticleSkeleton />;
 
@@ -117,10 +144,14 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
     return (
       <main className="wrap py-24 text-center">
         <p className="text-2xl font-semibold">
-          {error === "not-found" ? "This article doesn’t exist." : "We couldn’t load this article."}
+          {error === "not-found"
+            ? "This article doesn’t exist."
+            : "We couldn’t load this article."}
         </p>
         <p className="mt-2 text-[var(--muted)]">
-          {error === "not-found" ? "It may have moved. Browse every article instead." : "Check your connection and try again."}
+          {error === "not-found"
+            ? "It may have moved. Browse every article instead."
+            : "Check your connection and try again."}
         </p>
         <Link
           href="/blogs"
@@ -133,7 +164,10 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
 
   const pageUrl = `https://www.bigwigmediadigital.com/blogs/${blog.slug}`;
   const currentCategory = blog.category ? categorySlug(blog.category) : "";
-  const updated = blog.lastUpdated && blog.lastUpdated !== blog.datePublished ? blog.lastUpdated : null;
+  const updated =
+    blog.lastUpdated && blog.lastUpdated !== blog.datePublished
+      ? blog.lastUpdated
+      : null;
 
   /* ================= SCHEMA GENERATION ================= */
 
@@ -151,7 +185,10 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       publisher: {
         "@type": "Organization",
         name: "Bigwig Media Digital",
-        logo: { "@type": "ImageObject", url: "https://www.bigwigmediadigital.com/logo.png" },
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.bigwigmediadigital.com/logo.png",
+        },
       },
       datePublished: blog.datePublished,
       dateModified: blog.lastUpdated || blog.datePublished,
@@ -164,8 +201,18 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.bigwigmediadigital.com" },
-        { "@type": "ListItem", position: 2, name: "Blogs", item: "https://www.bigwigmediadigital.com/blogs" },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.bigwigmediadigital.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blogs",
+          item: "https://www.bigwigmediadigital.com/blogs",
+        },
         { "@type": "ListItem", position: 3, name: blog.title, item: pageUrl },
       ],
     });
@@ -215,7 +262,10 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1.5 text-sm text-[var(--muted)]">
               <li>
-                <Link href="/blogs" className={`rounded-sm font-medium text-[var(--link)] hover:underline ${focusRing}`}>
+                <Link
+                  href="/blogs"
+                  className={`rounded-sm font-medium text-[var(--link)] hover:underline ${focusRing}`}
+                >
                   Blog
                 </Link>
               </li>
@@ -239,7 +289,9 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
             {blog.title}
           </h1>
           {blog.excerpt && (
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[var(--muted)]">{blog.excerpt}</p>
+            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[var(--muted)]">
+              {blog.excerpt}
+            </p>
           )}
 
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[var(--line)] pt-5 text-sm">
@@ -250,13 +302,18 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
               >
                 {(blog.author || "B").trim()[0]}
               </span>
-              <span className="font-semibold">{blog.author || "Bigwig Media Digital"}</span>
+              <span className="font-semibold">
+                {blog.author || "Bigwig Media Digital"}
+              </span>
             </span>
             <span className="text-[var(--muted)]">
-              <time dateTime={blog.datePublished}>{formatDate(blog.datePublished)}</time>
+              <time dateTime={blog.datePublished}>
+                {formatDate(blog.datePublished)}
+              </time>
               {updated && (
                 <>
-                  , updated <time dateTime={updated}>{formatDate(updated)}</time>
+                  , updated{" "}
+                  <time dateTime={updated}>{formatDate(updated)}</time>
                 </>
               )}
             </span>
@@ -273,14 +330,25 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-12">
         <article className="min-w-0 lg:col-span-8">
           {/* cover at the article's width, shown whole (covers carry their own titles and logos, so never cropped) */}
-          <div className="mb-8 overflow-hidden rounded-[24px] bg-[var(--ink)] md:mb-10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={blog.coverImage} alt={blog.title} className="block h-auto w-full" />
+          {/* Hero Cover Image */}
+          <div className="relative mb-8 aspect-[16/9] w-full overflow-hidden rounded-[24px] bg-[var(--ink)] md:mb-10">
+            <Image
+              src={blog.coverImage}
+              alt={blog.title}
+              fill
+              priority
+              fetchPriority="high"
+              sizes="(max-width: 1024px) 100vw, 66vw"
+              className="object-cover"
+            />
           </div>
 
           {/* navy reading panel: stored posts are written for this background */}
           <div className="rounded-[28px] bg-[var(--ink)] px-3 py-1 text-white sm:px-6 md:rounded-[32px] md:px-10 md:py-4">
-            <div className="blog-content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            <div
+              className="blog-content"
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
           </div>
 
           {blog.faqs?.length ? <Faqs faqs={blog.faqs} /> : null}
@@ -295,16 +363,22 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
         <aside className="lg:col-span-4">
           <div className="space-y-6 lg:sticky lg:top-28">
             <div className="rounded-[24px] bg-[var(--ink)] p-6 text-white">
-              <p className="text-xl font-semibold leading-snug tracking-tight">Want this working for your business?</p>
+              <p className="text-xl font-semibold leading-snug tracking-tight">
+                Want this working for your business?
+              </p>
               <p className="mt-2 text-sm leading-relaxed text-white/70">
-                Our team turns these ideas into a plan for your brand. Free, no obligation.
+                Our team turns these ideas into a plan for your brand. Free, no
+                obligation.
               </p>
               <PillLead source="blog-sidebar" tone="cyan" className="mt-5">
                 Get a free strategy session
               </PillLead>
             </div>
 
-            <nav aria-label="Blog categories" className="rounded-[24px] bg-[var(--surface)] p-6 ring-1 ring-[var(--line)]">
+            <nav
+              aria-label="Blog categories"
+              className="rounded-[24px] bg-[var(--surface)] p-6 ring-1 ring-[var(--line)]"
+            >
               <p className="font-semibold">Categories</p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {blogCategories.map((c) => {
@@ -337,25 +411,34 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
           <div className="wrap">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 className="h-section">Read next</h2>
-              <Link href="/blogs" className={`rounded-sm text-sm font-semibold text-[var(--link)] hover:underline ${focusRing}`}>
+              <Link
+                href="/blogs"
+                className={`rounded-sm text-sm font-semibold text-[var(--link)] hover:underline ${focusRing}`}
+              >
                 All articles
               </Link>
             </div>
             <ul className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {relatedBlogs.map((post) => (
                 <li key={post.slug}>
-                  <Link href={`/blogs/${post.slug}`} className={`group block rounded-[20px] ${focusRing}`}>
-                    <div className="overflow-hidden rounded-[20px] bg-[var(--ink)]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                  <Link
+                    href={`/blogs/${post.slug}`}
+                    className={`group block rounded-[20px] ${focusRing}`}
+                  >
+                    <div className="relative aspect-[16/9] overflow-hidden rounded-[20px] bg-[var(--ink)]">
+                      <Image
                         src={post.coverImage}
-                        alt=""
-                        loading="lazy"
-                        className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                       />
                     </div>
                     <p className="mt-5 text-sm text-[var(--muted)]">
-                      {post.author || "Bigwig Media Digital"}, <time dateTime={post.datePublished}>{formatDate(post.datePublished)}</time>
+                      {post.author || "Bigwig Media Digital"},{" "}
+                      <time dateTime={post.datePublished}>
+                        {formatDate(post.datePublished)}
+                      </time>
                     </p>
                     <h3 className="mt-2 text-lg font-semibold leading-snug tracking-tight line-clamp-3 group-hover:underline group-hover:decoration-[var(--teal)] group-hover:underline-offset-4 md:text-xl">
                       {post.title}
@@ -378,12 +461,17 @@ function Faqs({ faqs }: { faqs: FAQ[] }) {
   const uid = useId();
   return (
     <section className="mt-14">
-      <h2 className="h-section text-[clamp(1.6rem,2.6vw,2.2rem)]">Frequently asked questions</h2>
+      <h2 className="h-section text-[clamp(1.6rem,2.6vw,2.2rem)]">
+        Frequently asked questions
+      </h2>
       <div className="mt-6">
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
-            <div key={i} className="border-t border-[var(--line-strong)] last:border-b">
+            <div
+              key={i}
+              className="border-t border-[var(--line-strong)] last:border-b"
+            >
               <h3>
                 <button
                   type="button"
@@ -399,7 +487,11 @@ function Faqs({ faqs }: { faqs: FAQ[] }) {
                   />
                 </button>
               </h3>
-              <div id={`${uid}-${i}`} hidden={!isOpen} className="max-w-[68ch] pb-5 leading-relaxed text-[var(--muted)]">
+              <div
+                id={`${uid}-${i}`}
+                hidden={!isOpen}
+                className="max-w-[68ch] pb-5 leading-relaxed text-[var(--muted)]"
+              >
                 {f.answer}
               </div>
             </div>
@@ -412,7 +504,13 @@ function Faqs({ faqs }: { faqs: FAQ[] }) {
 
 /* ---------- share: the phone's share sheet, or copy the link ---------- */
 
-function ShareButton({ title, className = "" }: { title: string; className?: string }) {
+function ShareButton({
+  title,
+  className = "",
+}: {
+  title: string;
+  className?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const share = async () => {
     const url = window.location.href;
@@ -432,7 +530,11 @@ function ShareButton({ title, className = "" }: { title: string; className?: str
       /* clipboard blocked: nothing to do */
     }
   };
-  const Icon = copied ? Check : typeof navigator !== "undefined" && "share" in navigator ? Share2 : Link2;
+  const Icon = copied
+    ? Check
+    : typeof navigator !== "undefined" && "share" in navigator
+      ? Share2
+      : Link2;
   return (
     <button
       type="button"
@@ -447,7 +549,11 @@ function ShareButton({ title, className = "" }: { title: string; className?: str
 
 function ArticleSkeleton() {
   return (
-    <main className="wrap pb-16 pt-12 md:pt-16" aria-busy="true" aria-label="Loading article">
+    <main
+      className="wrap pb-16 pt-12 md:pt-16"
+      aria-busy="true"
+      aria-label="Loading article"
+    >
       <div className="h-4 w-40 animate-pulse rounded-full bg-[var(--line)]" />
       <div className="mt-6 h-12 w-full max-w-3xl animate-pulse rounded-full bg-[var(--line)]" />
       <div className="mt-3 h-12 w-2/3 max-w-2xl animate-pulse rounded-full bg-[var(--line)]" />
