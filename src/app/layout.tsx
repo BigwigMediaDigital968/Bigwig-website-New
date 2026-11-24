@@ -55,7 +55,7 @@ export default function RootLayout({
               url: "https://bigwigdigital.in",
               logo: "https://www.bigwigdigital.in/assets/bigwig%20digital%20logo%20(11)-T8_kDtlw.png",
               sameAs: [
-                "https://www.facebook.com/bigwigdigital/",
+                "https://www.facebook.com/bigwigmediadigital/",
                 "https://x.com/bigwig_digital",
                 "https://www.instagram.com/bigwig.media.digital",
                 "https://www.youtube.com/@BigwigMediaDigital",

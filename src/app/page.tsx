@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import dynamic from "next/dynamic";
 
-import Nav from "../../components/layout/Nav";
 import Hero from "../../components/home/Hero";
 import Partners from "../../components/home/Partners";
 import About from "../../components/home/About";
 import Clients from "../../components/home/Clients";
 import Steps from "../../components/home/Steps";
 import Services from "../../components/home/Services";
-import Footer from "../../components/layout/Footer";
 import { faqs } from "@/data/homeData";
-import CTAStrip from "../../components/CTAStrip";
+
 
 // below-the-fold sections load as separate chunks (still server-rendered)
 const Testimonials = dynamic(() => import("../../components/home/Testimonials"));
@@ -22,7 +20,7 @@ const FAQ = dynamic(() => import("../../components/home/Faq"));
 export const metadata: Metadata = {
   title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",
   description:
-    "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 5+ Years | 500+ Clients. Get a Free Strategy Session!",
+    "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 5+ Years | 50+ Clients. Get a Free Strategy Session!",
   keywords:
     "digital marketing agency in Delhi, best digital marketing company Delhi, SEO company in Delhi, social media Optimization agency Delhi, website development company Delhi, performance marketing agency Delhi, online marketing services Delhi",
   alternates: {
