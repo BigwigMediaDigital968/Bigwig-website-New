@@ -223,7 +223,7 @@ export function ServiceCards({
               </span>
               <div>
                 <h3 className="text-xl font-semibold leading-snug tracking-tight">{item.title}</h3>
-                <p className="mt-2 leading-relaxed text-[var(--muted)]">{item.desc}</p>
+                <div className="mt-2 leading-relaxed text-[var(--muted)]">{item.desc}</div>
               </div>
             </motion.li>
           ))}
@@ -400,7 +400,7 @@ export function ServiceCarousel({
                 </div>
                 <div className="px-3 pb-4 pt-5 md:px-4">
                   <h3 className="text-xl font-semibold leading-snug tracking-tight">{item.title}</h3>
-                  <p className="mt-2 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</p>
+                  <div className="mt-2 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</div>
                 </div>
               </motion.li>
             ) : (
@@ -428,7 +428,7 @@ export function ServiceCarousel({
                   className="mb-5 block h-px w-10 bg-[var(--teal)] transition-[width] duration-500 group-hover:w-20"
                 />
                 <h3 className="text-xl font-semibold leading-snug tracking-tight">{item.title}</h3>
-                <p className="mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</p>
+                <div className="mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</div>
               </div>
             </motion.li>
             ),
@@ -514,7 +514,7 @@ export function ServiceSplitCarousel({
                   </span>
                   <span aria-hidden className="h-2.5 w-2.5 rounded-full bg-[var(--teal)]" />
                   <h3 className="relative mt-10 text-xl font-semibold leading-snug tracking-tight">{item.title}</h3>
-                  <p className="relative mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</p>
+                  <div className="relative mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)]">{item.desc}</div>
                 </motion.li>
               ))}
             </motion.ul>
@@ -571,7 +571,7 @@ export function ServiceStats({
               <div className="flex min-w-0 flex-col py-2 pr-2">
                 <p className="text-[2.4rem] font-semibold leading-none tracking-[-0.04em] md:text-5xl">{s.value}</p>
                 <p className="mt-3 text-sm font-semibold uppercase tracking-[0.06em]">{s.label}</p>
-                <p className="mt-auto pt-6 text-sm leading-relaxed text-[var(--muted)]">{s.desc}</p>
+                <div className="mt-auto pt-6 text-sm leading-relaxed text-[var(--muted)]">{s.desc}</div>
               </div>
             </motion.li>
           ))}
@@ -756,7 +756,7 @@ export function ServiceShowcase({
                   </span>
                   <div className="mt-auto">
                     <h3 className="text-[0.8rem] font-semibold uppercase tracking-[0.06em] sm:text-sm">{f.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{f.desc}</p>
+                    <div className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{f.desc}</div>
                   </div>
                 </motion.li>
               ))}
@@ -835,83 +835,6 @@ function StatementHead({
 // heights rise towards the centre photo; the outer two drop out on phones
 const fanShapes = ["aspect-square", "aspect-[3/4]", "aspect-[3/5]", "aspect-[3/4]", "aspect-square"];
 
-/**
- * Heading on the left, a two-tone paragraph, supporting copy and a CTA on the right. Add either an
- * `image` under the heading (when the right column runs long) or a fanned strip of five `photos` below.
- */
-// export function ServiceStatement({
-//   heading,
-//   lead,
-//   rest,
-//   body,
-//   cta,
-//   source,
-//   image,
-//   photos,
-// }: {
-//   heading: string;
-//   lead: string;
-//   rest?: string;
-//   body?: React.ReactNode;
-//   cta: string;
-//   source: string;
-//   /** one photo under the heading, filling the left column */
-//   image?: Photo;
-//   /** exactly five, shown as a strip below; the third is the tall centre photo */
-//   photos?: Photo[];
-// }) {
-//   return (
-//     <section className="py-14 md:py-20">
-//       <div className="wrap">
-//         <StatementHead
-//           heading={heading}
-//           lead={lead}
-//           rest={rest}
-//           aside={
-//             image && (
-//               <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[var(--ink)] lg:aspect-auto lg:min-h-[320px] lg:flex-1">
-//                 <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
-//               </div>
-//             )
-//           }
-//         >
-//           {body && <div className="mt-4 space-y-4 leading-relaxed text-[var(--muted)]">{body}</div>}
-//           <div className="mt-8">
-//             <PillLead source={source}>{cta}</PillLead>
-//           </div>
-//         </StatementHead>
-
-//         {photos && (
-//           <motion.ul
-//             {...inView}
-//             variants={stagger(0.08)}
-//             className="mt-14 grid grid-cols-[1fr_1.3fr_1fr] items-center gap-2 md:mt-20 md:grid-cols-[1fr_1.15fr_1.35fr_1.15fr_1fr] md:gap-4"
-//           >
-//             {photos.slice(0, 5).map((p, i) => (
-//               <motion.li
-//                 key={i}
-//                 variants={scaleIn}
-//                 className={`relative overflow-hidden rounded-[20px] bg-[var(--ink)] md:rounded-[24px] ${fanShapes[i]} ${
-//                   i === 0 || i === 4 ? "hidden md:block" : ""
-//                 }`}
-//               >
-//                 <Image
-//                   src={p.src}
-//                   alt={p.alt}
-//                   fill
-//                   sizes={i === 2 ? "(min-width: 768px) 24vw, 40vw" : "(min-width: 768px) 18vw, 30vw"}
-//                   className="object-cover"
-//                 />
-//               </motion.li>
-//             ))}
-//           </motion.ul>
-//         )}
-//       </div>
-//     </section>
-//   );
-// }
-
-// Flexible type definition allowing images, videos, and optional links
 export type MediaItem = {
   src?: string | any; // Next.js StaticImageData, imported video object, or URL string
   videoSrc?: string | any; // Explicit video URL/import path if separate
@@ -1082,7 +1005,7 @@ export function ServiceSteps({
                 <div className="flex min-w-0 flex-col px-2 pb-3 md:px-0 md:py-3 md:pr-4">
                   <span className="serif text-5xl leading-none text-[var(--teal)]">{pad(i + 1)}</span>
                   <h3 className="mt-4 text-xl font-semibold leading-snug tracking-tight">{s.title}</h3>
-                  <p className="mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)] md:mt-auto md:pt-8">{s.desc}</p>
+                  <div className="mt-3 text-[0.95rem] leading-relaxed text-[var(--muted)] md:mt-auto md:pt-8">{s.desc}</div>
                 </div>
               </motion.li>
             ))}
@@ -1164,7 +1087,7 @@ export function ServiceBento({
       </div>
       <div className="pb-1 pr-1 lg:mt-auto lg:px-2 lg:pb-3">
         <h3 className="text-lg font-semibold leading-snug tracking-tight">{it.title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{it.desc}</p>
+        <div className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{it.desc}</div>
       </div>
     </motion.li>
   );
@@ -1197,7 +1120,7 @@ export function ServiceBento({
               </span>
             )}
             <h3 className="mt-6 max-w-md text-2xl font-semibold leading-tight tracking-tight md:text-[1.9rem]">{mid.title}</h3>
-            <p className="mt-3 max-w-md leading-relaxed text-white/80">{mid.desc}</p>
+            <div className="mt-3 max-w-md leading-relaxed text-white/80">{mid.desc}</div>
           </motion.li>
           {side(right)}
         </motion.ul>
@@ -1258,7 +1181,7 @@ export function ServicePair({ panels, cta, source }: { panels: [PairPanel, PairP
                         {titled ? (
                           <div>
                             <h3 className="font-semibold leading-snug">{it.title}</h3>
-                            <p className="mt-1 text-[0.95rem] leading-relaxed text-[var(--muted)]">{it.desc}</p>
+                            <div className="mt-1 text-[0.95rem] leading-relaxed text-[var(--muted)]">{it.desc}</div>
                           </div>
                         ) : (
                           <p className="leading-relaxed">{it}</p>
@@ -1412,7 +1335,7 @@ export function ServiceTechTabs({
                   </span>
                   <div className="min-w-0">
                     <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">{domain.name}</h3>
-                    <p className="mt-1 text-[0.95rem] text-[var(--link)]">{domain.desc}</p>
+                    <div className="mt-1 text-[0.95rem] text-[var(--link)]">{domain.desc}</div>
                   </div>
                 </div>
 

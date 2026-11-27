@@ -51,14 +51,14 @@ export function AccordionItem({
         }`}
       >
         <div className="overflow-hidden">
-          <motion.p
+          <motion.div
             className="max-w-[68ch] pb-7 pr-12 leading-relaxed text-[var(--muted)]"
             initial={false}
             animate={open ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: 0.4, delay: open ? 0.1 : 0, ease: EASE }}
           >
             {answer}
-          </motion.p>
+          </motion.div>
         </div>
       </div>
     </>

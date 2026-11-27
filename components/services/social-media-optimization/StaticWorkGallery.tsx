@@ -68,7 +68,7 @@ export default function StaticWorkGallery({
           const tall = i < 2;
           return (
             <motion.li
-              key={p.alt}
+              key={i}
               variants={fadeUp}
               className={`group relative overflow-hidden bg-[var(--ink)] lg:aspect-auto ${tall ? "aspect-[4/5]" : "aspect-square"} ${places[i]}`}
             >
