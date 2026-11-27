@@ -170,12 +170,9 @@ export function RealEstateWorkGrid({ work }: { work: RealEstateWork[] }) {
 export function RealEstateStats({
   items,
   quote,
-  note,
 }: {
   items: { value: string; label: string }[];
   quote?: { text: string; by: string };
-  /** small print under the figures, e.g. "Results vary by practice and market." */
-  note?: string;
 }) {
   return (
     <section className="px-2 md:px-3">
@@ -193,7 +190,6 @@ export function RealEstateStats({
               </motion.div>
             ))}
           </motion.dl>
-          {note && <p className="mt-8 text-sm text-white/55">{note}</p>}
           {quote && (
             <motion.figure {...inView} variants={fadeUp} className="mt-14 max-w-3xl border-t border-white/15 pt-8">
               <div className="flex gap-1 text-[var(--cyan)]" aria-label="Rated 5 out of 5">

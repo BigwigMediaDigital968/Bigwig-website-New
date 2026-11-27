@@ -96,7 +96,17 @@ function HeroVisual({ image, alt }: { image: string; alt: string }) {
   return (
     <div className="relative mx-auto max-w-[560px] pb-8 pl-6 sm:pb-10 sm:pl-10">
       <div className="relative aspect-[5/4] overflow-hidden rounded-[28px] bg-[var(--hc-deep)] shadow-[0_40px_80px_-40px_rgba(11,60,93,0.55)]">
-        <Image src={image} alt={alt} fill priority sizes="(min-width: 1024px) 560px, 92vw" className="object-cover" />
+        {/* the LCP image on phones: preloaded with high fetch priority */}
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          priority
+          fetchPriority="high"
+          quality={60}
+          sizes="(min-width: 1024px) 560px, 92vw"
+          className="object-cover"
+        />
         <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,rgba(11,60,93,0.35),transparent_45%)]" />
       </div>
 
@@ -183,7 +193,8 @@ export function HealthcareTrust({
                     src={l.src}
                     alt=""
                     fill
-                    sizes="(min-width: 640px) 180px, 45vw"
+                    // the square logo shows ~125px tall inside the 3:2 tile at every width
+                    sizes="128px"
                     className="object-contain transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                   />
                 </span>
@@ -751,6 +762,53 @@ export function CompliancePanel({
         </ul>
         </div>
       </motion.div>
+    </section>
+  );
+}
+
+/* ---------- results band (healthcare copy of the real-estate band, with an accessible star rating) ---------- */
+
+export function HealthcareStats({
+  items,
+  quote,
+  note,
+}: {
+  items: { value: string; label: string }[];
+  quote?: { text: string; by: string };
+  /** small print under the figures */
+  note?: string;
+}) {
+  return (
+    <section className="px-2 md:px-3">
+      <div className="mx-auto max-w-[1600px] overflow-hidden rounded-[32px] bg-[var(--ink)] py-16 text-white md:py-20">
+        <div className="wrap">
+          <motion.dl {...inView} variants={stagger(0.08)} className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+            {items.map((s, i) => (
+              <motion.div
+                key={s.label}
+                variants={fadeUp}
+                className={`flex flex-col pl-5 ${i % 2 ? "border-l border-white/20" : ""} ${i > 0 ? "lg:border-l lg:border-white/20" : ""}`}
+              >
+                <dd className="serif order-first text-5xl leading-none text-[var(--cyan)] md:text-6xl">{s.value}</dd>
+                <dt className="mt-3 text-sm leading-snug text-white/70">{s.label}</dt>
+              </motion.div>
+            ))}
+          </motion.dl>
+          {note && <p className="mt-8 text-sm text-white/60">{note}</p>}
+          {quote && (
+            <motion.figure {...inView} variants={fadeUp} className="mt-14 max-w-3xl border-t border-white/15 pt-8">
+              {/* role="img" makes the label valid: a plain div cannot carry aria-label */}
+              <div role="img" aria-label="Rated 5 out of 5" className="flex gap-1 text-[var(--cyan)]">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={16} fill="currentColor" aria-hidden />
+                ))}
+              </div>
+              <blockquote className="mt-4 text-lg leading-snug md:text-xl">“{quote.text}”</blockquote>
+              <figcaption className="mt-3 text-sm text-white/60">{quote.by}</figcaption>
+            </motion.figure>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

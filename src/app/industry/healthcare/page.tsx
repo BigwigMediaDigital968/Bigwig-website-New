@@ -31,12 +31,13 @@ import {
   type ServiceFaqItem,
   type ServiceItem,
 } from "../../../../components/service/ServiceSections";
-import { RealEstateStats, RelatedLinks, WhyGrid } from "../../../../components/industry/real-estate/Sections";
+import { RelatedLinks, WhyGrid } from "../../../../components/industry/real-estate/Sections";
 import {
   CompliancePanel,
   HealthcareCta,
   HealthcareHero,
   HealthcareServiceTabs,
+  HealthcareStats,
   HealthcareTrust,
   HealthcareWorkGrid,
   LocalNcr,
@@ -69,10 +70,14 @@ export const metadata: Metadata = {
 
 // Free Unsplash photos, linked directly (images.unsplash.com is allowed in next.config). Swap for your own photography later.
 
-// Page-only clinical palette. The coral (--hc-cta) is for primary buttons only.
+// Page-only palette, set on <main> so no other page changes.
+// --hc-teal is the brief's #1AA6A6 deepened to pass WCAG contrast as text (5:1 on white).
+// --teal overrides the site teal for this page only: the shared card and timeline numbers use it,
+// and #54acbf is too light on white (2.6:1).
 const palette = {
   "--hc-deep": "#0B3C5D",
-  "--hc-teal": "#1AA6A6",
+  "--hc-teal": "#0E7C7C",
+  "--teal": "#2E7D8F",
   "--hc-bg": "#F6FAFB",
   "--hc-cta": "#F57A5B",
 } as React.CSSProperties;
@@ -450,7 +455,7 @@ export default function HealthcareIndustryPage() {
         image={{ src: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=70", alt: "Caregiver holding a patient's hand" }}
       />
 
-      <RealEstateStats
+      <HealthcareStats
         items={[
           { value: "69.4K", label: "search impressions in 3 months for Dr. Himanshu Verma's new website" },
           { value: "648", label: "organic clicks in the same 3 months, from a site built from scratch" },
