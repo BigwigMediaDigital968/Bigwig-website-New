@@ -193,6 +193,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     //   changeFrequency: "weekly",
     //   priority: 0.9,
     // },
+    // uncomment when the healthcare page goes live
+    // {
+    //   url: `${baseUrl}/industry/healthcare`,
+    //   lastModified: new Date("2026-11-27"),
+    //   changeFrequency: "weekly",
+    //   priority: 0.9,
+    // },
   ];
 
   /* =========================

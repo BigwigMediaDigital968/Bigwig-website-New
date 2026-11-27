@@ -170,9 +170,12 @@ export function RealEstateWorkGrid({ work }: { work: RealEstateWork[] }) {
 export function RealEstateStats({
   items,
   quote,
+  note,
 }: {
   items: { value: string; label: string }[];
   quote?: { text: string; by: string };
+  /** small print under the figures, e.g. "Results vary by practice and market." */
+  note?: string;
 }) {
   return (
     <section className="px-2 md:px-3">
@@ -190,6 +193,7 @@ export function RealEstateStats({
               </motion.div>
             ))}
           </motion.dl>
+          {note && <p className="mt-8 text-sm text-white/55">{note}</p>}
           {quote && (
             <motion.figure {...inView} variants={fadeUp} className="mt-14 max-w-3xl border-t border-white/15 pt-8">
               <div className="flex gap-1 text-[var(--cyan)]" aria-label="Rated 5 out of 5">
@@ -280,11 +284,19 @@ export function FeatureChecklist({ features, source }: { features: string[]; sou
 
 /* ---------- why us ---------- */
 
-export function WhyGrid({ items }: { items: { icon: React.ReactNode; title: string; desc: string }[] }) {
+export function WhyGrid({
+  items,
+  lead = "Why Bigwig",
+  title = "Why Real Estate Brands Choose Us",
+}: {
+  items: { icon: React.ReactNode; title: string; desc: string }[];
+  lead?: string;
+  title?: string;
+}) {
   return (
     <section className="py-14 md:py-20">
       <div className="wrap">
-        <SectionHead lead="Why Bigwig" title="Why Real Estate Brands Choose Us" />
+        <SectionHead lead={lead} title={title} />
         <motion.ul {...inView} variants={stagger(0.06, 0.1)} className="mt-12 grid gap-3 sm:grid-cols-2 md:mt-14 lg:grid-cols-3">
           {items.map((it) => (
             <motion.li
@@ -344,11 +356,19 @@ export function RealEstateCta({ source, whatsappMessage }: { source: string; wha
 
 /* ---------- related links ---------- */
 
-export function RelatedLinks({ links }: { links: { label: string; href: string }[] }) {
+export function RelatedLinks({
+  links,
+  lead = "Related services",
+  title = "Explore Our Real Estate Services",
+}: {
+  links: { label: string; href: string }[];
+  lead?: string;
+  title?: string;
+}) {
   return (
     <section className="py-14 md:py-20">
       <div className="wrap">
-        <SectionHead lead="Related services" title="Explore Our Real Estate Services" />
+        <SectionHead lead={lead} title={title} />
         <motion.ul {...inView} variants={stagger(0.04)} className="mt-12 flex flex-wrap gap-2 md:mt-14">
           {links.map((l) => (
             <motion.li key={l.href} variants={fadeUp}>
