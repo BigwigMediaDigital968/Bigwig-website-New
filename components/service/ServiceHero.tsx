@@ -54,7 +54,7 @@ export default function ServiceHero({
         className="absolute inset-0 -z-20"
         style={reduce ? undefined : { scale: imageScale, y: imageY }}
       >
-        <Image src={image} alt="" fill priority sizes="100vw" placeholder="blur" className="object-cover" />
+        <Image src={image} alt="" fill priority sizes="100vw" quality={60} placeholder="blur" className="object-cover" />
       </motion.div>
       {/* navy wash, darker behind the copy (left on desktop, everywhere on phones) */}
       <div

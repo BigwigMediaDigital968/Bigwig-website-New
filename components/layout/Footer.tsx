@@ -212,15 +212,15 @@ export default function Footer() {
                   <Image
                     src="/Bigwig_logo_icon.png"
                     alt=""
-                    width={791}
-                    height={909}
+                    width={487}
+                    height={565}
                     className="h-11 w-auto"
                   />
                   <Image
                     src="/Bigwig_brandname.png"
                     alt="BigWig Media Digital"
-                    width={791}
-                    height={909}
+                    width={380}
+                    height={149}
                     className="h-7 w-auto"
                   />
                 </Link>

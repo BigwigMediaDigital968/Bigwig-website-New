@@ -43,8 +43,8 @@ export default function ThankYou() {
   return (
     <main className="wrap flex min-h-[100svh] flex-col items-center justify-center py-16 text-center">
       <span className="flex items-center gap-2">
-        <Image src="/Bigwig_logo_icon.png" alt="" width={791} height={909} className="h-8 w-auto" priority />
-        <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={791} height={909} className="h-5 w-auto" priority />
+        <Image src="/Bigwig_logo_icon.png" alt="" width={487} height={565} className="h-8 w-auto" priority />
+        <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={380} height={149} className="h-5 w-auto" priority />
       </span>
 
       <div className="mt-10 w-full max-w-lg rounded-[28px] bg-[var(--surface)] p-8 shadow-[0_30px_60px_-36px_rgba(1,28,64,0.45)] ring-1 ring-[var(--line)] sm:p-10">

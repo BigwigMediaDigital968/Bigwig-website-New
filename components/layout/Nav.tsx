@@ -343,8 +343,8 @@ export default function Nav() {
 function Logo() {
   return (
     <Link href="/" aria-label="BigWig Media Digital home" className={`flex items-center gap-2 rounded-md ${ring}`}>
-      <Image src="/Bigwig_logo_icon.png" alt="" width={791} height={909} className="h-9 w-auto" priority />
-      <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={791} height={909} className="h-6 w-auto" priority />
+      <Image src="/Bigwig_logo_icon.png" alt="" width={487} height={565} className="h-9 w-auto" priority />
+      <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={380} height={149} className="h-6 w-auto" priority />
     </Link>
   );
 }

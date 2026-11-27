@@ -5,8 +5,14 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  experimental: {
+    // Inline the (small, Tailwind) CSS into the HTML so it no longer blocks first render.
+    inlineCss: true,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
+    // 60 is used for full-bleed hero photos under dark overlays; 75 is the default
+    qualities: [60, 75],
     remotePatterns: [
       {
         protocol: "http",

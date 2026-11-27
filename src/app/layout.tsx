@@ -187,21 +187,9 @@ export default function RootLayout({
         {/*
           Third-party tags load after the page is idle (lazyOnload) so they don't compete with the hero.
           reCAPTCHA is not loaded here: useSubmitLead loads it on the first form interaction.
-          One gtag.js request serves both GA4 properties.
+          GA4 (G-2WEBR7ZVN9 and G-MY747LMT5M) is fired from inside the GTM container, so it is not
+          loaded here as well: a second gtag.js cost ~180 KB and double-counted page views.
         */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-2WEBR7ZVN9"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-2WEBR7ZVN9');
-            gtag('config', 'G-MY747LMT5M');
-          `}
-        </Script>
 
         {/* Microsoft Clarity */}
         <Script id="microsoft-clarity" strategy="lazyOnload">

@@ -30,8 +30,8 @@ export default function SqueezePage({ campaign }: { campaign: Campaign }) {
       {/* the logo is not a link: nothing here leads off the page */}
       <header className="wrap flex items-center justify-between py-4 md:py-6">
         <span className="flex items-center gap-2">
-          <Image src="/Bigwig_logo_icon.png" alt="" width={791} height={909} className="h-8 w-auto" priority />
-          <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={791} height={909} className="h-5 w-auto" priority />
+          <Image src="/Bigwig_logo_icon.png" alt="" width={487} height={565} className="h-8 w-auto" priority />
+          <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={380} height={149} className="h-5 w-auto" priority />
         </span>
         <a
           href={PHONE_HREF}
